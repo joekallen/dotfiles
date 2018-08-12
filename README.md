@@ -1,6 +1,6 @@
 # Dotfiles
 
-[![Circle CI Status](https://circleci.com/gh/bkuhlmann/dotfiles.svg?style=svg)](https://circleci.com/gh/bkuhlmann/dotfiles)
+[![Circle CI Status](https://circleci.com/gh/joekallen/dotfiles.svg?style=svg)](https://circleci.com/gh/joekallen/dotfiles)
 
 Shell scripts for applying default settings to UNIX-based operating systems.
 
@@ -122,7 +122,7 @@ more.
 
 ## Requirements
 
-- [macOS](https://github.com/bkuhlmann/mac_os)
+- [macOS](https://github.com/joekallen/macos)
 
 ## Setup
 
@@ -130,13 +130,13 @@ Open a terminal window and execute the following commands:
 
 Current Version (stable)
 
-    git clone https://github.com/bkuhlmann/dotfiles.git
+    git clone https://github.com/joekallen/dotfiles.git
     cd dotfiles
     git checkout 32.0.0
 
 Master Version (unstable)
 
-    git clone https://github.com/bkuhlmann/dotfiles.git
+    git clone https://github.com/joekallen/dotfiles.git
     cd dotfiles
 
 Edit any of the `home_files/*.tt` template files as you see fit. Then open a terminal window and
@@ -363,12 +363,12 @@ When upgrading to a new version, run the following:
     bcon = "bundle console"
     be = "bundle exec"
     bch = "rm -f Gemfile.lock; bundle check"
-#### [Milestoner](https://github.com/bkuhlmann/milestoner)
+#### [Milestoner](https://github.com/joekallen/milestoner)
     ms = "milestoner"
     msc = 'milestoner --commits | _copy_and_print "\n"'
     msp = "milestoner --publish"
     mse = "milestoner --config --edit"
-#### [Gemsmith](https://github.com/bkuhlmann/gemsmith)
+#### [Gemsmith](https://github.com/joekallen/gemsmith)
     gsg = "gemsmith --generate"
     gse = "gemsmith --config --edit"
     gsr = "gemsmith --read"
@@ -551,7 +551,7 @@ When upgrading to a new version, run the following:
 #### [Rake](https://github.com/ruby/rake)
     ber = Bundle Execute Rake - Run Rake via binstub or Bundler.
     bera = Bundle Execute Rake (all) - Run default Rake tasks via binstub or Bundler for projects in current directory.
-#### [Code Quality](https://github.com/bkuhlmann/code_quality)
+#### [Code Quality](https://github.com/joekallen/code_quality)
     cqa = Code Quality (all) - Run code quality tasks via binstub or Bundler for projects in current directory.
     cqi = Code Quality Issues - List all source files affected by code quality issues.
 #### [RSpec](http://rspec.info)
@@ -646,7 +646,7 @@ Read [LICENSE](LICENSE.md) for details.
 ## History
 
 Read [CHANGES](CHANGES.md) for details.
-Built with [Bashsmith](https://github.com/bkuhlmann/bashsmith).
+Built with [Bashsmith](https://github.com/joekallen/bashsmith).
 
 ## Credits
 

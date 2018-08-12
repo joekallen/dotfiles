@@ -1,0 +1,24 @@
+[2018-08-10 08:11:43.642] [renderer1] [info] no standard startup: not just one text editor
+[2018-08-10 08:11:44.584] [renderer1] [info] No grammar found for scope source.applescript
+[2018-08-10 08:11:44.657] [renderer1] [info] No grammar found for scope text.html.textile
+[2018-08-10 08:11:44.734] [renderer1] [info] No grammar found for scope source.c++
+[2018-08-10 08:11:44.796] [renderer1] [info] No grammar found for scope source.js.jquery
+[2018-08-10 08:11:44.886] [renderer1] [info] No grammar found for scope source.smarty
+[2018-08-10 08:11:45.400] [renderer1] [info] No grammar found for scope source.dosbatch
+[2018-08-10 08:11:45.896] [renderer1] [info] No grammar found for scope source.scala
+[2018-08-10 08:11:46.066] [renderer1] [info] No grammar found for scope source.dart
+[2018-08-10 08:11:46.066] [renderer1] [info] No grammar found for scope text.html.javadoc
+[2018-08-10 08:11:46.066] [renderer1] [info] No grammar found for scope source.postscript
+[2018-08-10 08:11:46.066] [renderer1] [info] No grammar found for scope source.sass
+[2018-08-10 08:11:46.066] [renderer1] [info] No grammar found for scope source.less
+[2018-08-10 08:11:46.066] [renderer1] [info] No grammar found for scope source.stylus
+[2018-08-10 17:54:32.746] [renderer1] [error] Cannot read property 'value' of null: TypeError: Cannot read property 'value' of null
+    at t.get [as value] (file:///Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/workbench.main.js:873:303)
+    at t.addToHistory (file:///Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/workbench.main.js:878:834)
+    at t._updateHistory (file:///Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/workbench.main.js:2106:654)
+    at file:///Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/workbench.main.js:193:835
+    at Object.g [as _notify] (file:///Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/workbench.main.js:150:807)
+    at Object.enter (file:///Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/workbench.main.js:154:85)
+    at n.Class.derive._oncancel._run (file:///Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/workbench.main.js:155:896)
+    at n.Class.derive._oncancel._completed (file:///Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/workbench.main.js:155:337)
+    at file:///Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/workbench.main.js:193:894

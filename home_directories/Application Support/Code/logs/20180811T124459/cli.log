@@ -1,0 +1,9 @@
+[2018-08-11 12:44:59.306] [cli] [info] main {"_":[],"help":false,"h":false,"version":false,"v":false,"wait":false,"w":false,"diff":false,"d":false,"add":false,"a":false,"goto":false,"g":false,"new-window":false,"n":false,"unity-launch":false,"reuse-window":false,"r":false,"open-url":false,"performance":false,"p":false,"prof-startup":false,"verbose":false,"logExtensionHostCommunication":false,"disable-extensions":false,"disableExtensions":false,"list-extensions":false,"show-versions":false,"nolazy":false,"issue":false,"skip-getting-started":false,"skip-release-notes":false,"sticky-quickopen":false,"disable-restore-windows":false,"disable-telemetry":false,"disable-updates":false,"disable-crash-reporter":false,"skip-add-to-recently-opened":false,"status":false,"s":false,"file-write":false,"file-chmod":false,"driver-verbose":false,"install-extension":"k--kato.intellij-idea-keybindings"}
+[2018-08-11 12:44:59.341] [cli] [info] Scanned user extensions: 8
+[2018-08-11 12:44:59.657] [cli] [info] Installing extension: intellij-idea-keybindings
+[2018-08-11 12:44:59.670] [cli] [info] Scanned user extensions: 8
+[2018-08-11 12:45:00.149] [cli] [info] Downloaded extension: intellij-idea-keybindings
+[2018-08-11 12:45:00.175] [cli] [info] Extracted extension to /Users/joseph.allen/.vscode/extensions/.k--kato.intellij-idea-keybindings-0.2.24: k--kato.intellij-idea-keybindings-0.2.24
+[2018-08-11 12:45:00.176] [cli] [info] Renamed to /Users/joseph.allen/.vscode/extensions/k--kato.intellij-idea-keybindings-0.2.24
+[2018-08-11 12:45:00.176] [cli] [info] Installation completed. k--kato.intellij-idea-keybindings-0.2.24
+[2018-08-11 12:45:00.191] [cli] [info] Extensions installed successfully: k--kato.intellij-idea-keybindings

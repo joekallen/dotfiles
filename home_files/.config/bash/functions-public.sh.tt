@@ -1798,7 +1798,7 @@ bera() {
 }
 
 #--------------------------------------------------------------------#
-# Section: [Code Quality](https://github.com/bkuhlmann/code_quality) #
+# Section: [Code Quality](https://github.com/joekallen/code_quality) #
 #--------------------------------------------------------------------#
 
 # Label: Code Quality (all)

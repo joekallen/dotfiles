@@ -12,8 +12,10 @@ process_option() {
       show_files;;
     'i')
       install_files;;
-    'l')
+    'lf')
       link_files;;
+    'ld')
+      link_directories;;  
     'c')
       check_files;;
     'd')

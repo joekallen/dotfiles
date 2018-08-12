@@ -495,7 +495,7 @@
 - Added "diff3" merge conflict style support to global Git configuration.
 - Added Git auto-stash support when rebasing.
 - Added Patreon badge to README.
-- Added [Tocer](https://github.com/bkuhlmann/tocer) aliases.
+- Added [Tocer](https://github.com/joekallen/tocer) aliases.
 - Added `bera` function for running default Rake tasks for all projects.
 - Added `gli` function for Git Log (interactive).
 - Updated to Code of Conduct 1.3.0.
@@ -550,7 +550,7 @@
 - Added Rails ERD alias section.
 - Added Ruby Prof alias section.
 - Added [Ember](http://emberjs.com) aliases.
-- Added [Milestoner](https://github.com/bkuhlmann/milestoner) aliases.
+- Added [Milestoner](https://github.com/joekallen/milestoner) aliases.
 - Added `bbr` alias for launching remote byebug debug session.
 - Added `cinr` function for creating asciinema recordings.
 - Added `gatch` alias for `git commit --patch`.
@@ -848,7 +848,7 @@
 - Removed the 'p' option for "gh" function (replaced with 'r' instead).
 - Removed the "rfixes" alias (use "bernf" instead).
 - Removed the Rails Engine template option from the "rew" function. Use the
-  [Gemsmith](https://github.com/bkuhlmann/gemsmith) gem instead.
+  [Gemsmith](https://github.com/joekallen/gemsmith) gem instead.
 - Removed the IRB RA class (replaced as ConsoleKit instead).
 - Fixed binding.pry bug with .irb_history file not being resolved correctly in .pryrc settings.
 - Fixed bug with Hirb "pager" error when using Pry 0.10.0.
@@ -980,7 +980,7 @@
 - Enhanced "curli" function by replacing short with long options for readability.
 - Enhanced "curli" function to throw an error if URL is not supplied.
 - Enhanced "dots" function with the 's' search option for easily searching for an alias/function.
-- Enhanced the "rew" function with the [Rails Slim Template](https://github.com/bkuhlmann/rails_slim_template) option.
+- Enhanced the "rew" function with the [Rails Slim Template](https://github.com/joekallen/rails_slim_template) option.
 - Enhanced .gitconfig settings to always auto rebase when pulling down new commits.
 - Enhanced .irbrc with the ability to answer HTTP status symbols (as used by Rails).
 - Enhanced the "gld" alias format and colors.

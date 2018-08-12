@@ -1,0 +1,14 @@
+[2018-08-09 17:55:26.835] [exthost1] [info] extension host started
+[2018-08-09 17:55:26.873] [exthost1] [info] ExtensionService#_doActivateExtension vscode.emmet {"startup":true,"activationEvent":"*"}
+[2018-08-09 17:55:26.874] [exthost1] [info] ExtensionService#loadCommonJSModule /Applications/Visual Studio Code.app/Contents/Resources/app/extensions/emmet/out/extension
+[2018-08-09 17:55:26.955] [exthost1] [info] ExtensionService#_doActivateExtension vscode.git {"startup":true,"activationEvent":"*"}
+[2018-08-09 17:55:26.955] [exthost1] [info] ExtensionService#loadCommonJSModule /Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/out/main
+[2018-08-09 17:55:27.122] [exthost1] [info] ExtensionService#_doActivateExtension vscode.merge-conflict {"startup":true,"activationEvent":"*"}
+[2018-08-09 17:55:27.122] [exthost1] [info] ExtensionService#loadCommonJSModule /Applications/Visual Studio Code.app/Contents/Resources/app/extensions/merge-conflict/out/extension
+[2018-08-09 17:55:27.133] [exthost1] [info] ExtensionService#_doActivateExtension vscode.search-rg {"startup":true,"activationEvent":"*"}
+[2018-08-09 17:55:27.133] [exthost1] [info] ExtensionService#loadCommonJSModule /Applications/Visual Studio Code.app/Contents/Resources/app/extensions/search-rg/out/extension
+[2018-08-09 17:55:27.140] [exthost1] [info] eager extensions activated
+[2018-08-09 18:37:04.604] [exthost1] [info] ExtensionService#_doActivateExtension vscode.configuration-editing {"startup":false,"activationEvent":"onLanguage:jsonc"}
+[2018-08-09 18:37:04.604] [exthost1] [info] ExtensionService#loadCommonJSModule /Applications/Visual Studio Code.app/Contents/Resources/app/extensions/configuration-editing/out/extension
+[2018-08-09 18:37:04.728] [exthost1] [info] ExtensionService#_doActivateExtension vscode.json-language-features {"startup":false,"activationEvent":"onLanguage:jsonc"}
+[2018-08-09 18:37:04.728] [exthost1] [info] ExtensionService#loadCommonJSModule /Applications/Visual Studio Code.app/Contents/Resources/app/extensions/json-language-features/client/out/jsonMain

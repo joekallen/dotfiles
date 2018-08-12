@@ -202,13 +202,13 @@ alias bcon="bundle console"
 alias be="bundle exec"
 alias bch="rm -f Gemfile.lock; bundle check"
 
-# Section: [Milestoner](https://github.com/bkuhlmann/milestoner)
+# Section: [Milestoner](https://github.com/joekallen/milestoner)
 alias ms="milestoner"
 alias msc='milestoner --commits | _copy_and_print "\n"'
 alias msp="milestoner --publish"
 alias mse="milestoner --config --edit"
 
-# Section: [Gemsmith](https://github.com/bkuhlmann/gemsmith)
+# Section: [Gemsmith](https://github.com/joekallen/gemsmith)
 alias gsg="gemsmith --generate"
 alias gse="gemsmith --config --edit"
 alias gsr="gemsmith --read"

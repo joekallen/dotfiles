@@ -1,0 +1,24 @@
+[2018-08-09 14:36:10.141] [exthost3] [info] extension host started
+[2018-08-09 14:36:10.158] [exthost3] [info] ExtensionService#_doActivateExtension vscode.emmet {"startup":true,"activationEvent":"*"}
+[2018-08-09 14:36:10.158] [exthost3] [info] ExtensionService#loadCommonJSModule /Applications/Visual Studio Code.app/Contents/Resources/app/extensions/emmet/out/extension
+[2018-08-09 14:36:10.224] [exthost3] [info] ExtensionService#_doActivateExtension vscode.git {"startup":true,"activationEvent":"*"}
+[2018-08-09 14:36:10.224] [exthost3] [info] ExtensionService#loadCommonJSModule /Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/out/main
+[2018-08-09 14:36:10.344] [exthost3] [info] ExtensionService#_doActivateExtension vscode.merge-conflict {"startup":true,"activationEvent":"*"}
+[2018-08-09 14:36:10.344] [exthost3] [info] ExtensionService#loadCommonJSModule /Applications/Visual Studio Code.app/Contents/Resources/app/extensions/merge-conflict/out/extension
+[2018-08-09 14:36:10.360] [exthost3] [info] ExtensionService#_doActivateExtension vscode.search-rg {"startup":true,"activationEvent":"*"}
+[2018-08-09 14:36:10.360] [exthost3] [info] ExtensionService#loadCommonJSModule /Applications/Visual Studio Code.app/Contents/Resources/app/extensions/search-rg/out/extension
+[2018-08-09 14:36:10.368] [exthost3] [info] eager extensions activated
+[2018-08-09 14:36:24.424] [exthost3] [info] extension host started
+[2018-08-09 14:36:24.445] [exthost3] [info] ExtensionService#_doActivateExtension vscode.emmet {"startup":true,"activationEvent":"*"}
+[2018-08-09 14:36:24.445] [exthost3] [info] ExtensionService#loadCommonJSModule /Applications/Visual Studio Code.app/Contents/Resources/app/extensions/emmet/out/extension
+[2018-08-09 14:36:24.512] [exthost3] [info] ExtensionService#_doActivateExtension vscode.git {"startup":true,"activationEvent":"*"}
+[2018-08-09 14:36:24.512] [exthost3] [info] ExtensionService#loadCommonJSModule /Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/out/main
+[2018-08-09 14:36:24.629] [exthost3] [info] ExtensionService#_doActivateExtension vscode.merge-conflict {"startup":true,"activationEvent":"*"}
+[2018-08-09 14:36:24.629] [exthost3] [info] ExtensionService#loadCommonJSModule /Applications/Visual Studio Code.app/Contents/Resources/app/extensions/merge-conflict/out/extension
+[2018-08-09 14:36:24.645] [exthost3] [info] ExtensionService#_doActivateExtension vscode.search-rg {"startup":true,"activationEvent":"*"}
+[2018-08-09 14:36:24.645] [exthost3] [info] ExtensionService#loadCommonJSModule /Applications/Visual Studio Code.app/Contents/Resources/app/extensions/search-rg/out/extension
+[2018-08-09 14:36:24.653] [exthost3] [info] eager extensions activated
+[2018-08-09 14:41:30.236] [exthost3] [info] ExtensionService#_doActivateExtension vscode.extension-editing {"startup":false,"activationEvent":"onLanguage:markdown"}
+[2018-08-09 14:41:30.236] [exthost3] [info] ExtensionService#loadCommonJSModule /Applications/Visual Studio Code.app/Contents/Resources/app/extensions/extension-editing/out/extension
+[2018-08-09 14:41:30.253] [exthost3] [info] ExtensionService#_doActivateExtension vscode.markdown-language-features {"startup":false,"activationEvent":"onLanguage:markdown"}
+[2018-08-09 14:41:30.253] [exthost3] [info] ExtensionService#loadCommonJSModule /Applications/Visual Studio Code.app/Contents/Resources/app/extensions/markdown-language-features/out/extension

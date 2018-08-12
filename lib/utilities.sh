@@ -11,6 +11,14 @@ home_files() {
 }
 export -f home_files
 
+# Answers a list of home_directories of this project.
+home_directories() {
+  for file in $(find home_directories -maxdepth 1 -type d); do
+    printf "$file\n"
+  done
+}
+export -f home_directories
+
 base_dest_file() {
   local source_file="$1"
   local computed_file=''
@@ -18,6 +26,14 @@ base_dest_file() {
   printf "${source_file%.*}" | sed 's/home_files\///g'
 }
 export -f base_dest_file
+
+base_dest_directory(){
+  local source_file="$1"
+  local computed_file=''
+
+  printf "${source_file%.*}" | sed 's/home_directories\///g'
+}
+export -f base_dest_directory
 
 # Shows managed files.
 show_files() {
@@ -86,6 +102,41 @@ link_files() {
   done
 
   printf "Dotfiles link complete!\n"
+}
+export -f link_files
+
+
+# Links a directory to this project.
+# Parameters:
+# $1 = The directory name.
+link_directory() {
+  local source_file="$PWD/$1"
+  local dest_file="$HOME/$(base_dest_directory $1)"
+  local dest_dir="$(dirname $dest_file)"
+  local excludes="home_directories$"
+
+  printf "$dest_file\n"
+
+  # Proceed only if the symbolic link doesn't exist and is not an excluded file.
+  if [[ ! -h "$dest_file" && ! "$source_file" =~ $excludes ]]; then
+    read -r -p "  Link $dest_file -> $source_file (y/n)? " response
+    if [[ $response == 'y' ]]; then
+      mkdir -p "$dest_dir"
+      ln -sf "$source_file" "$dest_file"
+    fi
+  fi
+}
+export -f link_directory
+
+# Links all directories.
+link_directories() {
+  printf "Linking directories...\n"
+
+  for file in $(home_directories); do
+    link_directory $file
+  done
+
+  printf "Directories link complete!\n"
 }
 export -f link_files
 
