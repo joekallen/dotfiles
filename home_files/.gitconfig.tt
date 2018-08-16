@@ -1,11 +1,13 @@
 [user]
-  # name = <enter name here>
-  # email = <enter email here>
+  name = Joe Allen
+  email = joe.allen@ticketmaster.com
   # signingkey = <enter signing key here>
   useconfigonly = true
 [github]
-  # user = <enter user here>
+  user = Joe Allen
   # token = <enter token here>
+[alias]
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit  
 [credential]
   helper = cache --timeout=3600
 [core]
@@ -18,6 +20,7 @@
   attributesFile = ~/.config/git/info/attributes
   hooksPath = ~/.config/git/hooks
   pager = diff-so-fancy | less --tabs=4 -RFX
+  editor = atom --wait
 [color]
   ui = true
   pager = true
@@ -77,17 +80,19 @@
   textconv = exiftool
 [difftool]
   prompt = false
-[difftool "Kaleidoscope"]
-  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[merge]
-  ff = only
-  tool = Kaleidoscope
-  conflictStyle = diff3
-[mergetool]
-  prompt = false
 [mergetool "Kaleidoscope"]
   cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-  trustExitCode = true
+  trustexitcode = true
+[merge]
+  tool = Kaleidoscope
+[difftool "Kaleidoscope"]
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool]
+  prompt = false
+[mergetool]
+  prompt = false
+[diff]
+  tool = Kaleidoscope
 [tag]
   sort = version:refname
 [transfer]

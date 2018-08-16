@@ -1,0 +1,29 @@
+{
+  "gitlens.advanced.messages": {
+    "suppressFileNotUnderSourceControlWarning": true,
+    "suppressShowKeyBindingsNotice": true
+  },
+  "workbench.iconTheme": "material-icon-theme",
+  "files.autoSave": "afterDelay",
+  "terminal.external.osxExec": "iTerm.app",
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.scrollback": 100000,
+  "terminal.integrated.shell.osx": "/bin/zsh",
+  "terminal.integrated.fontFamily": "MesloLGM Nerd Font",
+  "editor.formatOnSave": true,
+  "files.autoSaveDelay": 250,
+  "editor.detectIndentation": false,
+  "editor.tabSize": 2,
+  "local-history.daysLimit": 0,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "prettier.singleQuote": true,
+  "prettier.tslintIntegration": true,
+  "autoimport.showNotifications": true,
+  "breadcrumbs.enabled": true,
+  "javascript.referencesCodeLens.enabled": true,
+  "typescript.implementationsCodeLens.enabled": true,
+  "typescript.referencesCodeLens.enabled": true,
+  "editor.codeLens": false,
+  "explorer.confirmDelete": false
+}

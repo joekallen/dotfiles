@@ -1,0 +1,519 @@
+{
+    "telemetry.machineId": "fd84aafdeef5cdf9c391dd937de68902315999296d0b6daed6170e59d75306e8",
+    "lastKnownKeybindings": {
+        "workbench.action.openGlobalKeybindings": {
+            "id": "workbench.action.openGlobalKeybindings",
+            "label": "⌘K ⌘S",
+            "isNative": false
+        },
+        "workbench.extensions.action.showRecommendedKeymapExtensions": {
+            "id": "workbench.extensions.action.showRecommendedKeymapExtensions",
+            "label": "⌘K ⌘M",
+            "isNative": false
+        },
+        "workbench.action.selectTheme": {
+            "id": "workbench.action.selectTheme",
+            "label": "Ctrl+`",
+            "isNative": true
+        },
+        "workbench.action.quit": {
+            "id": "workbench.action.quit",
+            "label": "Cmd+Q",
+            "isNative": true
+        },
+        "workbench.action.files.newUntitledFile": {
+            "id": "workbench.action.files.newUntitledFile",
+            "label": "Cmd+N",
+            "isNative": true
+        },
+        "workbench.action.reopenClosedEditor": {
+            "id": "workbench.action.reopenClosedEditor",
+            "label": "Shift+Cmd+T",
+            "isNative": true
+        },
+        "workbench.action.openRecent": {
+            "id": "workbench.action.openRecent",
+            "label": "Cmd+E",
+            "isNative": true
+        },
+        "workbench.action.files.saveAs": {
+            "id": "workbench.action.files.saveAs",
+            "label": "Shift+Cmd+S",
+            "isNative": true
+        },
+        "workbench.action.files.saveAll": {
+            "id": "workbench.action.files.saveAll",
+            "label": "Cmd+S",
+            "isNative": true
+        },
+        "workbench.action.newWindow": {
+            "id": "workbench.action.newWindow",
+            "label": "Shift+Cmd+N",
+            "isNative": true
+        },
+        "workbench.action.closeWindow": {
+            "id": "workbench.action.closeWindow",
+            "label": "Shift+Cmd+W",
+            "isNative": true
+        },
+        "workbench.action.closeFolder": {
+            "id": "workbench.action.closeFolder",
+            "label": "⌘K F",
+            "isNative": false
+        },
+        "workbench.action.closeActiveEditor": {
+            "id": "workbench.action.closeActiveEditor",
+            "label": "Cmd+W",
+            "isNative": true
+        },
+        "undo": {
+            "id": "undo",
+            "label": "Cmd+Z",
+            "isNative": true
+        },
+        "redo": {
+            "id": "redo",
+            "label": "Shift+Cmd+Z",
+            "isNative": true
+        },
+        "editor.action.clipboardCutAction": {
+            "id": "editor.action.clipboardCutAction",
+            "label": "Cmd+Delete",
+            "isNative": true
+        },
+        "editor.action.clipboardCopyAction": {
+            "id": "editor.action.clipboardCopyAction",
+            "label": "Cmd+C",
+            "isNative": true
+        },
+        "editor.action.clipboardPasteAction": {
+            "id": "editor.action.clipboardPasteAction",
+            "label": "Cmd+V",
+            "isNative": true
+        },
+        "actions.find": {
+            "id": "actions.find",
+            "label": "Cmd+F",
+            "isNative": true
+        },
+        "editor.action.startFindReplaceAction": {
+            "id": "editor.action.startFindReplaceAction",
+            "label": "Cmd+R",
+            "isNative": true
+        },
+        "workbench.action.findInFiles": {
+            "id": "workbench.action.findInFiles",
+            "label": "Shift+Cmd+F",
+            "isNative": true
+        },
+        "workbench.action.replaceInFiles": {
+            "id": "workbench.action.replaceInFiles",
+            "label": "Shift+Cmd+R",
+            "isNative": true
+        },
+        "editor.emmet.action.expandAbbreviation": {
+            "id": "editor.emmet.action.expandAbbreviation",
+            "label": "Tab",
+            "isNative": true
+        },
+        "editor.action.commentLine": {
+            "id": "editor.action.commentLine",
+            "label": "⌘NumPad_Divide",
+            "isNative": false
+        },
+        "editor.action.blockComment": {
+            "id": "editor.action.blockComment",
+            "label": "⌥⌘NumPad_Divide",
+            "isNative": false
+        },
+        "editor.action.insertCursorAbove": {
+            "id": "editor.action.insertCursorAbove",
+            "label": "Alt+Cmd+Up",
+            "isNative": true
+        },
+        "editor.action.insertCursorBelow": {
+            "id": "editor.action.insertCursorBelow",
+            "label": "Alt+Cmd+Down",
+            "isNative": true
+        },
+        "editor.action.insertCursorAtEndOfEachLineSelected": {
+            "id": "editor.action.insertCursorAtEndOfEachLineSelected",
+            "label": "Shift+Alt+I",
+            "isNative": true
+        },
+        "editor.action.addSelectionToNextFindMatch": {
+            "id": "editor.action.addSelectionToNextFindMatch",
+            "label": "Ctrl+G",
+            "isNative": true
+        },
+        "editor.action.selectHighlights": {
+            "id": "editor.action.selectHighlights",
+            "label": "Ctrl+Cmd+G",
+            "isNative": true
+        },
+        "editor.action.copyLinesDownAction": {
+            "id": "editor.action.copyLinesDownAction",
+            "label": "Cmd+D",
+            "isNative": true
+        },
+        "editor.action.moveLinesUpAction": {
+            "id": "editor.action.moveLinesUpAction",
+            "label": "Shift+Alt+Up",
+            "isNative": true
+        },
+        "editor.action.moveLinesDownAction": {
+            "id": "editor.action.moveLinesDownAction",
+            "label": "Shift+Alt+Down",
+            "isNative": true
+        },
+        "editor.action.selectAll": {
+            "id": "editor.action.selectAll",
+            "label": "Cmd+A",
+            "isNative": true
+        },
+        "editor.action.smartSelect.grow": {
+            "id": "editor.action.smartSelect.grow",
+            "label": "Alt+Up",
+            "isNative": true
+        },
+        "editor.action.smartSelect.shrink": {
+            "id": "editor.action.smartSelect.shrink",
+            "label": "Alt+Down",
+            "isNative": true
+        },
+        "workbench.action.showCommands": {
+            "id": "workbench.action.showCommands",
+            "label": "Shift+Cmd+A",
+            "isNative": true
+        },
+        "workbench.view.explorer": {
+            "id": "workbench.view.explorer",
+            "label": "⌘NumPad1",
+            "isNative": false
+        },
+        "workbench.view.search": {
+            "id": "workbench.view.search",
+            "label": "⌘NumPad3",
+            "isNative": false
+        },
+        "workbench.view.scm": {
+            "id": "workbench.view.scm",
+            "label": "Cmd+9",
+            "isNative": true
+        },
+        "workbench.view.debug": {
+            "id": "workbench.view.debug",
+            "label": "⌘NumPad5",
+            "isNative": false
+        },
+        "workbench.view.extensions": {
+            "id": "workbench.view.extensions",
+            "label": "Shift+Cmd+X",
+            "isNative": true
+        },
+        "workbench.action.output.toggleOutput": {
+            "id": "workbench.action.output.toggleOutput",
+            "label": "Shift+Cmd+U",
+            "isNative": true
+        },
+        "workbench.debug.action.toggleRepl": {
+            "id": "workbench.debug.action.toggleRepl",
+            "label": "Shift+Escape",
+            "isNative": true
+        },
+        "workbench.action.terminal.toggleTerminal": {
+            "id": "workbench.action.terminal.toggleTerminal",
+            "label": "Alt+F12",
+            "isNative": true
+        },
+        "workbench.actions.view.problems": {
+            "id": "workbench.actions.view.problems",
+            "label": "⌘NumPad0",
+            "isNative": false
+        },
+        "workbench.action.toggleFullScreen": {
+            "id": "workbench.action.toggleFullScreen",
+            "label": "Ctrl+Cmd+F",
+            "isNative": true
+        },
+        "workbench.action.toggleZenMode": {
+            "id": "workbench.action.toggleZenMode",
+            "label": "⌘K Z",
+            "isNative": false
+        },
+        "workbench.action.toggleEditorGroupLayout": {
+            "id": "workbench.action.toggleEditorGroupLayout",
+            "label": "Alt+Cmd+0",
+            "isNative": true
+        },
+        "workbench.action.toggleSidebarVisibility": {
+            "id": "workbench.action.toggleSidebarVisibility",
+            "label": "⌘NumPad9",
+            "isNative": false
+        },
+        "workbench.action.togglePanel": {
+            "id": "workbench.action.togglePanel",
+            "label": "Cmd+J",
+            "isNative": true
+        },
+        "editor.action.toggleWordWrap": {
+            "id": "editor.action.toggleWordWrap",
+            "label": "Alt+Z",
+            "isNative": true
+        },
+        "workbench.action.zoomIn": {
+            "id": "workbench.action.zoomIn",
+            "label": "Cmd+=",
+            "isNative": true
+        },
+        "workbench.action.zoomOut": {
+            "id": "workbench.action.zoomOut",
+            "label": "Cmd+-",
+            "isNative": true
+        },
+        "workbench.action.navigateBack": {
+            "id": "workbench.action.navigateBack",
+            "label": "Cmd+[",
+            "isNative": true
+        },
+        "workbench.action.navigateForward": {
+            "id": "workbench.action.navigateForward",
+            "label": "Cmd+]",
+            "isNative": true
+        },
+        "workbench.action.nextEditor": {
+            "id": "workbench.action.nextEditor",
+            "label": "Shift+Cmd+]",
+            "isNative": true
+        },
+        "workbench.action.previousEditor": {
+            "id": "workbench.action.previousEditor",
+            "label": "Shift+Cmd+[",
+            "isNative": true
+        },
+        "workbench.action.openNextRecentlyUsedEditorInGroup": {
+            "id": "workbench.action.openNextRecentlyUsedEditorInGroup",
+            "label": "Ctrl+Tab",
+            "isNative": true
+        },
+        "workbench.action.openPreviousRecentlyUsedEditorInGroup": {
+            "id": "workbench.action.openPreviousRecentlyUsedEditorInGroup",
+            "label": "Ctrl+Shift+Tab",
+            "isNative": true
+        },
+        "workbench.action.focusFirstEditorGroup": {
+            "id": "workbench.action.focusFirstEditorGroup",
+            "label": "Cmd+1",
+            "isNative": true
+        },
+        "workbench.action.focusSecondEditorGroup": {
+            "id": "workbench.action.focusSecondEditorGroup",
+            "label": "Cmd+2",
+            "isNative": true
+        },
+        "workbench.action.focusThirdEditorGroup": {
+            "id": "workbench.action.focusThirdEditorGroup",
+            "label": "Cmd+3",
+            "isNative": true
+        },
+        "workbench.action.focusFourthEditorGroup": {
+            "id": "workbench.action.focusFourthEditorGroup",
+            "label": "Cmd+4",
+            "isNative": true
+        },
+        "workbench.action.focusFifthEditorGroup": {
+            "id": "workbench.action.focusFifthEditorGroup",
+            "label": "Cmd+5",
+            "isNative": true
+        },
+        "workbench.action.focusNextGroup": {
+            "id": "workbench.action.focusNextGroup",
+            "label": "Alt+Tab",
+            "isNative": true
+        },
+        "workbench.action.focusPreviousGroup": {
+            "id": "workbench.action.focusPreviousGroup",
+            "label": "Shift+Alt+Tab",
+            "isNative": true
+        },
+        "workbench.action.focusLeftGroup": {
+            "id": "workbench.action.focusLeftGroup",
+            "label": "⌘K ⌘←",
+            "isNative": false
+        },
+        "workbench.action.focusRightGroup": {
+            "id": "workbench.action.focusRightGroup",
+            "label": "⌘K ⌘→",
+            "isNative": false
+        },
+        "workbench.action.focusAboveGroup": {
+            "id": "workbench.action.focusAboveGroup",
+            "label": "⌘K ⌘↑",
+            "isNative": false
+        },
+        "workbench.action.focusBelowGroup": {
+            "id": "workbench.action.focusBelowGroup",
+            "label": "⌘K ⌘↓",
+            "isNative": false
+        },
+        "workbench.action.quickOpen": {
+            "id": "workbench.action.quickOpen",
+            "label": "Shift+Cmd+O",
+            "isNative": true
+        },
+        "workbench.action.gotoSymbol": {
+            "id": "workbench.action.gotoSymbol",
+            "label": "Cmd+F12",
+            "isNative": true
+        },
+        "workbench.action.showAllSymbols": {
+            "id": "workbench.action.showAllSymbols",
+            "label": "Cmd+O",
+            "isNative": true
+        },
+        "editor.action.goToDeclaration": {
+            "id": "editor.action.goToDeclaration",
+            "label": "Cmd+Down",
+            "isNative": true
+        },
+        "editor.action.goToTypeDefinition": {
+            "id": "editor.action.goToTypeDefinition",
+            "label": "Ctrl+Shift+B",
+            "isNative": true
+        },
+        "editor.action.goToImplementation": {
+            "id": "editor.action.goToImplementation",
+            "label": "Alt+Cmd+B",
+            "isNative": true
+        },
+        "workbench.action.gotoLine": {
+            "id": "workbench.action.gotoLine",
+            "label": "Cmd+L",
+            "isNative": true
+        },
+        "workbench.action.debug.start": {
+            "id": "workbench.action.debug.start",
+            "label": "F5",
+            "isNative": true
+        },
+        "workbench.action.debug.run": {
+            "id": "workbench.action.debug.run",
+            "label": "Ctrl+D",
+            "isNative": true
+        },
+        "workbench.action.debug.stop": {
+            "id": "workbench.action.debug.stop",
+            "label": "Shift+F5",
+            "isNative": true
+        },
+        "workbench.action.debug.restart": {
+            "id": "workbench.action.debug.restart",
+            "label": "Shift+Cmd+F5",
+            "isNative": true
+        },
+        "workbench.action.debug.stepOver": {
+            "id": "workbench.action.debug.stepOver",
+            "label": "F8",
+            "isNative": true
+        },
+        "workbench.action.debug.stepInto": {
+            "id": "workbench.action.debug.stepInto",
+            "label": "F7",
+            "isNative": true
+        },
+        "workbench.action.debug.stepOut": {
+            "id": "workbench.action.debug.stepOut",
+            "label": "Shift+F8",
+            "isNative": true
+        },
+        "workbench.action.debug.continue": {
+            "id": "workbench.action.debug.continue",
+            "label": "Alt+Cmd+R",
+            "isNative": true
+        },
+        "editor.debug.action.toggleBreakpoint": {
+            "id": "editor.debug.action.toggleBreakpoint",
+            "label": "Cmd+F8",
+            "isNative": true
+        },
+        "editor.debug.action.toggleInlineBreakpoint": {
+            "id": "editor.debug.action.toggleInlineBreakpoint",
+            "label": "Shift+F9",
+            "isNative": true
+        },
+        "workbench.action.switchWindow": {
+            "id": "workbench.action.switchWindow",
+            "label": "Ctrl+W",
+            "isNative": true
+        },
+        "workbench.action.tasks.runTask": {
+            "id": "workbench.action.tasks.runTask",
+            "label": "Ctrl+Alt+R",
+            "isNative": true
+        },
+        "workbench.action.tasks.build": {
+            "id": "workbench.action.tasks.build",
+            "label": "Cmd+F9",
+            "isNative": true
+        },
+        "workbench.action.tasks.configureTaskRunner": {
+            "id": "workbench.action.tasks.configureTaskRunner",
+            "label": "Cmd+;",
+            "isNative": true
+        }
+    },
+    "theme": "vs-dark vscode-theme-defaults-themes-dark_plus-json",
+    "themeBackground": "#1e1e1e",
+    "windowsState": {
+        "openedWindows": [],
+        "lastActiveWindow": {
+            "folderPath": "/Users/joseph.allen/Documents/workspace/ism/gaggle",
+            "backupPath": "/Users/joseph.allen/Library/Application Support/Code/Backups/0cb5dc1eea38c55fdf0b7c9144ce8570",
+            "uiState": {
+                "mode": 1,
+                "x": -1920,
+                "y": 23,
+                "width": 1920,
+                "height": 1057
+            },
+            "folderUri": {
+                "$mid": 1,
+                "fsPath": "/Users/joseph.allen/Documents/workspace/ism/gaggle",
+                "path": "/Users/joseph.allen/Documents/workspace/ism/gaggle",
+                "scheme": "file"
+            }
+        }
+    },
+    "pickerWorkingDir": "/Users/joseph.allen/Documents/workspace/ism",
+    "openedPathsList": {
+        "workspaces2": [
+            {
+                "id": "d9fd019504b25111c621d7a966ece2c7",
+                "configPath": "/Users/joseph.allen/Documents/workspace/mac-setup.code-workspace"
+            },
+            "file:///Users/joseph.allen/Documents/workspace/ism/mouse-rat",
+            "file:///Users/joseph.allen/Documents/workspace/test/vscode-recipes/Docker-TypeScript",
+            "file:///Users/joseph.allen/Documents/workspace/ism/gaggle",
+            "file:///Users/joe.allen/Documents/workspace/ism/real-time/mouse-rat",
+            {
+                "id": "bcc27f6beacb1d2e10476c76cf8aa17e",
+                "configPath": "/Users/joe.allen/Documents/workspace/platinum/platinum.code-workspace"
+            },
+            "file:///Users/joe.allen/Documents/workspace/platinum/entitlement-service",
+            "file:///Users/joe.allen/Documents/workspace/platinum/service"
+        ],
+        "files": [
+            "/Users/joseph.allen/package 18-31-02-184.json",
+            "/Users/joseph.allen/package.json",
+            "/Users/joe.allen/Dropbox/mac-setup/login-script.sh",
+            "/Users/joe.allen/Documents/workspace/platinum/app.bazel/service/package.json",
+            "/private/var/tmp/_bazel_joe.allen/321a6cb4be3f0fc6a443d32055479d72/execroot/app/bazel-out/darwin-fastbuild/bin/service/src/app.js",
+            "/private/var/tmp/_bazel_joe.allen/321a6cb4be3f0fc6a443d32055479d72/execroot/app/bazel-out/darwin-fastbuild/bin/service/src/app.d.ts",
+            "/Users/joe.allen/Documents/workspace/core-ticketing/handbook/.git/COMMIT_EDITMSG",
+            "/Users/joe.allen/Documents/workspace/core-ticketing/handbook/.git/rebase-merge/git-rebase-todo",
+            "/Users/joe.allen/Documents/workspace/gitlab-commands.txt",
+            "/Users/joe.allen/Downloads/restore/Base/Users/joe.allen/Documents/CTS.svg",
+            "/Users/joe.allen/.zshrc"
+        ]
+    }
+}

@@ -1,9 +1,0 @@
-[2018-08-11 22:18:43.006] [cli] [info] main {"_":[],"help":false,"h":false,"version":false,"v":false,"wait":false,"w":false,"diff":false,"d":false,"add":false,"a":false,"goto":false,"g":false,"new-window":false,"n":false,"unity-launch":false,"reuse-window":false,"r":false,"open-url":false,"performance":false,"p":false,"prof-startup":false,"verbose":false,"logExtensionHostCommunication":false,"disable-extensions":false,"disableExtensions":false,"list-extensions":false,"show-versions":false,"nolazy":false,"issue":false,"skip-getting-started":false,"skip-release-notes":false,"sticky-quickopen":false,"disable-restore-windows":false,"disable-telemetry":false,"disable-updates":false,"disable-crash-reporter":false,"skip-add-to-recently-opened":false,"status":false,"s":false,"file-write":false,"file-chmod":false,"driver-verbose":false,"install-extension":"pkief.material-icon-theme"}
-[2018-08-11 22:18:43.048] [cli] [info] Scanned user extensions: 13
-[2018-08-11 22:18:43.304] [cli] [info] Installing extension: material-icon-theme
-[2018-08-11 22:18:43.314] [cli] [info] Scanned user extensions: 13
-[2018-08-11 22:18:43.950] [cli] [info] Downloaded extension: material-icon-theme
-[2018-08-11 22:18:44.586] [cli] [info] Extracted extension to /Users/joseph.allen/.vscode/extensions/.pkief.material-icon-theme-3.5.2: pkief.material-icon-theme-3.5.2
-[2018-08-11 22:18:44.586] [cli] [info] Renamed to /Users/joseph.allen/.vscode/extensions/pkief.material-icon-theme-3.5.2
-[2018-08-11 22:18:44.586] [cli] [info] Installation completed. pkief.material-icon-theme-3.5.2
-[2018-08-11 22:18:44.623] [cli] [info] Extensions installed successfully: pkief.material-icon-theme

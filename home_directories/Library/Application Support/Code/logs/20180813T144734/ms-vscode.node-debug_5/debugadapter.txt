@@ -1,0 +1,380 @@
+OS: darwin x64
+Adapter node: v8.9.3 x64
+vscode-chrome-debug-core: 6.7.5
+10:01:56 PM, 8/14/2018
+node-debug2: 1.26.8
+From client: initialize({"clientID":"vscode","clientName":"Visual Studio Code","adapterID":"node2","pathFormat":"path","linesStartAt1":true,"columnsStartAt1":true,"supportsVariableType":true,"supportsVariablePaging":true,"supportsRunInTerminalRequest":true,"locale":"en-us"})
+To client: {"seq":0,"type":"response","request_seq":1,"command":"initialize","success":true,"body":{"exceptionBreakpointFilters":[{"label":"All Exceptions","filter":"all","default":false},{"label":"Uncaught Exceptions","filter":"uncaught","default":false}],"supportsConfigurationDoneRequest":true,"supportsSetVariable":true,"supportsConditionalBreakpoints":true,"supportsCompletionsRequest":true,"supportsHitConditionalBreakpoints":true,"supportsRestartFrame":true,"supportsExceptionInfoRequest":true,"supportsDelayedStackTraceLoading":true,"supportsValueFormattingOptions":true,"supportsEvaluateForHovers":true,"supportsLogPoints":true,"supportsTerminateRequest":true}}
+To client: {"seq":0,"type":"event","event":"output","body":{"category":"telemetry","output":"ClientRequest/initialize","data":{"Versions.DebugAdapterCore":"6.7.5","Versions.DebugAdapter":"1.26.8","successful":"true","timeTakenInMilliseconds":"3.695506","requestType":"request"}}}
+From client: attach({"trace":"sm","type":"node2","request":"attach","name":"Attach to Docker","preLaunchTask":"tsc-watch","protocol":"auto","port":5858,"restart":true,"localRoot":"/Users/joseph.allen/Documents/workspace/test/vscode-recipes/Docker-TypeScript","remoteRoot":"/server","outFiles":["/Users/joseph.allen/Documents/workspace/test/vscode-recipes/Docker-TypeScript/dist/**/*.js"],"cwd":"/Users/joseph.allen/Documents/workspace/test/vscode-recipes/Docker-TypeScript","logFilePath":"/Users/joseph.allen/Library/Application Support/Code/logs/20180813T144734/ms-vscode.node-debug_5/debugadapter.txt","__sessionId":"f17c75fa-9138-48c3-a938-e988524e4adf","__restart":{"port":5858}})
+SourceMaps: preloading sourcemaps for scripts in globs: ["/Users/joseph.allen/Documents/workspace/test/vscode-recipes/Docker-TypeScript/dist/**/*.js"]
+To client: {"seq":0,"type":"event","event":"output","body":{"category":"telemetry","output":"debugStarted","data":{"Versions.DebugAdapterCore":"6.7.5","Versions.DebugAdapter":"1.26.8","request":"attach","args":["trace","type","request","name","preLaunchTask","protocol","port","restart","localRoot","remoteRoot","outFiles","cwd","logFilePath","__sessionId","__restart","sourceMapPathOverrides","showAsyncStacks","sourceMaps"]}}}
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+SourceMaps: expanded globs and found 1 scripts
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+SourceMaps: sourcemap url parsed from end of generated content: index.js.map
+SourceMaps.getMapForGeneratedPath: Finding SourceMap for /Users/joseph.allen/Documents/workspace/test/vscode-recipes/Docker-TypeScript/dist/index.js by URI: index.js.map
+SourceMaps.loadSourceMapContents: Reading local sourcemap file from /Users/joseph.allen/Documents/workspace/test/vscode-recipes/Docker-TypeScript/dist/index.js.map
+SourceMap: creating for /Users/joseph.allen/Documents/workspace/test/vscode-recipes/Docker-TypeScript/dist/index.js
+SourceMap: sourceRoot: 
+SourceMap: sources: ["../src/index.ts"]
+SourceMap: no sourceRoot specified, using script dirname: /Users/joseph.allen/Documents/workspace/test/vscode-recipes/Docker-TypeScript/dist
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Getting browser and debug protocol version via http://127.0.0.1:5858/json/version
+Discovering targets via http://127.0.0.1:5858/json/list
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+There was an error connecting to http://127.0.0.1:5858/json/version : connect ECONNREFUSED 127.0.0.1:5858
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+Discovering targets via http://127.0.0.1:5858/json
+HTTP GET failed: Error: connect ECONNREFUSED 127.0.0.1:5858
+To client: {"seq":0,"type":"event","event":"output","body":{"category":"telemetry","output":"ClientRequest/attach","data":{"Versions.DebugAdapterCore":"6.7.5","Versions.DebugAdapter":"1.26.8","successful":"false","exceptionType":"firstChance","exceptionMessage":"Cannot connect to runtime process, timeout after {_timeout} ms - (reason: {_error}).","exceptionName":"Error","exceptionStack":"Error: Cannot connect to runtime process, timeout after {_timeout} ms - (reason: {_error}).\n    at Object.runtimeConnectionTimeout (/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/ms-vscode.node-debug2/node_modules/vscode-chrome-debug-core/out/src/errors.js:91:12)\n    at utils.retryAsync.catch.err (/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/ms-vscode.node-debug2/node_modules/vscode-chrome-debug-core/out/src/chrome/chromeConnection.js:100:49)\n    at <anonymous>\n    at process._tickCallback (internal/process/next_tick.js:188:7)","exceptionId":"2010","timeTakenInMilliseconds":"10000.511068","requestType":"request"}}}
+To client: {"seq":0,"type":"response","request_seq":2,"command":"attach","success":false,"message":"Cannot connect to runtime process, timeout after 10000 ms - (reason: Cannot connect to the target: connect ECONNREFUSED 127.0.0.1:5858).","body":{"error":{"id":2010,"format":"Cannot connect to runtime process, timeout after {_timeout} ms - (reason: {_error}).","variables":{"_error":"Cannot connect to the target: connect ECONNREFUSED 127.0.0.1:5858","_timeout":"10000"}}}}
+From client: disconnect({"restart":false})
+To client: {"seq":0,"type":"event","event":"output","body":{"category":"telemetry","output":"report-start-up-timings","data":{"Versions.DebugAdapterCore":"6.7.5","Versions.DebugAdapter":"1.26.8","RequestedContentWasDetected":"false","Steps":"[\"BeforeFirstStep\",\"ClientRequest/initialize\",\"ClientRequest/attach\",\"Attach\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\",\"Attach.RequestDebuggerTargetsInformation\"]","All":"10019.627747","BeforeFirstStep":"[11.764706]","WaitingAfter.ClientRequest/initialize":"[15.410784]","ClientRequest/initialize":"[4.148871]","ClientRequest/attach":"[4.889292]","Attach":"[4.656336]","Attach.RequestDebuggerTargetsInformation":"[209.491708,205.811026,200.891538,201.644583,201.098476,204.645506,205.577306,205.910656,204.324659,202.283481,201.786371,202.079582,202.394821,202.525223,201.946537,204.590618,205.339835,202.540215,203.492076,201.995144,206.421224,202.023295,203.242813,208.84928,205.482835,206.265591,203.970172,201.259393,205.900269,204.71652,205.286257,204.575632,205.825408,205.649719,204.824761,203.586125,204.483467,202.847,201.939278,205.98345,201.227825,201.684633,201.522493,205.344687,202.143406,201.262138,205.66198,204.111016,201.938454,5.237989]","WaitingAfter.ClientRequest/attach":"[10016.479561]","RequestedContentWasNotDetectedReason":"shutdown"}}}
+Terminated: Got disconnect request
+Waiting for any pending steps or log messages.
+To client: {"seq":0,"type":"response","request_seq":3,"command":"disconnect","success":true}
+Current step and log messages complete
+To client: {"seq":0,"type":"event","event":"output","body":{"category":"telemetry","output":"debugStopped","data":{"Versions.DebugAdapterCore":"6.7.5","Versions.DebugAdapter":"1.26.8","reason":"Got disconnect request"}}}
+To client: {"seq":0,"type":"event","event":"terminated"}
+To client: {"seq":0,"type":"event","event":"output","body":{"category":"telemetry","output":"ClientRequest/disconnect","data":{"Versions.DebugAdapterCore":"6.7.5","Versions.DebugAdapter":"1.26.8","successful":"true","timeTakenInMilliseconds":"1.658223","requestType":"request"}}}

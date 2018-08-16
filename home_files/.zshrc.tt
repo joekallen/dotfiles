@@ -27,7 +27,7 @@ setopt hist_save_no_dups        # Omit older commands in favor of newer ones.
 setopt hist_ignore_space        # Ignore commands that start with space.
 
 # Changing directories
-#setopt auto_pushd
+setopt auto_pushd
 setopt pushd_ignore_dups        # Dont push copies of the same dir on stack.
 setopt pushd_minus              # Reference stack entries with "-".
 

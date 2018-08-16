@@ -1,9 +1,0 @@
-[2018-08-11 22:17:30.711] [cli] [info] main {"_":[],"help":false,"h":false,"version":false,"v":false,"wait":false,"w":false,"diff":false,"d":false,"add":false,"a":false,"goto":false,"g":false,"new-window":false,"n":false,"unity-launch":false,"reuse-window":false,"r":false,"open-url":false,"performance":false,"p":false,"prof-startup":false,"verbose":false,"logExtensionHostCommunication":false,"disable-extensions":false,"disableExtensions":false,"list-extensions":false,"show-versions":false,"nolazy":false,"issue":false,"skip-getting-started":false,"skip-release-notes":false,"sticky-quickopen":false,"disable-restore-windows":false,"disable-telemetry":false,"disable-updates":false,"disable-crash-reporter":false,"skip-add-to-recently-opened":false,"status":false,"s":false,"file-write":false,"file-chmod":false,"driver-verbose":false,"install-extension":"ms-vscode.go"}
-[2018-08-11 22:17:30.754] [cli] [info] Scanned user extensions: 13
-[2018-08-11 22:17:31.123] [cli] [info] Installing extension: Go
-[2018-08-11 22:17:31.136] [cli] [info] Scanned user extensions: 13
-[2018-08-11 22:18:00.615] [cli] [info] Downloaded extension: Go
-[2018-08-11 22:18:05.339] [cli] [info] Extracted extension to /Users/joseph.allen/.vscode/extensions/.ms-vscode.go-0.6.85: ms-vscode.go-0.6.85
-[2018-08-11 22:18:05.340] [cli] [info] Renamed to /Users/joseph.allen/.vscode/extensions/ms-vscode.go-0.6.85
-[2018-08-11 22:18:05.340] [cli] [info] Installation completed. ms-vscode.go-0.6.85
-[2018-08-11 22:18:05.362] [cli] [info] Extensions installed successfully: ms-vscode.go

@@ -1,1 +1,10 @@
 Gemfile.lock
+.history
+.DS_Store
+*.log
+**/Cache/*
+**/Cached/*
+**/CachedData/*
+**/GPUCache/*
+**/User/workspaceStorage/*
+**/Local Storage/*

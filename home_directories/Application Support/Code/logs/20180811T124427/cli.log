@@ -1,9 +1,0 @@
-[2018-08-11 12:44:27.844] [cli] [info] main {"_":[],"help":false,"h":false,"version":false,"v":false,"wait":false,"w":false,"diff":false,"d":false,"add":false,"a":false,"goto":false,"g":false,"new-window":false,"n":false,"unity-launch":false,"reuse-window":false,"r":false,"open-url":false,"performance":false,"p":false,"prof-startup":false,"verbose":false,"logExtensionHostCommunication":false,"disable-extensions":false,"disableExtensions":false,"list-extensions":false,"show-versions":false,"nolazy":false,"issue":false,"skip-getting-started":false,"skip-release-notes":false,"sticky-quickopen":false,"disable-restore-windows":false,"disable-telemetry":false,"disable-updates":false,"disable-crash-reporter":false,"skip-add-to-recently-opened":false,"status":false,"s":false,"file-write":false,"file-chmod":false,"driver-verbose":false,"install-extension":"eamodio.gitlens"}
-[2018-08-11 12:44:27.876] [cli] [info] Scanned user extensions: 1
-[2018-08-11 12:44:28.191] [cli] [info] Installing extension: gitlens
-[2018-08-11 12:44:28.193] [cli] [info] Scanned user extensions: 1
-[2018-08-11 12:44:28.857] [cli] [info] Downloaded extension: gitlens
-[2018-08-11 12:44:30.166] [cli] [info] Extracted extension to /Users/joseph.allen/.vscode/extensions/.eamodio.gitlens-8.5.4: eamodio.gitlens-8.5.4
-[2018-08-11 12:44:30.166] [cli] [info] Renamed to /Users/joseph.allen/.vscode/extensions/eamodio.gitlens-8.5.4
-[2018-08-11 12:44:30.166] [cli] [info] Installation completed. eamodio.gitlens-8.5.4
-[2018-08-11 12:44:30.184] [cli] [info] Extensions installed successfully: eamodio.gitlens

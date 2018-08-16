@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "kafka-consumer-groups --bootstrap-server kf.cf.prd349.prod3.datasciences.tmcs:9092 --describe --group prd1899.inventory.prod | gsort -V | tr -s ' ' | cut -f '1 2 3 4 5' -d ' ' | awk '{ printf( \"%-38s%-12s%-18s%-18s%-18s\\n\", $1, $2, $3, $4, $5 ) }'",
+    "uid" : "64EC2DA9-49C8-4728-96EA-71EFBD49687A",
+    "name" : "ism-prod",
+    "keyword" : ""
+  }
+}
