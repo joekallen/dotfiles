@@ -1,0 +1,18 @@
+{
+    "sourceFile": "private_Library/private_Application Support/nushell/completions/aws-completions.nu",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1744447757435,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1744447757435,
+            "name": "Commit-0",
+            "content": "def complete-commands [\n    context: string\n] {\n    with-env {COMP_LINE: $context} {\n        aws_completer\n        | lines\n        | each {|x| $\"($x) \"}\n    }\n}\n\nexport extern \"aws\" [\n    ...command: string@complete-commands\n]\n"
+        }
+    ]
+}

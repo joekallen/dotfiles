@@ -1,0 +1,30 @@
+{
+    "sourceFile": ".chezmoidata/dock.yaml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1746294144522,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746294168175,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,13 @@\n dock:\n-    personal:\n-      - /Applications/Google Chrome.app\n-      - /Applications/Ghostty.app\n-      - /System/Applications/Messages.app\n-    work:\n-      - /Applications/Google Chrome.app\n-      - /Applications/Spark.app\n-      - /System/Applications/Calendar.app\n-      - /Applications/Slack.app\n-      - /Applications/Ghostty.app\n-      - /System/Applications/Messages.app\n-      - /Applications/OpenVPN Connect.app\n+  personal:\n+    - /Applications/Google Chrome.app\n+    - /Applications/Ghostty.app\n+    - /System/Applications/Messages.app\n+  work:\n+    - /Applications/Google Chrome.app\n+    - /Applications/Spark.app\n+    - /System/Applications/Calendar.app\n+    - /Applications/Slack.app\n+    - /Applications/Ghostty.app\n+    - /System/Applications/Messages.app\n+    - /Applications/OpenVPN Connect.app\n"
+                },
+                {
+                    "date": 1746464326438,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,14 @@\n+dock:\n+  darwin\n+  personal:\n+    - /Applications/Google Chrome.app\n+    - /Applications/Ghostty.app\n+    - /System/Applications/Messages.app\n+  work:\n+    - /Applications/Google Chrome.app\n+    - /Applications/Spark.app\n+    - /System/Applications/Calendar.app\n+    - /Applications/Slack.app\n+    - /Applications/Ghostty.app\n+    - /System/Applications/Messages.app\n+    - /Applications/OpenVPN Connect.app\n"
+                },
+                {
+                    "date": 1746464332924,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,27 +1,14 @@\n dock:\n-  darwin\n-  personal:\n-    - /Applications/Google Chrome.app\n-    - /Applications/Ghostty.app\n-    - /System/Applications/Messages.app\n-  work:\n-    - /Applications/Google Chrome.app\n-    - /Applications/Spark.app\n-    - /System/Applications/Calendar.app\n-    - /Applications/Slack.app\n-    - /Applications/Ghostty.app\n-    - /System/Applications/Messages.app\n-    - /Applications/OpenVPN Connect.app\n-dock:\n-  personal:\n-    - /Applications/Google Chrome.app\n-    - /Applications/Ghostty.app\n-    - /System/Applications/Messages.app\n-  work:\n-    - /Applications/Google Chrome.app\n-    - /Applications/Spark.app\n-    - /System/Applications/Calendar.app\n-    - /Applications/Slack.app\n-    - /Applications/Ghostty.app\n-    - /System/Applications/Messages.app\n-    - /Applications/OpenVPN Connect.app\n+  darwin:\n+    personal:\n+      - /Applications/Google Chrome.app\n+      - /Applications/Ghostty.app\n+      - /System/Applications/Messages.app\n+    work:\n+      - /Applications/Google Chrome.app\n+      - /Applications/Spark.app\n+      - /System/Applications/Calendar.app\n+      - /Applications/Slack.app\n+      - /Applications/Ghostty.app\n+      - /System/Applications/Messages.app\n+      - /Applications/OpenVPN Connect.app\n"
+                }
+            ],
+            "date": 1746294144522,
+            "name": "Commit-0",
+            "content": "dock:\n    personal:\n      - /Applications/Google Chrome.app\n      - /Applications/Ghostty.app\n      - /System/Applications/Messages.app\n    work:\n      - /Applications/Google Chrome.app\n      - /Applications/Spark.app\n      - /System/Applications/Calendar.app\n      - /Applications/Slack.app\n      - /Applications/Ghostty.app\n      - /System/Applications/Messages.app\n      - /Applications/OpenVPN Connect.app\n"
+        }
+    ]
+}

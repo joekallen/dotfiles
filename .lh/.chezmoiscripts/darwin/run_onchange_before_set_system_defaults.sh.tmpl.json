@@ -1,0 +1,30 @@
+{
+    "sourceFile": ".chezmoiscripts/darwin/run_onchange_before_set_system_defaults.sh.tmpl",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1746464348133,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746464361975,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,15 +1,15 @@\n {{- if eq .chezmoi.os \"darwin\" -}}\n-#!/bin/bask\n+#!/bin/bash\n \n {{- $dockAppsSource := \"personal\" }}\n {{- if .chezmoi.config.data.isWorkMachine }}\n    {{- $dockAppsSource = \"work\" }}\n {{- end }}\n \n {{- $dockApps := (dig \"dock\" $dockAppsSource (list) .) | uniq }}\n \n-print ' Configuring dock...'\n+echo ' Configuring dock...'\n defaults write com.apple.dock autohide -int 1\n \n {{- if len $dockApps }}\n defaults delete com.apple.dock persistent-apps\n"
+                },
+                {
+                    "date": 1746464369859,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n {{- if len $dockApps }}\n defaults delete com.apple.dock persistent-apps\n \n {{- range $dockApps }}\n-print 'Adding app to dock {{ . }}'\n+echo 'Adding app to dock {{ . }}'\n defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>{{ . }}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'\n {{- end }}\n \n defaults delete com.apple.dock persistent-others\n"
+                },
+                {
+                    "date": 1746464391192,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n {{- if .chezmoi.config.data.isWorkMachine }}\n    {{- $dockAppsSource = \"work\" }}\n {{- end }}\n \n-{{- $dockApps := (dig \"dock\" $dockAppsSource (list) .) | uniq }}\n+{{- $dockApps := (dig \"dock\" \"darwin\"$dockAppsSource (list) .) | uniq }}\n \n echo ' Configuring dock...'\n defaults write com.apple.dock autohide -int 1\n \n@@ -20,7 +20,7 @@\n {{- end }}\n \n defaults delete com.apple.dock persistent-others\n killall Dock\n-print 'Done, dock has been configured!'\n+echo 'Done, dock has been configured!'\n {{- end }}\n {{- end }}\n"
+                }
+            ],
+            "date": 1746464348133,
+            "name": "Commit-0",
+            "content": "{{- if eq .chezmoi.os \"darwin\" -}}\n#!/bin/bask\n\n{{- $dockAppsSource := \"personal\" }}\n{{- if .chezmoi.config.data.isWorkMachine }}\n   {{- $dockAppsSource = \"work\" }}\n{{- end }}\n\n{{- $dockApps := (dig \"dock\" $dockAppsSource (list) .) | uniq }}\n\nprint ' Configuring dock...'\ndefaults write com.apple.dock autohide -int 1\n\n{{- if len $dockApps }}\ndefaults delete com.apple.dock persistent-apps\n\n{{- range $dockApps }}\nprint 'Adding app to dock {{ . }}'\ndefaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>{{ . }}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'\n{{- end }}\n\ndefaults delete com.apple.dock persistent-others\nkillall Dock\nprint 'Done, dock has been configured!'\n{{- end }}\n{{- end }}\n"
+        }
+    ]
+}

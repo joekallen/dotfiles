@@ -1,0 +1,18 @@
+{
+    "sourceFile": "scripts/darwin-pre-install.sh",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1746464445420,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1746464445420,
+            "name": "Commit-0",
+            "content": "#!/bin/bash\n\nset -eufo pipefail\n\necho \"📦  Installing dependnecies for packages...\"\n# Install Homebrew\ncommand -v brew >/dev/null 2>&1 || \\\n  (echo '🍺  Installing Homebrew' && /bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\")\n\n# Install chezmoi\ncommand -v chezmoi >/dev/null 2>&1 || \\\n  (echo '📦  Installing chezmoi' && brew install chezmoi)\n\n# Install nupm\necho \"Done!\"\n"
+        }
+    ]
+}

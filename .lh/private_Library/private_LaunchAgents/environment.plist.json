@@ -1,0 +1,38 @@
+{
+    "sourceFile": "private_Library/private_LaunchAgents/environment.plist",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1745971443947,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1745976388508,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,9 @@\n <dict>\n <key>Label</key><string>my.startup.shell_agnostic.environment</string>\n <key>ProgramArguments</key><array><string>sh</string><string>-c</string><string>\n   launchctl setenv XDG_CONFIG_HOME ~/.config\n+  launchctl setenv XDG_CONFIG_HOME ~/.config\n </string></array>\n <key>RunAtLoad</key><true/>\n </dict>\n </plist>\n"
+                },
+                {
+                    "date": 1745976407267,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n <dict>\n <key>Label</key><string>my.startup.shell_agnostic.environment</string>\n <key>ProgramArguments</key><array><string>sh</string><string>-c</string><string>\n   launchctl setenv XDG_CONFIG_HOME ~/.config\n-  launchctl setenv XDG_CONFIG_HOME ~/.config\n+  launchctl setenv XDG_DATA_DIR ~/.config\n </string></array>\n <key>RunAtLoad</key><true/>\n </dict>\n </plist>\n"
+                },
+                {
+                    "date": 1745976545871,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n <dict>\n <key>Label</key><string>my.startup.shell_agnostic.environment</string>\n <key>ProgramArguments</key><array><string>sh</string><string>-c</string><string>\n   launchctl setenv XDG_CONFIG_HOME ~/.config\n-  launchctl setenv XDG_DATA_DIR ~/.config\n+  launchctl setenv XDG_DATA_DIR ~/.local/\n </string></array>\n <key>RunAtLoad</key><true/>\n </dict>\n </plist>\n"
+                },
+                {
+                    "date": 1745981459390,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n <dict>\n <key>Label</key><string>my.startup.shell_agnostic.environment</string>\n <key>ProgramArguments</key><array><string>sh</string><string>-c</string><string>\n   launchctl setenv XDG_CONFIG_HOME ~/.config\n-  launchctl setenv XDG_DATA_DIR ~/.local/\n+  launchctl setenv XDG_DATA_DIR ~/.local/share\n </string></array>\n <key>RunAtLoad</key><true/>\n </dict>\n </plist>\n"
+                },
+                {
+                    "date": 1745994434986,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n <dict>\n <key>Label</key><string>my.startup.shell_agnostic.environment</string>\n <key>ProgramArguments</key><array><string>sh</string><string>-c</string><string>\n   launchctl setenv XDG_CONFIG_HOME ~/.config\n-  launchctl setenv XDG_DATA_DIR ~/.local/share\n+  launchctl setenv XDG_DATA_HOME ~/.local/share\n </string></array>\n <key>RunAtLoad</key><true/>\n </dict>\n </plist>\n"
+                }
+            ],
+            "date": 1745971443947,
+            "name": "Commit-0",
+            "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\"><plist version=\"1.0\">\n<dict>\n<key>Label</key><string>my.startup.shell_agnostic.environment</string>\n<key>ProgramArguments</key><array><string>sh</string><string>-c</string><string>\n  launchctl setenv XDG_CONFIG_HOME ~/.config\n</string></array>\n<key>RunAtLoad</key><true/>\n</dict>\n</plist>\n"
+        }
+    ]
+}

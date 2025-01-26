@@ -1,0 +1,146 @@
+{
+    "sourceFile": ".chezmoiscripts/darwin/run_after_brewfile_install-packages.nu..tmpl",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 32,
+            "patches": [
+                {
+                    "date": 1745996522473,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1745996528980,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,6 +5,7 @@\n print \"🍺  Installing packages with brew...\"\n brew bundle install\n brew bundle --force cleanup\n \n+\n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745996559550,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,7 +5,7 @@\n print \"🍺  Installing packages with brew...\"\n brew bundle install\n brew bundle --force cleanup\n \n-\n+mktemp\n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745996568142,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,7 +5,7 @@\n print \"🍺  Installing packages with brew...\"\n brew bundle install\n brew bundle --force cleanup\n \n-mktemp\n+mktemp \n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745996574816,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,7 +5,8 @@\n print \"🍺  Installing packages with brew...\"\n brew bundle install\n brew bundle --force cleanup\n \n-mktemp \n+mktemp -d nupm\n+\n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745996652453,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n #!/opt/homebrew/bin/nu\n \n {{- if eq .chezmoi.os \"darwin\" }}\n with-env { HOMEBREW_NO_ENV_HINTS: 1 HOMEBREW_BUNDLE_INSTALL_CLEANUP: 1 } {\n+use std/dirs\n print \"🍺  Installing packages with brew...\"\n brew bundle install\n brew bundle --force cleanup\n \n"
+                },
+                {
+                    "date": 1745996657860,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,19 @@\n #!/opt/homebrew/bin/nu\n \n {{- if eq .chezmoi.os \"darwin\" }}\n with-env { HOMEBREW_NO_ENV_HINTS: 1 HOMEBREW_BUNDLE_INSTALL_CLEANUP: 1 } {\n-use std/dirs\n-print \"🍺  Installing packages with brew...\"\n-brew bundle install\n-brew bundle --force cleanup\n+  use std/dirs\n+  print \"🍺  Installing packages with brew...\"\n+  brew bundle install\n+  brew bundle --force cleanup\n \n-mktemp -d nupm\n+  let temp_dir = (mktemp -d)\n+  let nupm_dir = ($temp_dir | path join \"nupm\")\n+  mkdir $nupm_dir\n+  cd $nupm_dir\n+  curl -fsSL https://get.nupm.sh | sh\n+  source $nupm_dir/nupm.sh\n+  nupm install\n \n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745996684151,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,14 +6,8 @@\n   print \"🍺  Installing packages with brew...\"\n   brew bundle install\n   brew bundle --force cleanup\n \n-  let temp_dir = (mktemp -d)\n-  let nupm_dir = ($temp_dir | path join \"nupm\")\n-  mkdir $nupm_dir\n-  cd $nupm_dir\n-  curl -fsSL https://get.nupm.sh | sh\n-  source $nupm_dir/nupm.sh\n-  nupm install\n+  mktemp -d nupm | dirs add $in\n \n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745996746278,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,7 +7,8 @@\n   brew bundle install\n   brew bundle --force cleanup\n \n   mktemp -d nupm | dirs add $in\n+  http\n \n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745996807585,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,8 @@\n   brew bundle install\n   brew bundle --force cleanup\n \n   mktemp -d nupm | dirs add $in\n-  http\n+  http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip\n \n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745996880045,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,8 @@\n   brew bundle install\n   brew bundle --force cleanup\n \n   mktemp -d nupm | dirs add $in\n-  http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip\n+  http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | \n \n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745996886685,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,8 @@\n   brew bundle install\n   brew bundle --force cleanup\n \n   mktemp -d nupm | dirs add $in\n-  http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | \n+  http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip |  gunzip | tar xf -\n \n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745996894819,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,8 @@\n   brew bundle install\n   brew bundle --force cleanup\n \n   mktemp -d nupm | dirs add $in\n-  http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip |  gunzip | tar xf -\n+  http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | --save gunzip | tar xf -\n \n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745996906709,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,8 @@\n   brew bundle install\n   brew bundle --force cleanup\n \n   mktemp -d nupm | dirs add $in\n-  http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | --save gunzip | tar xf -\n+  http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | --save  gunzip | tar xf -\n \n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745996913120,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,8 @@\n   brew bundle install\n   brew bundle --force cleanup\n \n   mktemp -d nupm | dirs add $in\n-  http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | --save  gunzip | tar xf -\n+  http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | --save nupm.zip gunzip | tar xf -\n \n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745997316522,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,9 @@\n   brew bundle install\n   brew bundle --force cleanup\n \n   mktemp -d nupm | dirs add $in\n-  http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | --save nupm.zip gunzip | tar xf -\n+  http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | --save nupm.zip\n+  unzip\n \n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745997716557,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n   brew bundle install\n   brew bundle --force cleanup\n \n   mktemp -d nupm | dirs add $in\n-  http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | --save nupm.zip\n+  http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | --save nupm-main.zip\n   unzip\n \n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745997829612,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n   brew bundle install\n   brew bundle --force cleanup\n \n   mktemp -d nupm | dirs add $in\n-  http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | --save nupm-main.zip\n-  unzip\n+  http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | save nupm-main.zip\n+  unzip nupm-main.zip\n \n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745997959293,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,7 +9,7 @@\n \n   mktemp -d nupm | dirs add $in\n   http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | save nupm-main.zip\n   unzip nupm-main.zip\n-\n+  mv \n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745997967880,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,7 +9,7 @@\n \n   mktemp -d nupm | dirs add $in\n   http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | save nupm-main.zip\n   unzip nupm-main.zip\n-  mv \n+  mv nupm-main/nupm.nu $nu.data-dir/nupm.nu\n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745997977563,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,7 +9,7 @@\n \n   mktemp -d nupm | dirs add $in\n   http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | save nupm-main.zip\n   unzip nupm-main.zip\n-  mv nupm-main/nupm.nu $nu.data-dir/nupm.nu\n+  mv nupm-main/nupm \n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745998006360,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,15 +1,16 @@\n #!/opt/homebrew/bin/nu\n \n {{- if eq .chezmoi.os \"darwin\" }}\n with-env { HOMEBREW_NO_ENV_HINTS: 1 HOMEBREW_BUNDLE_INSTALL_CLEANUP: 1 } {\n+  use std/util \"path add\"\n   use std/dirs\n   print \"🍺  Installing packages with brew...\"\n   brew bundle install\n   brew bundle --force cleanup\n \n   mktemp -d nupm | dirs add $in\n   http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | save nupm-main.zip\n   unzip nupm-main.zip\n-  mv nupm-main/nupm \n+  mv nupm-main/nupm\n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745998013199,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,9 @@\n {{- if eq .chezmoi.os \"darwin\" }}\n with-env { HOMEBREW_NO_ENV_HINTS: 1 HOMEBREW_BUNDLE_INSTALL_CLEANUP: 1 } {\n   use std/util \"path add\"\n   use std/dirs\n+  use std/files \"mv\"\n   print \"🍺  Installing packages with brew...\"\n   brew bundle install\n   brew bundle --force cleanup\n \n"
+                },
+                {
+                    "date": 1745998018607,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,15 +3,15 @@\n {{- if eq .chezmoi.os \"darwin\" }}\n with-env { HOMEBREW_NO_ENV_HINTS: 1 HOMEBREW_BUNDLE_INSTALL_CLEANUP: 1 } {\n   use std/util \"path add\"\n   use std/dirs\n-  use std/files \"mv\"\n+\n   print \"🍺  Installing packages with brew...\"\n   brew bundle install\n   brew bundle --force cleanup\n \n   mktemp -d nupm | dirs add $in\n   http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | save nupm-main.zip\n   unzip nupm-main.zip\n-  mv nupm-main/nupm\n+  mv nupm-main/nupm (\n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745998023876,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,7 +11,7 @@\n \n   mktemp -d nupm | dirs add $in\n   http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | save nupm-main.zip\n   unzip nupm-main.zip\n-  mv nupm-main/nupm (\n+  mv nupm-main/nupm ($env.HOME\n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745998038833,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,7 +11,7 @@\n \n   mktemp -d nupm | dirs add $in\n   http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | save nupm-main.zip\n   unzip nupm-main.zip\n-  mv nupm-main/nupm ($env.HOME\n+  mv nupm-main/nupm ($env.HOME | path join \".local.share/\")\n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745998046004,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,7 +11,7 @@\n \n   mktemp -d nupm | dirs add $in\n   http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | save nupm-main.zip\n   unzip nupm-main.zip\n-  mv nupm-main/nupm ($env.HOME | path join \".local.share/\")\n+  mv nupm-main/nupm ($env.HOME | path join \".local/share/\")\n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745998076780,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n   print \"🍺  Installing packages with brew...\"\n   brew bundle install\n   brew bundle --force cleanup\n \n-  mktemp -d nupm | dirs add $in\n+  mktemp -d nupm.XXX | dirs add $in\n   http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | save nupm-main.zip\n   unzip nupm-main.zip\n   mv nupm-main/nupm ($env.HOME | path join \".local/share/\")\n }\n"
+                },
+                {
+                    "date": 1745998117130,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,7 +11,8 @@\n \n   mktemp -d nupm.XXX | dirs add $in\n   http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | save nupm-main.zip\n   unzip nupm-main.zip\n+  \n   mv nupm-main/nupm ($env.HOME | path join \".local/share/\")\n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745998141471,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,8 +11,9 @@\n \n   mktemp -d nupm.XXX | dirs add $in\n   http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | save nupm-main.zip\n   unzip nupm-main.zip\n+\n   \n   mv nupm-main/nupm ($env.HOME | path join \".local/share/\")\n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745998149430,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,8 @@\n   mktemp -d nupm.XXX | dirs add $in\n   http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | save nupm-main.zip\n   unzip nupm-main.zip\n \n-  \n+  let nupm_dir = ($env.HOME | path join \".local/share/nupm\")\n   mv nupm-main/nupm ($env.HOME | path join \".local/share/\")\n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1745998156181,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,8 @@\n   mktemp -d nupm.XXX | dirs add $in\n   http get --raw https://github.com/nushell/nupm/archive/refs/heads/main.zip | save nupm-main.zip\n   unzip nupm-main.zip\n \n-  ($env.HOME | path join \".local/share/nupm\") |\n+  ($env.HOME | path join \".local/share/nupm\") \n   mv nupm-main/nupm ($env.HOME | path join \".local/share/\")\n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1746114886659,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,13 +17,6 @@\n     | do {\n         rm -rf $in\n         mv nupm-main/nupm $in\n       }\n-\n-  {{- with .chezmoi.config.data.packages.nupm }}\n-    use $'($nu.default-config-dir)/scripts/nupm-install.nu'\n-    {{- range $package, $repo := . }}\n-      nupm-install $package $repo\n-    {{- end }}\n-  {{- end }}\n }\n {{- end }}\n"
+                }
+            ],
+            "date": 1745996522473,
+            "name": "Commit-0",
+            "content": "#!/opt/homebrew/bin/nu\n\n{{- if eq .chezmoi.os \"darwin\" }}\nwith-env { HOMEBREW_NO_ENV_HINTS: 1 HOMEBREW_BUNDLE_INSTALL_CLEANUP: 1 } {\nprint \"🍺  Installing packages with brew...\"\nbrew bundle install\nbrew bundle --force cleanup\n\n}\n{{- end }}\n"
+        }
+    ]
+}

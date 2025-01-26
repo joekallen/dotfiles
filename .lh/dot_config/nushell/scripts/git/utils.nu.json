@@ -1,0 +1,122 @@
+{
+    "sourceFile": "dot_config/nushell/scripts/git/utils.nu",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 26,
+            "patches": [
+                {
+                    "date": 1746543888812,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746543988273,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,10 @@\n export def --env --wrapped git-clone [\n   remote: string\n   ...rest\n ] {\n-  use std/dirs shells-aliases\n+\n+\n   git-repo-from-remote $remote\n     | path join (git-remote-default-branch $remote)\n     | do -c --env {\n       ^git clone $remote $in ...$rest\n"
+                },
+                {
+                    "date": 1746543993494,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,6 @@\n+use std/dirs shells-aliases enter\n+\n export def --env git-init [\n   remote: string\n ] {\n   let directory = git-repo-from-remote $remote | path join 'main'\n@@ -13,10 +15,8 @@\n export def --env --wrapped git-clone [\n   remote: string\n   ...rest\n ] {\n-\n-\n   git-repo-from-remote $remote\n     | path join (git-remote-default-branch $remote)\n     | do -c --env {\n       ^git clone $remote $in ...$rest\n"
+                },
+                {
+                    "date": 1746544073320,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -54,28 +54,28 @@\n   }\n }\n \n def git-current-branch [] {\n-  error-is-not-git-repo\n+  git-error-is-not-repo\n   ^git rev-parse --abbrev-ref HEAD | str trim\n }\n \n export def git-default-branch [] {\n-  error-is-not-git-repo\n+  git-error-is-not-repo\n   ^git config --get init.defaultBranch | str trim\n }\n \n def git-branch-root [] {\n-  error-is-not-git-repo\n+  git-error-is-not-repo\n   ^git rev-parse --show-toplevel |  str trim\n }\n \n def git-repo-root [] {\n   git-branch-root | path join '..' | path expand\n }\n \n export def git-worktree-list [] {\n-  error-is-not-git-repo\n+  git-error-is-not-repo\n \n   let current_branch = git-current-branch\n   let default_branch = git-default-branch\n \n"
+                },
+                {
+                    "date": 1746544108319,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -91,8 +91,9 @@\n           name: ($in.1 | str replace -r r#'.*/(.*)'# '$1')\n           path: $in.1\n           sha: $in.3\n           ref: $in.5\n+          \n         }\n         | update is_current ($in.name == $current_branch)\n         | update is_default ($in.name == $default_branch)\n     }\n"
+                },
+                {
+                    "date": 1746544125414,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -91,9 +91,9 @@\n           name: ($in.1 | str replace -r r#'.*/(.*)'# '$1')\n           path: $in.1\n           sha: $in.3\n           ref: $in.5\n-          \n+          is_current: false\n         }\n         | update is_current ($in.name == $current_branch)\n         | update is_default ($in.name == $default_branch)\n     }\n"
+                },
+                {
+                    "date": 1746544203917,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -92,14 +92,16 @@\n           path: $in.1\n           sha: $in.3\n           ref: $in.5\n           is_current: false\n+          is_default: false\n         }\n         | update is_current ($in.name == $current_branch)\n         | update is_default ($in.name == $default_branch)\n     }\n   | sort-by -c {|a,b|\n-      if $b.is_current {false}\n+      if $b.is_current {\n+        false}\n       else if $b.is_default and (not $a.is_current) {false}\n       else {$a.is_current or $a.is_default or ($a.name < $b.name)}\n     }\n }\n"
+                },
+                {
+                    "date": 1746544210224,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -99,9 +99,9 @@\n         | update is_default ($in.name == $default_branch)\n     }\n   | sort-by -c {|a,b|\n       if $b.is_current {\n-        false}\n-      else if $b.is_default and (not $a.is_current) {false}\n+        false\n+      } else if $b.is_default and (not $a.is_current) {false}\n       else {$a.is_current or $a.is_default or ($a.name < $b.name)}\n     }\n }\n"
+                },
+                {
+                    "date": 1746544216396,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -100,8 +100,10 @@\n     }\n   | sort-by -c {|a,b|\n       if $b.is_current {\n         false\n-      } else if $b.is_default and (not $a.is_current) {false}\n+      } else if $b.is_default and (not $a.is_current) {\n+        false\n+        }\n       else {$a.is_current or $a.is_default or ($a.name < $b.name)}\n     }\n }\n"
+                },
+                {
+                    "date": 1746544221679,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -102,8 +102,7 @@\n       if $b.is_current {\n         false\n       } else if $b.is_default and (not $a.is_current) {\n         false\n-        }\n-      else {$a.is_current or $a.is_default or ($a.name < $b.name)}\n+      } else {$a.is_current or $a.is_default or ($a.name < $b.name)}\n     }\n }\n"
+                },
+                {
+                    "date": 1746546735534,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -53,9 +53,9 @@\n     error make {msg: \"Not in a git repository\"}\n   }\n }\n \n-def git-current-branch [] {\n+exportdef git-current-branch [] {\n   git-error-is-not-repo\n   ^git rev-parse --abbrev-ref HEAD | str trim\n }\n \n"
+                },
+                {
+                    "date": 1746546753089,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -53,9 +53,9 @@\n     error make {msg: \"Not in a git repository\"}\n   }\n }\n \n-exportdef git-current-branch [] {\n+export def git-current-branch [] {\n   git-error-is-not-repo\n   ^git rev-parse --abbrev-ref HEAD | str trim\n }\n \n"
+                },
+                {
+                    "date": 1746547339291,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -75,9 +75,9 @@\n \n export def git-worktree-list [] {\n   git-error-is-not-repo\n \n-  let current_branch = git-current-branch\n+  let current_branch = ^git config --get init.defaultBranch | str trim\n   let default_branch = git-default-branch\n \n   ^git worktree list --porcelain\n   | lines\n"
+                },
+                {
+                    "date": 1746547352081,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -75,10 +75,10 @@\n \n export def git-worktree-list [] {\n   git-error-is-not-repo\n \n-  let current_branch = ^git config --get init.defaultBranch | str trim\n-  let default_branch = git-default-branch\n+  let current_branch = ^git rev-parse --abbrev-ref HEAD | str trim\n+  let default_branch = ^git config --get init.defaultBranch | str trim\n \n   ^git worktree list --porcelain\n   | lines\n   | compact --empty\n"
+                },
+                {
+                    "date": 1746547408965,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -75,10 +75,10 @@\n \n export def git-worktree-list [] {\n   git-error-is-not-repo\n \n-  let current_branch = ^git rev-parse --abbrev-ref HEAD | str trim\n-  let default_branch = ^git config --get init.defaultBranch | str trim\n+  let current_branch = git-current-branch\n+  let default_branch = git-default-branch\n \n   ^git worktree list --porcelain\n   | lines\n   | compact --empty\n"
+                },
+                {
+                    "date": 1746548195835,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,9 +63,9 @@\n   git-error-is-not-repo\n   ^git config --get init.defaultBranch | str trim\n }\n \n-def git-branch-root [] {\n+export def git-branch-root [] {\n   git-error-is-not-repo\n   ^git rev-parse --show-toplevel |  str trim\n }\n \n"
+                },
+                {
+                    "date": 1746548203161,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -68,9 +68,9 @@\n   git-error-is-not-repo\n   ^git rev-parse --show-toplevel |  str trim\n }\n \n-def git-repo-root [] {\n+export def git-repo-root [] {\n   git-branch-root | path join '..' | path expand\n }\n \n export def git-worktree-list [] {\n"
+                },
+                {
+                    "date": 1746805995984,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n }\n \n export def git-repo-from-remote [remote: string] {\n   $remote\n-    | str replace -r r#'^.*\\/(.*)\\.git$'# './$1'\n+    | str replace -r r#'^.*\\/(.*)\\.git$'# '$1'\n     | {repo: $in, remote: $remote}\n }\n \n export def git-remote-default-branch [remote: string] {\n"
+                },
+                {
+                    "date": 1746806061913,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n \n export def --env git-init [\n   remote: string\n ] {\n-  let directory = git-repo-from-remote $remote | path join 'main'\n+  let directory = git-repo-from-remote $remote | $in.repo | path join 'main'\n   mkdir $directory\n   cd $directory\n   ^git init --initial-branch main\n   ^git add .\n"
+                },
+                {
+                    "date": 1747164834213,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,9 +35,9 @@\n     | lines | first\n     | str replace -r r#'^.*/(.+)\\s*HEAD$'# '$1'\n     | str trim\n     | {name: $in, default: true }\n-    | merge (get-repo-from-remote $remote)\n+    | merge (git-repo-from-remote $remote)\n     | move default --after repo\n }\n \n export def git-is-repo [] {\n"
+                },
+                {
+                    "date": 1747164891737,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n   remote: string\n   ...rest\n ] {\n   git-repo-from-remote $remote\n-    | path join (git-remote-default-branch $remote)\n+    | path join (git-remote-default-branch $remote).name\n     | do -c --env {\n       ^git clone $remote $in ...$rest\n       enter $in\n     }\n"
+                },
+                {
+                    "date": 1747164994325,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,8 +36,9 @@\n     | str replace -r r#'^.*/(.+)\\s*HEAD$'# '$1'\n     | str trim\n     | {name: $in, default: true }\n     | merge (git-repo-from-remote $remote)\n+    \n     | move default --after repo\n }\n \n export def git-is-repo [] {\n"
+                },
+                {
+                    "date": 1747165001099,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,9 +36,9 @@\n     | str replace -r r#'^.*/(.+)\\s*HEAD$'# '$1'\n     | str trim\n     | {name: $in, default: true }\n     | merge (git-repo-from-remote $remote)\n-    \n+    | print $in\n     | move default --after repo\n }\n \n export def git-is-repo [] {\n"
+                },
+                {
+                    "date": 1747165039876,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,8 +37,9 @@\n     | str trim\n     | {name: $in, default: true }\n     | merge (git-repo-from-remote $remote)\n     | print $in\n+    \n     | move default --after repo\n }\n \n export def git-is-repo [] {\n"
+                },
+                {
+                    "date": 1747165089711,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,110 @@\n+use std/dirs shells-aliases enter\n+\n+export def --env git-init [\n+  remote: string\n+] {\n+  let directory = git-repo-from-remote $remote | $in.repo | path join 'main'\n+  mkdir $directory\n+  cd $directory\n+  ^git init --initial-branch main\n+  ^git add .\n+  ^git commit -m 'initial commit'\n+  ^git remote add origin $remote\n+}\n+\n+export def --env --wrapped git-clone [\n+  remote: string\n+  ...rest\n+] {\n+  git-repo-from-remote $remote\n+    | path join (git-remote-default-branch $remote).name\n+    | do -c --env {\n+      ^git clone $remote $in ...$rest\n+      enter $in\n+    }\n+}\n+\n+export def git-repo-from-remote [remote: string] {\n+  $remote\n+    | str replace -r r#'^.*\\/(.*)\\.git$'# '$1'\n+    | {repo: $in, remote: $remote}\n+}\n+\n+export def git-remote-default-branch [remote: string] {\n+  ^git ls-remote --symref $remote HEAD\n+    | lines | first\n+    | str replace -r r#'^.*/(.+)\\s*HEAD$'# '$1'\n+    | str trim\n+    | {name: $in, default: true }\n+    | merge (git-repo-from-remote $remote)\n+    | print $in\n+    | return\n+    # | move default --after repo\n+}\n+\n+export def git-is-repo [] {\n+  (git rev-parse --is-inside-work-tree | complete).exit_code == 0\n+}\n+\n+export def git-is-not-repo [] {\n+  not (git-is-repo)\n+}\n+\n+export def git-error-is-not-repo [] {\n+  if (git-is-not-repo) {\n+    error make {msg: \"Not in a git repository\"}\n+  }\n+}\n+\n+export def git-current-branch [] {\n+  git-error-is-not-repo\n+  ^git rev-parse --abbrev-ref HEAD | str trim\n+}\n+\n+export def git-default-branch [] {\n+  git-error-is-not-repo\n+  ^git config --get init.defaultBranch | str trim\n+}\n+\n+export def git-branch-root [] {\n+  git-error-is-not-repo\n+  ^git rev-parse --show-toplevel |  str trim\n+}\n+\n+export def git-repo-root [] {\n+  git-branch-root | path join '..' | path expand\n+}\n+\n+export def git-worktree-list [] {\n+  git-error-is-not-repo\n+\n+  let current_branch = git-current-branch\n+  let default_branch = git-default-branch\n+\n+  ^git worktree list --porcelain\n+  | lines\n+  | compact --empty\n+  | chunks 3\n+  | each {\n+      $in\n+      | split row ' '\n+      |\n+        {\n+          name: ($in.1 | str replace -r r#'.*/(.*)'# '$1')\n+          path: $in.1\n+          sha: $in.3\n+          ref: $in.5\n+          is_current: false\n+          is_default: false\n+        }\n+        | update is_current ($in.name == $current_branch)\n+        | update is_default ($in.name == $default_branch)\n+    }\n+  | sort-by -c {|a,b|\n+      if $b.is_current {\n+        false\n+      } else if $b.is_default and (not $a.is_current) {\n+        false\n+      } else {$a.is_current or $a.is_default or ($a.name < $b.name)}\n+    }\n+}\n"
+                },
+                {
+                    "date": 1747165128825,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,10 +36,9 @@\n     | str replace -r r#'^.*/(.+)\\s*HEAD$'# '$1'\n     | str trim\n     | {name: $in, default: true }\n     | merge (git-repo-from-remote $remote)\n-    | print $in\n-    | return\n+\n     # | move default --after repo\n }\n \n export def git-is-repo [] {\n@@ -107,114 +106,4 @@\n         false\n       } else {$a.is_current or $a.is_default or ($a.name < $b.name)}\n     }\n }\n-use std/dirs shells-aliases enter\n-\n-export def --env git-init [\n-  remote: string\n-] {\n-  let directory = git-repo-from-remote $remote | $in.repo | path join 'main'\n-  mkdir $directory\n-  cd $directory\n-  ^git init --initial-branch main\n-  ^git add .\n-  ^git commit -m 'initial commit'\n-  ^git remote add origin $remote\n-}\n-\n-export def --env --wrapped git-clone [\n-  remote: string\n-  ...rest\n-] {\n-  git-repo-from-remote $remote\n-    | path join (git-remote-default-branch $remote).name\n-    | do -c --env {\n-      ^git clone $remote $in ...$rest\n-      enter $in\n-    }\n-}\n-\n-export def git-repo-from-remote [remote: string] {\n-  $remote\n-    | str replace -r r#'^.*\\/(.*)\\.git$'# '$1'\n-    | {repo: $in, remote: $remote}\n-}\n-\n-export def git-remote-default-branch [remote: string] {\n-  ^git ls-remote --symref $remote HEAD\n-    | lines | first\n-    | str replace -r r#'^.*/(.+)\\s*HEAD$'# '$1'\n-    | str trim\n-    | {name: $in, default: true }\n-    | merge (git-repo-from-remote $remote)\n-    | print $in\n-    \n-    | move default --after repo\n-}\n-\n-export def git-is-repo [] {\n-  (git rev-parse --is-inside-work-tree | complete).exit_code == 0\n-}\n-\n-export def git-is-not-repo [] {\n-  not (git-is-repo)\n-}\n-\n-export def git-error-is-not-repo [] {\n-  if (git-is-not-repo) {\n-    error make {msg: \"Not in a git repository\"}\n-  }\n-}\n-\n-export def git-current-branch [] {\n-  git-error-is-not-repo\n-  ^git rev-parse --abbrev-ref HEAD | str trim\n-}\n-\n-export def git-default-branch [] {\n-  git-error-is-not-repo\n-  ^git config --get init.defaultBranch | str trim\n-}\n-\n-export def git-branch-root [] {\n-  git-error-is-not-repo\n-  ^git rev-parse --show-toplevel |  str trim\n-}\n-\n-export def git-repo-root [] {\n-  git-branch-root | path join '..' | path expand\n-}\n-\n-export def git-worktree-list [] {\n-  git-error-is-not-repo\n-\n-  let current_branch = git-current-branch\n-  let default_branch = git-default-branch\n-\n-  ^git worktree list --porcelain\n-  | lines\n-  | compact --empty\n-  | chunks 3\n-  | each {\n-      $in\n-      | split row ' '\n-      |\n-        {\n-          name: ($in.1 | str replace -r r#'.*/(.*)'# '$1')\n-          path: $in.1\n-          sha: $in.3\n-          ref: $in.5\n-          is_current: false\n-          is_default: false\n-        }\n-        | update is_current ($in.name == $current_branch)\n-        | update is_default ($in.name == $default_branch)\n-    }\n-  | sort-by -c {|a,b|\n-      if $b.is_current {\n-        false\n-      } else if $b.is_default and (not $a.is_current) {\n-        false\n-      } else {$a.is_current or $a.is_default or ($a.name < $b.name)}\n-    }\n-}\n"
+                },
+                {
+                    "date": 1747165243897,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,8 +16,9 @@\n   remote: string\n   ...rest\n ] {\n   git-repo-from-remote $remote\n+    | get repo\n     | path join (git-remote-default-branch $remote).name\n     | do -c --env {\n       ^git clone $remote $in ...$rest\n       enter $in\n@@ -36,10 +37,9 @@\n     | str replace -r r#'^.*/(.+)\\s*HEAD$'# '$1'\n     | str trim\n     | {name: $in, default: true }\n     | merge (git-repo-from-remote $remote)\n-\n-    # | move default --after repo\n+    | move default --after repo\n }\n \n export def git-is-repo [] {\n   (git rev-parse --is-inside-work-tree | complete).exit_code == 0\n"
+                }
+            ],
+            "date": 1746543888812,
+            "name": "Commit-0",
+            "content": "export def --env git-init [\n  remote: string\n] {\n  let directory = git-repo-from-remote $remote | path join 'main'\n  mkdir $directory\n  cd $directory\n  ^git init --initial-branch main\n  ^git add .\n  ^git commit -m 'initial commit'\n  ^git remote add origin $remote\n}\n\nexport def --env --wrapped git-clone [\n  remote: string\n  ...rest\n] {\n  use std/dirs shells-aliases\n  git-repo-from-remote $remote\n    | path join (git-remote-default-branch $remote)\n    | do -c --env {\n      ^git clone $remote $in ...$rest\n      enter $in\n    }\n}\n\nexport def git-repo-from-remote [remote: string] {\n  $remote\n    | str replace -r r#'^.*\\/(.*)\\.git$'# './$1'\n    | {repo: $in, remote: $remote}\n}\n\nexport def git-remote-default-branch [remote: string] {\n  ^git ls-remote --symref $remote HEAD\n    | lines | first\n    | str replace -r r#'^.*/(.+)\\s*HEAD$'# '$1'\n    | str trim\n    | {name: $in, default: true }\n    | merge (get-repo-from-remote $remote)\n    | move default --after repo\n}\n\nexport def git-is-repo [] {\n  (git rev-parse --is-inside-work-tree | complete).exit_code == 0\n}\n\nexport def git-is-not-repo [] {\n  not (git-is-repo)\n}\n\nexport def git-error-is-not-repo [] {\n  if (git-is-not-repo) {\n    error make {msg: \"Not in a git repository\"}\n  }\n}\n\ndef git-current-branch [] {\n  error-is-not-git-repo\n  ^git rev-parse --abbrev-ref HEAD | str trim\n}\n\nexport def git-default-branch [] {\n  error-is-not-git-repo\n  ^git config --get init.defaultBranch | str trim\n}\n\ndef git-branch-root [] {\n  error-is-not-git-repo\n  ^git rev-parse --show-toplevel |  str trim\n}\n\ndef git-repo-root [] {\n  git-branch-root | path join '..' | path expand\n}\n\nexport def git-worktree-list [] {\n  error-is-not-git-repo\n\n  let current_branch = git-current-branch\n  let default_branch = git-default-branch\n\n  ^git worktree list --porcelain\n  | lines\n  | compact --empty\n  | chunks 3\n  | each {\n      $in\n      | split row ' '\n      |\n        {\n          name: ($in.1 | str replace -r r#'.*/(.*)'# '$1')\n          path: $in.1\n          sha: $in.3\n          ref: $in.5\n        }\n        | update is_current ($in.name == $current_branch)\n        | update is_default ($in.name == $default_branch)\n    }\n  | sort-by -c {|a,b|\n      if $b.is_current {false}\n      else if $b.is_default and (not $a.is_current) {false}\n      else {$a.is_current or $a.is_default or ($a.name < $b.name)}\n    }\n}\n"
+        }
+    ]
+}

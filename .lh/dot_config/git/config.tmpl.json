@@ -1,0 +1,30 @@
+{
+    "sourceFile": "dot_config/git/config.tmpl",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1746573232685,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746573237993,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,8 +34,9 @@\n [diff]\n \ttool = Kaleidoscope\n \tcolorMoved = zebra\n [core]\n+{{- if .chezmoi.config.data.isWorkMachine }}\n \n \teditor = code --wait\n \texcludesFile = ~{{ .chezmoi.pathSeparator }}.gitignore\n [init]\n"
+                },
+                {
+                    "date": 1746573247371,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,9 +35,9 @@\n \ttool = Kaleidoscope\n \tcolorMoved = zebra\n [core]\n {{- if .chezmoi.config.data.isWorkMachine }}\n-\n+{{- else }}\n \teditor = code --wait\n \texcludesFile = ~{{ .chezmoi.pathSeparator }}.gitignore\n [init]\n \tdefaultBranch = main\n"
+                },
+                {
+                    "date": 1746573256712,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,10 +35,12 @@\n \ttool = Kaleidoscope\n \tcolorMoved = zebra\n [core]\n {{- if .chezmoi.config.data.isWorkMachine }}\n+\teditor = code --wait\n {{- else }}\n \teditor = code --wait\n+{{- end }}\n \texcludesFile = ~{{ .chezmoi.pathSeparator }}.gitignore\n [init]\n \tdefaultBranch = main\n [url \"git@subsplash.io:\"]\n"
+                }
+            ],
+            "date": 1746573232685,
+            "name": "Commit-0",
+            "content": "[alias]\n        lg = log --color --graph --pretty=format{{ .chezmoi.pathListSeparator }}'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit\n        amend = commit --amend\n        dc = diff --cached\n        diff = diff --word-diff\n        fp = \"!f() { {{ .chezmoi.config.git.command }} fetch --prune; }; f\"\n        la = !{{ .chezmoi.config.git.command }} config -l | grep alias | cut -c 7-\n        lt = describe --tags --abbrev=0\n        undo = \"!f() { {{ .chezmoi.config.git.command }} checkout HEAD -- $1; }; f\"\n        save = \"!f() { {{ .chezmoi.config.git.command }} commit -m \\\"$@\\\"; }; f\"\n        st = status -s\n        unstage = reset --\n        unstage-all = reset HEAD\n        rb = rebase -i --root\n[user]\n\temail = {{ .email }}\n\tname = {{ .name }}\n[tag]\n\tforceSignAnnotated = false\n[mergetool \"Kaleidoscope\"]\n\tcmd = ksdiff --merge --output \\\"$MERGED\\\" --base \\\"$BASE\\\" -- \\\"$LOCAL\\\" --snapshot \\\"$REMOTE\\\" --snapshot\n\ttrustExitCode = true\n[merge]\n\ttool = Kaleidoscope\n\tff = only\n[difftool \"Kaleidoscope\"]\n\tcmd = ksdiff --partial-changeset --{{ .chezmoi.config.status.pathStyle }}-path \\\"$MERGED\\\" -- \\\"$LOCAL\\\" \\\"$REMOTE\\\"\n[difftool]\n\tprompt = false\n\ttrustExitCode = true\n[mergetool]\n\tprompt = false\n\tkeepBackup = false\n[diff]\n\ttool = Kaleidoscope\n\tcolorMoved = zebra\n[core]\n\n\teditor = code --wait\n\texcludesFile = ~{{ .chezmoi.pathSeparator }}.gitignore\n[init]\n\tdefaultBranch = main\n[url \"git@subsplash.io:\"]\n\tinsteadOf = https://subsplash.io/\n[pull]\n\trebase = true\n[fetch]\n\tprune = true\n[push]\n\tautoSetupRemote = true\n[worktree]\n\tguessRemote = true\n"
+        }
+    ]
+}

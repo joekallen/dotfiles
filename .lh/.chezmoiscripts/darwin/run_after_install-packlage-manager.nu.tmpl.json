@@ -1,0 +1,30 @@
+{
+    "sourceFile": ".chezmoiscripts/darwin/run_after_install-packlage-manager.nu.tmpl",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1744446317670,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1744446331004,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,6 +3,7 @@\n {{- if eq .chezmoi.os \"darwin\" }}\n with-env { HOMEBREW_NO_ENV_HINTS: 1 HOMEBREW_BUNDLE_INSTALL_CLEANUP: 1 } {\n print \"🍺  Installing packages with brew...\"\n brew bundle install\n+\n }\n {{- end }}\n"
+                },
+                {
+                    "date": 1744446339446,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,8 @@\n+#!/opt/homebrew/bin/nu\n+\n+{{- if eq .chezmoi.os \"darwin\" }}\n+with-env { HOMEBREW_NO_ENV_HINTS: 1 HOMEBREW_BUNDLE_INSTALL_CLEANUP: 1 } {\n+print \"🍺  Installing packages with brew...\"\n+brew bundle --force cleanup\n+}\n+{{- end }}\n"
+                },
+                {
+                    "date": 1744446345934,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,16 +2,8 @@\n \n {{- if eq .chezmoi.os \"darwin\" }}\n with-env { HOMEBREW_NO_ENV_HINTS: 1 HOMEBREW_BUNDLE_INSTALL_CLEANUP: 1 } {\n print \"🍺  Installing packages with brew...\"\n+brew bundle install\n brew bundle --force cleanup\n }\n {{- end }}\n-#!/opt/homebrew/bin/nu\n-\n-{{- if eq .chezmoi.os \"darwin\" }}\n-with-env { HOMEBREW_NO_ENV_HINTS: 1 HOMEBREW_BUNDLE_INSTALL_CLEANUP: 1 } {\n-print \"🍺  Installing packages with brew...\"\n-brew bundle install\n-\n-}\n-{{- end }}\n"
+                }
+            ],
+            "date": 1744446317670,
+            "name": "Commit-0",
+            "content": "#!/opt/homebrew/bin/nu\n\n{{- if eq .chezmoi.os \"darwin\" }}\nwith-env { HOMEBREW_NO_ENV_HINTS: 1 HOMEBREW_BUNDLE_INSTALL_CLEANUP: 1 } {\nprint \"🍺  Installing packages with brew...\"\nbrew bundle install\n}\n{{- end }}\n"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "sourceFile": "dot_config/nushell/autoload/git/common.nu",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1746491987414,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746491994336,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,11 @@\n export def agree [\n-    prompt\n-    --default-not (-n)\n+  prompt\n+  --default-not (-n)\n ] {\n-    let prompt = if ($prompt | str ends-with '!') {\n-        $'(ansi red)($prompt)(ansi reset)'\n-    } else {\n-        $'($prompt)'\n-    }\n-    (if $default_not { [no yes] } else { [yes no] } | input list $prompt) == 'yes'\n+  let prompt = if ($prompt | str ends-with '!') {\n+      $'(ansi red)($prompt)(ansi reset)'\n+  } else {\n+      $'($prompt)'\n+  }\n+  (if $default_not { [no yes] } else { [yes no] } | input list $prompt) == 'yes'\n }\n"
+                }
+            ],
+            "date": 1746491987414,
+            "name": "Commit-0",
+            "content": "export def agree [\n    prompt\n    --default-not (-n)\n] {\n    let prompt = if ($prompt | str ends-with '!') {\n        $'(ansi red)($prompt)(ansi reset)'\n    } else {\n        $'($prompt)'\n    }\n    (if $default_not { [no yes] } else { [yes no] } | input list $prompt) == 'yes'\n}\n"
+        }
+    ]
+}

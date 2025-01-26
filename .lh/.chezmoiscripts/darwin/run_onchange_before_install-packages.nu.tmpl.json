@@ -1,0 +1,274 @@
+{
+    "sourceFile": ".chezmoiscripts/darwin/run_onchange_before_install-packages.nu.tmpl",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 64,
+            "patches": [
+                {
+                    "date": 1746323878927,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746323925728,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,16 +1,15 @@\n {{- if eq .chezmoi.os \"darwin\" -}}\n #!/opt/homebrew/bin/nu\n \n-#set -eufo pipefail\n-\n {{- $extra := \"personal\" }}\n {{- if .chezmoi.config.data.isWorkMachine }}\n   {{- $extra = \"work\" }}\n {{- end }}\n {{- $packages := dig \"packages\" (dict) . }}\n \n echo \"🍺  Installing packages with brew...\"\n+\n brew bundle --cleanup --file=/dev/stdin <<EOF\n {{- $packages := dig \"packages\" (dict) . }}\n {{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n brew {{ . | squote }}\n"
+                },
+                {
+                    "date": 1746323940695,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,10 +7,9 @@\n {{- end }}\n {{- $packages := dig \"packages\" (dict) . }}\n \n echo \"🍺  Installing packages with brew...\"\n-\n-brew bundle --cleanup --file=/dev/stdin <<EOF\n+[\n {{- $packages := dig \"packages\" (dict) . }}\n {{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n brew {{ . | squote }}\n {{- end }}\n@@ -19,6 +18,7 @@\n {{- end }}\n {{- range concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n vscode {{ . | squote }}\n {{- end }}\n+brew bundle --cleanup --file=/dev/stdin <<EOF\n EOF\n {{- end }}\n"
+                },
+                {
+                    "date": 1746323977181,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n echo \"🍺  Installing packages with brew...\"\n [\n {{- $packages := dig \"packages\" (dict) . }}\n {{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n-brew {{ . | squote }}\n+  \"brew {{ . | squote }}\n {{- end }}\n {{- range concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n cask {{ . | squote }}\n {{- end }}\n"
+                },
+                {
+                    "date": 1746323984045,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,12 +10,12 @@\n echo \"🍺  Installing packages with brew...\"\n [\n {{- $packages := dig \"packages\" (dict) . }}\n {{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n-  \"brew {{ . | squote }}\n+  \"brew {{ . | squote }}\"\n {{- end }}\n {{- range concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n-cask {{ . | squote }}\n+  \"cask {{ . | squote }}\"\n {{- end }}\n {{- range concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n vscode {{ . | squote }}\n {{- end }}\n"
+                },
+                {
+                    "date": 1746323990746,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n {{- range concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n   \"cask {{ . | squote }}\"\n {{- end }}\n {{- range concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n-vscode {{ . | squote }}\n+  \"vscode {{ . | squote }}\n {{- end }}\n brew bundle --cleanup --file=/dev/stdin <<EOF\n EOF\n {{- end }}\n"
+                },
+                {
+                    "date": 1746324003768,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,10 @@\n {{- range concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n   \"cask {{ . | squote }}\"\n {{- end }}\n {{- range concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n-  \"vscode {{ . | squote }}\n+  \"vscode {{ . | squote }}\"\n {{- end }}\n+\n brew bundle --cleanup --file=/dev/stdin <<EOF\n EOF\n {{- end }}\n"
+                },
+                {
+                    "date": 1746324010034,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,8 +18,8 @@\n {{- end }}\n {{- range concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n   \"vscode {{ . | squote }}\"\n {{- end }}\n-\n+] | str join \"\\n\" | save -f Brewfile\n brew bundle --cleanup --file=/dev/stdin <<EOF\n EOF\n {{- end }}\n"
+                },
+                {
+                    "date": 1746324019349,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,8 +18,7 @@\n {{- end }}\n {{- range concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n   \"vscode {{ . | squote }}\"\n {{- end }}\n-] | str join \"\\n\" | save -f Brewfile\n-brew bundle --cleanup --file=/dev/stdin <<EOF\n+] | str join \"\\n\" | brew bundle --cleanup --file=/dev/stdin <<EOF\n EOF\n {{- end }}\n"
+                },
+                {
+                    "date": 1746324025509,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,7 +18,6 @@\n {{- end }}\n {{- range concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n   \"vscode {{ . | squote }}\"\n {{- end }}\n-] | str join \"\\n\" | brew bundle --cleanup --file=/dev/stdin <<EOF\n-EOF\n+] | str join \"\\n\" | brew bundle --cleanup --file=/dev/stdin\n {{- end }}\n"
+                },
+                {
+                    "date": 1746325603244,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n   {{- $extra = \"work\" }}\n {{- end }}\n {{- $packages := dig \"packages\" (dict) . }}\n \n-echo \"🍺  Installing packages with brew...\"\n+print \"🍺  Installing packages with brew...\"\n [\n {{- $packages := dig \"packages\" (dict) . }}\n {{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n   \"brew {{ . | squote }}\"\n"
+                },
+                {
+                    "date": 1746326297691,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,8 +9,9 @@\n \n print \"🍺  Installing packages with brew...\"\n [\n {{- $packages := dig \"packages\" (dict) . }}\n+\n {{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n   \"brew {{ . | squote }}\"\n {{- end }}\n {{- range concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n"
+                },
+                {
+                    "date": 1746326331473,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n \n print \"🍺  Installing packages with brew...\"\n [\n {{- $packages := dig \"packages\" (dict) . }}\n-\n+{{- concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) \n {{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n   \"brew {{ . | squote }}\"\n {{- end }}\n {{- range concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n"
+                },
+                {
+                    "date": 1746326338833,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n \n print \"🍺  Installing packages with brew...\"\n [\n {{- $packages := dig \"packages\" (dict) . }}\n-{{- concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) \n+{{- concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) | toYaml }}\n {{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n   \"brew {{ . | squote }}\"\n {{- end }}\n {{- range concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n"
+                },
+                {
+                    "date": 1746326348217,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n \n print \"🍺  Installing packages with brew...\"\n [\n {{- $packages := dig \"packages\" (dict) . }}\n-{{- concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) | toYaml }}\n+{{- concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) \n {{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n   \"brew {{ . | squote }}\"\n {{- end }}\n {{- range concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n"
+                },
+                {
+                    "date": 1746326625535,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,12 +6,14 @@\n   {{- $extra = \"work\" }}\n {{- end }}\n {{- $packages := dig \"packages\" (dict) . }}\n \n+\n+\n print \"🍺  Installing packages with brew...\"\n [\n {{- $packages := dig \"packages\" (dict) . }}\n-{{- concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) \n+{{- concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages)\n {{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n   \"brew {{ . | squote }}\"\n {{- end }}\n {{- range concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n"
+                },
+                {
+                    "date": 1746326632919,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,10 +6,10 @@\n   {{- $extra = \"work\" }}\n {{- end }}\n {{- $packages := dig \"packages\" (dict) . }}\n \n+{{- $brews := \n \n-\n print \"🍺  Installing packages with brew...\"\n [\n {{- $packages := dig \"packages\" (dict) . }}\n {{- concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages)\n"
+                },
+                {
+                    "date": 1746326645172,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n   {{- $extra = \"work\" }}\n {{- end }}\n {{- $packages := dig \"packages\" (dict) . }}\n \n-{{- $brews := \n+{{- $brews := concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages)\n \n print \"🍺  Installing packages with brew...\"\n [\n {{- $packages := dig \"packages\" (dict) . }}\n"
+                },
+                {
+                    "date": 1746326671636,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,13 +6,15 @@\n   {{- $extra = \"work\" }}\n {{- end }}\n {{- $packages := dig \"packages\" (dict) . }}\n \n-{{- $brews := concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages)\n+{{- $brews := concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n+{{- $casks := concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n+{{- $vscode := concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n \n print \"🍺  Installing packages with brew...\"\n [\n-{{- $packages := dig \"packages\" (dict) . }}\n+\n {{- concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages)\n {{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n   \"brew {{ . | squote }}\"\n {{- end }}\n"
+                },
+                {
+                    "date": 1746326701298,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,18 +4,17 @@\n {{- $extra := \"personal\" }}\n {{- if .chezmoi.config.data.isWorkMachine }}\n   {{- $extra = \"work\" }}\n {{- end }}\n+\n {{- $packages := dig \"packages\" (dict) . }}\n \n {{- $brews := concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n {{- $casks := concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n {{- $vscode := concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n \n print \"🍺  Installing packages with brew...\"\n [\n-\n-{{- concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages)\n {{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n   \"brew {{ . | squote }}\"\n {{- end }}\n {{- range concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n"
+                },
+                {
+                    "date": 1746326710627,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n {{- $vscode := concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n \n print \"🍺  Installing packages with brew...\"\n [\n-{{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n+{{- range $brews }}\n   \"brew {{ . | squote }}\"\n {{- end }}\n {{- range concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n   \"cask {{ . | squote }}\"\n"
+                },
+                {
+                    "date": 1746326720266,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n \n print \"🍺  Installing packages with brew...\"\n [\n {{- range $brews }}\n-  \"brew {{ . | squote }}\"\n+  \n {{- end }}\n {{- range concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n   \"cask {{ . | squote }}\"\n {{- end }}\n"
+                },
+                {
+                    "date": 1746326729930,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,10 +13,10 @@\n {{- $vscode := concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n \n print \"🍺  Installing packages with brew...\"\n [\n-{{- range $brews }}\n-  \n+{{- range $brews }}\"brew {{ . | squote }}\"\n+\n {{- end }}\n {{- range concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n   \"cask {{ . | squote }}\"\n {{- end }}\n"
+                },
+                {
+                    "date": 1746326735835,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,11 +13,9 @@\n {{- $vscode := concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n \n print \"🍺  Installing packages with brew...\"\n [\n-{{- range $brews }}\"brew {{ . | squote }}\"\n-\n-{{- end }}\n+{{- range $brews }}\"brew {{ . | squote }}\"{{- end }}\n {{- range concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n   \"cask {{ . | squote }}\"\n {{- end }}\n {{- range concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n"
+                },
+                {
+                    "date": 1746326748368,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,12 +14,7 @@\n \n print \"🍺  Installing packages with brew...\"\n [\n {{- range $brews }}\"brew {{ . | squote }}\"{{- end }}\n-{{- range concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n-  \"cask {{ . | squote }}\"\n-{{- end }}\n-{{- range concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n-  \"vscode {{ . | squote }}\"\n-{{- end }}\n+\n ] | str join \"\\n\" | brew bundle --cleanup --file=/dev/stdin\n {{- end }}\n"
+                },
+                {
+                    "date": 1746326756673,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,7 +14,8 @@\n \n print \"🍺  Installing packages with brew...\"\n [\n {{- range $brews }}\"brew {{ . | squote }}\"{{- end }}\n+{{- range $brews }}\"brew {{ . | squote }}\"{{- end }}\n \n ] | str join \"\\n\" | brew bundle --cleanup --file=/dev/stdin\n {{- end }}\n"
+                },
+                {
+                    "date": 1746326768381,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,8 @@\n \n print \"🍺  Installing packages with brew...\"\n [\n {{- range $brews }}\"brew {{ . | squote }}\"{{- end }}\n+{{- range $casks }}\"brew {{ . | squote }}\"{{- end }}\n {{- range $brews }}\"brew {{ . | squote }}\"{{- end }}\n-\n ] | str join \"\\n\" | brew bundle --cleanup --file=/dev/stdin\n {{- end }}\n"
+                },
+                {
+                    "date": 1746326783178,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,8 @@\n \n print \"🍺  Installing packages with brew...\"\n [\n {{- range $brews }}\"brew {{ . | squote }}\"{{- end }}\n-{{- range $casks }}\"brew {{ . | squote }}\"{{- end }}\n+{{- range $casks }}\"cask {{ . | squote }}\"{{- end }}\n {{- range $brews }}\"brew {{ . | squote }}\"{{- end }}\n ] | str join \"\\n\" | brew bundle --cleanup --file=/dev/stdin\n {{- end }}\n"
+                },
+                {
+                    "date": 1746326790271,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,7 +15,7 @@\n print \"🍺  Installing packages with brew...\"\n [\n {{- range $brews }}\"brew {{ . | squote }}\"{{- end }}\n {{- range $casks }}\"cask {{ . | squote }}\"{{- end }}\n-{{- range $brews }}\"brew {{ . | squote }}\"{{- end }}\n+{{- range $vscode }}\"vscode {{ . | squote }}\"{{- end }}\n ] | str join \"\\n\" | brew bundle --cleanup --file=/dev/stdin\n {{- end }}\n"
+                },
+                {
+                    "date": 1746326865811,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,10 @@\n {{- $vscode := concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n \n print \"🍺  Installing packages with brew...\"\n [\n-{{- range $brews }}\"brew {{ . | squote }}\"{{- end }}\n+{{- range $brews }}\n+  \"brew {{ . | squote }}\"{{- end }}\n {{- range $casks }}\"cask {{ . | squote }}\"{{- end }}\n {{- range $vscode }}\"vscode {{ . | squote }}\"{{- end }}\n ] | str join \"\\n\" | brew bundle --cleanup --file=/dev/stdin\n {{- end }}\n"
+                },
+                {
+                    "date": 1746326873228,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,11 @@\n \n print \"🍺  Installing packages with brew...\"\n [\n {{- range $brews }}\n-  \"brew {{ . | squote }}\"{{- end }}\n-{{- range $casks }}\"cask {{ . | squote }}\"{{- end }}\n+  \"brew {{ . | squote }}\"\n+{{- end }}\n+{{- range $casks }}\n+  \"cask {{ . | squote }}\"{{- end }}\n {{- range $vscode }}\"vscode {{ . | squote }}\"{{- end }}\n ] | str join \"\\n\" | brew bundle --cleanup --file=/dev/stdin\n {{- end }}\n"
+                },
+                {
+                    "date": 1746326881591,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,8 +17,10 @@\n {{- range $brews }}\n   \"brew {{ . | squote }}\"\n {{- end }}\n {{- range $casks }}\n-  \"cask {{ . | squote }}\"{{- end }}\n-{{- range $vscode }}\"vscode {{ . | squote }}\"{{- end }}\n+  \"cask {{ . | squote }}\"\n+{{- end }}\n+{{- range $vscode }}\n+  \"vscode {{ . | squote }}\"{{- end }}\n ] | str join \"\\n\" | brew bundle --cleanup --file=/dev/stdin\n {{- end }}\n"
+                },
+                {
+                    "date": 1746326886622,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,27 @@\n+{{- if eq .chezmoi.os \"darwin\" -}}\n+#!/opt/homebrew/bin/nu\n+\n+{{- $extra := \"personal\" }}\n+{{- if .chezmoi.config.data.isWorkMachine }}\n+  {{- $extra = \"work\" }}\n+{{- end }}\n+\n+{{- $packages := dig \"packages\" (dict) . }}\n+\n+{{- $brews := concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n+{{- $casks := concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n+{{- $vscode := concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n+\n+print \"🍺  Installing packages with brew...\"\n+[\n+{{- range $brews }}\n+  \"brew {{ . | squote }}\"\n+{{- end }}\n+{{- range $casks }}\n+  \"cask {{ . | squote }}\"\n+{{- end }}\n+{{- range $vscode }}\n+  \"vscode {{ . | squote }}\"\n+{{- end }}\n+] | str join \"\\n\" | brew bundle --cleanup --file=/dev/stdin\n+{{- end }}\n"
+                },
+                {
+                    "date": 1746385354932,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,28 @@\n+{{- if eq .chezmoi.os \"darwin\" -}}\n+#!/opt/homebrew/bin/nu\n+\n+{{- $extra := \"personal\" }}\n+{{- if .chezmoi.config.data.isWorkMachine }}\n+  {{- $extra = \"work\" }}\n+{{- end }}\n+\n+{{- $packages := dig \"packages\" (dict) . }}\n+\n+{{- $brews := concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n+{{- $casks := concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n+{{- $casks := concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n+{{- $vscode := concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n+\n+print \"🍺  Installing packages with brew...\"\n+[\n+{{- range $brews }}\n+  \"brew {{ . | squote }}\"\n+{{- end }}\n+{{- range $casks }}\n+  \"cask {{ . | squote }}\"\n+{{- end }}\n+{{- range $vscode }}\n+  \"vscode {{ . | squote }}\"\n+{{- end }}\n+] | str join \"\\n\" | brew bundle --cleanup --file=/dev/stdin\n+{{- end }}\n"
+                },
+                {
+                    "date": 1746385362389,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n {{- $packages := dig \"packages\" (dict) . }}\n \n {{- $brews := concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n {{- $casks := concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n-{{- $casks := concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n+{{- $taps := concat (dig \"common\" \"taps\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n {{- $vscode := concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n \n print \"🍺  Installing packages with brew...\"\n [\n@@ -25,57 +25,4 @@\n   \"vscode {{ . | squote }}\"\n {{- end }}\n ] | str join \"\\n\" | brew bundle --cleanup --file=/dev/stdin\n {{- end }}\n-{{- if eq .chezmoi.os \"darwin\" -}}\n-#!/opt/homebrew/bin/nu\n-\n-{{- $extra := \"personal\" }}\n-{{- if .chezmoi.config.data.isWorkMachine }}\n-  {{- $extra = \"work\" }}\n-{{- end }}\n-\n-{{- $packages := dig \"packages\" (dict) . }}\n-\n-{{- $brews := concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n-{{- $casks := concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n-{{- $vscode := concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n-\n-print \"🍺  Installing packages with brew...\"\n-[\n-{{- range $brews }}\n-  \"brew {{ . | squote }}\"\n-{{- end }}\n-{{- range $casks }}\n-  \"cask {{ . | squote }}\"\n-{{- end }}\n-{{- range $vscode }}\n-  \"vscode {{ . | squote }}\"\n-{{- end }}\n-] | str join \"\\n\" | brew bundle --cleanup --file=/dev/stdin\n-{{- end }}\n-{{- if eq .chezmoi.os \"darwin\" -}}\n-#!/opt/homebrew/bin/nu\n-\n-{{- $extra := \"personal\" }}\n-{{- if .chezmoi.config.data.isWorkMachine }}\n-  {{- $extra = \"work\" }}\n-{{- end }}\n-\n-{{- $packages := dig \"packages\" (dict) . }}\n-\n-{{- $brews := concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n-{{- $casks := concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n-{{- $vscode := concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n-\n-print \"🍺  Installing packages with brew...\"\n-[\n-{{- range $brews }}\n-  \"brew {{ . | squote }}\"\n-{{- end }}\n-{{- range $casks }}\n-  \"cask {{ . | squote }}\"\n-{{- end }}\n-{{- range $vscode }}\n-  \"vscode {{ . | squote }}\"{{- end }}\n-] | str join \"\\n\" | brew bundle --cleanup --file=/dev/stdin\n-{{- end }}\n"
+                },
+                {
+                    "date": 1746386155990,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,13 +9,14 @@\n {{- $packages := dig \"packages\" (dict) . }}\n \n {{- $brews := concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n {{- $casks := concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n-{{- $taps := concat (dig \"common\" \"taps\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n+{{- $taps := concat (dig \"common\" \"taps\" (list) $packages) (dig $extra \"taps\" (list) $packages) }}\n {{- $vscode := concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n \n print \"🍺  Installing packages with brew...\"\n [\n+\n {{- range $brews }}\n   \"brew {{ . | squote }}\"\n {{- end }}\n {{- range $casks }}\n"
+                },
+                {
+                    "date": 1746386161149,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n {{- $vscode := concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n \n print \"🍺  Installing packages with brew...\"\n [\n-\n+{\n {{- range $brews }}\n   \"brew {{ . | squote }}\"\n {{- end }}\n {{- range $casks }}\n"
+                },
+                {
+                    "date": 1746386749017,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,12 @@\n {{- $vscode := concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n \n print \"🍺  Installing packages with brew...\"\n [\n-{\n+{{- range $taps }}\n+\n+  \"tap {{ . | squote }}\"\n+{{- end }}\n {{- range $brews }}\n   \"brew {{ . | squote }}\"\n {{- end }}\n {{- range $casks }}\n"
+                },
+                {
+                    "date": 1746386768291,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n \n print \"🍺  Installing packages with brew...\"\n [\n {{- range $taps }}\n-\n+  {{- if kind }}\n   \"tap {{ . | squote }}\"\n {{- end }}\n {{- range $brews }}\n   \"brew {{ . | squote }}\"\n"
+                },
+                {
+                    "date": 1746386775104,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n \n print \"🍺  Installing packages with brew...\"\n [\n {{- range $taps }}\n-  {{- if kind }}\n+  {{- if kindIs \"slice\" . }}\n   \"tap {{ . | squote }}\"\n {{- end }}\n {{- range $brews }}\n   \"brew {{ . | squote }}\"\n"
+                },
+                {
+                    "date": 1746386889599,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,13 @@\n print \"🍺  Installing packages with brew...\"\n [\n {{- range $taps }}\n   {{- if kindIs \"slice\" . }}\n-  \"tap {{ . | squote }}\"\n+  \n+    \"tap {{ .[0] | squote }} {{ .[1] | squote }}\"\n+  {{- else }}\n+    \"tap {{ . | squote }}\"\n+  {{- end }}\n {{- end }}\n {{- range $brews }}\n   \"brew {{ . | squote }}\"\n {{- end }}\n"
+                },
+                {
+                    "date": 1746386897430,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n print \"🍺  Installing packages with brew...\"\n [\n {{- range $taps }}\n   {{- if kindIs \"slice\" . }}\n-  \n+    \n     \"tap {{ .[0] | squote }} {{ .[1] | squote }}\"\n   {{- else }}\n     \"tap {{ . | squote }}\"\n   {{- end }}\n"
+                },
+                {
+                    "date": 1746386906704,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n print \"🍺  Installing packages with brew...\"\n [\n {{- range $taps }}\n   {{- if kindIs \"slice\" . }}\n-    \n+    {{- $parts := \n     \"tap {{ .[0] | squote }} {{ .[1] | squote }}\"\n   {{- else }}\n     \"tap {{ . | squote }}\"\n   {{- end }}\n"
+                },
+                {
+                    "date": 1746386947431,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n print \"🍺  Installing packages with brew...\"\n [\n {{- range $taps }}\n   {{- if kindIs \"slice\" . }}\n-    {{- $parts := \n+    {{- $parts := (\n     \"tap {{ .[0] | squote }} {{ .[1] | squote }}\"\n   {{- else }}\n     \"tap {{ . | squote }}\"\n   {{- end }}\n"
+                },
+                {
+                    "date": 1746386954545,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n print \"🍺  Installing packages with brew...\"\n [\n {{- range $taps }}\n   {{- if kindIs \"slice\" . }}\n-    {{- $parts := (\n+    {{- $parts := (list) }}\n     \"tap {{ .[0] | squote }} {{ .[1] | squote }}\"\n   {{- else }}\n     \"tap {{ . | squote }}\"\n   {{- end }}\n"
+                },
+                {
+                    "date": 1746386969032,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,8 +17,9 @@\n [\n {{- range $taps }}\n   {{- if kindIs \"slice\" . }}\n     {{- $parts := (list) }}\n+    {{- \n     \"tap {{ .[0] | squote }} {{ .[1] | squote }}\"\n   {{- else }}\n     \"tap {{ . | squote }}\"\n   {{- end }}\n"
+                },
+                {
+                    "date": 1746386974267,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n [\n {{- range $taps }}\n   {{- if kindIs \"slice\" . }}\n     {{- $parts := (list) }}\n-    {{- \n+    {{- range . \n     \"tap {{ .[0] | squote }} {{ .[1] | squote }}\"\n   {{- else }}\n     \"tap {{ . | squote }}\"\n   {{- end }}\n"
+                },
+                {
+                    "date": 1746386980322,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n [\n {{- range $taps }}\n   {{- if kindIs \"slice\" . }}\n     {{- $parts := (list) }}\n-    {{- range . \n+    {{- range . }}{{- end\n     \"tap {{ .[0] | squote }} {{ .[1] | squote }}\"\n   {{- else }}\n     \"tap {{ . | squote }}\"\n   {{- end }}\n"
+                },
+                {
+                    "date": 1746387010022,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,13 +15,9 @@\n \n print \"🍺  Installing packages with brew...\"\n [\n {{- range $taps }}\n-  {{- if kindIs \"slice\" . }}\n-    {{- $parts := (list) }}\n-    {{- range . }}{{- end\n-    \"tap {{ .[0] | squote }} {{ .[1] | squote }}\"\n-  {{- else }}\n+  \n     \"tap {{ . | squote }}\"\n   {{- end }}\n {{- end }}\n {{- range $brews }}\n"
+                },
+                {
+                    "date": 1746387041397,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n \n print \"🍺  Installing packages with brew...\"\n [\n {{- range $taps }}\n-  \n+  {{\n     \"tap {{ . | squote }}\"\n   {{- end }}\n {{- end }}\n {{- range $brews }}\n"
+                },
+                {
+                    "date": 1746387048954,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n \n print \"🍺  Installing packages with brew...\"\n [\n {{- range $taps }}\n-  {{\n+  {{- $parts := . | split row \",\" }}\n     \"tap {{ . | squote }}\"\n   {{- end }}\n {{- end }}\n {{- range $brews }}\n"
+                },
+                {
+                    "date": 1746387065900,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,8 +16,9 @@\n print \"🍺  Installing packages with brew...\"\n [\n {{- range $taps }}\n   {{- $parts := . | split row \",\" }}\n+  \n     \"tap {{ . | squote }}\"\n   {{- end }}\n {{- end }}\n {{- range $brews }}\n"
+                },
+                {
+                    "date": 1746387071988,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n print \"🍺  Installing packages with brew...\"\n [\n {{- range $taps }}\n   {{- $parts := . | split row \",\" }}\n-  \n+  {{- $wrapped_\n     \"tap {{ . | squote }}\"\n   {{- end }}\n {{- end }}\n {{- range $brews }}\n"
+                },
+                {
+                    "date": 1746387080305,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,10 @@\n print \"🍺  Installing packages with brew...\"\n [\n {{- range $taps }}\n   {{- $parts := . | split row \",\" }}\n-  {{- $wrapped_\n+  {{- $wrapped_parts := (list) }}\n+  {{- \n     \"tap {{ . | squote }}\"\n   {{- end }}\n {{- end }}\n {{- range $brews }}\n"
+                },
+                {
+                    "date": 1746387088776,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,12 @@\n [\n {{- range $taps }}\n   {{- $parts := . | split row \",\" }}\n   {{- $wrapped_parts := (list) }}\n-  {{- \n+  {{- range $parts }}{{- $wrapped_parts = $wrapped_parts | append (squote $in) }}\n+\n+\n+\n     \"tap {{ . | squote }}\"\n   {{- end }}\n {{- end }}\n {{- range $brews }}\n"
+                },
+                {
+                    "date": 1746387117933,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n [\n {{- range $taps }}\n   {{- $parts := . | split row \",\" }}\n   {{- $wrapped_parts := (list) }}\n-  {{- range $parts }}{{- $wrapped_parts = $wrapped_parts | append (squote $in) }}\n+  {{- range $parts }}\n \n \n \n     \"tap {{ . | squote }}\"\n"
+                },
+                {
+                    "date": 1746387148740,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n [\n {{- range $taps }}\n   {{- $parts := . | split row \",\" }}\n   {{- $wrapped_parts := (list) }}\n-  {{- range $parts }}\n+  {{- range $parts }}{{{{- end }}\n \n \n \n     \"tap {{ . | squote }}\"\n"
+                },
+                {
+                    "date": 1746387159336,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n [\n {{- range $taps }}\n   {{- $parts := . | split row \",\" }}\n   {{- $wrapped_parts := (list) }}\n-  {{- range $parts }}{{{{- end }}\n+  {{- range $parts }}{{ $wrapped_part}}{{- end }}\n \n \n \n     \"tap {{ . | squote }}\"\n"
+                },
+                {
+                    "date": 1746387166782,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n [\n {{- range $taps }}\n   {{- $parts := . | split row \",\" }}\n   {{- $wrapped_parts := (list) }}\n-  {{- range $parts }}{{ $wrapped_part}}{{- end }}\n+  {{- range $parts }}{{ $wrapped_parts = append $wrapped_parts}}{{- end }}\n \n \n \n     \"tap {{ . | squote }}\"\n"
+                },
+                {
+                    "date": 1746387187073,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n [\n {{- range $taps }}\n   {{- $parts := . | split row \",\" }}\n   {{- $wrapped_parts := (list) }}\n-  {{- range $parts }}{{ $wrapped_parts = append $wrapped_parts}}{{- end }}\n+  {{- range $parts }}{{ $wrapped_parts = append $wrapped_parts (. | trim | squote ) }}{{- end }}\n \n \n \n     \"tap {{ . | squote }}\"\n"
+                },
+                {
+                    "date": 1746387201509,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,11 +19,8 @@\n   {{- $parts := . | split row \",\" }}\n   {{- $wrapped_parts := (list) }}\n   {{- range $parts }}{{ $wrapped_parts = append $wrapped_parts (. | trim | squote ) }}{{- end }}\n \n-\n-\n-    \"tap {{ . | squote }}\"\n   {{- end }}\n {{- end }}\n {{- range $brews }}\n   \"brew {{ . | squote }}\"\n"
+                },
+                {
+                    "date": 1746387210620,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,10 +18,9 @@\n {{- range $taps }}\n   {{- $parts := . | split row \",\" }}\n   {{- $wrapped_parts := (list) }}\n   {{- range $parts }}{{ $wrapped_parts = append $wrapped_parts (. | trim | squote ) }}{{- end }}\n-\n-  {{- end }}\n+  \"tap {{ $wrapped_parts | str join \",\" }}\"\n {{- end }}\n {{- range $brews }}\n   \"brew {{ . | squote }}\"\n {{- end }}\n"
+                },
+                {
+                    "date": 1746387243584,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n \n print \"🍺  Installing packages with brew...\"\n [\n {{- range $taps }}\n-  {{- $parts := . | split row \",\" }}\n+  {{- $parts := splitList. | split row \",\" }}\n   {{- $wrapped_parts := (list) }}\n   {{- range $parts }}{{ $wrapped_parts = append $wrapped_parts (. | trim | squote ) }}{{- end }}\n   \"tap {{ $wrapped_parts | str join \",\" }}\"\n {{- end }}\n"
+                },
+                {
+                    "date": 1746387249726,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n \n print \"🍺  Installing packages with brew...\"\n [\n {{- range $taps }}\n-  {{- $parts := splitList. | split row \",\" }}\n+  {{- $parts := splitList \",\" . | split row \",\" }}\n   {{- $wrapped_parts := (list) }}\n   {{- range $parts }}{{ $wrapped_parts = append $wrapped_parts (. | trim | squote ) }}{{- end }}\n   \"tap {{ $wrapped_parts | str join \",\" }}\"\n {{- end }}\n"
+                },
+                {
+                    "date": 1746387267116,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n {{- range $taps }}\n   {{- $parts := splitList \",\" . }}\n   {{- $wrapped_parts := (list) }}\n   {{- range $parts }}{{ $wrapped_parts = append $wrapped_parts (. | trim | squote ) }}{{- end }}\n-  \"tap {{ $wrapped_parts | str join \",\" }}\"\n+  \"tap {{ $wrapped_parts | join \",\" }}\"\n {{- end }}\n {{- range $brews }}\n   \"brew {{ . | squote }}\"\n {{- end }}\n"
+                }
+            ],
+            "date": 1746323878927,
+            "name": "Commit-0",
+            "content": "{{- if eq .chezmoi.os \"darwin\" -}}\n#!/opt/homebrew/bin/nu\n\n#set -eufo pipefail\n\n{{- $extra := \"personal\" }}\n{{- if .chezmoi.config.data.isWorkMachine }}\n  {{- $extra = \"work\" }}\n{{- end }}\n{{- $packages := dig \"packages\" (dict) . }}\n\necho \"🍺  Installing packages with brew...\"\nbrew bundle --cleanup --file=/dev/stdin <<EOF\n{{- $packages := dig \"packages\" (dict) . }}\n{{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\nbrew {{ . | squote }}\n{{- end }}\n{{- range concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\ncask {{ . | squote }}\n{{- end }}\n{{- range concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\nvscode {{ . | squote }}\n{{- end }}\nEOF\n{{- end }}\n"
+        }
+    ]
+}

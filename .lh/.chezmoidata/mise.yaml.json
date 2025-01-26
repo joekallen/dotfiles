@@ -1,0 +1,130 @@
+{
+    "sourceFile": ".chezmoidata/mise.yaml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 28,
+            "patches": [
+                {
+                    "date": 1746296025213,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746296031384,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,14 @@\n mise:\n+  tools:\n+    common:\n+      node: \"20\"\n+    personal: {}\n+    work:\n+      aws-cli: \"2\"\n+      go: \"1.21\"\n+      helm: \"3\"\n+      kubectl: \"1.30\"\n+      kubelogin: \"1.30\"\n+      opentofu: \"1.9\"\n+      python: \"3.12\"\n+      terraform: \"1.11\"\n"
+                },
+                {
+                    "date": 1746298688536,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,12 +3,12 @@\n     common:\n       node: \"20\"\n     personal: {}\n     work:\n-      aws-cli: \"2\"\n-      go: \"1.21\"\n-      helm: \"3\"\n-      kubectl: \"1.30\"\n-      kubelogin: \"1.30\"\n-      opentofu: \"1.9\"\n-      python: \"3.12\"\n-      terraform: \"1.11\"\n+      - aws-cli: \"2\"\n+      - go: \"1.21\"\n+      - helm: \"3\"\n+      - kubectl: \"1.30\"\n+      - kubelogin: \"1.30\"\n+      - opentofu: \"1.9\"\n+      - python: \"3.12\"\n+      - terraform: \"1.11\"\n"
+                },
+                {
+                    "date": 1746298697481,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,12 +3,12 @@\n     common:\n       node: \"20\"\n     personal: {}\n     work:\n-      - aws-cli: \"2\"\n-      - go: \"1.21\"\n-      - helm: \"3\"\n-      - kubectl: \"1.30\"\n-      - kubelogin: \"1.30\"\n-      - opentofu: \"1.9\"\n-      - python: \"3.12\"\n-      - terraform: \"1.11\"\n+      - awsli: \"2\"\n+      - go\"1.21\"\n+      - helm\"3\"\n+      - kubectl\"1.30\"\n+      - kubelogin\"1.30\"\n+      - opentofu\"1.9\"\n+      - python\"3.12\"\n+      - terraform\"1.11\"\n"
+                },
+                {
+                    "date": 1746298702724,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,14 @@\n+mise:\n+  tools:\n+    common:\n+      node: \"20\"\n+    personal: {}\n+    work:\n+      -aws-cli: \"2\"\n+      -go: \"1.21\"\n+      -helm: \"3\"\n+      -kubectl: \"1.30\"\n+      -kubelogin: \"1.30\"\n+      -opentofu: \"1.9\"\n+      -python: \"3.12\"\n+      -terraform: \"1.11\"\n"
+                },
+                {
+                    "date": 1746299396812,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,26 +3,12 @@\n     common:\n       node: \"20\"\n     personal: {}\n     work:\n-      -aws-cli: \"2\"\n-      -go: \"1.21\"\n-      -helm: \"3\"\n-      -kubectl: \"1.30\"\n-      -kubelogin: \"1.30\"\n-      -opentofu: \"1.9\"\n-      -python: \"3.12\"\n-      -terraform: \"1.11\"\n-mise:\n-  tools:\n-    common:\n-      node: \"20\"\n-    personal: {}\n-    work:\n-      - awsli: \"2\"\n-      - go\"1.21\"\n-      - helm\"3\"\n-      - kubectl\"1.30\"\n-      - kubelogin\"1.30\"\n-      - opentofu\"1.9\"\n-      - python\"3.12\"\n-      - terraform\"1.11\"\n+      - aws-cli: \"2\n+      - go: \"1.21\n+      - helm: \"3\n+      - kubectl: \"1.30\n+      - kubelogin: \"1.30\n+      - opentofu: \"1.9\n+      - python: \"3.12\n+      - terraform: \"1.11\n"
+                },
+                {
+                    "date": 1746299410383,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,12 +3,12 @@\n     common:\n       node: \"20\"\n     personal: {}\n     work:\n-      - aws-cli: \"2\n-      - go: \"1.21\n-      - helm: \"3\n-      - kubectl: \"1.30\n-      - kubelogin: \"1.30\n-      - opentofu: \"1.9\n-      - python: \"3.12\n-      - terraform: \"1.11\n+      - aws-cli: 2\n+      - go: 1.21\n+      - helm: 3\n+      - kubectl: 1.30\n+      - kubelogin: 1.30\n+      - opentofu: 1.9\n+      - python: 3.12\n+      - terraform: 1.11\n"
+                },
+                {
+                    "date": 1746299807379,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,12 +3,12 @@\n     common:\n       node: \"20\"\n     personal: {}\n     work:\n-      - aws-cli: 2\n-      - go: 1.21\n-      - helm: 3\n-      - kubectl: 1.30\n-      - kubelogin: 1.30\n-      - opentofu: 1.9\n-      - python: 3.12\n-      - terraform: 1.11\n+      - aws-cli: \"2\n+      - go: \"1.21\n+      - helm: \"3\n+      - kubectl: \"1.30\n+      - kubelogin: \"1.30\n+      - opentofu: \"1.9\n+      - python: \"3.12\n+      - terraform: \"1.11\n"
+                },
+                {
+                    "date": 1746299856482,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,12 +3,12 @@\n     common:\n       node: \"20\"\n     personal: {}\n     work:\n-      - aws-cli: \"2\n-      - go: \"1.21\n-      - helm: \"3\n-      - kubectl: \"1.30\n-      - kubelogin: \"1.30\n-      - opentofu: \"1.9\n-      - python: \"3.12\n-      - terraform: \"1.11\n+      aws-cli: 2\n+      go: 1.21\n+      helm: 3\n+      kubectl: 1.30\n+      kubelogin: 1.30\n+      opentofu: 1.9\n+      python: 3.12\n+      terraform: 1.11\n"
+                },
+                {
+                    "date": 1746299900273,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,12 +3,12 @@\n     common:\n       node: \"20\"\n     personal: {}\n     work:\n-      aws-cli: 2\n-      go: 1.21\n-      helm: 3\n-      kubectl: 1.30\n-      kubelogin: 1.30\n-      opentofu: 1.9\n-      python: 3.12\n-      terraform: 1.11\n+      aws-cli: '2\n+      go: '1.21\n+      helm: '3\n+      kubectl: '1.30\n+      kubelogin: '1.30\n+      opentofu: '1.9\n+      python: '3.12\n+      terraform: '1.11\n"
+                },
+                {
+                    "date": 1746387891856,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,12 +3,13 @@\n     common:\n       node: \"20\"\n     personal: {}\n     work:\n-      aws-cli: '2\n-      go: '1.21\n-      helm: '3\n-      kubectl: '1.30\n-      kubelogin: '1.30\n-      opentofu: '1.9\n-      python: '3.12\n-      terraform: '1.11\n+      aws-cli: '2'\n+      cilium\n+      go: '1.21'\n+      helm: '3'\n+      kubectl: '1.30'\n+      kubelogin: '1.30'\n+      opentofu: '1.9'\n+      python: '3.12'\n+      terraform: '1.11'\n"
+                },
+                {
+                    "date": 1746387909961,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,8 @@\n       node: \"20\"\n     personal: {}\n     work:\n       aws-cli: '2'\n-      cilium\n       go: '1.21'\n       helm: '3'\n       kubectl: '1.30'\n       kubelogin: '1.30'\n"
+                },
+                {
+                    "date": 1746387939317,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n       node: \"20\"\n     personal: {}\n     work:\n       aws-cli: '2'\n+      cilium\n       go: '1.21'\n       helm: '3'\n       kubectl: '1.30'\n       kubelogin: '1.30'\n"
+                },
+                {
+                    "date": 1746387946003,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n       node: \"20\"\n     personal: {}\n     work:\n       aws-cli: '2'\n-      cilium\n+      cilium-cli: '0.18'\n       go: '1.21'\n       helm: '3'\n       kubectl: '1.30'\n       kubelogin: '1.30'\n"
+                },
+                {
+                    "date": 1746388188104,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n       node: \"20\"\n     personal: {}\n     work:\n       aws-cli: '2'\n+      aws-sso: \n       cilium-cli: '0.18'\n       go: '1.21'\n       helm: '3'\n       kubectl: '1.30'\n"
+                },
+                {
+                    "date": 1746388194534,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n       node: \"20\"\n     personal: {}\n     work:\n       aws-cli: '2'\n-      aws-sso: \n+      aws-sso: '1.17'\n       cilium-cli: '0.18'\n       go: '1.21'\n       helm: '3'\n       kubectl: '1.30'\n"
+                },
+                {
+                    "date": 1746457313400,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,5 +12,6 @@\n       kubectl: '1.30'\n       kubelogin: '1.30'\n       opentofu: '1.9'\n       python: '3.12'\n+      rust\n       terraform: '1.11'\n"
+                },
+                {
+                    "date": 1746457322796,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,6 +12,6 @@\n       kubectl: '1.30'\n       kubelogin: '1.30'\n       opentofu: '1.9'\n       python: '3.12'\n-      rust\n+      rust: '1.'\n       terraform: '1.11'\n"
+                },
+                {
+                    "date": 1746457409267,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,6 +12,6 @@\n       kubectl: '1.30'\n       kubelogin: '1.30'\n       opentofu: '1.9'\n       python: '3.12'\n-      rust: '1.'\n+\n       terraform: '1.11'\n"
+                },
+                {
+                    "date": 1746457414831,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n mise:\n   tools:\n     common:\n       node: \"20\"\n+      rust: '1.86'\n     personal: {}\n     work:\n       aws-cli: '2'\n       aws-sso: '1.17'\n@@ -12,6 +13,5 @@\n       kubectl: '1.30'\n       kubelogin: '1.30'\n       opentofu: '1.9'\n       python: '3.12'\n-\n       terraform: '1.11'\n"
+                },
+                {
+                    "date": 1746457422298,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n mise:\n   tools:\n     common:\n-      node: \"20\"\n+      node: '20'\n+      \n       rust: '1.86'\n     personal: {}\n     work:\n       aws-cli: '2'\n"
+                },
+                {
+                    "date": 1746457444949,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n mise:\n   tools:\n     common:\n       node: '20'\n-      \n+      carg\n       rust: '1.86'\n     personal: {}\n     work:\n       aws-cli: '2'\n"
+                },
+                {
+                    "date": 1746457454840,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,16 @@\n mise:\n   tools:\n     common:\n       node: '20'\n-      carg\n+nu_plugin_desktop_notifications\n+nu_plugin_formats\n+nu_plugin_gstat\n+nu_plugin_polars\n+nu_plguin_regex\n+nu_plugin_skim\n+nu_plugin_template\n+nu_plugin_query\n       rust: '1.86'\n     personal: {}\n     work:\n       aws-cli: '2'\n"
+                },
+                {
+                    "date": 1746457461482,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,16 +1,16 @@\n mise:\n   tools:\n     common:\n       node: '20'\n-nu_plugin_desktop_notifications\n-nu_plugin_formats\n-nu_plugin_gstat\n-nu_plugin_polars\n-nu_plguin_regex\n-nu_plugin_skim\n-nu_plugin_template\n-nu_plugin_query\n+      cargo:nu_plugin_desktop_notifications\n+      cargo:nu_plugin_formats\n+      cargo:nu_plugin_gstat\n+      cargo:nu_plugin_polars\n+      cargo:nu_plguin_regex\n+      cargo:nu_plugin_skim\n+      cargo:nu_plugin_template\n+      cargo:nu_plugin_query\n       rust: '1.86'\n     personal: {}\n     work:\n       aws-cli: '2'\n"
+                },
+                {
+                    "date": 1746457590827,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,16 +1,16 @@\n mise:\n   tools:\n     common:\n       node: '20'\n-      cargo:nu_plugin_desktop_notifications\n-      cargo:nu_plugin_formats\n-      cargo:nu_plugin_gstat\n-      cargo:nu_plugin_polars\n-      cargo:nu_plguin_regex\n-      cargo:nu_plugin_skim\n-      cargo:nu_plugin_template\n-      cargo:nu_plugin_query\n+      cargo:nu_plugin_desktop_notifications: '0.103'\n+      cargo:nu_plugin_formats: '0.103'\n+      cargo:nu_plugin_gstat: '0.103'\n+      cargo:nu_plugin_polars: '0.103'\n+      cargo:nu_plguin_regex: '0.103'\n+      cargo:nu_plugin_skim: '0.103'\n+      cargo:nu_plugin_template: '0.103'\n+      cargo:nu_plugin_query: '0.103'\n       rust: '1.86'\n     personal: {}\n     work:\n       aws-cli: '2'\n"
+                },
+                {
+                    "date": 1746457764179,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,25 @@\n+mise:\n+  tools:\n+    common:\n+      node: '20'\n+      cargo:nu_plugin_desktop_notifications: '0.103'\n+      cargo:nu_plugin_formats: '0.103'\n+      cargo:nu_plugin_gstat: '0.103'\n+      cargo:nu_plugin_polars: '0.103'\n+      cargo:nu_plguin_regex: '0.13'\n+      cargo:nu_plugin_skim: '0.103'\n+      cargo:nu_plugin_template: '0.103'\n+      cargo:nu_plugin_query: '0.103'\n+      rust: '1.86'\n+    personal: {}\n+    work:\n+      aws-cli: '2'\n+      aws-sso: '1.17'\n+      cilium-cli: '0.18'\n+      go: '1.21'\n+      helm: '3'\n+      kubectl: '1.30'\n+      kubelogin: '1.30'\n+      opentofu: '1.9'\n+      python: '3.12'\n+      terraform: '1.11'\n"
+                },
+                {
+                    "date": 1746457806951,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n       cargo:nu_plugin_desktop_notifications: '0.103'\n       cargo:nu_plugin_formats: '0.103'\n       cargo:nu_plugin_gstat: '0.103'\n       cargo:nu_plugin_polars: '0.103'\n-      cargo:nu_plguin_regex: '0.13'\n+      cargo:nu_pluin_regex: '0.13'\n       cargo:nu_plugin_skim: '0.103'\n       cargo:nu_plugin_template: '0.103'\n       cargo:nu_plugin_query: '0.103'\n       rust: '1.86'\n@@ -22,29 +22,4 @@\n       kubelogin: '1.30'\n       opentofu: '1.9'\n       python: '3.12'\n       terraform: '1.11'\n-mise:\n-  tools:\n-    common:\n-      node: '20'\n-      cargo:nu_plugin_desktop_notifications: '0.103'\n-      cargo:nu_plugin_formats: '0.103'\n-      cargo:nu_plugin_gstat: '0.103'\n-      cargo:nu_plugin_polars: '0.103'\n-      cargo:nu_plguin_regex: '0.103'\n-      cargo:nu_plugin_skim: '0.103'\n-      cargo:nu_plugin_template: '0.103'\n-      cargo:nu_plugin_query: '0.103'\n-      rust: '1.86'\n-    personal: {}\n-    work:\n-      aws-cli: '2'\n-      aws-sso: '1.17'\n-      cilium-cli: '0.18'\n-      go: '1.21'\n-      helm: '3'\n-      kubectl: '1.30'\n-      kubelogin: '1.30'\n-      opentofu: '1.9'\n-      python: '3.12'\n-      terraform: '1.11'\n"
+                },
+                {
+                    "date": 1746457978897,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n mise:\n   tools:\n     common:\n       node: '20'\n-      cargo:nu_plugin_desktop_notifications: '0.103'\n+      cargo:nu_plugin_desktop_notifications: '1'\n       cargo:nu_plugin_formats: '0.103'\n       cargo:nu_plugin_gstat: '0.103'\n       cargo:nu_plugin_polars: '0.103'\n       cargo:nu_plugin_regex: '0.13'\n"
+                },
+                {
+                    "date": 1746460941963,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,25 @@\n+mise:\n+  tools:\n+    common:\n+      node: '20'\n+      # cargo:nu_plugin_desktop_notifications: '1'\n+      cargo:nu_plugin_formats: '0.103'\n+      cargo:nu_plugin_gstat: '0.103'\n+      cargo:nu_plugin_polars: '0.103'\n+      cargo:nu_plugin_regex: '0.13'\n+      cargo:nu_plugin_skim: '0.14'\n+      cargo:nu_plugin_template: '0.103'\n+      cargo:nu_plugin_query: '0.103'\n+      rust: '1.86'\n+    personal: {}\n+    work:\n+      aws-cli: '2'\n+      aws-sso: '1.17'\n+      cilium-cli: '0.18'\n+      go: '1.21'\n+      helm: '3'\n+      kubectl: '1.30'\n+      kubelogin: '1.30'\n+      opentofu: '1.9'\n+      python: '3.12'\n+      terraform: '1.11'\n"
+                }
+            ],
+            "date": 1746296025213,
+            "name": "Commit-0",
+            "content": "mise:\n"
+        }
+    ]
+}

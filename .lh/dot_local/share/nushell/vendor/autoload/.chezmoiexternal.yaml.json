@@ -1,0 +1,50 @@
+{
+    "sourceFile": "dot_local/share/nushell/vendor/autoload/.chezmoiexternal.yaml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 8,
+            "patches": [
+                {
+                    "date": 1746328551559,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746328560881,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-[\".oh-my-zsh\"]\n+alias-finder:\n     type = \"archive\"\n     url = \"https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz\"\n     exact = true\n     stripComponents = 1\n"
+                },
+                {
+                    "date": 1746328579266,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n alias-finder:\n-    type = \"archive\"\n-    url = \"https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz\"\n-    exact = true\n-    stripComponents = 1\n-    refreshPeriod = \"168h\"\n+    type:\"archive\"\n+    url:\"https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz\"\n+    exact: true\n+    stripComponents: 1\n+    refreshPeriod:\"168h\"\n"
+                },
+                {
+                    "date": 1746328587000,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n alias-finder:\n-    type:\"archive\"\n-    url:\"https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz\"\n-    exact: true\n-    stripComponents: 1\n-    refreshPeriod:\"168h\"\n+  type: \"archive\"\n+  url: \"https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz\"\n+  exact:  true\n+  stripComponents:  1\n+  refreshPeriod: \"168h\"\n"
+                },
+                {
+                    "date": 1746328684459,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,9 @@\n alias-finder:\n+  type = \"git-repo\"\n+    url = \"https://github.com/alker0/chezmoi.vim.git\"\n+    refreshPeriod = \"168h\"\n+\n   type: \"archive\"\n   url: \"https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz\"\n   exact:  true\n   stripComponents:  1\n"
+                },
+                {
+                    "date": 1746328691702,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n alias-finder:\n-  type = \"git-repo\"\n+  type\" git-repo\n     url = \"https://github.com/alker0/chezmoi.vim.git\"\n     refreshPeriod = \"168h\"\n \n   type: \"archive\"\n"
+                },
+                {
+                    "date": 1746328701172,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n alias-finder:\n-  type\" git-repo\n-    url = \"https://github.com/alker0/chezmoi.vim.git\"\n+  type: git-repo\n+  :url = \"https://github.com/alker0/chezmoi.vim.git\"\n     refreshPeriod = \"168h\"\n \n   type: \"archive\"\n   url: \"https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz\"\n"
+                },
+                {
+                    "date": 1746328706412,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n alias-finder:\n   type: git-repo\n-  :url = \"https://github.com/alker0/chezmoi.vim.git\"\n+  url: \n     refreshPeriod = \"168h\"\n \n   type: \"archive\"\n   url: \"https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz\"\n"
+                },
+                {
+                    "date": 1746328712441,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n alias-finder:\n   type: git-repo\n   url:\n-  refreshPeriod = \"168h\"\n+  refreshPeriod: = \"168h\"\n \n   type: \"archive\"\n   url: \"https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz\"\n   exact:  true\n"
+                }
+            ],
+            "date": 1746328551559,
+            "name": "Commit-0",
+            "content": "[\".oh-my-zsh\"]\n    type = \"archive\"\n    url = \"https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz\"\n    exact = true\n    stripComponents = 1\n    refreshPeriod = \"168h\"\n"
+        }
+    ]
+}

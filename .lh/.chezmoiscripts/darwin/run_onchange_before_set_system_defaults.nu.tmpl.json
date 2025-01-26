@@ -1,0 +1,86 @@
+{
+    "sourceFile": ".chezmoiscripts/darwin/run_onchange_before_set_system_defaults.nu.tmpl",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 17,
+            "patches": [
+                {
+                    "date": 1746327098554,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746327105113,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n {{- if eq .chezmoi.os \"darwin\" }}\n #!/opt/homebrew/bin/nu\n #print \" Configuring dock...\"\n \n-#defaults write com.apple.dock autohide -int 1\n+defaults write com.apple.dock autohide -int 1\n \n \n {{- end }}\n"
+                },
+                {
+                    "date": 1746327125461,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,7 @@\n {{- if eq .chezmoi.os \"darwin\" }}\n-#!/opt/homebrew/bin/nu\n-#print \" Configuring dock...\"\n-\n+!/opt/homebrew/bin/nu\n+print \" Configuring dock...\"\n defaults write com.apple.dock autohide -int 1\n \n \n {{- end }}\n"
+                },
+                {
+                    "date": 1746327139003,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,14 @@\n {{- if eq .chezmoi.os \"darwin\" }}\n !/opt/homebrew/bin/nu\n+\n+{{- $dockAppsSource := \"personal\" }}\n+{{- if .chezmoi.config.data.isWorkMachine }}\n+   {{- $dockAppsSource = \"work\" }}\n+{{- end }}\n+\n+{{- $dockApps := dig \"dock\" $dockAppsSource (list) . }}\n+\n print \" Configuring dock...\"\n defaults write com.apple.dock autohide -int 1\n \n \n"
+                },
+                {
+                    "date": 1746327209149,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,6 +10,7 @@\n \n print \" Configuring dock...\"\n defaults write com.apple.dock autohide -int 1\n \n+{{- if len $dockApps }}\n \n {{- end }}\n"
+                },
+                {
+                    "date": 1746327221112,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,6 +11,10 @@\n print \" Configuring dock...\"\n defaults write com.apple.dock autohide -int 1\n \n {{- if len $dockApps }}\n-\n+{{- range $dockApps }}\n+#print \"Adding app to dock {{ . }}\"\n+#defaults write com.apple.dock persistent-apps -array-add \"<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>{{ . }}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>\"\n {{- end }}\n+{{- end }}\n+{{- end }}\n"
+                },
+                {
+                    "date": 1746327226781,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n defaults write com.apple.dock autohide -int 1\n \n {{- if len $dockApps }}\n {{- range $dockApps }}\n-#print \"Adding app to dock {{ . }}\"\n+print \"Adding app to dock {{ . }}\"\n #defaults write com.apple.dock persistent-apps -array-add \"<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>{{ . }}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>\"\n {{- end }}\n {{- end }}\n {{- end }}\n"
+                },
+                {
+                    "date": 1746327233254,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n defaults write com.apple.dock autohide -int 1\n \n {{- if len $dockApps }}\n {{- range $dockApps }}\n-print \"Adding app to dock {{ . }}\"\n-#defaults write com.apple.dock persistent-apps -array-add \"<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>{{ . }}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>\"\n+print 'Adding app to dock {{ . }}'\n+defaults write com.apple.dock persistent-apps -array-add \"<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>{{ . }}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>\"\n {{- end }}\n {{- end }}\n {{- end }}\n"
+                },
+                {
+                    "date": 1746327291731,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n {{- end }}\n \n {{- $dockApps := dig \"dock\" $dockAppsSource (list) . }}\n \n-print \" Configuring dock...\"\n+print ' Configuring dock...\"\n defaults write com.apple.dock autohide -int 1\n \n {{- if len $dockApps }}\n {{- range $dockApps }}\n"
+                },
+                {
+                    "date": 1746327308427,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,12 +7,13 @@\n {{- end }}\n \n {{- $dockApps := dig \"dock\" $dockAppsSource (list) . }}\n \n-print ' Configuring dock...\"\n+print ' Configuring dock...'\n defaults write com.apple.dock autohide -int 1\n \n {{- if len $dockApps }}\n+\n {{- range $dockApps }}\n print 'Adding app to dock {{ . }}'\n defaults write com.apple.dock persistent-apps -array-add \"<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>{{ . }}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>\"\n {{- end }}\n"
+                },
+                {
+                    "date": 1746327345573,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,9 @@\n {{- if len $dockApps }}\n \n {{- range $dockApps }}\n print 'Adding app to dock {{ . }}'\n-defaults write com.apple.dock persistent-apps -array-add \"<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>{{ . }}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>\"\n+defaults write com.apple.dock persistent-apps -array-add <dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>{{ . }}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>\"\n {{- end }}\n+\n {{- end }}\n {{- end }}\n"
+                },
+                {
+                    "date": 1746327354895,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n {{- if len $dockApps }}\n \n {{- range $dockApps }}\n print 'Adding app to dock {{ . }}'\n-defaults write com.apple.dock persistent-apps -array-add <dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>{{ . }}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>\"\n+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>{{ . }}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'\n {{- end }}\n \n {{- end }}\n {{- end }}\n"
+                },
+                {
+                    "date": 1746327561246,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-{{- if eq .chezmoi.os \"darwin\" }}\n+{{- if eq .chezmoi.os \"darwin\" -}}\n !/opt/homebrew/bin/nu\n \n {{- $dockAppsSource := \"personal\" }}\n {{- if .chezmoi.config.data.isWorkMachine }}\n"
+                },
+                {
+                    "date": 1746327599570,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n {{- if eq .chezmoi.os \"darwin\" -}}\n-!/opt/homebrew/bin/nu\n+#!/opt/homebrew/bin/nu\n \n {{- $dockAppsSource := \"personal\" }}\n {{- if .chezmoi.config.data.isWorkMachine }}\n    {{- $dockAppsSource = \"work\" }}\n"
+                },
+                {
+                    "date": 1746327755999,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,6 +17,9 @@\n print 'Adding app to dock {{ . }}'\n defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>{{ . }}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'\n {{- end }}\n \n+defaults delete com.apple.dock persistent-others\n+killall Dock\n+print \"Done, dock has been configured!\"\n {{- end }}\n {{- end }}\n"
+                },
+                {
+                    "date": 1746327767433,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,7 +19,7 @@\n {{- end }}\n \n defaults delete com.apple.dock persistent-others\n killall Dock\n-print \"Done, dock has been configured!\"\n+print 'Done, dock has been configured!'\n {{- end }}\n {{- end }}\n"
+                },
+                {
+                    "date": 1746327855142,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,8 +11,9 @@\n print ' Configuring dock...'\n defaults write com.apple.dock autohide -int 1\n \n {{- if len $dockApps }}\n+defaults delete com.apple.dock persistent-apps\n \n {{- range $dockApps }}\n print 'Adding app to dock {{ . }}'\n defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>{{ . }}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'\n"
+                },
+                {
+                    "date": 1746456727272,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n {{- if .chezmoi.config.data.isWorkMachine }}\n    {{- $dockAppsSource = \"work\" }}\n {{- end }}\n \n-{{- $dockApps := dig \"dock\" $dockAppsSource (list) . }}\n+{{- $dockApps := (dig \"dock\" $dockAppsSource (list) . }}\n \n print ' Configuring dock...'\n defaults write com.apple.dock autohide -int 1\n \n"
+                }
+            ],
+            "date": 1746327098554,
+            "name": "Commit-0",
+            "content": "{{- if eq .chezmoi.os \"darwin\" }}\n#!/opt/homebrew/bin/nu\n#print \" Configuring dock...\"\n\n#defaults write com.apple.dock autohide -int 1\n\n\n{{- end }}\n"
+        }
+    ]
+}

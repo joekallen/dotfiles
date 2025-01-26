@@ -1,0 +1,318 @@
+{
+    "sourceFile": "dot_config/nushell/autoload/git/worktree.nu",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 75,
+            "patches": [
+                {
+                    "date": 1746491804970,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746491811172,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,8 @@\n use utils.nu\n+\n+export def --env --wrapped git-worktree-add [\n+  worktree: string\n+  ...rest\n+] {\n+  ^git worktree add $worktree ...$rest\n+}\n"
+                },
+                {
+                    "date": 1746491819994,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,6 +3,5 @@\n export def --env --wrapped git-worktree-add [\n   worktree: string\n   ...rest\n ] {\n-  ^git worktree add $worktree ...$rest\n }\n"
+                },
+                {
+                    "date": 1746491826493,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,4 +4,10 @@\n   worktree: string\n   ...rest\n ] {\n }\n+\n+export def --env --wrapped git-worktree-add [\n+  worktree: string\n+  ...rest\n+] {\n+}\n"
+                },
+                {
+                    "date": 1746491833172,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,14 @@\n   ...rest\n ] {\n }\n \n+export def --env --wrapped git-worktree-remove [\n+  worktree: string\n+  ...rest\n+] {\n+}\n+\n export def --env --wrapped git-worktree-add [\n   worktree: string\n   ...rest\n ] {\n"
+                },
+                {
+                    "date": 1746491921198,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,17 +3,18 @@\n export def --env --wrapped git-worktree-add [\n   worktree: string\n   ...rest\n ] {\n+  \n }\n \n export def --env --wrapped git-worktree-remove [\n   worktree: string\n   ...rest\n ] {\n }\n \n-export def --env --wrapped git-worktree-add [\n+export def --env --wrapped git-worktree-use [\n   worktree: string\n   ...rest\n ] {\n }\n"
+                },
+                {
+                    "date": 1746491929094,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,11 @@\n export def --env --wrapped git-worktree-add [\n   worktree: string\n   ...rest\n ] {\n-  \n+  let default_branch: string = git-default-branch\n+  let current_branch: string = git-current-branch\n+  let relative_path: string = $env.PWD | path relative-to (git-branch-root)\n }\n \n export def --env --wrapped git-worktree-remove [\n   worktree: string\n"
+                },
+                {
+                    "date": 1746491934902,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,11 +3,12 @@\n export def --env --wrapped git-worktree-add [\n   worktree: string\n   ...rest\n ] {\n-  let default_branch: string = git-default-branch\n+  let default_branch = git-default-branch\n   let current_branch: string = git-current-branch\n   let relative_path: string = $env.PWD | path relative-to (git-branch-root)\n+\n }\n \n export def --env --wrapped git-worktree-remove [\n   worktree: string\n"
+                },
+                {
+                    "date": 1746491940987,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n   worktree: string\n   ...rest\n ] {\n   let default_branch = git-default-branch\n-  let current_branch: string = git-current-branch\n+  let current_branch = git-current-branch\n   let relative_path: string = $env.PWD | path relative-to (git-branch-root)\n \n }\n \n"
+                },
+                {
+                    "date": 1746492066948,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,10 +5,10 @@\n   ...rest\n ] {\n   let default_branch = git-default-branch\n   let current_branch = git-current-branch\n-  let relative_path: string = $env.PWD | path relative-to (git-branch-root)\n-\n+  let relative_path = $env.PWD | path relative-to (git-branch-root)\n+  \n }\n \n export def --env --wrapped git-worktree-remove [\n   worktree: string\n"
+                },
+                {
+                    "date": 1746492076620,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,10 @@\n ] {\n   let default_branch = git-default-branch\n   let current_branch = git-current-branch\n   let relative_path = $env.PWD | path relative-to (git-branch-root)\n-  \n+  if $default_branch != $current_branch {\n+  }\n }\n \n export def --env --wrapped git-worktree-remove [\n   worktree: string\n"
+                },
+                {
+                    "date": 1746492095890,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n ] {\n   let default_branch = git-default-branch\n   let current_branch = git-current-branch\n   let relative_path = $env.PWD | path relative-to (git-branch-root)\n-  if $default_branch != $current_branch {\n+  if $default_branch != $current_branch and {\n   }\n }\n \n export def --env --wrapped git-worktree-remove [\n"
+                },
+                {
+                    "date": 1746492100937,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n ] {\n   let default_branch = git-default-branch\n   let current_branch = git-current-branch\n   let relative_path = $env.PWD | path relative-to (git-branch-root)\n-  if $default_branch != $current_branch and {\n+  if $default_branch != $current_branch and (agree '{\n   }\n }\n \n export def --env --wrapped git-worktree-remove [\n"
+                },
+                {
+                    "date": 1746492106614,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n ] {\n   let default_branch = git-default-branch\n   let current_branch = git-current-branch\n   let relative_path = $env.PWD | path relative-to (git-branch-root)\n-  if $default_branch != $current_branch and (agree '{\n+  if $default_branch != $current_branch and (agree 'Switch to ($default_branch?') {\n   }\n }\n \n export def --env --wrapped git-worktree-remove [\n"
+                },
+                {
+                    "date": 1746492116319,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n ] {\n   let default_branch = git-default-branch\n   let current_branch = git-current-branch\n   let relative_path = $env.PWD | path relative-to (git-branch-root)\n-  if $default_branch != $current_branch and (agree 'Switch to ($default_branch?') {\n+  if $default_branch != $current_branch and (agree 'Switch to ($default_branch) and create worktree?') {\n   }\n }\n \n export def --env --wrapped git-worktree-remove [\n"
+                },
+                {
+                    "date": 1746492142386,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n ] {\n   let default_branch = git-default-branch\n   let current_branch = git-current-branch\n   let relative_path = $env.PWD | path relative-to (git-branch-root)\n-  if $default_branch != $current_branch and (agree 'Switch to ($default_branch) and create worktree?') {\n+  if $default_branch != $current_branch and (agree $'Not on default branch ($default_branch) and create worktree?') {\n   }\n }\n \n export def --env --wrapped git-worktree-remove [\n"
+                },
+                {
+                    "date": 1746492148575,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n ] {\n   let default_branch = git-default-branch\n   let current_branch = git-current-branch\n   let relative_path = $env.PWD | path relative-to (git-branch-root)\n-  if $default_branch != $current_branch and (agree $'Not on default branch ($default_branch) and create worktree?') {\n+  if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now? and create worktree?') {\n   }\n }\n \n export def --env --wrapped git-worktree-remove [\n"
+                },
+                {
+                    "date": 1746492166285,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,10 @@\n ] {\n   let default_branch = git-default-branch\n   let current_branch = git-current-branch\n   let relative_path = $env.PWD | path relative-to (git-branch-root)\n-  if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now? and create worktree?') {\n+  if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n+    \n   }\n }\n \n export def --env --wrapped git-worktree-remove [\n"
+                },
+                {
+                    "date": 1746492178618,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n   let default_branch = git-default-branch\n   let current_branch = git-current-branch\n   let relative_path = $env.PWD | path relative-to (git-branch-root)\n   if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n-    \n+    cd (git-worktree-path $default_branch)\n   }\n }\n \n export def --env --wrapped git-worktree-remove [\n"
+                },
+                {
+                    "date": 1746492184218,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n use utils.nu\n-\n+use common.nu\n export def --env --wrapped git-worktree-add [\n   worktree: string\n   ...rest\n ] {\n"
+                },
+                {
+                    "date": 1746492210535,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n+use common.nu\n use utils.nu\n-use common.nu\n+\n export def --env --wrapped git-worktree-add [\n   worktree: string\n   ...rest\n ] {\n@@ -9,8 +10,10 @@\n   let relative_path = $env.PWD | path relative-to (git-branch-root)\n   if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n     cd (git-worktree-path $default_branch)\n   }\n+\n+  \n }\n \n export def --env --wrapped git-worktree-remove [\n   worktree: string\n"
+                },
+                {
+                    "date": 1746492517200,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n   if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n     cd (git-worktree-path $default_branch)\n   }\n \n-  \n+  git-worktree-path $worktree\n }\n \n export def --env --wrapped git-worktree-remove [\n   worktree: string\n"
+                },
+                {
+                    "date": 1746492531668,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,9 @@\n     cd (git-worktree-path $default_branch)\n   }\n \n   git-worktree-path $worktree\n+    | ^git worktree add $in ...$rest\n }\n \n export def --env --wrapped git-worktree-remove [\n   worktree: string\n"
+                },
+                {
+                    "date": 1746492540165,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n     cd (git-worktree-path $default_branch)\n   }\n \n   git-worktree-path $worktree\n-    | ^git worktree add $in ...$rest\n+    | ^git worktree add $in ...$rest | complete | print \n }\n \n export def --env --wrapped git-worktree-remove [\n   worktree: string\n"
+                },
+                {
+                    "date": 1746492547485,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n     cd (git-worktree-path $default_branch)\n   }\n \n   git-worktree-path $worktree\n-    | ^git worktree add $in ...$rest | complete | print \n+    | ^git worktree add $in ...$rest | complete | print $in.stdout\n }\n \n export def --env --wrapped git-worktree-remove [\n   worktree: string\n"
+                },
+                {
+                    "date": 1746492556321,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,8 +13,9 @@\n   }\n \n   git-worktree-path $worktree\n     | ^git worktree add $in ...$rest | complete | print $in.stdout\n+  git-worktree-use $worktree $relative_path\n }\n \n export def --env --wrapped git-worktree-remove [\n   worktree: string\n"
+                },
+                {
+                    "date": 1746492695353,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n   if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n     cd (git-worktree-path $default_branch)\n   }\n \n-  git-worktree-path $worktree\n+  let worktree_pgit-worktree-path $worktree\n     | ^git worktree add $in ...$rest | complete | print $in.stdout\n   git-worktree-use $worktree $relative_path\n }\n \n"
+                },
+                {
+                    "date": 1746492702729,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,10 +11,10 @@\n   if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n     cd (git-worktree-path $default_branch)\n   }\n \n-  let worktree_pgit-worktree-path $worktree\n-    | ^git worktree add $in ...$rest | complete | print $in.stdout\n+  let worktree_path = git-worktree-path $worktree\n+  ^git worktree add $in ...$rest | complete | print $in.stdout\n   git-worktree-use $worktree $relative_path\n }\n \n export def --env --wrapped git-worktree-remove [\n"
+                },
+                {
+                    "date": 1746492712410,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n   }\n \n   let worktree_path = git-worktree-path $worktree\n   ^git worktree add $in ...$rest | complete | print $in.stdout\n-  git-worktree-use $worktree $relative_path\n+  \n }\n \n export def --env --wrapped git-worktree-remove [\n   worktree: string\n"
+                },
+                {
+                    "date": 1746492720392,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n   }\n \n   let worktree_path = git-worktree-path $worktree\n   ^git worktree add $in ...$rest | complete | print $in.stdout\n-  \n+  enter $worktree_path\n }\n \n export def --env --wrapped git-worktree-remove [\n   worktree: string\n"
+                },
+                {
+                    "date": 1746492737857,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,8 +20,9 @@\n export def --env --wrapped git-worktree-remove [\n   worktree: string\n   ...rest\n ] {\n+  \n }\n \n export def --env --wrapped git-worktree-use [\n   worktree: string\n"
+                },
+                {
+                    "date": 1746492746324,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,14 @@\n export def --env --wrapped git-worktree-remove [\n   worktree: string\n   ...rest\n ] {\n-  \n+  if (git-current-branch) == $worktree {\n+    print $'moving to default branch so worktree can be removed'\n+    git worktree use (git-default-branch)\n+  }\n+\n+  do -c { ^git worktree remove $worktree ...$rest }\n }\n \n export def --env --wrapped git-worktree-use [\n   worktree: string\n"
+                },
+                {
+                    "date": 1746492763510,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,10 +21,9 @@\n   worktree: string\n   ...rest\n ] {\n   if (git-current-branch) == $worktree {\n-    print $'moving to default branch so worktree can be removed'\n-    git worktree use (git-default-branch)\n+    enter (git-default-branch)\n   }\n \n   do -c { ^git worktree remove $worktree ...$rest }\n }\n"
+                },
+                {
+                    "date": 1746492778706,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n   if (git-current-branch) == $worktree {\n     enter (git-default-branch)\n   }\n \n-  do -c { ^git worktree remove $worktree ...$rest }\n+  ^git worktree remove $worktree ...$rest }\n }\n \n export def --env --wrapped git-worktree-use [\n   worktree: string\n"
+                },
+                {
+                    "date": 1746492784584,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n   if (git-current-branch) == $worktree {\n     enter (git-default-branch)\n   }\n \n-  ^git worktree remove $worktree ...$rest }\n+  ^git worktree remove $worktree ...$rest | complete | print $in.stdout\n }\n \n export def --env --wrapped git-worktree-use [\n   worktree: string\n"
+                },
+                {
+                    "date": 1746492814664,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,4 +32,6 @@\n   worktree: string\n   ...rest\n ] {\n }\n+\n+export def \n"
+                },
+                {
+                    "date": 1746492821189,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,5 +33,7 @@\n   ...rest\n ] {\n }\n \n-export def \n+export def git-worktree-list {\n+\n+}\n"
+                },
+                {
+                    "date": 1746492950225,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n   ^git worktree add $in ...$rest | complete | print $in.stdout\n   enter $worktree_path\n }\n \n-export def --env --wrapped git-worktree-remove [\n+export def --env git-worktree-remove [\n   worktree: string\n   ...rest\n ] {\n   if (git-current-branch) == $worktree {\n@@ -33,7 +33,7 @@\n   ...rest\n ] {\n }\n \n-export def git-worktree-list {\n+export def git-worktree-list [] {\n \n }\n"
+                },
+                {
+                    "date": 1746492963786,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,39 @@\n+use common.nu\n+use utils.nu\n+\n+export def --env --wrapped git-worktree-add [\n+  worktree: string\n+  ...rest\n+] {\n+  let default_branch = git-default-branch\n+  let current_branch = git-current-branch\n+  let relative_path = $env.PWD | path relative-to (git-branch-root)\n+  if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n+    cd (git-worktree-path $default_branch)\n+  }\n+\n+  let worktree_path = git-worktree-path $worktree\n+  ^git worktree add $in ...$rest | complete | print $in.stdout\n+  enter $worktree_path\n+}\n+\n+export def --env git-worktree-remove [\n+  worktree: string\n+  --force\n+] {\n+  if (git-current-branch) == $worktree {\n+    enter (git-default-branch)\n+  }\n+\n+  ^git worktree remove $worktree ...$rest | complete | print $in.stdout\n+}\n+\n+export def --env --wrapped git-worktree-use [\n+  worktree: string\n+  ...rest\n+] {\n+}\n+\n+export def git-worktree-list [] {\n+\n+}\n"
+                },
+                {
+                    "date": 1746493000372,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,13 +18,14 @@\n }\n \n export def --env git-worktree-remove [\n   worktree: string\n-  --force\n+  --force (-f) = false\n ] {\n   if (git-current-branch) == $worktree {\n     enter (git-default-branch)\n   }\n+  \n \n   ^git worktree remove $worktree ...$rest | complete | print $in.stdout\n }\n \n@@ -36,43 +37,4 @@\n \n export def git-worktree-list [] {\n \n }\n-use common.nu\n-use utils.nu\n-\n-export def --env --wrapped git-worktree-add [\n-  worktree: string\n-  ...rest\n-] {\n-  let default_branch = git-default-branch\n-  let current_branch = git-current-branch\n-  let relative_path = $env.PWD | path relative-to (git-branch-root)\n-  if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n-    cd (git-worktree-path $default_branch)\n-  }\n-\n-  let worktree_path = git-worktree-path $worktree\n-  ^git worktree add $in ...$rest | complete | print $in.stdout\n-  enter $worktree_path\n-}\n-\n-export def --env git-worktree-remove [\n-  worktree: string\n-  ...rest\n-] {\n-  if (git-current-branch) == $worktree {\n-    enter (git-default-branch)\n-  }\n-\n-  ^git worktree remove $worktree ...$rest | complete | print $in.stdout\n-}\n-\n-export def --env --wrapped git-worktree-use [\n-  worktree: string\n-  ...rest\n-] {\n-}\n-\n-export def git-worktree-list [] {\n-\n-}\n"
+                },
+                {
+                    "date": 1746493020826,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,40 @@\n+use common.nu\n+use utils.nu\n+\n+export def --env --wrapped git-worktree-add [\n+  worktree: string\n+  ...rest\n+] {\n+  let default_branch = git-default-branch\n+  let current_branch = git-current-branch\n+  let relative_path = $env.PWD | path relative-to (git-branch-root)\n+  if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n+    cd (git-worktree-path $default_branch)\n+  }\n+\n+  let worktree_path = git-worktree-path $worktree\n+  ^git worktree add $in ...$rest | complete | print $in.stdout\n+  enter $worktree_path\n+}\n+\n+export def --env git-worktree-remove [\n+  worktree: string\n+  --force (-f) = false\n+] {\n+  if (git-current-branch) == $worktree {\n+    enter (git-default-branch)\n+  }\n+  if \n+\n+  ^git worktree remove $worktree ...$rest | complete | print $in.stdout\n+}\n+\n+export def --env --wrapped git-worktree-use [\n+  worktree: string\n+  ...rest\n+] {\n+}\n+\n+export def git-worktree-list [] {\n+\n+}\n"
+                },
+                {
+                    "date": 1746493028453,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n ] {\n   if (git-current-branch) == $worktree {\n     enter (git-default-branch)\n   }\n-  if \n+  if $force { }\n \n   ^git worktree remove $worktree ...$rest | complete | print $in.stdout\n }\n \n@@ -37,44 +37,4 @@\n \n export def git-worktree-list [] {\n \n }\n-use common.nu\n-use utils.nu\n-\n-export def --env --wrapped git-worktree-add [\n-  worktree: string\n-  ...rest\n-] {\n-  let default_branch = git-default-branch\n-  let current_branch = git-current-branch\n-  let relative_path = $env.PWD | path relative-to (git-branch-root)\n-  if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n-    cd (git-worktree-path $default_branch)\n-  }\n-\n-  let worktree_path = git-worktree-path $worktree\n-  ^git worktree add $in ...$rest | complete | print $in.stdout\n-  enter $worktree_path\n-}\n-\n-export def --env git-worktree-remove [\n-  worktree: string\n-  --force (-f) = false\n-] {\n-  if (git-current-branch) == $worktree {\n-    enter (git-default-branch)\n-  }\n-  \n-\n-  ^git worktree remove $worktree ...$rest | complete | print $in.stdout\n-}\n-\n-export def --env --wrapped git-worktree-use [\n-  worktree: string\n-  ...rest\n-] {\n-}\n-\n-export def git-worktree-list [] {\n-\n-}\n"
+                },
+                {
+                    "date": 1746493037921,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n ] {\n   if (git-current-branch) == $worktree {\n     enter (git-default-branch)\n   }\n-  if $force { }\n+  if $force { '-f ' } else { '' }\n \n   ^git worktree remove $worktree ...$rest | complete | print $in.stdout\n }\n \n"
+                },
+                {
+                    "date": 1746493046024,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,10 +23,11 @@\n ] {\n   if (git-current-branch) == $worktree {\n     enter (git-default-branch)\n   }\n-  if $force { '-f ' } else { '' }\n \n+  if $force { '-f '}\n+\n   ^git worktree remove $worktree ...$rest | complete | print $in.stdout\n }\n \n export def --env --wrapped git-worktree-use [\n"
+                },
+                {
+                    "date": 1746493051501,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,10 +25,9 @@\n     enter (git-default-branch)\n   }\n \n   if $force { '-f '}\n-\n-  ^git worktree remove $worktree ...$rest | complete | print $in.stdout\n+    | ^git worktree remove $worktree ...$rest | complete | print $in.stdout\n }\n \n export def --env --wrapped git-worktree-use [\n   worktree: string\n"
+                },
+                {
+                    "date": 1746493056947,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n     enter (git-default-branch)\n   }\n \n   if $force { '-f '}\n-    | ^git worktree remove $worktree ...$rest | complete | print $in.stdout\n+    | ^git worktree remove $worktree $in | complete | print $in.stdout\n }\n \n export def --env --wrapped git-worktree-use [\n   worktree: string\n"
+                },
+                {
+                    "date": 1746497439819,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,6 +35,29 @@\n ] {\n }\n \n export def git-worktree-list [] {\n-\n+  ^git worktree list --porcelain\n+  | lines\n+  | compact --empty\n+  | chunks 3\n+  | each {\n+      $in\n+      | split row ' '\n+      | {\n+          $in.0: ($in.1 | str replace -r r#'.*/(.*)'# '$1')\n+          path: $in.1\n+          $in.2: $in.3\n+          $in.4: $in.5\n+      }\n+    }\n+  | move branch --after worktree\n+  | insert 'default' false\n+  | update 'default' {|row| $row.worktree == (git-default-branch) }\n+  | sort-by -c {|a,b|\n+      if $b.default {\n+        false\n+      } else {\n+        $a.default or ($a.worktree < $b.worktree)\n+      }\n+    }\n }\n"
+                },
+                {
+                    "date": 1746497473105,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,10 +50,10 @@\n           $in.4: $in.5\n       }\n     }\n   | move branch --after worktree\n-  | insert 'default' false\n-  | update 'default' {|row| $row.worktree == (git-default-branch) }\n+  | insert default' false\n+  | update default' {|row| $row.worktree == (git-default-branch) }\n   | sort-by -c {|a,b|\n       if $b.default {\n         false\n       } else {\n"
+                },
+                {
+                    "date": 1746510990673,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,9 @@\n use utils.nu\n \n export def --env --wrapped git-worktree-add [\n   worktree: string\n+  \n   ...rest\n ] {\n   let default_branch = git-default-branch\n   let current_branch = git-current-branch\n@@ -50,10 +51,10 @@\n           $in.4: $in.5\n       }\n     }\n   | move branch --after worktree\n-  | insert default' false\n-  | update default' {|row| $row.worktree == (git-default-branch) }\n+  | insert default false\n+  | update default {|row| $row.worktree == (git-default-branch) }\n   | sort-by -c {|a,b|\n       if $b.default {\n         false\n       } else {\n"
+                },
+                {
+                    "date": 1746510998819,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n use utils.nu\n \n export def --env --wrapped git-worktree-add [\n   worktree: string\n-  \n+  --keep-path (-p) = false\n   ...rest\n ] {\n   let default_branch = git-default-branch\n   let current_branch = git-current-branch\n"
+                },
+                {
+                    "date": 1746511043114,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n use common.nu\n use utils.nu\n \n+\n export def --env --wrapped git-worktree-add [\n   worktree: string\n   --keep-path (-p) = false\n   ...rest\n"
+                },
+                {
+                    "date": 1746511050007,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n use common.nu\n use utils.nu\n \n-\n+@category git\n export def --env --wrapped git-worktree-add [\n   worktree: string\n   --keep-path (-p) = false\n   ...rest\n"
+                },
+                {
+                    "date": 1746511058262,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n use common.nu\n use utils.nu\n \n+\n @category git\n export def --env --wrapped git-worktree-add [\n   worktree: string\n   --keep-path (-p) = false\n"
+                },
+                {
+                    "date": 1746511069658,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n use common.nu\n use utils.nu\n \n-\n+# Creates a new worktree\n @category git\n export def --env --wrapped git-worktree-add [\n   worktree: string\n   --keep-path (-p) = false\n"
+                },
+                {
+                    "date": 1746511079716,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,15 @@\n use common.nu\n use utils.nu\n \n-# Creates a new worktree\n-@category git\n+# Creates a new worktree from the current branch\n+#\n+\n+# @category git\n+# @name git-worktree-add\n+# @param worktree The name of the new worktree\n+# @option keep-path (-p) Whether to keep the current path\n+# @param rest The rest of the arguments to pass to git worktree add\n export def --env --wrapped git-worktree-add [\n   worktree: string\n   --keep-path (-p) = false\n   ...rest\n"
+                },
+                {
+                    "date": 1746511101326,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,8 @@\n use utils.nu\n \n # Creates a new worktree from the current branch\n #\n-\n # @category git\n # @name git-worktree-add\n # @param worktree The name of the new worktree\n # @option keep-path (-p) Whether to keep the current path\n"
+                },
+                {
+                    "date": 1746511107219,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,13 +2,8 @@\n use utils.nu\n \n # Creates a new worktree from the current branch\n #\n-# @category git\n-# @name git-worktree-add\n-# @param worktree The name of the new worktree\n-# @option keep-path (-p) Whether to keep the current path\n-# @param rest The rest of the arguments to pass to git worktree add\n export def --env --wrapped git-worktree-add [\n   worktree: string\n   --keep-path (-p) = false\n   ...rest\n"
+                },
+                {
+                    "date": 1746511125985,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,10 @@\n use common.nu\n use utils.nu\n \n # Creates a new worktree from the current branch\n-#\n export def --env --wrapped git-worktree-add [\n-  worktree: string\n+  worktree: string         # The name of the new worktree\n   --keep-path (-p) = false\n   ...rest\n ] {\n   let default_branch = git-default-branch\n"
+                },
+                {
+                    "date": 1746511142191,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,66 @@\n+use common.nu\n+use utils.nu\n+\n+# Creates a new worktree from the current branch\n+\n+export def --env --wrapped git-worktree-add [\n+  worktree: string         # The name of the new worktree\n+  --keep-path (-p) = false # Whether to keep the current path\n+  ...rest\n+] {\n+  let default_branch = git-default-branch\n+  let current_branch = git-current-branch\n+  let relative_path = $env.PWD | path relative-to (git-branch-root)\n+  if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n+    cd (git-worktree-path $default_branch)\n+  }\n+\n+  let worktree_path = git-worktree-path $worktree\n+  ^git worktree add $in ...$rest | complete | print $in.stdout\n+  enter $worktree_path\n+}\n+\n+export def --env git-worktree-remove [\n+  worktree: string\n+  --force (-f) = false\n+] {\n+  if (git-current-branch) == $worktree {\n+    enter (git-default-branch)\n+  }\n+\n+  if $force { '-f '}\n+    | ^git worktree remove $worktree $in | complete | print $in.stdout\n+}\n+\n+export def --env --wrapped git-worktree-use [\n+  worktree: string\n+  ...rest\n+] {\n+}\n+\n+export def git-worktree-list [] {\n+  ^git worktree list --porcelain\n+  | lines\n+  | compact --empty\n+  | chunks 3\n+  | each {\n+      $in\n+      | split row ' '\n+      | {\n+          $in.0: ($in.1 | str replace -r r#'.*/(.*)'# '$1')\n+          path: $in.1\n+          $in.2: $in.3\n+          $in.4: $in.5\n+      }\n+    }\n+  | move branch --after worktree\n+  | insert default false\n+  | update default {|row| $row.worktree == (git-default-branch) }\n+  | sort-by -c {|a,b|\n+      if $b.default {\n+        false\n+      } else {\n+        $a.default or ($a.worktree < $b.worktree)\n+      }\n+    }\n+}\n"
+                },
+                {
+                    "date": 1746511156817,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,66 @@\n+use common.nu\n+use utils.nu\n+\n+# Creates a new worktree from the current branch\n+# and will automatically move into the new worktree\n+export def --env --wrapped git-worktree-add [\n+  worktree: string         # The name of the new worktree\n+  --keep-path (-p) = false # Whether to keep the current path\n+  ...rest\n+] {\n+  let default_branch = git-default-branch\n+  let current_branch = git-current-branch\n+  let relative_path = $env.PWD | path relative-to (git-branch-root)\n+  if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n+    cd (git-worktree-path $default_branch)\n+  }\n+\n+  let worktree_path = git-worktree-path $worktree\n+  ^git worktree add $in ...$rest | complete | print $in.stdout\n+  enter $worktree_path\n+}\n+\n+export def --env git-worktree-remove [\n+  worktree: string\n+  --force (-f) = false\n+] {\n+  if (git-current-branch) == $worktree {\n+    enter (git-default-branch)\n+  }\n+\n+  if $force { '-f '}\n+    | ^git worktree remove $worktree $in | complete | print $in.stdout\n+}\n+\n+export def --env --wrapped git-worktree-use [\n+  worktree: string\n+  ...rest\n+] {\n+}\n+\n+export def git-worktree-list [] {\n+  ^git worktree list --porcelain\n+  | lines\n+  | compact --empty\n+  | chunks 3\n+  | each {\n+      $in\n+      | split row ' '\n+      | {\n+          $in.0: ($in.1 | str replace -r r#'.*/(.*)'# '$1')\n+          path: $in.1\n+          $in.2: $in.3\n+          $in.4: $in.5\n+      }\n+    }\n+  | move branch --after worktree\n+  | insert default false\n+  | update default {|row| $row.worktree == (git-default-branch) }\n+  | sort-by -c {|a,b|\n+      if $b.default {\n+        false\n+      } else {\n+        $a.default or ($a.worktree < $b.worktree)\n+      }\n+    }\n+}\n"
+                },
+                {
+                    "date": 1746511170644,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,66 @@\n+use common.nu\n+use utils.nu\n+\n+# Creates a new worktree from the current branch\n+# and will automatically move into the new worktree\n+export def --env --wrapped git-worktree-add [\n+  worktree: string         # The name of the new worktree\n+  --keep-path (-p) = false # Whether to keep the current relative path when\n+  ...rest\n+] {\n+  let default_branch = git-default-branch\n+  let current_branch = git-current-branch\n+  let relative_path = $env.PWD | path relative-to (git-branch-root)\n+  if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n+    cd (git-worktree-path $default_branch)\n+  }\n+\n+  let worktree_path = git-worktree-path $worktree\n+  ^git worktree add $in ...$rest | complete | print $in.stdout\n+  enter $worktree_path\n+}\n+\n+export def --env git-worktree-remove [\n+  worktree: string\n+  --force (-f) = false\n+] {\n+  if (git-current-branch) == $worktree {\n+    enter (git-default-branch)\n+  }\n+\n+  if $force { '-f '}\n+    | ^git worktree remove $worktree $in | complete | print $in.stdout\n+}\n+\n+export def --env --wrapped git-worktree-use [\n+  worktree: string\n+  ...rest\n+] {\n+}\n+\n+export def git-worktree-list [] {\n+  ^git worktree list --porcelain\n+  | lines\n+  | compact --empty\n+  | chunks 3\n+  | each {\n+      $in\n+      | split row ' '\n+      | {\n+          $in.0: ($in.1 | str replace -r r#'.*/(.*)'# '$1')\n+          path: $in.1\n+          $in.2: $in.3\n+          $in.4: $in.5\n+      }\n+    }\n+  | move branch --after worktree\n+  | insert default false\n+  | update default {|row| $row.worktree == (git-default-branch) }\n+  | sort-by -c {|a,b|\n+      if $b.default {\n+        false\n+      } else {\n+        $a.default or ($a.worktree < $b.worktree)\n+      }\n+    }\n+}\n"
+                },
+                {
+                    "date": 1746511183775,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,10 +4,10 @@\n # Creates a new worktree from the current branch\n # and will automatically move into the new worktree\n export def --env --wrapped git-worktree-add [\n   worktree: string         # The name of the new worktree\n-  --keep-path (-p) = false # Whether to keep the current relative path when\n-  ...rest\n+  --keep-path (-p) = false # Whether to keep the current relative path when entering the new worktree\n+  ...rest                  # The rest of the arguments to pass to git worktree add    \n ] {\n   let default_branch = git-default-branch\n   let current_branch = git-current-branch\n   let relative_path = $env.PWD | path relative-to (git-branch-root)\n@@ -63,201 +63,4 @@\n         $a.default or ($a.worktree < $b.worktree)\n       }\n     }\n }\n-use common.nu\n-use utils.nu\n-\n-# Creates a new worktree from the current branch\n-# and will automatically move into the new worktree\n-export def --env --wrapped git-worktree-add [\n-  worktree: string         # The name of the new worktree\n-  --keep-path (-p) = false # Whether to keep the current path\n-  ...rest\n-] {\n-  let default_branch = git-default-branch\n-  let current_branch = git-current-branch\n-  let relative_path = $env.PWD | path relative-to (git-branch-root)\n-  if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n-    cd (git-worktree-path $default_branch)\n-  }\n-\n-  let worktree_path = git-worktree-path $worktree\n-  ^git worktree add $in ...$rest | complete | print $in.stdout\n-  enter $worktree_path\n-}\n-\n-export def --env git-worktree-remove [\n-  worktree: string\n-  --force (-f) = false\n-] {\n-  if (git-current-branch) == $worktree {\n-    enter (git-default-branch)\n-  }\n-\n-  if $force { '-f '}\n-    | ^git worktree remove $worktree $in | complete | print $in.stdout\n-}\n-\n-export def --env --wrapped git-worktree-use [\n-  worktree: string\n-  ...rest\n-] {\n-}\n-\n-export def git-worktree-list [] {\n-  ^git worktree list --porcelain\n-  | lines\n-  | compact --empty\n-  | chunks 3\n-  | each {\n-      $in\n-      | split row ' '\n-      | {\n-          $in.0: ($in.1 | str replace -r r#'.*/(.*)'# '$1')\n-          path: $in.1\n-          $in.2: $in.3\n-          $in.4: $in.5\n-      }\n-    }\n-  | move branch --after worktree\n-  | insert default false\n-  | update default {|row| $row.worktree == (git-default-branch) }\n-  | sort-by -c {|a,b|\n-      if $b.default {\n-        false\n-      } else {\n-        $a.default or ($a.worktree < $b.worktree)\n-      }\n-    }\n-}\n-use common.nu\n-use utils.nu\n-\n-# Creates a new worktree from the current branch\n-\n-export def --env --wrapped git-worktree-add [\n-  worktree: string         # The name of the new worktree\n-  --keep-path (-p) = false # Whether to keep the current path\n-  ...rest\n-] {\n-  let default_branch = git-default-branch\n-  let current_branch = git-current-branch\n-  let relative_path = $env.PWD | path relative-to (git-branch-root)\n-  if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n-    cd (git-worktree-path $default_branch)\n-  }\n-\n-  let worktree_path = git-worktree-path $worktree\n-  ^git worktree add $in ...$rest | complete | print $in.stdout\n-  enter $worktree_path\n-}\n-\n-export def --env git-worktree-remove [\n-  worktree: string\n-  --force (-f) = false\n-] {\n-  if (git-current-branch) == $worktree {\n-    enter (git-default-branch)\n-  }\n-\n-  if $force { '-f '}\n-    | ^git worktree remove $worktree $in | complete | print $in.stdout\n-}\n-\n-export def --env --wrapped git-worktree-use [\n-  worktree: string\n-  ...rest\n-] {\n-}\n-\n-export def git-worktree-list [] {\n-  ^git worktree list --porcelain\n-  | lines\n-  | compact --empty\n-  | chunks 3\n-  | each {\n-      $in\n-      | split row ' '\n-      | {\n-          $in.0: ($in.1 | str replace -r r#'.*/(.*)'# '$1')\n-          path: $in.1\n-          $in.2: $in.3\n-          $in.4: $in.5\n-      }\n-    }\n-  | move branch --after worktree\n-  | insert default false\n-  | update default {|row| $row.worktree == (git-default-branch) }\n-  | sort-by -c {|a,b|\n-      if $b.default {\n-        false\n-      } else {\n-        $a.default or ($a.worktree < $b.worktree)\n-      }\n-    }\n-}\n-use common.nu\n-use utils.nu\n-\n-# Creates a new worktree from the current branch\n-export def --env --wrapped git-worktree-add [\n-  worktree: string         # The name of the new worktree\n-  --keep-path (-p) = false\n-  ...rest\n-] {\n-  let default_branch = git-default-branch\n-  let current_branch = git-current-branch\n-  let relative_path = $env.PWD | path relative-to (git-branch-root)\n-  if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n-    cd (git-worktree-path $default_branch)\n-  }\n-\n-  let worktree_path = git-worktree-path $worktree\n-  ^git worktree add $in ...$rest | complete | print $in.stdout\n-  enter $worktree_path\n-}\n-\n-export def --env git-worktree-remove [\n-  worktree: string\n-  --force (-f) = false\n-] {\n-  if (git-current-branch) == $worktree {\n-    enter (git-default-branch)\n-  }\n-\n-  if $force { '-f '}\n-    | ^git worktree remove $worktree $in | complete | print $in.stdout\n-}\n-\n-export def --env --wrapped git-worktree-use [\n-  worktree: string\n-  ...rest\n-] {\n-}\n-\n-export def git-worktree-list [] {\n-  ^git worktree list --porcelain\n-  | lines\n-  | compact --empty\n-  | chunks 3\n-  | each {\n-      $in\n-      | split row ' '\n-      | {\n-          $in.0: ($in.1 | str replace -r r#'.*/(.*)'# '$1')\n-          path: $in.1\n-          $in.2: $in.3\n-          $in.4: $in.5\n-      }\n-    }\n-  | move branch --after worktree\n-  | insert default false\n-  | update default {|row| $row.worktree == (git-default-branch) }\n-  | sort-by -c {|a,b|\n-      if $b.default {\n-        false\n-      } else {\n-        $a.default or ($a.worktree < $b.worktree)\n-      }\n-    }\n-}\n"
+                },
+                {
+                    "date": 1746511195164,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,66 @@\n+use common.nu\n+use utils.nu\n+\n+# Creates a new worktree from the current branch\n+# and will automatically move into the new worktree\n+export def --env --wrapped git-worktree-add [\n+  worktree: string         # The name of the new worktree\n+  --keep-path (-p) = false # Whether to keep the current relative path when entering the new worktree\n+  ...rest                  # Optional  arguments to pass to git worktree add\n+] {\n+  let default_branch = git-default-branch\n+  let current_branch = git-current-branch\n+  let relative_path = $env.PWD | path relative-to (git-branch-root)\n+  if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n+    cd (git-worktree-path $default_branch)\n+  }\n+\n+  let worktree_path = git-worktree-path $worktree\n+  ^git worktree add $in ...$rest | complete | print $in.stdout\n+  enter $worktree_path\n+}\n+\n+export def --env git-worktree-remove [\n+  worktree: string\n+  --force (-f) = false\n+] {\n+  if (git-current-branch) == $worktree {\n+    enter (git-default-branch)\n+  }\n+\n+  if $force { '-f '}\n+    | ^git worktree remove $worktree $in | complete | print $in.stdout\n+}\n+\n+export def --env --wrapped git-worktree-use [\n+  worktree: string\n+  ...rest\n+] {\n+}\n+\n+export def git-worktree-list [] {\n+  ^git worktree list --porcelain\n+  | lines\n+  | compact --empty\n+  | chunks 3\n+  | each {\n+      $in\n+      | split row ' '\n+      | {\n+          $in.0: ($in.1 | str replace -r r#'.*/(.*)'# '$1')\n+          path: $in.1\n+          $in.2: $in.3\n+          $in.4: $in.5\n+      }\n+    }\n+  | move branch --after worktree\n+  | insert default false\n+  | update default {|row| $row.worktree == (git-default-branch) }\n+  | sort-by -c {|a,b|\n+      if $b.default {\n+        false\n+      } else {\n+        $a.default or ($a.worktree < $b.worktree)\n+      }\n+    }\n+}\n"
+                },
+                {
+                    "date": 1746511204555,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n # and will automatically move into the new worktree\n export def --env --wrapped git-worktree-add [\n   worktree: string         # The name of the new worktree\n   --keep-path (-p) = false # Whether to keep the current relative path when entering the new worktree\n-  ...rest                  # Optional  arguments to pass to git worktree add\n+  ...rest                  # Optional arguments to pass along to the git worktree add command\n ] {\n   let default_branch = git-default-branch\n   let current_branch = git-current-branch\n   let relative_path = $env.PWD | path relative-to (git-branch-root)\n@@ -63,70 +63,4 @@\n         $a.default or ($a.worktree < $b.worktree)\n       }\n     }\n }\n-use common.nu\n-use utils.nu\n-\n-# Creates a new worktree from the current branch\n-# and will automatically move into the new worktree\n-export def --env --wrapped git-worktree-add [\n-  worktree: string         # The name of the new worktree\n-  --keep-path (-p) = false # Whether to keep the current relative path when entering the new worktree\n-  ...rest                  # The rest of the arguments to pass to git worktree add    \n-] {\n-  let default_branch = git-default-branch\n-  let current_branch = git-current-branch\n-  let relative_path = $env.PWD | path relative-to (git-branch-root)\n-  if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n-    cd (git-worktree-path $default_branch)\n-  }\n-\n-  let worktree_path = git-worktree-path $worktree\n-  ^git worktree add $in ...$rest | complete | print $in.stdout\n-  enter $worktree_path\n-}\n-\n-export def --env git-worktree-remove [\n-  worktree: string\n-  --force (-f) = false\n-] {\n-  if (git-current-branch) == $worktree {\n-    enter (git-default-branch)\n-  }\n-\n-  if $force { '-f '}\n-    | ^git worktree remove $worktree $in | complete | print $in.stdout\n-}\n-\n-export def --env --wrapped git-worktree-use [\n-  worktree: string\n-  ...rest\n-] {\n-}\n-\n-export def git-worktree-list [] {\n-  ^git worktree list --porcelain\n-  | lines\n-  | compact --empty\n-  | chunks 3\n-  | each {\n-      $in\n-      | split row ' '\n-      | {\n-          $in.0: ($in.1 | str replace -r r#'.*/(.*)'# '$1')\n-          path: $in.1\n-          $in.2: $in.3\n-          $in.4: $in.5\n-      }\n-    }\n-  | move branch --after worktree\n-  | insert default false\n-  | update default {|row| $row.worktree == (git-default-branch) }\n-  | sort-by -c {|a,b|\n-      if $b.default {\n-        false\n-      } else {\n-        $a.default or ($a.worktree < $b.worktree)\n-      }\n-    }\n-}\n"
+                },
+                {
+                    "date": 1746511328000,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n export def --env --wrapped git-worktree-add [\n   worktree: string         # The name of the new worktree\n   --keep-path (-p) = false # Whether to keep the current relative path when entering the new worktree\n   ...rest                  # Optional arguments to pass along to the git worktree add command\n-] {\n+]: nothing {\n   let default_branch = git-default-branch\n   let current_branch = git-current-branch\n   let relative_path = $env.PWD | path relative-to (git-branch-root)\n   if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n"
+                },
+                {
+                    "date": 1746511336484,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n export def --env --wrapped git-worktree-add [\n   worktree: string         # The name of the new worktree\n   --keep-path (-p) = false # Whether to keep the current relative path when entering the new worktree\n   ...rest                  # Optional arguments to pass along to the git worktree add command\n-]: nothing {\n+]: nothing ->nothing {\n   let default_branch = git-default-branch\n   let current_branch = git-current-branch\n   let relative_path = $env.PWD | path relative-to (git-branch-root)\n   if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n"
+                },
+                {
+                    "date": 1746511347972,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,13 +2,14 @@\n use utils.nu\n \n # Creates a new worktree from the current branch\n # and will automatically move into the new worktree\n+@\n export def --env --wrapped git-worktree-add [\n   worktree: string         # The name of the new worktree\n   --keep-path (-p) = false # Whether to keep the current relative path when entering the new worktree\n   ...rest                  # Optional arguments to pass along to the git worktree add command\n-]: nothing ->nothing {\n+]: nothing -> nothing {\n   let default_branch = git-default-branch\n   let current_branch = git-current-branch\n   let relative_path = $env.PWD | path relative-to (git-branch-root)\n   if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n"
+                },
+                {
+                    "date": 1746511361268,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n use utils.nu\n \n # Creates a new worktree from the current branch\n # and will automatically move into the new worktree\n-@\n+@category git\n export def --env --wrapped git-worktree-add [\n   worktree: string         # The name of the new worktree\n   --keep-path (-p) = false # Whether to keep the current relative path when entering the new worktree\n   ...rest                  # Optional arguments to pass along to the git worktree add command\n@@ -20,9 +20,12 @@\n   ^git worktree add $in ...$rest | complete | print $in.stdout\n   enter $worktree_path\n }\n \n-export def --env git-worktree-remove [\n+# Removes a worktree\n+# and will automatically move into the default branch\n+@category git\n+export def --env --wrapped git-worktree-remove [\n   worktree: string\n   --force (-f) = false\n ] {\n   if (git-current-branch) == $worktree {\n"
+                },
+                {
+                    "date": 1746511379087,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,12 +20,9 @@\n   ^git worktree add $in ...$rest | complete | print $in.stdout\n   enter $worktree_path\n }\n \n-# Removes a worktree\n-# and will automatically move into the default branch\n-@category git\n-export def --env --wrapped git-worktree-remove [\n+export def --env git-worktree-remove [\n   worktree: string\n   --force (-f) = false\n ] {\n   if (git-current-branch) == $worktree {\n"
+                },
+                {
+                    "date": 1746511384561,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,11 @@\n   ^git worktree add $in ...$rest | complete | print $in.stdout\n   enter $worktree_path\n }\n \n-export def --env git-worktree-remove [\n+# Removes a worktree and will automatically move into the default branch\n+@category git\n+export def --env --wrapped git-worktree-remove [\n   worktree: string\n   --force (-f) = false\n ] {\n   if (git-current-branch) == $worktree {\n"
+                },
+                {
+                    "date": 1746511464558,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,15 +16,16 @@\n     cd (git-worktree-path $default_branch)\n   }\n \n   let worktree_path = git-worktree-path $worktree\n+  \n   ^git worktree add $in ...$rest | complete | print $in.stdout\n   enter $worktree_path\n }\n \n # Removes a worktree and will automatically move into the default branch\n @category git\n-export def --env --wrapped git-worktree-remove [\n+export def --env git-worktree-remove [\n   worktree: string\n   --force (-f) = false\n ] {\n   if (git-current-branch) == $worktree {\n"
+                },
+                {
+                    "date": 1746511505688,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,70 @@\n+use common.nu\n+use utils.nu\n+\n+# Creates a new worktree from the current branch\n+# and will automatically move into the new worktree\n+@category git\n+export def --env --wrapped git-worktree-add [\n+  worktree: string         # The name of the new worktree\n+  --keep-path (-p) = false # Whether to keep the current relative path when entering the new worktree\n+  ...rest                  # Optional arguments to pass along to the git worktree add command\n+]: nothing -> nothing {\n+  let default_branch = git-default-branch\n+  let current_branch = git-current-branch\n+  let relative_path = $env.PWD | path relative-to (git-branch-root)\n+  if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n+    cd (git-worktree-path $default_branch)\n+  }\n+\n+  git-worktree-path $worktree\n+\n+  ^git worktree add $in ...$rest | complete | print $in.stdout\n+  enter $worktree_path\n+}\n+\n+# Removes a worktree and will automatically move into the default branch\n+@category git\n+export def --env git-worktree-remove [\n+  worktree: string\n+  --force (-f) = false\n+] {\n+  if (git-current-branch) == $worktree {\n+    enter (git-default-branch)\n+  }\n+\n+  if $force { '-f '}\n+    | ^git worktree remove $worktree $in | complete | print $in.stdout\n+}\n+\n+export def --env --wrapped git-worktree-use [\n+  worktree: string\n+  ...rest\n+] {\n+}\n+\n+export def git-worktree-list [] {\n+  ^git worktree list --porcelain\n+  | lines\n+  | compact --empty\n+  | chunks 3\n+  | each {\n+      $in\n+      | split row ' '\n+      | {\n+          $in.0: ($in.1 | str replace -r r#'.*/(.*)'# '$1')\n+          path: $in.1\n+          $in.2: $in.3\n+          $in.4: $in.5\n+      }\n+    }\n+  | move branch --after worktree\n+  | insert default false\n+  | update default {|row| $row.worktree == (git-default-branch) }\n+  | sort-by -c {|a,b|\n+      if $b.default {\n+        false\n+      } else {\n+        $a.default or ($a.worktree < $b.worktree)\n+      }\n+    }\n+}\n"
+                },
+                {
+                    "date": 1746511511507,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n     cd (git-worktree-path $default_branch)\n   }\n \n   git-worktree-path $worktree\n-\n+    | if $keep_path {\n   ^git worktree add $in ...$rest | complete | print $in.stdout\n   enter $worktree_path\n }\n \n@@ -67,74 +67,4 @@\n         $a.default or ($a.worktree < $b.worktree)\n       }\n     }\n }\n-use common.nu\n-use utils.nu\n-\n-# Creates a new worktree from the current branch\n-# and will automatically move into the new worktree\n-@category git\n-export def --env --wrapped git-worktree-add [\n-  worktree: string         # The name of the new worktree\n-  --keep-path (-p) = false # Whether to keep the current relative path when entering the new worktree\n-  ...rest                  # Optional arguments to pass along to the git worktree add command\n-]: nothing -> nothing {\n-  let default_branch = git-default-branch\n-  let current_branch = git-current-branch\n-  let relative_path = $env.PWD | path relative-to (git-branch-root)\n-  if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n-    cd (git-worktree-path $default_branch)\n-  }\n-\n-  let worktree_path = git-worktree-path $worktree\n-  \n-  ^git worktree add $in ...$rest | complete | print $in.stdout\n-  enter $worktree_path\n-}\n-\n-# Removes a worktree and will automatically move into the default branch\n-@category git\n-export def --env git-worktree-remove [\n-  worktree: string\n-  --force (-f) = false\n-] {\n-  if (git-current-branch) == $worktree {\n-    enter (git-default-branch)\n-  }\n-\n-  if $force { '-f '}\n-    | ^git worktree remove $worktree $in | complete | print $in.stdout\n-}\n-\n-export def --env --wrapped git-worktree-use [\n-  worktree: string\n-  ...rest\n-] {\n-}\n-\n-export def git-worktree-list [] {\n-  ^git worktree list --porcelain\n-  | lines\n-  | compact --empty\n-  | chunks 3\n-  | each {\n-      $in\n-      | split row ' '\n-      | {\n-          $in.0: ($in.1 | str replace -r r#'.*/(.*)'# '$1')\n-          path: $in.1\n-          $in.2: $in.3\n-          $in.4: $in.5\n-      }\n-    }\n-  | move branch --after worktree\n-  | insert default false\n-  | update default {|row| $row.worktree == (git-default-branch) }\n-  | sort-by -c {|a,b|\n-      if $b.default {\n-        false\n-      } else {\n-        $a.default or ($a.worktree < $b.worktree)\n-      }\n-    }\n-}\n"
+                },
+                {
+                    "date": 1746511519347,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n     cd (git-worktree-path $default_branch)\n   }\n \n   git-worktree-path $worktree\n-    | if $keep_path {\n+    | if $keep_path { $\n   ^git worktree add $in ...$rest | complete | print $in.stdout\n   enter $worktree_path\n }\n \n"
+                },
+                {
+                    "date": 1746511528228,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,10 +17,10 @@\n   }\n \n   git-worktree-path $worktree\n     | if $keep_path { $in | path join $relative_path } else { $in }\n-  ^git worktree add $in ...$rest | complete | print $in.stdout\n-  enter $worktree_path\n+    | do -c { ^git worktree add $in ...$rest }\n+    | enter $worktree\n }\n \n # Removes a worktree and will automatically move into the default branch\n @category git\n"
+                },
+                {
+                    "date": 1746511582476,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n   if $default_branch != $current_branch and (agree $'Not on default branch `($default_branch)`, switch now?') {\n     cd (git-worktree-path $default_branch)\n   }\n \n-  git-worktree-path $worktree\n+  let worktree_path = git-worktree-path $worktree\n \n   ^git worktree add $in ...$rest | complete | print $in.stdout\n   enter $worktree_path\n }\n"
+                }
+            ],
+            "date": 1746491804970,
+            "name": "Commit-0",
+            "content": "use utils.nu\n"
+        }
+    ]
+}

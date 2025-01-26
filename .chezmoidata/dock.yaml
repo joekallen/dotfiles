@@ -1,0 +1,14 @@
+dock:
+  darwin:
+    personal:
+      - /Applications/Google Chrome.app
+      - /Applications/Ghostty.app
+      - /System/Applications/Messages.app
+    work:
+      - /Applications/Google Chrome.app
+      - /Applications/Spark.app
+      - /System/Applications/Calendar.app
+      - /Applications/Slack.app
+      - /Applications/Ghostty.app
+      - /System/Applications/Messages.app
+      - /Applications/OpenVPN Connect.app

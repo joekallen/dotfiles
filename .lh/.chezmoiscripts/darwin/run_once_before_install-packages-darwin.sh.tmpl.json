@@ -1,0 +1,50 @@
+{
+    "sourceFile": ".chezmoiscripts/darwin/run_once_before_install-packages-darwin.sh.tmpl",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 8,
+            "patches": [
+                {
+                    "date": 1746303660729,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746303665951,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n {{- if eq .chezmoi.os \"darwin\" }}\n {{- include \"scripts/darwin-pre-install.sh\" }}\n \n+brew \n {{- end }}\n"
+                },
+                {
+                    "date": 1746303674385,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n {{- if eq .chezmoi.os \"darwin\" }}\n {{- include \"scripts/darwin-pre-install.sh\" }}\n \n-brew \n+brew bundle --file=/dev/\n {{- end }}\n"
+                },
+                {
+                    "date": 1746303799618,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n {{- if eq .chezmoi.os \"darwin\" }}\n {{- include \"scripts/darwin-pre-install.sh\" }}\n \n-brew bundle --file=/dev/\n+brew bundle --cleanup--file=/dev/stdin <<EOF\n+EOF\n {{- end }}\n"
+                },
+                {
+                    "date": 1746303868593,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n {{- if eq .chezmoi.os \"darwin\" }}\n {{- include \"scripts/darwin-pre-install.sh\" }}\n \n-brew bundle --cleanup--file=/dev/stdin <<EOF\n+echo \"🍺  Installing packages with brew...\"\n+brew bundle --cleanup --file=/dev/stdin <<EOF\n EOF\n {{- end }}\n"
+                },
+                {
+                    "date": 1746303892186,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,11 @@\n {{- if eq .chezmoi.os \"darwin\" }}\n {{- include \"scripts/darwin-pre-install.sh\" }}\n-\n+{{- $extra := \"personal\" }}\n+{{- if .chezmoi.config.data.isWorkMachine }}\n+  {{- $extra = \"work\" }}\n+{{- end }}\n+{{- $packages := dig \"packages\" (dict) . }}\n echo \"🍺  Installing packages with brew...\"\n brew bundle --cleanup --file=/dev/stdin <<EOF\n EOF\n {{- end }}\n"
+                },
+                {
+                    "date": 1746303897709,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,13 @@\n {{- if eq .chezmoi.os \"darwin\" }}\n+\n {{- include \"scripts/darwin-pre-install.sh\" }}\n {{- $extra := \"personal\" }}\n {{- if .chezmoi.config.data.isWorkMachine }}\n   {{- $extra = \"work\" }}\n {{- end }}\n {{- $packages := dig \"packages\" (dict) . }}\n+\n echo \"🍺  Installing packages with brew...\"\n brew bundle --cleanup --file=/dev/stdin <<EOF\n EOF\n {{- end }}\n"
+                },
+                {
+                    "date": 1746303939897,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,5 @@\n {{- if eq .chezmoi.os \"darwin\" }}\n-\n {{- include \"scripts/darwin-pre-install.sh\" }}\n {{- $extra := \"personal\" }}\n {{- if .chezmoi.config.data.isWorkMachine }}\n   {{- $extra = \"work\" }}\n"
+                },
+                {
+                    "date": 1746303962991,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,4 @@\n {{- if eq .chezmoi.os \"darwin\" }}\n {{- include \"scripts/darwin-pre-install.sh\" }}\n-{{- $extra := \"personal\" }}\n-{{- if .chezmoi.config.data.isWorkMachine }}\n-  {{- $extra = \"work\" }}\n-{{- end }}\n-{{- $packages := dig \"packages\" (dict) . }}\n \n-echo \"🍺  Installing packages with brew...\"\n-brew bundle --cleanup --file=/dev/stdin <<EOF\n-EOF\n {{- end }}\n"
+                }
+            ],
+            "date": 1746303660729,
+            "name": "Commit-0",
+            "content": "{{- if eq .chezmoi.os \"darwin\" }}\n{{- include \"scripts/darwin-pre-install.sh\" }}\n\n{{- end }}\n"
+        }
+    ]
+}

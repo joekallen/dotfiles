@@ -1,0 +1,58 @@
+{
+    "sourceFile": ".chezmoiignore",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 10,
+            "patches": [
+                {
+                    "date": 1744641293463,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1744641308428,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,4 @@\n+README.md\n+scripts\n+\n+# \n"
+                },
+                {
+                    "date": 1744641314854,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,4 @@\n README.md\n scripts\n \n # \n-README.md\n-scripts\n-\n-# \n"
+                },
+                {
+                    "date": 1744641322023,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,4 @@\n README.md\n scripts\n \n-# \n+# how to pull in work vs personal\n"
+                },
+                {
+                    "date": 1744641328357,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,4 @@\n+README.md\n+scripts\n+\n+# how to pull in work vs personal, and architecture\n"
+                },
+                {
+                    "date": 1746300913899,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,5 @@\n README.md\n scripts\n \n+\n # how to pull in work vs personal, and architecture\n-README.md\n-scripts\n-\n-# how to pull in work vs personal\n"
+                },
+                {
+                    "date": 1746300919152,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,5 @@\n+README.md\n+scripts\n+\n+{{- if }}\n+# how to pull in work vs personal, and architecture\n"
+                },
+                {
+                    "date": 1746300925234,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,5 @@\n README.md\n scripts\n \n-{{- if }}\n+{{- if ne }}\n # how to pull in work vs personal, and architecture\n-README.md\n-scripts\n-\n-\n-# how to pull in work vs personal, and architecture\n"
+                },
+                {
+                    "date": 1746300932359,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n README.md\n scripts\n \n-{{- if ne }}\n+{{- if ne .chezmoi.os \"darwin\" }}\n # how to pull in work vs personal, and architecture\n"
+                },
+                {
+                    "date": 1746300938754,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n README.md\n scripts\n \n {{- if ne .chezmoi.os \"darwin\" }}\n+{{- end }}\n # how to pull in work vs personal, and architecture\n"
+                },
+                {
+                    "date": 1746301249338,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n README.md\n scripts\n \n {{- if ne .chezmoi.os \"darwin\" }}\n+\n {{- end }}\n # how to pull in work vs personal, and architecture\n"
+                }
+            ],
+            "date": 1744641293463,
+            "name": "Commit-0",
+            "content": "README.md\nscripts\n\n# \n"
+        }
+    ]
+}

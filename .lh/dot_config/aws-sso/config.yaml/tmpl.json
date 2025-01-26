@@ -1,0 +1,42 @@
+{
+    "sourceFile": "dot_config/aws-sso/config.yaml/tmpl",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1746390184606,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746390190366,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,2 +1,3 @@\n {{- if .chezmoi.config.data.isWorkMachine }}\n-{{-}}\n+\n+{{- end }}\n"
+                },
+                {
+                    "date": 1746390200236,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,14 @@\n {{- if .chezmoi.config.data.isWorkMachine }}\n-\n+SSOConfig:\n+    Default:\n+        SSORegion: us-west-2\n+        StartUrl: https://subsplash.awsapps.com/start\n+ConsoleDuration: 720\n+CacheRefresh: 168\n+UrlAction: open\n+LogLevel: error\n+HistoryLimit: 10\n+HistoryMinutes: 1440\n+ProfileFormat: \"{{ .AccountIdPad }}:{{ .RoleName }}\"\n+FullTextSearch: true\n {{- end }}\n"
+                },
+                {
+                    "date": 1746390207105,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n {{- if .chezmoi.config.data.isWorkMachine }}\n SSOConfig:\n-    Default:\n-        SSORegion: us-west-2\n-        StartUrl: https://subsplash.awsapps.com/start\n+  Default:\n+    SSORegion: us-west-2\n+    StartUrl: https://subsplash.awsapps.com/start\n ConsoleDuration: 720\n CacheRefresh: 168\n UrlAction: open\n LogLevel: error\n"
+                },
+                {
+                    "date": 1746390348021,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n SSOConfig:\n   Default:\n     SSORegion: us-west-2\n     StartUrl: https://subsplash.awsapps.com/start\n-ConsoleDuration: 720\n+ConsoleDuration: 4\n CacheRefresh: 168\n UrlAction: open\n LogLevel: error\n HistoryLimit: 10\n"
+                },
+                {
+                    "date": 1746390509036,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,10 +2,11 @@\n SSOConfig:\n   Default:\n     SSORegion: us-west-2\n     StartUrl: https://subsplash.awsapps.com/start\n-ConsoleDuration: 4\n+ConsoleDuration: 480\n CacheRefresh: 168\n+AutoConfigCheck:\n UrlAction: open\n LogLevel: error\n HistoryLimit: 10\n HistoryMinutes: 1440\n"
+                },
+                {
+                    "date": 1746390516073,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,10 @@\n     SSORegion: us-west-2\n     StartUrl: https://subsplash.awsapps.com/start\n ConsoleDuration: 480\n CacheRefresh: 168\n-AutoConfigCheck:\n+AutoConfigCheck: true\n+AutoLogin: true\n UrlAction: open\n LogLevel: error\n HistoryLimit: 10\n HistoryMinutes: 1440\n"
+                }
+            ],
+            "date": 1746390184606,
+            "name": "Commit-0",
+            "content": "{{- if .chezmoi.config.data.isWorkMachine }}\n{{-}}\n"
+        }
+    ]
+}

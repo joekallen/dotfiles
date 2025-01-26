@@ -1,0 +1,150 @@
+{
+    "sourceFile": "dot_config/nushell/login.nu.tmpl",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 33,
+            "patches": [
+                {
+                    "date": 1746387473072,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746389126403,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,2 @@\n-# add \n+\n+# add overlays here\n"
+                },
+                {
+                    "date": 1746389135424,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,2 +1,3 @@\n+# make sure global tools are installed\n \n # add overlays here\n"
+                },
+                {
+                    "date": 1746389143008,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,3 @@\n # make sure global tools are installed\n-\n+^mise install \n # add overlays here\n"
+                },
+                {
+                    "date": 1746389149432,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,3 @@\n # make sure global tools are installed\n-^mise install \n+^mise install | ignore\n # add overlays here\n"
+                },
+                {
+                    "date": 1746391149255,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,5 @@\n # make sure global tools are installed\n ^mise install | ignore\n+\n+\n # add overlays here\n"
+                },
+                {
+                    "date": 1746391155290,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n # make sure global tools are installed\n ^mise install | ignore\n+^aws-\n \n-\n # add overlays here\n"
+                },
+                {
+                    "date": 1746391168316,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n # make sure global tools are installed\n ^mise install | ignore\n-^aws-\n+^aws-sso | ignore\n \n # add overlays here\n"
+                },
+                {
+                    "date": 1746391265392,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n # make sure global tools are installed\n ^mise install | ignore\n-^aws-sso | ignore\n+# ^aws-sso | ignore\n \n # add overlays here\n"
+                },
+                {
+                    "date": 1746458751043,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n # make sure global tools are installed\n ^mise install | ignore\n+\n # ^aws-sso | ignore\n \n # add overlays here\n"
+                },
+                {
+                    "date": 1746458758926,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,8 @@\n # make sure global tools are installed\n ^mise install | ignore\n \n+\n+\n # ^aws-sso | ignore\n \n # add overlays here\n"
+                },
+                {
+                    "date": 1746458771248,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n # make sure global tools are installed\n ^mise install | ignore\n \n+# make sure plugins are registered\n \n \n # ^aws-sso | ignore\n \n"
+                },
+                {
+                    "date": 1746459293999,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n # make sure global tools are installed\n ^mise install | ignore\n \n # make sure plugins are registered\n+mise ls | from ssv -n | where column0 =~ \"cargo:nu_plugin*\" | select column0\n \n-\n # ^aws-sso | ignore\n \n # add overlays here\n"
+                },
+                {
+                    "date": 1746459300435,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,11 @@\n # make sure global tools are installed\n ^mise install | ignore\n \n # make sure plugins are registered\n-mise ls | from ssv -n | where column0 =~ \"cargo:nu_plugin*\" | select column0\n+mise ls\n+  | from ssv -n\n+  | where column0 =~ \"cargo:nu_plugin*\" | select column0\n \n # ^aws-sso | ignore\n \n # add overlays here\n"
+                },
+                {
+                    "date": 1746459588775,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,10 @@\n \n # make sure plugins are registered\n mise ls\n   | from ssv -n\n-  | where column0 =~ \"cargo:nu_plugin*\" | select column0\n+  | where column0 =~ \"cargo:nu_plugin*\"\n+  | get column0\n \n # ^aws-sso | ignore\n \n # add overlays here\n"
+                },
+                {
+                    "date": 1746459600207,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,8 @@\n mise ls\n   | from ssv -n\n   | where column0 =~ \"cargo:nu_plugin*\"\n   | get column0\n-\n+  | each {$in | str replace 'cargo:' '' }\n # ^aws-sso | ignore\n \n # add overlays here\n"
+                },
+                {
+                    "date": 1746460189823,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,10 @@\n   | from ssv -n\n   | where column0 =~ \"cargo:nu_plugin*\"\n   | get column0\n   | each {$in | str replace 'cargo:' '' }\n+\n+mise bin-paths | lines | find nu-plugin | each\n+\n # ^aws-sso | ignore\n \n # add overlays here\n"
+                },
+                {
+                    "date": 1746460197060,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,10 @@\n   | where column0 =~ \"cargo:nu_plugin*\"\n   | get column0\n   | each {$in | str replace 'cargo:' '' }\n \n-mise bin-paths | lines | find nu-plugin | each\n+mise bin-paths | lines\n+  | find nu-plugin | each\n \n # ^aws-sso | ignore\n \n # add overlays here\n"
+                },
+                {
+                    "date": 1746460214541,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,10 @@\n   | get column0\n   | each {$in | str replace 'cargo:' '' }\n \n mise bin-paths | lines\n-  | find nu-plugin | each\n+  | find nu-plugin\n+  | each {|\n \n # ^aws-sso | ignore\n \n # add overlays here\n"
+                },
+                {
+                    "date": 1746460220353,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,10 @@\n   | each {$in | str replace 'cargo:' '' }\n \n mise bin-paths | lines\n   | find nu-plugin\n-  | each {|\n+  | each {|path|\n+    \n \n # ^aws-sso | ignore\n \n # add overlays here\n"
+                },
+                {
+                    "date": 1746460818246,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,18 +1,10 @@\n # make sure global tools are installed\n ^mise install | ignore\n \n # make sure plugins are registered\n-mise ls\n-  | from ssv -n\n-  | where column0 =~ \"cargo:nu_plugin*\"\n-  | get column0\n-  | each {$in | str replace 'cargo:' '' }\n \n-mise bin-paths | lines\n-  | find nu-plugin\n-  | each {|path|\n-    \n \n+\n # ^aws-sso | ignore\n \n # add overlays here\n"
+                },
+                {
+                    "date": 1746460825411,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,10 @@\n # make sure global tools are installed\n ^mise install | ignore\n \n # make sure plugins are registered\n+mise bin-paths | lines | find nu-plugin | each {ls $in | get name} | flatten\n \n \n-\n # ^aws-sso | ignore\n \n # add overlays here\n"
+                },
+                {
+                    "date": 1746460830822,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,11 @@\n # make sure global tools are installed\n ^mise install | ignore\n \n # make sure plugins are registered\n-mise bin-paths | lines | find nu-plugin | each {ls $in | get name} | flatten\n+mise bin-paths | lines\n+  | find nu-plugin\n+  | each {ls $in | get name} | flatten\n \n \n # ^aws-sso | ignore\n \n"
+                },
+                {
+                    "date": 1746460837930,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,10 +3,11 @@\n \n # make sure plugins are registered\n mise bin-paths | lines\n   | find nu-plugin\n-  | each {ls $in | get name} | flatten\n+  | each {ls $in | get name}\n+  | flatten\n+  | each {register $in}\n \n-\n # ^aws-sso | ignore\n \n # add overlays here\n"
+                },
+                {
+                    "date": 1746460863125,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,10 @@\n mise bin-paths | lines\n   | find nu-plugin\n   | each {ls $in | get name}\n   | flatten\n-  | each {register $in}\n+  | each {\n+    register $in}\n \n # ^aws-sso | ignore\n \n # add overlays here\n"
+                },
+                {
+                    "date": 1746460877724,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,10 +5,9 @@\n mise bin-paths | lines\n   | find nu-plugin\n   | each {ls $in | get name}\n   | flatten\n-  | each {\n-    register $in}\n+  | each {register $in}\n \n # ^aws-sso | ignore\n \n # add overlays here\n"
+                },
+                {
+                    "date": 1746460882820,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n mise bin-paths | lines\n   | find nu-plugin\n   | each {ls $in | get name}\n   | flatten\n-  | each {register $in}\n+  | each {plugin add $in}\n \n # ^aws-sso | ignore\n \n # add overlays here\n"
+                },
+                {
+                    "date": 1746467666109,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,4 +10,5 @@\n \n # ^aws-sso | ignore\n \n # add overlays here\n+overlay use std/dirs\n"
+                },
+                {
+                    "date": 1746472584279,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,5 +10,5 @@\n \n # ^aws-sso | ignore\n \n # add overlays here\n-overlay use std/dirs\n+use std/dirs\n"
+                },
+                {
+                    "date": 1746488012577,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,14 @@\n+# make sure global tools are installed\n+^mise install | ignore\n+\n+# make sure plugins are registered\n+mise bin-paths | lines\n+  | find nu-plugin\n+  | each {ls $in | get name}\n+  | flatten\n+  | each {plugin add $in}\n+\n+# ^aws-sso | ignore\n+\n+# add overlays here\n+use std/dirs shells-aliases *\n"
+                },
+                {
+                    "date": 1746488046432,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,19 +10,6 @@\n \n # ^aws-sso | ignore\n \n # add overlays here\n-use std/dirs shells-aliases *\n-# make sure global tools are installed\n-^mise install | ignore\n-\n-# make sure plugins are registered\n-mise bin-paths | lines\n-  | find nu-plugin\n-  | each {ls $in | get name}\n-  | flatten\n-  | each {plugin add $in}\n-\n-# ^aws-sso | ignore\n-\n-# add overlays here\n use std/dirs\n+ shells-aliases *\n"
+                },
+                {
+                    "date": 1746488051446,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,5 +11,5 @@\n # ^aws-sso | ignore\n \n # add overlays here\n use std/dirs\n- shells-aliases *\n+use std/dirs shells-aliases *\n"
+                },
+                {
+                    "date": 1746488099053,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,6 +10,5 @@\n \n # ^aws-sso | ignore\n \n # add overlays here\n-use std/dirs\n use std/dirs shells-aliases *\n"
+                },
+                {
+                    "date": 1746543810061,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,4 +11,5 @@\n # ^aws-sso | ignore\n \n # add overlays here\n use std/dirs shells-aliases *\n+\n"
+                }
+            ],
+            "date": 1746387473072,
+            "name": "Commit-0",
+            "content": "# add \n"
+        }
+    ]
+}

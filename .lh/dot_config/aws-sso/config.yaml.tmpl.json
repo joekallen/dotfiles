@@ -1,0 +1,22 @@
+{
+    "sourceFile": "dot_config/aws-sso/config.yaml.tmpl",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1746390811719,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746390817402,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,7 +10,7 @@\n UrlAction: open\n LogLevel: error\n HistoryLimit: 10\n HistoryMinutes: 1440\n-ProfileFormat: {{`{{ .AccountIdPad }}:{{ .RoleName }}`\n+ProfileFormat: {{`{{ .AccountIdPad }}:{{ .RoleName }}`}}\n FullTextSearch: true\n {{- end }}\n"
+                }
+            ],
+            "date": 1746390811719,
+            "name": "Commit-0",
+            "content": "{{- if .chezmoi.config.data.isWorkMachine }}\nSSOConfig:\n  Default:\n    SSORegion: us-west-2\n    StartUrl: https://subsplash.awsapps.com/start\nConsoleDuration: 480\nCacheRefresh: 168\nAutoConfigCheck: true\nAutoLogin: true\nUrlAction: open\nLogLevel: error\nHistoryLimit: 10\nHistoryMinutes: 1440\nProfileFormat: {{ .AccountIdPad }}:{{ .RoleName }}\"\nFullTextSearch: true\n{{- end }}\n"
+        }
+    ]
+}

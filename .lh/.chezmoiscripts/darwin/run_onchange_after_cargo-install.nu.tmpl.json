@@ -1,0 +1,122 @@
+{
+    "sourceFile": ".chezmoiscripts/darwin/run_onchange_after_cargo-install.nu.tmpl",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 26,
+            "patches": [
+                {
+                    "date": 1746456343703,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746456349694,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,2 +1,4 @@\n {{- if eq .chezmoi.os \"darwin\" -}}\n #!/opt/homebrew/bin/nu\n+\n+{{- end }}\n"
+                },
+                {
+                    "date": 1746456374671,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,10 @@\n {{- if eq .chezmoi.os \"darwin\" -}}\n #!/opt/homebrew/bin/nu\n \n+{{- $extra := \"personal\" }}\n+{{- if .chezmoi.config.data.isWorkMachine }}\n+  {{- $extra = \"work\" }}\n {{- end }}\n+\n+\n+{{- end }}\n"
+                },
+                {
+                    "date": 1746456390475,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n {{- if eq .chezmoi.os \"darwin\" -}}\n #!/opt/homebrew/bin/nu\n \n+\n {{- $extra := \"personal\" }}\n {{- if .chezmoi.config.data.isWorkMachine }}\n   {{- $extra = \"work\" }}\n {{- end }}\n"
+                },
+                {
+                    "date": 1746456397473,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n {{- if eq .chezmoi.os \"darwin\" -}}\n #!/opt/homebrew/bin/nu\n \n-\n+# make sure cargo is installed\n {{- $extra := \"personal\" }}\n {{- if .chezmoi.config.data.isWorkMachine }}\n   {{- $extra = \"work\" }}\n {{- end }}\n"
+                },
+                {
+                    "date": 1746456403955,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n {{- if eq .chezmoi.os \"darwin\" -}}\n #!/opt/homebrew/bin/nu\n \n # make sure cargo is installed\n+^mise install cargo\n {{- $extra := \"personal\" }}\n {{- if .chezmoi.config.data.isWorkMachine }}\n   {{- $extra = \"work\" }}\n {{- end }}\n"
+                },
+                {
+                    "date": 1746456409140,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,11 +2,13 @@\n #!/opt/homebrew/bin/nu\n \n # make sure cargo is installed\n ^mise install cargo\n+\n {{- $extra := \"personal\" }}\n {{- if .chezmoi.config.data.isWorkMachine }}\n   {{- $extra = \"work\" }}\n {{- end }}\n \n \n+\n {{- end }}\n"
+                },
+                {
+                    "date": 1746456421779,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,6 +9,7 @@\n   {{- $extra = \"work\" }}\n {{- end }}\n \n \n+{{- $packages := dig \"packages\" (dict) . }}\n \n {{- end }}\n"
+                },
+                {
+                    "date": 1746456426913,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,7 +9,7 @@\n   {{- $extra = \"work\" }}\n {{- end }}\n \n \n-{{- $packages := dig \"packages\" (dict) . }}\n+{{- $packages := dig \"cargo\" (dict) . }}\n \n {{- end }}\n"
+                },
+                {
+                    "date": 1746456463283,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,7 +9,7 @@\n   {{- $extra = \"work\" }}\n {{- end }}\n \n \n-{{- $packages := dig \"cargo\" (dict) . }}\n+{{- $cargo := dig \"cargo\" (dict) . }}\n \n {{- end }}\n"
+                },
+                {
+                    "date": 1746456469585,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,7 +9,8 @@\n   {{- $extra = \"work\" }}\n {{- end }}\n \n \n-{{- $cargo := dig \"cargo\" (dict) . }}\n+{{- $cargoConfig := dig \"cargo\" (dict) . }}\n \n+\n {{- end }}\n"
+                },
+                {
+                    "date": 1746456477311,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,7 +10,7 @@\n {{- end }}\n \n \n {{- $cargoConfig := dig \"cargo\" (dict) . }}\n+{{- $cargoPackages := dig $extra \"cargo\" (list) $cargoConfig }}\n \n-\n {{- end }}\n"
+                },
+                {
+                    "date": 1746456493548,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,7 +10,7 @@\n {{- end }}\n \n \n {{- $cargoConfig := dig \"cargo\" (dict) . }}\n-{{- $cargoPackages := dig $extra \"cargo\" (list) $cargoConfig }}\n+{{- $cargoPackages := concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n \n {{- end }}\n"
+                },
+                {
+                    "date": 1746456503346,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,7 +10,7 @@\n {{- end }}\n \n \n {{- $cargoConfig := dig \"cargo\" (dict) . }}\n-{{- $cargoPackages := concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n+{{- $cargoPackages := concat (dig \"common\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n \n {{- end }}\n"
+                },
+                {
+                    "date": 1746456525783,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,7 +10,7 @@\n {{- end }}\n \n \n {{- $cargoConfig := dig \"cargo\" (dict) . }}\n-{{- $cargoPackages := concat (dig \"common\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n+{{- $cargoPackages := concat (dig \"common\" (list) $packages) }}\n \n {{- end }}\n"
+                },
+                {
+                    "date": 1746456540261,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,7 +10,7 @@\n {{- end }}\n \n \n {{- $cargoConfig := dig \"cargo\" (dict) . }}\n-{{- $cargoPackages := concat (dig \"common\" (list) $packages) }}\n+{{- $cargoPackages := (dig $extra (list) $packages) concat (dig \"common\" (list) $packages) }}\n \n {{- end }}\n"
+                },
+                {
+                    "date": 1746456547132,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,7 +10,7 @@\n {{- end }}\n \n \n {{- $cargoConfig := dig \"cargo\" (dict) . }}\n-{{- $cargoPackages := (dig $extra (list) $packages) concat (dig \"common\" (list) $packages) }}\n+{{- $cargoPackages := (dig $extra (list) $cargoConfig) concat (dig \"common\" (list) $packages) }}\n \n {{- end }}\n"
+                },
+                {
+                    "date": 1746456554979,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,7 +10,7 @@\n {{- end }}\n \n \n {{- $cargoConfig := dig \"cargo\" (dict) . }}\n-{{- $cargoPackages := (dig $extra (list) $cargoConfig) concat (dig \"common\" (list) $packages) }}\n+{{- $cargoPackages := (dig $extra (list) $cargoConfig) concat (dig \"common\" (list) $cargoConfig) }}\n \n {{- end }}\n"
+                },
+                {
+                    "date": 1746456774949,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,7 +10,7 @@\n {{- end }}\n \n \n {{- $cargoConfig := dig \"cargo\" (dict) . }}\n-{{- $cargoPackages := (dig $extra (list) $cargoConfig) concat (dig \"common\" (list) $cargoConfig) }}\n+{{- $cargoPackages := ((dig $extra (list) $cargoConfig) concat (dig \"common\" (list) $cargoConfig) }}\n \n {{- end }}\n"
+                },
+                {
+                    "date": 1746456811440,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,7 +10,8 @@\n {{- end }}\n \n \n {{- $cargoConfig := dig \"cargo\" (dict) . }}\n-{{- $cargoPackages := ((dig $extra (list) $cargoConfig) concat (dig \"common\" (list) $cargoConfig) }}\n+{{- $cargoPackages := ((dig $extra (list) $cargoConfig) concat (dig \"common\" (list) $cargoConfig)) | uniq }}\n \n+\n {{- end }}\n"
+                },
+                {
+                    "date": 1746456820332,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,6 +12,7 @@\n \n {{- $cargoConfig := dig \"cargo\" (dict) . }}\n {{- $cargoPackages := ((dig $extra (list) $cargoConfig) concat (dig \"common\" (list) $cargoConfig)) | uniq }}\n \n-\n+{{- range $cargoPackages }}\n+  \n {{- end }}\n"
+                },
+                {
+                    "date": 1746456836044,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,6 +13,6 @@\n {{- $cargoConfig := dig \"cargo\" (dict) . }}\n {{- $cargoPackages := ((dig $extra (list) $cargoConfig) concat (dig \"common\" (list) $cargoConfig)) | uniq }}\n \n {{- range $cargoPackages }}\n-  \n+  do -c {\n {{- end }}\n"
+                },
+                {
+                    "date": 1746456843227,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,6 +13,6 @@\n {{- $cargoConfig := dig \"cargo\" (dict) . }}\n {{- $cargoPackages := ((dig $extra (list) $cargoConfig) concat (dig \"common\" (list) $cargoConfig)) | uniq }}\n \n {{- range $cargoPackages }}\n-  do -c {\n+  do -c { cargo install \n {{- end }}\n"
+                },
+                {
+                    "date": 1746456849654,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,6 +13,6 @@\n {{- $cargoConfig := dig \"cargo\" (dict) . }}\n {{- $cargoPackages := ((dig $extra (list) $cargoConfig) concat (dig \"common\" (list) $cargoConfig)) | uniq }}\n \n {{- range $cargoPackages }}\n-  do -c { cargo install \n+  do -c { cargo install {{}}\n {{- end }}\n"
+                },
+                {
+                    "date": 1746457027027,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,6 +13,7 @@\n {{- $cargoConfig := dig \"cargo\" (dict) . }}\n {{- $cargoPackages := ((dig $extra (list) $cargoConfig) concat (dig \"common\" (list) $cargoConfig)) | uniq }}\n \n {{- range $cargoPackages }}\n-  do -c { cargo install {{}}\n+  do -c { cargo install {{ . }} }\n {{- end }}\n+{{- end \n"
+                },
+                {
+                    "date": 1746457075159,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,10 +10,10 @@\n {{- end }}\n \n \n {{- $cargoConfig := dig \"cargo\" (dict) . }}\n-{{- $cargoPackages := ((dig $extra (list) $cargoConfig) concat (dig \"common\" (list) $cargoConfig)) | uniq }}\n+{{- $cargoPackages := ((dig $extra (list) $cargoConfig) (dig \"common\" (list) $cargoConfig)) | uniq }}\n \n {{- range $cargoPackages }}\n-  do -c { cargo install {{ . }} }\n+do -c { cargo install {{ . }} }\n {{- end }}\n-{{- end \n+{{- end }}\n"
+                },
+                {
+                    "date": 1746457089671,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n {{- end }}\n \n \n {{- $cargoConfig := dig \"cargo\" (dict) . }}\n-{{- $cargoPackages := ((dig $extra (list) $cargoConfig) (dig \"common\" (list) $cargoConfig)) | uniq }}\n+{{- $cargoPackages := (concat (dig $extra (list) $cargoConfig) (dig \"common\" (list) $cargoConfig)) | uniq }}\n \n {{- range $cargoPackages }}\n do -c { cargo install {{ . }} }\n {{- end }}\n"
+                }
+            ],
+            "date": 1746456343703,
+            "name": "Commit-0",
+            "content": "{{- if eq .chezmoi.os \"darwin\" -}}\n#!/opt/homebrew/bin/nu\n"
+        }
+    ]
+}

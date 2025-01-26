@@ -1,0 +1,26 @@
+{
+    "sourceFile": "dot_config/nushell/autoload/git/mod.nu",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1746543118932,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746543124945,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,2 @@\n-export use \n+export use utils.nu *\n+\n"
+                },
+                {
+                    "date": 1746543132312,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,2 +1,1 @@\n export use utils.nu *\n-\n"
+                }
+            ],
+            "date": 1746543118932,
+            "name": "Commit-0",
+            "content": "export use \n"
+        }
+    ]
+}

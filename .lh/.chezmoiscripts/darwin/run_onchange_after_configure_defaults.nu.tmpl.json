@@ -1,0 +1,50 @@
+{
+    "sourceFile": ".chezmoiscripts/darwin/run_onchange_after_configure_defaults.nu.tmpl",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 8,
+            "patches": [
+                {
+                    "date": 1744446428970,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746303450477,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n #!/opt/homebrew/bin/nu\n \n-{{- if eq .chezmoi.os \"darwin\" }}\n-defaults write com.apple.dock autohide -int 1\n-{{- end }}\n+#{{- if eq .chezmoi.os \"darwin\" }}\n+#defaults write com.apple.dock autohide -int 1\n+#{{- end }}\n"
+                },
+                {
+                    "date": 1746325753559,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-#!/opt/homebrew/bin/nu\n \n #{{- if eq .chezmoi.os \"darwin\" }}\n+#!/opt/homebrew/bin/nu\n #defaults write com.apple.dock autohide -int 1\n #{{- end }}\n"
+                },
+                {
+                    "date": 1746325760043,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n \n-#{{- if eq .chezmoi.os \"darwin\" }}\n-#!/opt/homebrew/bin/nu\n-#defaults write com.apple.dock autohide -int 1\n-#{{- end }}\n+{{- if eq .chezmoi.os \"darwin\" }}\n+!/opt/homebrew/bin/nu\n+defaults write com.apple.dock autohide -int 1\n+{{- end }}\n"
+                },
+                {
+                    "date": 1746325888811,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n-\n {{- if eq .chezmoi.os \"darwin\" }}\n !/opt/homebrew/bin/nu\n+print \" Configuring dock...\"\n+\n defaults write com.apple.dock autohide -int 1\n {{- end }}\n"
+                },
+                {
+                    "date": 1746325968633,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,5 +2,7 @@\n !/opt/homebrew/bin/nu\n print \" Configuring dock...\"\n \n defaults write com.apple.dock autohide -int 1\n+\n+\n {{- end }}\n"
+                },
+                {
+                    "date": 1746326144852,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n {{- if eq .chezmoi.os \"darwin\" }}\n-!/opt/homebrew/bin/nu\n+#!/opt/homebrew/bin/nu\n print \" Configuring dock...\"\n \n defaults write com.apple.dock autohide -int 1\n \n"
+                },
+                {
+                    "date": 1746327083225,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n {{- if eq .chezmoi.os \"darwin\" }}\n #!/opt/homebrew/bin/nu\n-print \" Configuring dock...\"\n+#print \" Configuring dock...\"\n \n-defaults write com.apple.dock autohide -int 1\n+#defaults write com.apple.dock autohide -int 1\n \n-\n+a\n {{- end }}\n"
+                },
+                {
+                    "date": 1746327089462,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +0,0 @@\n-{{- if eq .chezmoi.os \"darwin\" }}\n-#!/opt/homebrew/bin/nu\n-#print \" Configuring dock...\"\n-\n-#defaults write com.apple.dock autohide -int 1\n-\n-a\n-{{- end }}\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1744446428970,
+            "name": "Commit-0",
+            "content": "#!/opt/homebrew/bin/nu\n\n{{- if eq .chezmoi.os \"darwin\" }}\ndefaults write com.apple.dock autohide -int 1\n{{- end }}\n"
+        }
+    ]
+}

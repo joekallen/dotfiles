@@ -1,0 +1,98 @@
+{
+    "sourceFile": "Brewfile.self",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 20,
+            "patches": [
+                {
+                    "date": 1746258553656,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746258560159,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-brew 'carapace\n+carapace\n chezmoi\n direnv\n docutils\n eza\n"
+                },
+                {
+                    "date": 1746258567298,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,17 +1,17 @@\n-carapace\n-chezmoi\n-direnv\n-docutils\n-eza\n-git\n-fzf\n-lazygit\n-mas\n-mise\n-mods\n-nushell\n-podman\n-ripgrep\n-sevenzip\n-starship\n-wget\n+brew 'carapace\n+brew 'chezmoi\n+brew 'direnv\n+brew 'docutils\n+brew 'eza\n+brew 'git\n+brew 'fzf\n+brew 'lazygit\n+brew 'mas\n+brew 'mise\n+brew 'mods\n+brew 'nushell\n+brew 'podman\n+brew 'ripgrep\n+brew 'sevenzip\n+brew 'starship\n+brew 'wget\n"
+                },
+                {
+                    "date": 1746258573414,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,17 +1,16 @@\n-brew 'carapace\n-brew 'chezmoi\n-brew 'direnv\n-brew 'docutils\n-brew 'eza\n-brew 'git\n-brew 'fzf\n-brew 'lazygit\n-brew 'mas\n-brew 'mise\n-brew 'mods\n-brew 'nushell\n-brew 'podman\n-brew 'ripgrep\n-brew 'sevenzip\n-brew 'starship\n-brew 'wget\n+brew 'carapace'\n+brew 'chezmoi'\n+brew 'direnv'\n+brew 'eza'\n+brew 'git'\n+brew 'fzf'\n+brew 'lazygit'\n+brew 'mas'\n+brew 'mise'\n+brew 'mods'\n+brew 'nushell'\n+brew 'podman'\n+brew 'ripgrep'\n+brew 'sevenzip'\n+brew 'starship'\n+brew 'wget'\n"
+                },
+                {
+                    "date": 1746258584397,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,7 @@\n brew 'carapace'\n brew 'chezmoi'\n brew 'direnv'\n-brew 'eza'\n brew 'git'\n brew 'fzf'\n brew 'lazygit'\n brew 'mas'\n"
+                },
+                {
+                    "date": 1746258597450,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,8 @@\n brew 'carapace'\n brew 'chezmoi'\n brew 'direnv'\n brew 'git'\n-brew 'fzf'\n brew 'lazygit'\n brew 'mas'\n brew 'mise'\n brew 'mods'\n"
+                },
+                {
+                    "date": 1746258618430,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,8 @@\n brew 'carapace'\n brew 'chezmoi'\n brew 'direnv'\n brew 'git'\n-brew 'lazygit'\n brew 'mas'\n brew 'mise'\n brew 'mods'\n brew 'nushell'\n"
+                },
+                {
+                    "date": 1746258636252,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,8 +6,7 @@\n brew 'mise'\n brew 'mods'\n brew 'nushell'\n brew 'podman'\n-brew 'ripgrep'\n brew 'sevenzip'\n brew 'starship'\n brew 'wget'\n"
+                },
+                {
+                    "date": 1746258690359,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n brew 'carapace'\n brew 'chezmoi'\n brew 'direnv'\n brew 'git'\n+\n brew 'mas'\n brew 'mise'\n brew 'mods'\n brew 'nushell'\n"
+                },
+                {
+                    "date": 1746258704100,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,13 @@\n brew 'carapace'\n brew 'chezmoi'\n brew 'direnv'\n brew 'git'\n-\n brew 'mas'\n brew 'mise'\n brew 'mods'\n brew 'nushell'\n brew 'podman'\n brew 'sevenzip'\n brew 'starship'\n+\n brew 'wget'\n"
+                },
+                {
+                    "date": 1746258846845,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,6 +8,7 @@\n brew 'nushell'\n brew 'podman'\n brew 'sevenzip'\n brew 'starship'\n+brew 'watch\n+brew 'wget'\n \n-brew 'wget'\n"
+                },
+                {
+                    "date": 1746258855806,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,26 @@\n+brew 'carapace'\n+brew 'chezmoi'\n+brew 'direnv'\n+brew 'git'\n+brew 'mas'\n+brew 'mise'\n+brew 'mods'\n+brew 'nushell'\n+brew 'podman'\n+brew 'sevenzip'\n+brew 'starship'\n+brew 'watch\n+brew 'wget'\n+\n+cas1password\n+cas1password-cli\n+casaptakube\n+casghostty\n+casgimp\n+casgoogle-chrome\n+casdiscord\n+casfont-fira-code\n+casfont-fira-code-nerd-font\n+casraycast\n+casslack\n+casvisual-studio-code\n"
+                },
+                {
+                    "date": 1746259107739,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,30 +11,17 @@\n brew 'starship'\n brew 'watch\n brew 'wget'\n \n-cas1password\n-cas1password-cli\n-casaptakube\n-casghostty\n-casgimp\n-casgoogle-chrome\n-casdiscord\n-casfont-fira-code\n-casfont-fira-code-nerd-font\n-casraycast\n-casslack\n-casvisual-studio-code\n-brew 'carapace'\n-brew 'chezmoi'\n-brew 'direnv'\n-brew 'git'\n-brew 'mas'\n-brew 'mise'\n-brew 'mods'\n-brew 'nushell'\n-brew 'podman'\n-brew 'sevenzip'\n-brew 'starship'\n-brew 'watch\n-brew 'wget'\n-\n+casks '1password'\n+casks '1password-cli'\n+casks 'aptakube'\n+casks 'ghostty'\n+casks 'gimp'\n+casks 'google-chrome'\n+casks 'discord'\n+casks 'font-fira-code'\n+casks 'font-fira-code-nerd-font'\n+casks 'raycast'\n+casks 'slack'\n+syncthing\n+casks 'visual-studio-code'\n"
+                },
+                {
+                    "date": 1746259113042,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,6 +22,6 @@\n casks 'font-fira-code'\n casks 'font-fira-code-nerd-font'\n casks 'raycast'\n casks 'slack'\n-syncthing\n+cases 'syncthing'\n casks 'visual-studio-code'\n"
+                },
+                {
+                    "date": 1746259197817,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,4 +24,5 @@\n casks 'raycast'\n casks 'slack'\n cases 'syncthing'\n casks 'visual-studio-code'\n+\n"
+                },
+                {
+                    "date": 1746259207383,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,4 +25,5 @@\n casks 'slack'\n cases 'syncthing'\n casks 'visual-studio-code'\n \n+# personal specific b\n"
+                },
+                {
+                    "date": 1746259221818,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,33 @@\n+brew 'carapace'\n+brew 'chezmoi'\n+brew 'direnv'\n+brew 'git'\n+brew 'mas'\n+brew 'mise'\n+brew 'mods'\n+brew 'nushell'\n+brew 'podman'\n+brew 'sevenzip'\n+brew 'starship'\n+brew 'watch\n+brew 'wget'\n+\n+casks '1password'\n+casks '1password-cli'\n+casks 'aptakube'\n+casks 'ghostty'\n+casks 'gimp'\n+casks 'google-chrome'\n+casks 'discord'\n+casks 'font-fira-code'\n+casks 'font-fira-code-nerd-font'\n+casks 'raycast'\n+casks 'slack'\n+cases 'syncthing'\n+casks 'visual-studio-code'\n+\n+# personal specific brews\n+\n+# personal specific casks\n+casks '# godot\n+        - geequlim.godot-tools\n"
+                },
+                {
+                    "date": 1746259228064,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,35 +28,5 @@\n \n # personal specific brews\n \n # personal specific casks\n-casks '# godot\n-        - geequlim.godot-tools\n-brew 'carapace'\n-brew 'chezmoi'\n-brew 'direnv'\n-brew 'git'\n-brew 'mas'\n-brew 'mise'\n-brew 'mods'\n-brew 'nushell'\n-brew 'podman'\n-brew 'sevenzip'\n-brew 'starship'\n-brew 'watch\n-brew 'wget'\n-\n-casks '1password'\n-casks '1password-cli'\n-casks 'aptakube'\n-casks 'ghostty'\n-casks 'gimp'\n-casks 'google-chrome'\n-casks 'discord'\n-casks 'font-fira-code'\n-casks 'font-fira-code-nerd-font'\n-casks 'raycast'\n-casks 'slack'\n-cases 'syncthing'\n-casks 'visual-studio-code'\n-\n-# personal specific b\n+casks 'geequlim.godot-tools\n"
+                },
+                {
+                    "date": 1746259235277,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,5 +28,7 @@\n \n # personal specific brews\n \n # personal specific casks\n-casks 'geequlim.godot-tools\n+\n+# godot\n+casks 'geequlim.godot-tools'\n"
+                },
+                {
+                    "date": 1746259285266,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n casks 'font-fira-code'\n casks 'font-fira-code-nerd-font'\n casks 'raycast'\n casks 'slack'\n-cases 'syncthing'\n+cass 'syncthing'\n casks 'visual-studio-code'\n \n # personal specific brews\n \n"
+                },
+                {
+                    "date": 1746259291902,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,13 +22,13 @@\n casks 'font-fira-code'\n casks 'font-fira-code-nerd-font'\n casks 'raycast'\n casks 'slack'\n-cass 'syncthing'\n+casks 'syncthing'\n casks 'visual-studio-code'\n \n # personal specific brews\n \n # personal specific casks\n+casks 'geequlim.godot-tools'\n \n # godot\n-casks 'geequlim.godot-tools'\n"
+                }
+            ],
+            "date": 1746258553656,
+            "name": "Commit-0",
+            "content": "brew 'carapace\nchezmoi\ndirenv\ndocutils\neza\ngit\nfzf\nlazygit\nmas\nmise\nmods\nnushell\npodman\nripgrep\nsevenzip\nstarship\nwget\n"
+        }
+    ]
+}

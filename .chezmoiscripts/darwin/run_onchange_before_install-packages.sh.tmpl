@@ -1,0 +1,35 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+
+{{- $extra := "personal" }}
+{{- if .chezmoi.config.data.isWorkMachine }}
+  {{- $extra = "work" }}
+{{- end }}
+
+{{- $packages := dig "packages" (dict) . }}
+
+{{- $brews := (concat (dig "common" "brews" (list) $packages) (dig $extra "brews" (list) $packages)) | uniq }}
+{{- $casks := (concat (dig "common" "casks" (list) $packages) (dig $extra "casks" (list) $packages)) | uniq }}
+{{- $taps := (concat (dig "common" "taps" (list) $packages) (dig $extra "taps" (list) $packages)) | uniq }}
+{{- $vscode := (concat (dig "common" "vscode" (list) $packages) (dig $extra "vscode" (list) $packages)) | uniq }}
+
+#brew bundle --cleanup --file=/dev/stdin <<EOF
+echo "🍺  Installing packages with brew..."
+brew bundle --file=/dev/stdin <<EOF
+{{- range $taps }}
+  {{- $parts := splitList "," . }}
+  {{- $wrapped_parts := (list) }}
+  {{- range $parts }}{{ $wrapped_parts = append $wrapped_parts (. | trim | squote ) }}{{- end }}
+  tap {{ $wrapped_parts | join "," }}
+{{- end }}
+{{- range $brews }}
+  brew {{ . | squote }}
+{{- end }}
+{{- range $casks }}
+  cask {{ . | squote }}
+{{- end }}
+{{- range $vscode }}
+  vscode {{ . | squote }}
+{{- end }}
+EOF
+{{- end }}

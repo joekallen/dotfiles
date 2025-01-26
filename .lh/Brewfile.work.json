@@ -1,0 +1,42 @@
+{
+    "sourceFile": "Brewfile.work",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1746258722675,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746258769943,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,4 +10,5 @@\n brew 'sevenzip'\n brew 'starship'\n brew 'watch\n brew 'wget'\n+\n"
+                },
+                {
+                    "date": 1746258779960,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,4 +11,7 @@\n brew 'starship'\n brew 'watch\n brew 'wget'\n \n+# work specific brews\n+kubelogin\n+        - terraform-docs\n"
+                },
+                {
+                    "date": 1746258788622,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,6 +12,6 @@\n brew 'watch\n brew 'wget'\n \n # work specific brews\n-kubelogin\n-        - terraform-docs\n+brew 'kubelogin\n+brew 'terraform-docs\n"
+                },
+                {
+                    "date": 1746258829250,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,18 @@\n+brew 'carapace'\n+brew 'chezmoi'\n+brew 'direnv'\n+brew 'git'\n+brew 'mas'\n+brew 'mise'\n+brew 'mods'\n+brew 'nushell'\n+brew 'podman'\n+brew 'sevenzip'\n+brew 'starship'\n+brew 'watch\n+brew 'wget'\n+\n+# work specific brews\n+\n+brew 'kubelogin'\n+brew 'terraform-docs'\n"
+                },
+                {
+                    "date": 1746258866538,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,24 +12,6 @@\n brew 'watch\n brew 'wget'\n \n # work specific brews\n-\n brew 'kubelogin'\n brew 'terraform-docs'\n-brew 'carapace'\n-brew 'chezmoi'\n-brew 'direnv'\n-brew 'git'\n-brew 'mas'\n-brew 'mise'\n-brew 'mods'\n-brew 'nushell'\n-brew 'podman'\n-brew 'sevenzip'\n-brew 'starship'\n-brew 'watch\n-brew 'wget'\n-\n-# work specific brews\n-brew 'kubelogin\n-brew 'terraform-docs\n"
+                },
+                {
+                    "date": 1746258896550,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,12 +11,8 @@\n brew 'starship'\n brew 'watch\n brew 'wget'\n \n-# work specific brews\n-brew 'kubelogin'\n-brew 'terraform-docs'\n-\n casks '1password'\n casks '1password-cli'\n casks 'aptakube'\n casks 'ghostty'\n"
+                }
+            ],
+            "date": 1746258722675,
+            "name": "Commit-0",
+            "content": "brew 'carapace'\nbrew 'chezmoi'\nbrew 'direnv'\nbrew 'git'\nbrew 'mas'\nbrew 'mise'\nbrew 'mods'\nbrew 'nushell'\nbrew 'podman'\nbrew 'sevenzip'\nbrew 'starship'\nbrew 'watch\nbrew 'wget'\n"
+        }
+    ]
+}

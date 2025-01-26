@@ -1,0 +1,18 @@
+{
+    "sourceFile": ".vscode/settings.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1746110236381,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1746110236381,
+            "name": "Commit-0",
+            "content": "{\n  \"go.goroot\": \"/Users/joeallen/.local/share/mise/installs/go/1.21.13\",\n  \"debug.javascript.defaultRuntimeExecutable\": {\n    \"pwa-node\": \"/Users/joeallen/.local/share/mise/shims/node\"\n  },\n  \"python.defaultInterpreterPath\": \"/Users/joeallen/.local/share/mise/installs/aws-cli/2.26.2/aws-cli.pkg/Payload/aws-cli/python\",\n  \"go.alternateTools\": {\n    \"go\": \"/Users/joeallen/.local/share/mise/shims/go\",\n    \"gopls\": \"/Users/joeallen/.local/share/mise/shims/gopls\"\n  }\n}\n"
+        }
+    ]
+}

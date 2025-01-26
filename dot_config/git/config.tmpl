@@ -1,0 +1,55 @@
+[alias]
+        lg = log --color --graph --pretty=format{{ .chezmoi.pathListSeparator }}'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+        amend = commit --amend
+        dc = diff --cached
+        diff = diff --word-diff
+        fp = "!f() { {{ .chezmoi.config.git.command }} fetch --prune; }; f"
+        la = !{{ .chezmoi.config.git.command }} config -l | grep alias | cut -c 7-
+        lt = describe --tags --abbrev=0
+        undo = "!f() { {{ .chezmoi.config.git.command }} checkout HEAD -- $1; }; f"
+        save = "!f() { {{ .chezmoi.config.git.command }} commit -m \"$@\"; }; f"
+        st = status -s
+        unstage = reset --
+        unstage-all = reset HEAD
+        rb = rebase -i --root
+[user]
+	email = {{ .email }}
+	name = {{ .name }}
+[tag]
+	forceSignAnnotated = false
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+[merge]
+	tool = Kaleidoscope
+	ff = only
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --{{ .chezmoi.config.status.pathStyle }}-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+	trustExitCode = true
+[mergetool]
+	prompt = false
+	keepBackup = false
+[diff]
+	tool = Kaleidoscope
+	colorMoved = zebra
+[core]
+{{- if .chezmoi.config.data.isWorkMachine }}
+	editor = cursor --wait
+{{- else }}
+	editor = code --wait
+{{- end }}
+	excludesFile = ~{{ .chezmoi.pathSeparator }}.gitignore
+[init]
+	defaultBranch = main
+[url "git@subsplash.io:"]
+	insteadOf = https://subsplash.io/
+[pull]
+	rebase = true
+[fetch]
+	prune = true
+[push]
+	autoSetupRemote = true
+[worktree]
+	guessRemote = true

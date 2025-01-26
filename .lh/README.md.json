@@ -1,0 +1,50 @@
+{
+    "sourceFile": "README.md",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 8,
+            "patches": [
+                {
+                    "date": 1746297688236,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746297694297,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,4 +11,5 @@\n echo '📦  Installing dotfiles' && /bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/joekallen/dotfiles/refs/heads/main/scripts/install.sh)\"\n \n ```\n \n+##\n"
+                },
+                {
+                    "date": 1746297699824,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,5 +11,6 @@\n echo '📦  Installing dotfiles' && /bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/joekallen/dotfiles/refs/heads/main/scripts/install.sh)\"\n \n ```\n \n-##\n+## Navigating\n+\n"
+                },
+                {
+                    "date": 1746297791874,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,4 +13,5 @@\n ```\n \n ## Navigating\n \n+Most \n"
+                },
+                {
+                    "date": 1746297811966,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,5 +13,5 @@\n ```\n \n ## Navigating\n \n-Most \n+All software \n"
+                },
+                {
+                    "date": 1746297834252,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,5 +13,5 @@\n ```\n \n ## Navigating\n \n-All software \n+All software to install is done through brew, mise and nushell.\n"
+                },
+                {
+                    "date": 1746297852115,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,5 +13,5 @@\n ```\n \n ## Navigating\n \n-All software to install is done through brew, mise and nushell.\n+All software to install is done through brew, mise and nushell. Each one\n"
+                },
+                {
+                    "date": 1746297857391,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,5 +13,5 @@\n ```\n \n ## Navigating\n \n-All software to install is done through brew, mise and nushell. Each one will for\n+All software to install is done through brew, mise and nushell. Each one will fo\n"
+                },
+                {
+                    "date": 1746298115014,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n ```\n \n ## Navigating\n \n-All software to install is done through brew, mise and nushell. The structure is descibed [here](#format) and configuration is \n+All software to install is done through brew, mise and nushell. The structure is descibed [here](#format) and configuration locations are listed p\n \n below, but work and personal packages contain only distinct differences, this was mainly done to avoid having to remember to add/remove a package in multiple places.\n \n ### Locations\n"
+                }
+            ],
+            "date": 1746297688236,
+            "name": "Commit-0",
+            "content": "# Dotfiles\n\n## Setup\n\nThese dotfiles are managed with [chezmoi](https://github.com/twpayne/chezmoi).\n\nRun the following command, which grabs and runs the setup script. The setup script is\npart of the chezmoi configuration, but this executes part of itself as a bootstrap.\n\n```sh\necho '📦  Installing dotfiles' && /bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/joekallen/dotfiles/refs/heads/main/scripts/install.sh)\"\n\n```\n\n"
+        }
+    ]
+}

@@ -1,0 +1,46 @@
+{
+    "sourceFile": "Brewfile.tmpl",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1746295861082,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746295871490,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,11 @@\n-\n-{{- if eq .chezmoi.os \"darwin\" }}\n-{{- $packages := dig \"darwin\" \"packages\" (dict) . }}\n {{- $extra := \"personal\" }}\n {{- if .chezmoi.config.data.isWorkMachine }}\n   {{- $extra = \"work\" }}\n {{- end }}\n+\n+{{- if eq .chezmoi.os \"darwin\" }}\n+{{- $packages := dig \"darwin\" \"packages\" (dict) . }}\n {{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n brew {{ . | squote }}\n {{- end }}\n {{- range concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n"
+                },
+                {
+                    "date": 1746295914071,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,8 @@\n {{- if .chezmoi.config.data.isWorkMachine }}\n   {{- $extra = \"work\" }}\n {{- end }}\n \n-{{- if eq .chezmoi.os \"darwin\" }}\n {{- $packages := dig \"darwin\" \"packages\" (dict) . }}\n {{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n brew {{ . | squote }}\n {{- end }}\n"
+                },
+                {
+                    "date": 1746295936221,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,9 @@\n {{- $extra := \"personal\" }}\n {{- if .chezmoi.config.data.isWorkMachine }}\n   {{- $extra = \"work\" }}\n {{- end }}\n-\n-{{- $packages := dig \"darwin\" \"packages\" (dict) . }}\n+{{- $packages := dig \"packages\" (dict) . }}\n {{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n brew {{ . | squote }}\n {{- end }}\n {{- range concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n@@ -12,5 +11,4 @@\n {{- end }}\n {{- range concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n vscode {{ . | squote }}\n {{- end }}\n-{{- end }}\n"
+                },
+                {
+                    "date": 1746303966494,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,4 +11,14 @@\n {{- end }}\n {{- range concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n vscode {{ . | squote }}\n {{- end }}\n+\n+{{- $extra := \"personal\" }}\n+{{- if .chezmoi.config.data.isWorkMachine }}\n+  {{- $extra = \"work\" }}\n+{{- end }}\n+{{- $packages := dig \"packages\" (dict) . }}\n+\n+echo \"🍺  Installing packages with brew...\"\n+brew bundle --cleanup --file=/dev/stdin <<EOF\n+EOF\n"
+                },
+                {
+                    "date": 1746304846538,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n {{- $extra := \"personal\" }}\n {{- if .chezmoi.config.data.isWorkMachine }}\n   {{- $extra = \"work\" }}\n {{- end }}\n-{{- $packages := dig \"packages\" (dict) . }}\n+{{- $packages := dig \"darwin\" \"packages\" (dict) . }}\n {{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n brew {{ . | squote }}\n {{- end }}\n {{- range concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n@@ -11,14 +11,5 @@\n {{- end }}\n {{- range concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n vscode {{ . | squote }}\n {{- end }}\n-\n-{{- $extra := \"personal\" }}\n-{{- if .chezmoi.config.data.isWorkMachine }}\n-  {{- $extra = \"work\" }}\n {{- end }}\n-{{- $packages := dig \"packages\" (dict) . }}\n-\n-echo \"🍺  Installing packages with brew...\"\n-brew bundle --cleanup --file=/dev/stdin <<EOF\n-EOF\n"
+                },
+                {
+                    "date": 1746304872086,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,5 +11,4 @@\n {{- end }}\n {{- range concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n vscode {{ . | squote }}\n {{- end }}\n-\n"
+                },
+                {
+                    "date": 1746304942228,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n {{- $extra := \"personal\" }}\n {{- if .chezmoi.config.data.isWorkMachine }}\n   {{- $extra = \"work\" }}\n {{- end }}\n-{{- $packages := dig \"darwin\" \"packages\" (dict) . }}\n+{{- $packages := dig \"packages\" (dict) . }}\n {{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n brew {{ . | squote }}\n {{- end }}\n {{- range concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n"
+                }
+            ],
+            "date": 1746295861082,
+            "name": "Commit-0",
+            "content": "\n{{- if eq .chezmoi.os \"darwin\" }}\n{{- $packages := dig \"darwin\" \"packages\" (dict) . }}\n{{- $extra := \"personal\" }}\n{{- if .chezmoi.config.data.isWorkMachine }}\n  {{- $extra = \"work\" }}\n{{- end }}\n{{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\nbrew {{ . | squote }}\n{{- end }}\n{{- range concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\ncask {{ . | squote }}\n{{- end }}\n{{- range concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\nvscode {{ . | squote }}\n{{- end }}\n{{- end }}\n"
+        }
+    ]
+}

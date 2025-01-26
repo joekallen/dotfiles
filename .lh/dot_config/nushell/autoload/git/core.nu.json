@@ -1,0 +1,30 @@
+{
+    "sourceFile": "dot_config/nushell/autoload/git/core.nu",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1746490666538,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746490673614,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,1 @@\n-export def \n+export def git-clone \n"
+                },
+                {
+                    "date": 1746490685001,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,7 @@\n-export def git-clone \n+export def --env --wrapped git-clone [\n+  repository: string\n+  ...rest\n+] {\n+  ^git clone $repository $in ...$rest\n+}\n+\n"
+                },
+                {
+                    "date": 1746491185330,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,1 @@\n-export def --env --wrapped git-clone [\n-  repository: string\n-  ...rest\n-] {\n-  ^git clone $repository $in ...$rest\n-}\n \n"
+                }
+            ],
+            "date": 1746490666538,
+            "name": "Commit-0",
+            "content": "export def \n"
+        }
+    ]
+}

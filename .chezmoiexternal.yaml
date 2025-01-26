@@ -1,0 +1,10 @@
+{{- if eq .chezmoi.os "darwin" -}}
+{{- $externalSource := "personal" }}
+{{- if .chezmoi.config.data.isWorkMachine }}
+   {{- $externalSource = "work" }}
+{{- end }}
+
+{{- $external := dig "external" "darwin" (list) . }}
+{{- $allExternal := merge (dig $externalSource (list) $external) (dig "common" (list) $external) }}
+{{ $allExternal | toYaml }}
+{{- end }}

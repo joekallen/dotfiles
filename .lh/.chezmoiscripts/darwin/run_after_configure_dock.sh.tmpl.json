@@ -1,0 +1,18 @@
+{
+    "sourceFile": ".chezmoiscripts/darwin/run_after_configure_dock.sh.tmpl",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1744443356241,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1744443356241,
+            "name": "Commit-0",
+            "content": "#!/bin/bash\n\n#set -eufo pipefail\n#\n#{{- if eq .chezmoi.os \"darwin\" }}\n#echo \" Configuring dock...\"\n#\n#\n#\n#{{- $dockAppsSource := \"personal\" }}\n#{{- if .chezmoi.config.data.isWorkMachine }}\n#   {{- $dockAppsSource = \"work\" }}\n#{{- end }}\n#\n#{{- $dockApps := dig \"darwin\" \"dock\" $dockAppsSource (list) . }}\n#\n#{{- if len $dockApps }}\n#defaults delete com.apple.dock persistent-apps\n#\n#{{- range $dockApps }}\n#echo \"Adding app to dock {{ . }}\"\n#defaults write com.apple.dock persistent-apps -array-add \"<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>{{ . }}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>\"\n#{{- end }}\n#\n#defaults delete com.apple.dock persistent-others\n#killall Dock >/dev/null 2>&1 || true && echo \"Done, dock has been configured!\"\n#{{- end }}\n#{{- end }}\n"
+        }
+    ]
+}

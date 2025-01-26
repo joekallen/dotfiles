@@ -1,0 +1,174 @@
+{
+    "sourceFile": "dot_config/nushell/scripts/nupm-install.nu",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 39,
+            "patches": [
+                {
+                    "date": 1746114118797,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746114125244,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,3 @@\n-export def \"\"\n+export def \"main\" [\n+  \n+]\n"
+                },
+                {
+                    "date": 1746114149887,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,3 @@\n+export def \"main\" [\n+  package: string\n+]\n"
+                },
+                {
+                    "date": 1746114155191,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,4 @@\n export def \"main\" [\n   package: string\n+  repo: string\n ]\n-export def \"main\" [\n-  \n-]\n"
+                },
+                {
+                    "date": 1746114162295,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,6 @@\n export def \"main\" [\n   package: string\n   repo: string\n-]\n+] {\n+  \n+}\n"
+                },
+                {
+                    "date": 1746114188871,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n export def \"main\" [\n   package: string\n   repo: string\n ] {\n-  \n+  use std/dirs\n }\n"
+                },
+                {
+                    "date": 1746114194263,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,5 +2,7 @@\n   package: string\n   repo: string\n ] {\n   use std/dirs\n+\n+  \n }\n"
+                },
+                {
+                    "date": 1746114201899,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,6 +3,6 @@\n   repo: string\n ] {\n   use std/dirs\n \n-  \n+  mktemp -d \n }\n"
+                },
+                {
+                    "date": 1746114210928,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,6 +3,6 @@\n   repo: string\n ] {\n   use std/dirs\n \n-  mktemp -d \n+  mktemp -d $'()'\n }\n"
+                },
+                {
+                    "date": 1746114226170,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,6 +3,6 @@\n   repo: string\n ] {\n   use std/dirs\n \n-  mktemp -d $'()'\n+  mktemp -d $'($package)-XXXX' | dirs add $in\n }\n"
+                },
+                {
+                    "date": 1746114255545,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,5 +4,6 @@\n ] {\n   use std/dirs\n \n   mktemp -d $'($package)-XXXX' | dirs add $in\n+  \n }\n"
+                },
+                {
+                    "date": 1746114346837,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,9 @@\n+export def \"main\" [\n+  package: string\n+  repo: string\n+] {\n+  use std/dirs\n+\n+  mktemp -d $'($package)-XXXX' | dirs add $in\n+  git clone $repo $in .\n+}\n"
+                },
+                {
+                    "date": 1746114356228,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,15 +4,6 @@\n ] {\n   use std/dirs\n \n   mktemp -d $'($package)-XXXX' | dirs add $in\n-  git clone $repo $in .\n+  do -c {git clone $repo $in .\n }\n-export def \"main\" [\n-  package: string\n-  repo: string\n-] {\n-  use std/dirs\n-\n-  mktemp -d $'($package)-XXXX' | dirs add $in\n-  \n-}\n"
+                },
+                {
+                    "date": 1746114361716,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,6 +4,7 @@\n ] {\n   use std/dirs\n \n   mktemp -d $'($package)-XXXX' | dirs add $in\n-  do -c {git clone $repo $in .\n+  do -c {git clone $repo $in .}\n+  \n }\n"
+                },
+                {
+                    "date": 1746114406180,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,5 +6,6 @@\n \n   mktemp -d $'($package)-XXXX' | dirs add $in\n   do -c {git clone $repo $in .}\n   \n+\n }\n"
+                },
+                {
+                    "date": 1746114462877,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,7 +5,7 @@\n   use std/dirs\n \n   mktemp -d $'($package)-XXXX' | dirs add $in\n   do -c {git clone $repo $in .}\n+\n   \n-\n }\n"
+                },
+                {
+                    "date": 1746114468069,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,6 +6,6 @@\n \n   mktemp -d $'($package)-XXXX' | dirs add $in\n   do -c {git clone $repo $in .}\n \n-  \n+  if (ls \n }\n"
+                },
+                {
+                    "date": 1746114473837,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,6 +6,6 @@\n \n   mktemp -d $'($package)-XXXX' | dirs add $in\n   do -c {git clone $repo $in .}\n \n-  if (ls \n+  if (ls | where name == \"install.nu\" | length) {\n }\n"
+                },
+                {
+                    "date": 1746114493451,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,6 +6,6 @@\n \n   mktemp -d $'($package)-XXXX' | dirs add $in\n   do -c {git clone $repo $in .}\n \n-  if (ls | where name == \"install.nu\" | length) {\n+  if (ls | where name == \"nupm.nuon\" | length) {\n }\n"
+                },
+                {
+                    "date": 1746114501131,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,6 +6,7 @@\n \n   mktemp -d $'($package)-XXXX' | dirs add $in\n   do -c {git clone $repo $in .}\n \n-  if (ls | where name == \"nupm.nuon\" | length) {\n+  if (ls | where name == \"nupm.nuon\" | is-not-empty) {\n+    \n }\n"
+                },
+                {
+                    "date": 1746114546484,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,11 +2,12 @@\n   package: string\n   repo: string\n ] {\n   use std/dirs\n+  use nupm\n \n   mktemp -d $'($package)-XXXX' | dirs add $in\n   do -c {git clone $repo $in .}\n \n   if (ls | where name == \"nupm.nuon\" | is-not-empty) {\n-    \n+  }\n }\n"
+                },
+                {
+                    "date": 1746114555358,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,5 +9,6 @@\n   do -c {git clone $repo $in .}\n \n   if (ls | where name == \"nupm.nuon\" | is-not-empty) {\n   }\n+\n }\n"
+                },
+                {
+                    "date": 1746114583404,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,7 +8,8 @@\n   mktemp -d $'($package)-XXXX' | dirs add $in\n   do -c {git clone $repo $in .}\n \n   if (ls | where name == \"nupm.nuon\" | is-not-empty) {\n+    nupm install \n   }\n \n }\n"
+                },
+                {
+                    "date": 1746114588670,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,8 @@\n   mktemp -d $'($package)-XXXX' | dirs add $in\n   do -c {git clone $repo $in .}\n \n   if (ls | where name == \"nupm.nuon\" | is-not-empty) {\n-    nupm install \n+    nupm install $package \n   }\n \n }\n"
+                },
+                {
+                    "date": 1746114594483,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,8 @@\n   mktemp -d $'($package)-XXXX' | dirs add $in\n   do -c {git clone $repo $in .}\n \n   if (ls | where name == \"nupm.nuon\" | is-not-empty) {\n-    nupm install $package \n+    nupm install $package --force --no-confirm --path\n   }\n \n }\n"
+                },
+                {
+                    "date": 1746114607110,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,7 +9,9 @@\n   do -c {git clone $repo $in .}\n \n   if (ls | where name == \"nupm.nuon\" | is-not-empty) {\n     nupm install $package --force --no-confirm --path\n+  } else {\n+    nupm install $package --force --no-confirm\n   }\n \n }\n"
+                },
+                {
+                    "date": 1746114623245,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n   mktemp -d $'($package)-XXXX' | dirs add $in\n   do -c {git clone $repo $in .}\n \n   if (ls | where name == \"nupm.nuon\" | is-not-empty) {\n-    nupm install $package --force --no-confirm --path\n+    nupm install . --force --no-confirm --path\n   } else {\n     nupm install $package --force --no-confirm\n   }\n \n"
+                },
+                {
+                    "date": 1746114667705,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,8 +10,7 @@\n \n   if (ls | where name == \"nupm.nuon\" | is-not-empty) {\n     nupm install . --force --no-confirm --path\n   } else {\n-    nupm install $package --force --no-confirm\n+    nupm install . --force --no-confirm\n   }\n-\n }\n"
+                },
+                {
+                    "date": 1746115348147,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n   package: string\n   repo: string\n ] {\n   use std/dirs\n-  use nupm\n+  use $''\n \n   mktemp -d $'($package)-XXXX' | dirs add $in\n   do -c {git clone $repo $in .}\n \n"
+                },
+                {
+                    "date": 1746115353673,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n   package: string\n   repo: string\n ] {\n   use std/dirs\n-  use $''\n+  use $'($)'\n \n   mktemp -d $'($package)-XXXX' | dirs add $in\n   do -c {git clone $repo $in .}\n \n"
+                },
+                {
+                    "date": 1746115358978,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n   package: string\n   repo: string\n ] {\n   use std/dirs\n-  use $'($)'\n+  use $'($env.X)'\n \n   mktemp -d $'($package)-XXXX' | dirs add $in\n   do -c {git clone $repo $in .}\n \n"
+                },
+                {
+                    "date": 1746115366795,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n   package: string\n   repo: string\n ] {\n   use std/dirs\n-  use $'($env.X)'\n+  use $'($env.XDG_DATA_HOME)'\n \n   mktemp -d $'($package)-XXXX' | dirs add $in\n   do -c {git clone $repo $in .}\n \n"
+                },
+                {
+                    "date": 1746115541609,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n   package: string\n   repo: string\n ] {\n   use std/dirs\n-  use $'($env.XDG_DATA_HOME)'\n+  use $env.NUPM\n \n   mktemp -d $'($package)-XXXX' | dirs add $in\n   do -c {git clone $repo $in .}\n \n"
+                },
+                {
+                    "date": 1746115960713,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,16 @@\n+export def \"main\" [\n+  package: string\n+  repo: string\n+] {\n+  use std/dirs\n+  use ../../../.local/share/nupm\n+\n+  mktemp -d $'($package)-XXXX' | dirs add $in\n+  do -c {git clone $repo $in .}\n+\n+  if (ls | where name == \"nupm.nuon\" | is-not-empty) {\n+    nupm install . --force --no-confirm --path\n+  } else {\n+    nupm install . --force --no-confirm\n+  }\n+}\n"
+                },
+                {
+                    "date": 1746115967724,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,9 @@\n   package: string\n   repo: string\n ] {\n   use std/dirs\n+  # wow this is \n   use ../../../.local/share/nupm\n \n   mktemp -d $'($package)-XXXX' | dirs add $in\n   do -c {git clone $repo $in .}\n@@ -13,20 +14,4 @@\n   } else {\n     nupm install . --force --no-confirm\n   }\n }\n-export def \"main\" [\n-  package: string\n-  repo: string\n-] {\n-  use std/dirs\n-  use $env.NUPM\n-\n-  mktemp -d $'($package)-XXXX' | dirs add $in\n-  do -c {git clone $repo $in .}\n-\n-  if (ls | where name == \"nupm.nuon\" | is-not-empty) {\n-    nupm install . --force --no-confirm --path\n-  } else {\n-    nupm install . --force --no-confirm\n-  }\n-}\n"
+                },
+                {
+                    "date": 1746116109980,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,13 +2,13 @@\n   package: string\n   repo: string\n ] {\n   use std/dirs\n-  # wow this is \n+  # wow this is a hack\n   use ../../../.local/share/nupm\n \n   mktemp -d $'($package)-XXXX' | dirs add $in\n-  do -c {git clone $repo $in .}\n+  do -c {git clone $repo .}\n \n   if (ls | where name == \"nupm.nuon\" | is-not-empty) {\n     nupm install . --force --no-confirm --path\n   } else {\n"
+                },
+                {
+                    "date": 1746116400321,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n \n   mktemp -d $'($package)-XXXX' | dirs add $in\n   do -c {git clone $repo .}\n \n-  if (ls | where name == \"nupm.nuon\" | is-not-empty) {\n+  if (ls | where name == 'nupm.nuon\" | is-not-empty) {\n     nupm install . --force --no-confirm --path\n   } else {\n     nupm install . --force --no-confirm\n   }\n"
+                },
+                {
+                    "date": 1746116410051,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n \n   mktemp -d $'($package)-XXXX' | dirs add $in\n   do -c {git clone $repo .}\n \n-  if (ls | where name == 'nupm.nuon\" | is-not-empty) {\n+  if (ls | where name == 'nupm.nuon' | is-not-empty) {\n     nupm install . --force --no-confirm --path\n   } else {\n     nupm install . --force --no-confirm\n   }\n"
+                },
+                {
+                    "date": 1746116803058,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,4 +14,6 @@\n   } else {\n     nupm install . --force --no-confirm\n   }\n }\n+\n+nupm install . --force --no-confirm --path\n"
+                },
+                {
+                    "date": 1746116809953,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,5 +15,5 @@\n     nupm install . --force --no-confirm\n   }\n }\n \n-nupm install . --force --no-confirm --path\n+nupm install . --path\n"
+                }
+            ],
+            "date": 1746114118797,
+            "name": "Commit-0",
+            "content": "export def \"\"\n"
+        }
+    ]
+}

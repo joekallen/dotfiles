@@ -1,0 +1,82 @@
+{
+    "sourceFile": "dot_config/ghostty/config",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 16,
+            "patches": [
+                {
+                    "date": 1745994877995,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1745994898618,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,6 +31,7 @@\n # # Some config options have unique syntaxes for their value,\n # # which is explained in the docs for that config option.\n # # Just for example:\n # resize-overlay-duration = 4s 200ms\n+\n font-family = \"FiraCode Nerd Font Mono\"\n scrollback-limit = 4294967296\n"
+                },
+                {
+                    "date": 1745994914040,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,6 +32,7 @@\n # # which is explained in the docs for that config option.\n # # Just for example:\n # resize-overlay-duration = 4s 200ms\n \n+command = /opt/homebrew\n font-family = \"FiraCode Nerd Font Mono\"\n scrollback-limit = 4294967296\n"
+                },
+                {
+                    "date": 1745994920352,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,7 +32,7 @@\n # # which is explained in the docs for that config option.\n # # Just for example:\n # resize-overlay-duration = 4s 200ms\n \n-command = /opt/homebrew\n+command = /opt/homebrew/bin/nu\n font-family = \"FiraCode Nerd Font Mono\"\n scrollback-limit = 4294967296\n"
+                },
+                {
+                    "date": 1745994927663,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,7 +32,7 @@\n # # which is explained in the docs for that config option.\n # # Just for example:\n # resize-overlay-duration = 4s 200ms\n \n-command = /opt/homebrew/bin/nu\n+command = /opt/homebrew/bin/nu -l\n font-family = \"FiraCode Nerd Font Mono\"\n scrollback-limit = 4294967296\n"
+                },
+                {
+                    "date": 1746465328608,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,7 +32,7 @@\n # # which is explained in the docs for that config option.\n # # Just for example:\n # resize-overlay-duration = 4s 200ms\n \n-command = /opt/homebrew/bin/nu -l\n+command = ~/bin/nu -l\n font-family = \"FiraCode Nerd Font Mono\"\n scrollback-limit = 4294967296\n"
+                },
+                {
+                    "date": 1746471888106,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,7 +32,8 @@\n # # which is explained in the docs for that config option.\n # # Just for example:\n # resize-overlay-duration = 4s 200ms\n \n-command = ~/bin/nu -l\n+command = ~/.bin/nu -l\n font-family = \"FiraCode Nerd Font Mono\"\n scrollback-limit = 4294967296\n+\n"
+                },
+                {
+                    "date": 1746471895289,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,4 +36,6 @@\n command = ~/.bin/nu -l\n font-family = \"FiraCode Nerd Font Mono\"\n scrollback-limit = 4294967296\n \n+# keybindings\n+\n"
+                },
+                {
+                    "date": 1746471902063,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,5 +37,5 @@\n font-family = \"FiraCode Nerd Font Mono\"\n scrollback-limit = 4294967296\n \n # keybindings\n-\n+keybind = cmd\n"
+                },
+                {
+                    "date": 1746472074638,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,5 +37,5 @@\n font-family = \"FiraCode Nerd Font Mono\"\n scrollback-limit = 4294967296\n \n # keybindings\n-keybind = cmd\n+keybind = page_up\n"
+                },
+                {
+                    "date": 1746472084150,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,5 +37,5 @@\n font-family = \"FiraCode Nerd Font Mono\"\n scrollback-limit = 4294967296\n \n # keybindings\n-keybind = page_up\n+keybind = page_up=\n"
+                },
+                {
+                    "date": 1746472089770,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,5 +37,5 @@\n font-family = \"FiraCode Nerd Font Mono\"\n scrollback-limit = 4294967296\n \n # keybindings\n-keybind = page_up=\n+keybind = page_up=scroll_page_up\n"
+                },
+                {
+                    "date": 1746472104068,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,4 +38,5 @@\n scrollback-limit = 4294967296\n \n # keybindings\n keybind = page_up=scroll_page_up\n+keybind = page_up=scroll_page_up\n"
+                },
+                {
+                    "date": 1746472109186,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,5 +38,6 @@\n scrollback-limit = 4294967296\n \n # keybindings\n keybind = page_up=scroll_page_up\n+\n keybind = page_up=scroll_page_up\n"
+                },
+                {
+                    "date": 1746472114320,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,6 +38,6 @@\n scrollback-limit = 4294967296\n \n # keybindings\n keybind = page_up=scroll_page_up\n-\n+keybind = \n keybind = page_up=scroll_page_up\n"
+                },
+                {
+                    "date": 1746472120615,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,42 @@\n+# This is the configuration file for Ghostty.\n+#\n+# Run `ghostty +show-config --default --docs` to view a list of\n+# all available config options and their default values.\n+#\n+# Additionally, each config option is also explained in detail\n+# on Ghostty's website, at https://ghostty.org/docs/config.\n+\n+# Config syntax crash course\n+# ==========================\n+# # The config file consists of simple key-value pairs,\n+# # separated by equals signs.\n+# font-family = Iosevka\n+# window-padding-x = 2\n+#\n+# # Spacing around the equals sign does not matter.\n+# # All of these are identical:\n+# key=value\n+# key= value\n+# key =value\n+# key = value\n+#\n+# # Any line beginning with a # is a comment. It's not possible to put\n+# # a comment after a config option, since it would be interpreted as a\n+# # part of the value. For example, this will have a value of \"#123abc\":\n+# background = #123abc\n+#\n+# # Empty values are used to reset config keys to default.\n+# key =\n+#\n+# # Some config options have unique syntaxes for their value,\n+# # which is explained in the docs for that config option.\n+# # Just for example:\n+# resize-overlay-duration = 4s 200ms\n+\n+command = ~/.bin/nu -l\n+font-family = \"FiraCode Nerd Font Mono\"\n+scrollback-limit = 4294967296\n+\n+# keybindings\n+keybind = page_up=scroll_page_up\n+keybind = page_up=scroll_page_up\n"
+                },
+                {
+                    "date": 1746472210527,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,48 +38,5 @@\n scrollback-limit = 4294967296\n \n # keybindings\n keybind = page_up=scroll_page_up\n-keybind = page_up=scroll_page_up\n-# This is the configuration file for Ghostty.\n-#\n-# Run `ghostty +show-config --default --docs` to view a list of\n-# all available config options and their default values.\n-#\n-# Additionally, each config option is also explained in detail\n-# on Ghostty's website, at https://ghostty.org/docs/config.\n-\n-# Config syntax crash course\n-# ==========================\n-# # The config file consists of simple key-value pairs,\n-# # separated by equals signs.\n-# font-family = Iosevka\n-# window-padding-x = 2\n-#\n-# # Spacing around the equals sign does not matter.\n-# # All of these are identical:\n-# key=value\n-# key= value\n-# key =value\n-# key = value\n-#\n-# # Any line beginning with a # is a comment. It's not possible to put\n-# # a comment after a config option, since it would be interpreted as a\n-# # part of the value. For example, this will have a value of \"#123abc\":\n-# background = #123abc\n-#\n-# # Empty values are used to reset config keys to default.\n-# key =\n-#\n-# # Some config options have unique syntaxes for their value,\n-# # which is explained in the docs for that config option.\n-# # Just for example:\n-# resize-overlay-duration = 4s 200ms\n-\n-command = ~/.bin/nu -l\n-font-family = \"FiraCode Nerd Font Mono\"\n-scrollback-limit = 4294967296\n-\n-# keybindings\n-keybind = page_up=scroll_page_up\n-keybind = \n-keybind = page_up=scroll_page_up\n+keybind = page_down=scroll_page_up\n"
+                }
+            ],
+            "date": 1745994877995,
+            "name": "Commit-0",
+            "content": "# This is the configuration file for Ghostty.\n#\n# Run `ghostty +show-config --default --docs` to view a list of\n# all available config options and their default values.\n#\n# Additionally, each config option is also explained in detail\n# on Ghostty's website, at https://ghostty.org/docs/config.\n\n# Config syntax crash course\n# ==========================\n# # The config file consists of simple key-value pairs,\n# # separated by equals signs.\n# font-family = Iosevka\n# window-padding-x = 2\n#\n# # Spacing around the equals sign does not matter.\n# # All of these are identical:\n# key=value\n# key= value\n# key =value\n# key = value\n#\n# # Any line beginning with a # is a comment. It's not possible to put\n# # a comment after a config option, since it would be interpreted as a\n# # part of the value. For example, this will have a value of \"#123abc\":\n# background = #123abc\n#\n# # Empty values are used to reset config keys to default.\n# key =\n#\n# # Some config options have unique syntaxes for their value,\n# # which is explained in the docs for that config option.\n# # Just for example:\n# resize-overlay-duration = 4s 200ms\nfont-family = \"FiraCode Nerd Font Mono\"\nscrollback-limit = 4294967296\n"
+        }
+    ]
+}

@@ -1,0 +1,90 @@
+{
+    "sourceFile": ".chezmoiscripts/darwin/run_onchange_before_install-packages.sh.tmpl",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 18,
+            "patches": [
+                {
+                    "date": 1746304689347,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746304694528,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,8 @@\n \n set -eufo pipefail\n \n {{- if eq .chezmoi.os \"darwin\" }}\n-print \"🍺  Installing packages with brew...\"\n+echo \"🍺  Installing packages with brew...\"\n brew bundle install\n \n {{- end }}\n"
+                },
+                {
+                    "date": 1746304706462,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,7 +3,7 @@\n set -eufo pipefail\n \n {{- if eq .chezmoi.os \"darwin\" }}\n echo \"🍺  Installing packages with brew...\"\n-brew bundle install\n+brew bundle install --cleanup\n \n {{- end }}\n"
+                },
+                {
+                    "date": 1746304715927,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,7 +3,8 @@\n set -eufo pipefail\n \n {{- if eq .chezmoi.os \"darwin\" }}\n echo \"🍺  Installing packages with brew...\"\n-brew bundle install --cleanup\n+brew bundle install --cleanup --file=/dev/stdin <<EOF\n \n+\n {{- end }}\n"
+                },
+                {
+                    "date": 1746304759989,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,14 @@\n #!/bin/bash\n \n set -eufo pipefail\n \n+{{- $extra := \"personal\" }}\n+{{- if .chezmoi.config.data.isWorkMachine }}\n+  {{- $extra = \"work\" }}\n+{{- end }}\n+{{- $packages := dig \"packages\" (dict) . }}\n {{- if eq .chezmoi.os \"darwin\" }}\n echo \"🍺  Installing packages with brew...\"\n brew bundle install --cleanup --file=/dev/stdin <<EOF\n-\n-\n+EOF\n {{- end }}\n"
+                },
+                {
+                    "date": 1746304768620,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+{{- if eq .chezmoi.os \"darwin\" }}\n #!/bin/bash\n \n set -eufo pipefail\n \n@@ -6,9 +7,9 @@\n {{- if .chezmoi.config.data.isWorkMachine }}\n   {{- $extra = \"work\" }}\n {{- end }}\n {{- $packages := dig \"packages\" (dict) . }}\n-{{- if eq .chezmoi.os \"darwin\" }}\n+\n echo \"🍺  Installing packages with brew...\"\n brew bundle install --cleanup --file=/dev/stdin <<EOF\n EOF\n {{- end }}\n"
+                },
+                {
+                    "date": 1746304837464,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,6 +10,16 @@\n {{- $packages := dig \"packages\" (dict) . }}\n \n echo \"🍺  Installing packages with brew...\"\n brew bundle install --cleanup --file=/dev/stdin <<EOF\n+{{- $packages := dig \"packages\" (dict) . }}\n+{{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n+brew {{ . | squote }}\n+{{- end }}\n+{{- range concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n+cask {{ . | squote }}\n+{{- end }}\n+{{- range concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n+vscode {{ . | squote }}\n+{{- end }}\n EOF\n {{- end }}\n"
+                },
+                {
+                    "date": 1746305165057,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n {{- end }}\n {{- $packages := dig \"packages\" (dict) . }}\n \n echo \"🍺  Installing packages with brew...\"\n-brew bundle install --cleanup --file=/dev/stdin <<EOF\n+brew bundle --install --cleanup --file=/dev/stdin <<EOF\n {{- $packages := dig \"packages\" (dict) . }}\n {{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n brew {{ . | squote }}\n {{- end }}\n"
+                },
+                {
+                    "date": 1746305244444,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n {{- if eq .chezmoi.os \"darwin\" }}\n #!/bin/bash\n \n-set -eufo pipefail\n+#set -eufo pipefail\n \n {{- $extra := \"personal\" }}\n {{- if .chezmoi.config.data.isWorkMachine }}\n   {{- $extra = \"work\" }}\n"
+                },
+                {
+                    "date": 1746305652658,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-{{- if eq .chezmoi.os \"darwin\" }}\n+{{- if eq .chezmoi.os \"darwin\" -}}\n #!/bin/bash\n \n #set -eufo pipefail\n \n"
+                },
+                {
+                    "date": 1746305680319,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n {{- end }}\n {{- $packages := dig \"packages\" (dict) . }}\n \n echo \"🍺  Installing packages with brew...\"\n-brew bundle --install --cleanup --file=/dev/stdin <<EOF\n+brew bundle --cleanup --file=/dev/stdin <<EOF\n {{- $packages := dig \"packages\" (dict) . }}\n {{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n brew {{ . | squote }}\n {{- end }}\n"
+                },
+                {
+                    "date": 1746463186786,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,25 +1,34 @@\n {{- if eq .chezmoi.os \"darwin\" -}}\n #!/bin/bash\n \n-#set -eufo pipefail\n-\n {{- $extra := \"personal\" }}\n {{- if .chezmoi.config.data.isWorkMachine }}\n   {{- $extra = \"work\" }}\n {{- end }}\n+\n {{- $packages := dig \"packages\" (dict) . }}\n \n+{{- $brews := (concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages)) | uniq }}\n+{{- $casks := (concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages)) | uniq }}\n+{{- $taps := (concat (dig \"common\" \"taps\" (list) $packages) (dig $extra \"taps\" (list) $packages)) | uniq }}\n+{{- $vscode := (concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages)) | uniq }}\n+\n echo \"🍺  Installing packages with brew...\"\n-brew bundle --cleanup --file=/dev/stdin <<EOF\n-{{- $packages := dig \"packages\" (dict) . }}\n-{{- range concat (dig \"common\" \"brews\" (list) $packages) (dig $extra \"brews\" (list) $packages) }}\n-brew {{ . | squote }}\n+[\n+{{- range $taps }}\n+  {{- $parts := splitList \",\" . }}\n+  {{- $wrapped_parts := (list) }}\n+  {{- range $parts }}{{ $wrapped_parts = append $wrapped_parts (. | trim | squote ) }}{{- end }}\n+  \"tap {{ $wrapped_parts | join \",\" }}\"\n {{- end }}\n-{{- range concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages) }}\n-cask {{ . | squote }}\n+{{- range $brews }}\n+  \"brew {{ . | squote }}\"\n {{- end }}\n-{{- range concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages) }}\n-vscode {{ . | squote }}\n+{{- range $casks }}\n+  \"cask {{ . | squote }}\"\n {{- end }}\n-EOF\n+{{- range $vscode }}\n+  \"vscode {{ . | squote }}\"\n {{- end }}\n+] | str join \"\\n\" | brew bundle --cleanup --file=/dev/stdin\n+{{- end }}\n"
+                },
+                {
+                    "date": 1746463192914,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,6 +29,6 @@\n {{- end }}\n {{- range $vscode }}\n   \"vscode {{ . | squote }}\"\n {{- end }}\n-] | str join \"\\n\" | brew bundle --cleanup --file=/dev/stdin\n+] | str join \"\\n\" | \n {{- end }}\n"
+                },
+                {
+                    "date": 1746463200080,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,8 +13,10 @@\n {{- $taps := (concat (dig \"common\" \"taps\" (list) $packages) (dig $extra \"taps\" (list) $packages)) | uniq }}\n {{- $vscode := (concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages)) | uniq }}\n \n echo \"🍺  Installing packages with brew...\"\n+brew bundle --cleanup --file=/dev/stdin <<EOF\n+EOF\n [\n {{- range $taps }}\n   {{- $parts := splitList \",\" . }}\n   {{- $wrapped_parts := (list) }}\n@@ -29,6 +31,6 @@\n {{- end }}\n {{- range $vscode }}\n   \"vscode {{ . | squote }}\"\n {{- end }}\n-] | str join \"\\n\" | \n+] | str join \"\\n\" |\n {{- end }}\n"
+                },
+                {
+                    "date": 1746463209348,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,21 +16,7 @@\n echo \"🍺  Installing packages with brew...\"\n brew bundle --cleanup --file=/dev/stdin <<EOF\n EOF\n [\n-{{- range $taps }}\n-  {{- $parts := splitList \",\" . }}\n-  {{- $wrapped_parts := (list) }}\n-  {{- range $parts }}{{ $wrapped_parts = append $wrapped_parts (. | trim | squote ) }}{{- end }}\n-  \"tap {{ $wrapped_parts | join \",\" }}\"\n-{{- end }}\n-{{- range $brews }}\n-  \"brew {{ . | squote }}\"\n-{{- end }}\n-{{- range $casks }}\n-  \"cask {{ . | squote }}\"\n-{{- end }}\n-{{- range $vscode }}\n-  \"vscode {{ . | squote }}\"\n-{{- end }}\n+\n ] | str join \"\\n\" |\n {{- end }}\n"
+                },
+                {
+                    "date": 1746463217197,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,21 @@\n {{- $vscode := (concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages)) | uniq }}\n \n echo \"🍺  Installing packages with brew...\"\n brew bundle --cleanup --file=/dev/stdin <<EOF\n+{{- range $taps }}\n+  {{- $parts := splitList \",\" . }}\n+  {{- $wrapped_parts := (list) }}\n+  {{- range $parts }}{{ $wrapped_parts = append $wrapped_parts (. | trim | squote ) }}{{- end }}\n+  \"tap {{ $wrapped_parts | join \",\" }}\"\n+{{- end }}\n+{{- range $brews }}\n+  \"brew {{ . | squote }}\"\n+{{- end }}\n+{{- range $casks }}\n+  \"cask {{ . | squote }}\"\n+{{- end }}\n+{{- range $vscode }}\n+  \"vscode {{ . | squote }}\"\n+{{- end }}\n EOF\n-[\n-\n-] | str join \"\\n\" |\n {{- end }}\n"
+                },
+                {
+                    "date": 1746463500574,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,9 @@\n {{- $casks := (concat (dig \"common\" \"casks\" (list) $packages) (dig $extra \"casks\" (list) $packages)) | uniq }}\n {{- $taps := (concat (dig \"common\" \"taps\" (list) $packages) (dig $extra \"taps\" (list) $packages)) | uniq }}\n {{- $vscode := (concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages)) | uniq }}\n \n+brew bundle --cleanup --file=/dev/stdin <<EOF\n echo \"🍺  Installing packages with brew...\"\n brew bundle --cleanup --file=/dev/stdin <<EOF\n {{- range $taps }}\n   {{- $parts := splitList \",\" . }}\n"
+                },
+                {
+                    "date": 1746463508093,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n {{- $vscode := (concat (dig \"common\" \"vscode\" (list) $packages) (dig $extra \"vscode\" (list) $packages)) | uniq }}\n \n #brew bundle --cleanup --file=/dev/stdin <<EOF\n echo \"🍺  Installing packages with brew...\"\n-brew bundle --cleanup --file=/dev/stdin <<EOF\n+brew bundle --file=/dev/stdin <<EOF\n {{- range $taps }}\n   {{- $parts := splitList \",\" . }}\n   {{- $wrapped_parts := (list) }}\n   {{- range $parts }}{{ $wrapped_parts = append $wrapped_parts (. | trim | squote ) }}{{- end }}\n"
+                },
+                {
+                    "date": 1746463564938,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,8 +28,8 @@\n {{- range $casks }}\n   cask {{ . | squote }}\n {{- end }}\n {{- range $vscode }}\n-  \"vscode {{ . | squote }}\"\n+  vscode {{ . | squote }}\n {{- end }}\n EOF\n {{- end }}\n"
+                }
+            ],
+            "date": 1746304689347,
+            "name": "Commit-0",
+            "content": "#!/bin/bash\n\nset -eufo pipefail\n\n{{- if eq .chezmoi.os \"darwin\" }}\nprint \"🍺  Installing packages with brew...\"\nbrew bundle install\n\n{{- end }}\n"
+        }
+    ]
+}

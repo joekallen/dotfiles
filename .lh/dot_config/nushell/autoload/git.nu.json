@@ -1,0 +1,74 @@
+{
+    "sourceFile": "dot_config/nushell/autoload/git.nu",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 14,
+            "patches": [
+                {
+                    "date": 1746452261869,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746452267115,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,1 @@\n-export def main\n+export def main [] \n"
+                },
+                {
+                    "date": 1746452304544,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,3 @@\n-export def main [] \n+\n+export def main [] {\n+}\n"
+                },
+                {
+                    "date": 1746452318461,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,3 @@\n \n-export def main [] {\n+export def main [...rest] {\n }\n"
+                },
+                {
+                    "date": 1746452324949,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,4 @@\n \n export def main [...rest] {\n+  ^git @rest\n }\n"
+                },
+                {
+                    "date": 1746452352808,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,4 @@\n \n export def main [...rest] {\n-  ^git @rest\n+  ^git ...$rest\n }\n"
+                },
+                {
+                    "date": 1746452386240,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,3 @@\n-\n export def main [...rest] {\n   ^git ...$rest\n }\n"
+                },
+                {
+                    "date": 1746452393913,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,5 @@\n export def main [...rest] {\n   ^git ...$rest\n }\n+\n+def \n"
+                },
+                {
+                    "date": 1746452406627,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,11 @@\n export def main [...rest] {\n   ^git ...$rest\n }\n \n-def \n+def is_git_repo [] {\n+    let git_check = git rev-parse --is-inside-work-tree | complete | get exit_code\n+    if $git_check != 0 {\n+        print \"Not a git repository\"\n+    }\n+    $git_check == 0\n+}\n"
+                },
+                {
+                    "date": 1746452412513,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,10 +2,10 @@\n   ^git ...$rest\n }\n \n def is_git_repo [] {\n-    let git_check = git rev-parse --is-inside-work-tree | complete | get exit_code\n-    if $git_check != 0 {\n-        print \"Not a git repository\"\n-    }\n-    $git_check == 0\n+  let git_check = git rev-parse --is-inside-work-tree | complete | get exit_code\n+  if $git_check != 0 {\n+      print \"Not a git repository\"\n+  }\n+  $git_check == 0\n }\n"
+                },
+                {
+                    "date": 1746452418158,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n \n def is_git_repo [] {\n   let git_check = git rev-parse --is-inside-work-tree | complete | get exit_code\n   if $git_check != 0 {\n-      print \"Not a git repository\"\n+    print \"Not a git repository\"\n   }\n+\n   $git_check == 0\n }\n"
+                },
+                {
+                    "date": 1746452469385,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,10 +3,22 @@\n }\n \n def is_git_repo [] {\n   let git_check = git rev-parse --is-inside-work-tree | complete | get exit_code\n+\n   if $git_check != 0 {\n     print \"Not a git repository\"\n   }\n \n   $git_check == 0\n }\n+\n+def git_current_branch [] {\n+    $env.GIT_OPTIONAL_LOCKS = 0\n+    mut ref = (git symbolic-ref --quiet HEAD | complete)\n+    if $ref.exit_code == 128 {\n+        return\n+    } else if $ref.exit_code != 0 {\n+        $ref = (git rev-parse --short HEAD | complete)\n+    }\n+    $ref.stdout | str replace -r '^refs/heads/' '' | str trim\n+}\n"
+                },
+                {
+                    "date": 1746452476109,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,13 +12,14 @@\n   $git_check == 0\n }\n \n def git_current_branch [] {\n-    $env.GIT_OPTIONAL_LOCKS = 0\n-    mut ref = (git symbolic-ref --quiet HEAD | complete)\n-    if $ref.exit_code == 128 {\n-        return\n-    } else if $ref.exit_code != 0 {\n-        $ref = (git rev-parse --short HEAD | complete)\n-    }\n-    $ref.stdout | str replace -r '^refs/heads/' '' | str trim\n+  $env.GIT_OPTIONAL_LOCKS = 0\n+  mut ref = (git symbolic-ref --quiet HEAD | complete)\n+\n+  if $ref.exit_code == 128 {\n+      return\n+  } else if $ref.exit_code != 0 {\n+      $ref = (git rev-parse --short HEAD | complete)\n+  }\n+  $ref.stdout | str replace -r '^refs/heads/' '' | str trim\n }\n"
+                },
+                {
+                    "date": 1746452482933,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,8 +18,8 @@\n \n   if $ref.exit_code == 128 {\n     return\n   } else if $ref.exit_code != 0 {\n-      $ref = (git rev-parse --short HEAD | complete)\n+    $ref = (git rev-parse --short HEAD | complete)\n   }\n   $ref.stdout | str replace -r '^refs/heads/' '' | str trim\n }\n"
+                },
+                {
+                    "date": 1746452835727,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n export def main [...rest] {\n   ^git ...$rest\n }\n \n-export def clone [] {\n+export def clone [repos] {\n \n }\n \n def is_git_repo [] {\n"
+                }
+            ],
+            "date": 1746452261869,
+            "name": "Commit-0",
+            "content": "export def main\n"
+        }
+    ]
+}

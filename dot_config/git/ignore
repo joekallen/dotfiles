@@ -1,0 +1,4 @@
+# ignore apple DS Store
+.DS_Store
+.lh/
+.vscode

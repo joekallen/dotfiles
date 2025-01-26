@@ -1,0 +1,66 @@
+{
+    "sourceFile": ".chezmoi.yaml.tmpl",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 12,
+            "patches": [
+                {
+                    "date": 1746300694262,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746300708184,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,4 +6,5 @@\n \n onepassword:\n   prompt: true\n \n+scriptEnv\n"
+                },
+                {
+                    "date": 1746300739985,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,5 +6,6 @@\n \n onepassword:\n   prompt: true\n \n-scriptEnv\n+scriptEnv:\n+  \n"
+                },
+                {
+                    "date": 1746300746702,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,5 +7,5 @@\n onepassword:\n   prompt: true\n \n scriptEnv:\n-  \n+  XDG_CONFIG_HOME\n"
+                },
+                {
+                    "date": 1746300755871,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,5 +7,6 @@\n onepassword:\n   prompt: true\n \n scriptEnv:\n-  XDG_CONFIG_HOME\n+  XDG_CONFIG_HOME: ~/.config\n+  XDG_DATA_HOME: ~/.local/share\n"
+                },
+                {
+                    "date": 1746305956383,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,6 @@\n onepassword:\n   prompt: true\n \n scriptEnv:\n-  XDG_CONFIG_HOME: ~/.config\n+  XDG_CONFIG_HOME: {{~/.config\n   XDG_DATA_HOME: ~/.local/share\n"
+                },
+                {
+                    "date": 1746305963172,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,6 @@\n onepassword:\n   prompt: true\n \n scriptEnv:\n-  XDG_CONFIG_HOME: {{~/.config\n+  XDG_CONFIG_HOME: {{ printf \"~/.config\n   XDG_DATA_HOME: ~/.local/share\n"
+                },
+                {
+                    "date": 1746305968955,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,6 @@\n onepassword:\n   prompt: true\n \n scriptEnv:\n-  XDG_CONFIG_HOME: {{ printf \"~/.config\n+  XDG_CONFIG_HOME: {{ printf \"%s/%s~/.config\n   XDG_DATA_HOME: ~/.local/share\n"
+                },
+                {
+                    "date": 1746305974117,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,6 @@\n onepassword:\n   prompt: true\n \n scriptEnv:\n-  XDG_CONFIG_HOME: {{ printf \"%s/%s~/.config\n+  XDG_CONFIG_HOME: {{ printf \"%s/%s\" .config\n   XDG_DATA_HOME: ~/.local/share\n"
+                },
+                {
+                    "date": 1746305980943,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,6 @@\n onepassword:\n   prompt: true\n \n scriptEnv:\n-  XDG_CONFIG_HOME: {{ printf \"%s/%s\" .config\n+  XDG_CONFIG_HOME: {{ printf \"%s/%s\" ..config\n   XDG_DATA_HOME: ~/.local/share\n"
+                },
+                {
+                    "date": 1746305986742,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,6 @@\n onepassword:\n   prompt: true\n \n scriptEnv:\n-  XDG_CONFIG_HOME: {{ printf \"%s/%s\" ..config\n+  XDG_CONFIG_HOME: {{ printf \"%s/%s\" .chezmo .config\n   XDG_DATA_HOME: ~/.local/share\n"
+                },
+                {
+                    "date": 1746306000131,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,6 @@\n onepassword:\n   prompt: true\n \n scriptEnv:\n-  XDG_CONFIG_HOME: {{ printf \"%s/%s\" .chezmo .config\n-  XDG_DATA_HOME: ~/.local/share\n+  XDG_CONFIG_HOME: {{ printf \"%s/%s\" .chezmoi.homeDir \".config\" }}\n+  XDG_DATA_HOME: {{ printf \"%s/%s\" .chezmoi.homeDir \".config\" }}~/.local/share\n"
+                },
+                {
+                    "date": 1746306007179,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,5 +8,5 @@\n   prompt: true\n \n scriptEnv:\n   XDG_CONFIG_HOME: {{ printf \"%s/%s\" .chezmoi.homeDir \".config\" }}\n-  XDG_DATA_HOME: {{ printf \"%s/%s\" .chezmoi.homeDir \".config\" }}~/.local/share\n+  XDG_DATA_HOME: {{ printf \"%s/%s\" .chezmoi.homeDir \".local/share\" }}~/.local/share\n"
+                }
+            ],
+            "date": 1746300694262,
+            "name": "Commit-0",
+            "content": "data:\n  name: Joe Allen\n  email: {{ promptStringOnce . \"email\" \"Email address\" | squote }}\n  isWorkMachine: {{ promptBoolOnce . \"isWorkMachine\" \"Is this a work machine?\" }}\n  shell: {{ promptChoiceOnce . \"shell\" \"Which shell do you prefer\" (list \"bash\" \"fish\" \"nushell\" \"zsh\") \"zsh\" | squote }}\n\nonepassword:\n  prompt: true\n\n"
+        }
+    ]
+}

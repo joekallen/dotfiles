@@ -1,0 +1,106 @@
+{
+    "sourceFile": "dot_config/mise/config.toml.tmpl",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 22,
+            "patches": [
+                {
+                    "date": 1744642361620,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1744642524380,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+\n [hooks]\n enter = 'mise i -q'\n \n [tools]\n"
+                },
+                {
+                    "date": 1744642530433,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-\n+{{- \n [hooks]\n enter = 'mise i -q'\n \n [tools]\n"
+                },
+                {
+                    "date": 1744642543027,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-{{- \n+{{- $tools := dig \"\n [hooks]\n enter = 'mise i -q'\n \n [tools]\n"
+                },
+                {
+                    "date": 1744642571584,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,9 @@\n-{{- $tools := dig \"\n+{{- $tools := dig \"tools\" (dict) . }}\n+{{- $extra := \"personal\" }}\n+{{- if .chezmoi.config.data.isWorkMachine }}\n+  {{- $extra = \"work\" }}\n+{{- end }}\n [hooks]\n enter = 'mise i -q'\n \n [tools]\n"
+                },
+                {
+                    "date": 1744642582761,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,8 +6,9 @@\n [hooks]\n enter = 'mise i -q'\n \n [tools]\n+\n aws-cli = \"2\"\n go = \"1.21\"\n helm = \"3\"\n kubectl = \"1.30\"\n"
+                },
+                {
+                    "date": 1744642588516,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n [hooks]\n enter = 'mise i -q'\n \n [tools]\n-\n+{{\n aws-cli = \"2\"\n go = \"1.21\"\n helm = \"3\"\n kubectl = \"1.30\"\n"
+                },
+                {
+                    "date": 1744642610878,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n [hooks]\n enter = 'mise i -q'\n \n [tools]\n-{{\n+{{- range $tool, $version := dig \"tools\" (dict) $tools }}\n aws-cli = \"2\"\n go = \"1.21\"\n helm = \"3\"\n kubectl = \"1.30\"\n"
+                },
+                {
+                    "date": 1744642617912,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,19 @@\n+{{- $tools := dig \"tools\" (dict) . }}\n+{{- $extra := \"personal\" }}\n+{{- if .chezmoi.config.data.isWorkMachine }}\n+  {{- $extra = \"work\" }}\n+{{- end }}\n+[hooks]\n+enter = 'mise i -q'\n+\n+[tools]\n+{{- range $tool, $version := dig \"tools\" \"common\" (dict) $tools }}\n+aws-cli = \"2\"\n+go = \"1.21\"\n+helm = \"3\"\n+kubectl = \"1.30\"\n+kubelogin = \"1.30\"\n+node = \"20\"\n+python = \"3.12\"\n+opentofu = \"1.9\"\n+terraform = \"1.9\"\n"
+                },
+                {
+                    "date": 1744642626549,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,27 +7,9 @@\n enter = 'mise i -q'\n \n [tools]\n {{- range $tool, $version := dig \"tools\" \"common\" (dict) $tools }}\n-aws-cli = \"2\"\n-go = \"1.21\"\n-helm = \"3\"\n-kubectl = \"1.30\"\n-kubelogin = \"1.30\"\n-node = \"20\"\n-python = \"3.12\"\n-opentofu = \"1.9\"\n-terraform = \"1.9\"\n-{{- $tools := dig \"tools\" (dict) . }}\n-{{- $extra := \"personal\" }}\n-{{- if .chezmoi.config.data.isWorkMachine }}\n-  {{- $extra = \"work\" }}\n-{{- end }}\n-[hooks]\n-enter = 'mise i -q'\n \n-[tools]\n-{{- range $tool, $version := dig \"tools\" (dict) $tools }}\n aws-cli = \"2\"\n go = \"1.21\"\n helm = \"3\"\n kubectl = \"1.30\"\n"
+                },
+                {
+                    "date": 1744642651156,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,9 @@\n enter = 'mise i -q'\n \n [tools]\n {{- range $tool, $version := dig \"tools\" \"common\" (dict) $tools }}\n+{{- end }}\n \n aws-cli = \"2\"\n go = \"1.21\"\n helm = \"3\"\n"
+                },
+                {
+                    "date": 1744642665211,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n [hooks]\n enter = 'mise i -q'\n \n [tools]\n-{{- range $tool, $version := dig \"tools\" \"common\" (dict) $tools }}\n+{{- range $tool, $version := merge () dig \"tools\" \"common\" (dict) $tools }}\n {{- end }}\n \n aws-cli = \"2\"\n go = \"1.21\"\n"
+                },
+                {
+                    "date": 1744642691341,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n [hooks]\n enter = 'mise i -q'\n \n [tools]\n-{{- range $tool, $version := merge () dig \"tools\" \"common\" (dict) $tools }}\n+{{- range $tool, $version := merge (dig ) (dig \"tools\" \"common\" (dict) $tools) }}\n {{- end }}\n \n aws-cli = \"2\"\n go = \"1.21\"\n"
+                },
+                {
+                    "date": 1744642706537,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n [hooks]\n enter = 'mise i -q'\n \n [tools]\n-{{- range $tool, $version := merge (dig ) (dig \"tools\" \"common\" (dict) $tools) }}\n+{{- range $tool, $version := merge (dig \"tools\") (dig \"common\" (dict) $tools) }}\n {{- end }}\n \n aws-cli = \"2\"\n go = \"1.21\"\n"
+                },
+                {
+                    "date": 1744642719133,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n [hooks]\n enter = 'mise i -q'\n \n [tools]\n-{{- range $tool, $version := merge (dig \"tools\") (dig \"common\" (dict) $tools) }}\n+{{- range $tool, $version := merge (dig $extra (dict) $tools) (dig \"common\" (dict) $tools) }}\n {{- end }}\n \n aws-cli = \"2\"\n go = \"1.21\"\n"
+                },
+                {
+                    "date": 1744642749869,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,9 @@\n enter = 'mise i -q'\n \n [tools]\n {{- range $tool, $version := merge (dig $extra (dict) $tools) (dig \"common\" (dict) $tools) }}\n+\n {{- end }}\n \n aws-cli = \"2\"\n go = \"1.21\"\n"
+                },
+                {
+                    "date": 1744642765184,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,22 @@\n+{{- $tools := dig \"tools\" (dict) . }}\n+{{- $extra := \"personal\" }}\n+{{- if .chezmoi.config.data.isWorkMachine }}\n+  {{- $extra = \"work\" }}\n+{{- end }}\n+[hooks]\n+enter = 'mise i -q'\n+\n+[tools]\n+{{- range $tool, $version := merge (dig $extra (dict) $tools) (dig \"common\" (dict) $tools) }}\n+{{- $tool }} = {{ $version | qu}}\n+{{- end }}\n+\n+aws-cli = \"2\"\n+go = \"1.21\"\n+helm = \"3\"\n+kubectl = \"1.30\"\n+kubelogin = \"1.30\"\n+node = \"20\"\n+python = \"3.12\"\n+opentofu = \"1.9\"\n+terraform = \"1.9\"\n"
+                },
+                {
+                    "date": 1744642778132,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,12 @@\n+{{- $tools := dig \"tools\" (dict) . }}\n+{{- $extra := \"personal\" }}\n+{{- if .chezmoi.config.data.isWorkMachine }}\n+  {{- $extra = \"work\" }}\n+{{- end }}\n+[hooks]\n+enter = 'mise i -q'\n+\n+[tools]\n+{{- range $tool, $version := merge (dig $extra (dict) $tools) (dig \"common\" (dict) $tools) }}\n+{{- $tool }} = {{ $version | quote }}\n+{{- end }}\n"
+                },
+                {
+                    "date": 1744642866907,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,48 +9,4 @@\n [tools]\n {{- range $tool, $version := merge (dig $extra (dict) $tools) (dig \"common\" (dict) $tools) }}\n {{- $tool }} = {{ $version | quote }}\n {{- end }}\n-{{- $tools := dig \"tools\" (dict) . }}\n-{{- $extra := \"personal\" }}\n-{{- if .chezmoi.config.data.isWorkMachine }}\n-  {{- $extra = \"work\" }}\n-{{- end }}\n-[hooks]\n-enter = 'mise i -q'\n-\n-[tools]\n-{{- range $tool, $version := merge (dig $extra (dict) $tools) (dig \"common\" (dict) $tools) }}\n-{{- $tool }} = {{ $version | qu}}\n-{{- end }}\n-\n-aws-cli = \"2\"\n-go = \"1.21\"\n-helm = \"3\"\n-kubectl = \"1.30\"\n-kubelogin = \"1.30\"\n-node = \"20\"\n-python = \"3.12\"\n-opentofu = \"1.9\"\n-terraform = \"1.9\"\n-{{- $tools := dig \"tools\" (dict) . }}\n-{{- $extra := \"personal\" }}\n-{{- if .chezmoi.config.data.isWorkMachine }}\n-  {{- $extra = \"work\" }}\n-{{- end }}\n-[hooks]\n-enter = 'mise i -q'\n-\n-[tools]\n-{{- range $tool, $version := merge (dig $extra (dict) $tools) (dig \"common\" (dict) $tools) }}\n-\n-{{- end }}\n-\n-aws-cli = \"2\"\n-go = \"1.21\"\n-helm = \"3\"\n-kubectl = \"1.30\"\n-kubelogin = \"1.30\"\n-node = \"20\"\n-python = \"3.12\"\n-opentofu = \"1.9\"\n-terraform = \"1.9\"\n"
+                },
+                {
+                    "date": 1744642923608,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-{{- $tools := dig \"tools\" (dict) . }}\n+{{- $tools := dig \"darwin\" \"tools\" (dict) . }}\n {{- $extra := \"personal\" }}\n {{- if .chezmoi.config.data.isWorkMachine }}\n   {{- $extra = \"work\" }}\n {{- end }}\n"
+                },
+                {
+                    "date": 1744644930171,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-{{- $tools := dig \"darwin\" \"tools\" (dict) . }}\n+{{- $tools := dig \"tools\" (dict) . }}\n {{- $extra := \"personal\" }}\n {{- if .chezmoi.config.data.isWorkMachine }}\n   {{- $extra = \"work\" }}\n {{- end }}\n"
+                },
+                {
+                    "date": 1744645052901,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,6 @@\n enter = 'mise i -q'\n \n [tools]\n {{- range $tool, $version := merge (dig $extra (dict) $tools) (dig \"common\" (dict) $tools) }}\n-{{- $tool }} = {{ $version | quote }}\n+{{ $tool }} = {{ $version | quote }}\n {{- end }}\n"
+                },
+                {
+                    "date": 1746296095554,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-{{- $tools := dig \"m,i\"tools\" (dict) . }}\n+{{- $tools := dig \"m,\"tools\" (dict) . }}\n {{- $extra := \"personal\" }}\n {{- if .chezmoi.config.data.isWorkMachine }}\n   {{- $extra = \"work\" }}\n {{- end }}\n"
+                }
+            ],
+            "date": 1744642361620,
+            "name": "Commit-0",
+            "content": "[hooks]\nenter = 'mise i -q'\n\n[tools]\naws-cli = \"2\"\ngo = \"1.21\"\nhelm = \"3\"\nkubectl = \"1.30\"\nkubelogin = \"1.30\"\nnode = \"20\"\npython = \"3.12\"\nopentofu = \"1.9\"\nterraform = \"1.9\"\n"
+        }
+    ]
+}

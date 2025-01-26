@@ -1,0 +1,98 @@
+{
+    "sourceFile": "private_Library/private_Application Support/nushell/config.nu.tmpl",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 20,
+            "patches": [
+                {
+                    "date": 1744444356219,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1744444363372,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,21 @@\n+# config.nu\n+#\n+# Installed by:\n+# version = \"0.101.0\"\n+#\n+# This file is used to override default Nushell settings, define\n+# (or import) custom commands, or run any other startup tasks.\n+# See https://www.nushell.sh/book/configuration.html\n+#\n+# This file is loaded after env.nu and before login.nu\n+#\n+# You can open this file in your default editor using:\n+# config nu\n+#\n+# See `help config nu` for more options\n+#\n+# You can remove these comments if you want or leave\n+# them for future reference.\n+\n+$env.config\n+use mise.gen.nu\n"
+                },
+                {
+                    "date": 1744444371634,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,23 @@\n+# config.nu\n+#\n+# Installed by:\n+# version = \"0.101.0\"\n+#\n+# This file is used to override default Nushell settings, define\n+# (or import) custom commands, or run any other startup tasks.\n+# See https://www.nushell.sh/book/configuration.html\n+#\n+# This file is loaded after env.nu and before login.nu\n+#\n+# You can open this file in your default editor using:\n+# config nu\n+#\n+# See `help config nu` for more options\n+#\n+# You can remove these comments if you want or leave\n+# them for future reference.\n+\n+$env.config = {\n+  \n+}\n+use mise.gen.nu\n"
+                },
+                {
+                    "date": 1744444380348,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,49 +17,17 @@\n # You can remove these comments if you want or leave\n # them for future reference.\n \n $env.config = {\n-  \n-}\n-use mise.gen.nu\n-# config.nu\n-#\n-# Installed by:\n-# version = \"0.101.0\"\n-#\n-# This file is used to override default Nushell settings, define\n-# (or import) custom commands, or run any other startup tasks.\n-# See https://www.nushell.sh/book/configuration.html\n-#\n-# This file is loaded after env.nu and before login.nu\n-#\n-# You can open this file in your default editor using:\n-# config nu\n-#\n-# See `help config nu` for more options\n-#\n-# You can remove these comments if you want or leave\n-# them for future reference.\n+  show_banner: false\n \n-$env.config\n-use mise.gen.nu\n-# config.nu\n-#\n-# Installed by:\n-# version = \"0.101.0\"\n-#\n-# This file is used to override default Nushell settings, define\n-# (or import) custom commands, or run any other startup tasks.\n-# See https://www.nushell.sh/book/configuration.html\n-#\n-# This file is loaded after env.nu and before login.nu\n-#\n-# You can open this file in your default editor using:\n-# config nu\n-#\n-# See `help config nu` for more options\n-#\n-# You can remove these comments if you want or leave\n-# them for future reference.\n+  rm: {\n+    always_trash: true\n+  }\n \n-\n+  hooks: {\n+    env_change: {\n+      PWD: null\n+    }\n+  }\n+}\n use mise.gen.nu\n"
+                },
+                {
+                    "date": 1744444399428,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,5 +29,6 @@\n       PWD: null\n     }\n   }\n }\n+\n use mise.gen.nu\n"
+                },
+                {
+                    "date": 1744444406886,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,5 +30,5 @@\n     }\n   }\n }\n \n-use mise.gen.nu\n+use ($nu.default-config-dir | path join scripts/mise.nu)\n"
+                },
+                {
+                    "date": 1744444642493,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,22 +1,4 @@\n-# config.nu\n-#\n-# Installed by:\n-# version = \"0.101.0\"\n-#\n-# This file is used to override default Nushell settings, define\n-# (or import) custom commands, or run any other startup tasks.\n-# See https://www.nushell.sh/book/configuration.html\n-#\n-# This file is loaded after env.nu and before login.nu\n-#\n-# You can open this file in your default editor using:\n-# config nu\n-#\n-# See `help config nu` for more options\n-#\n-# You can remove these comments if you want or leave\n-# them for future reference.\n \n $env.config = {\n   show_banner: false\n \n"
+                },
+                {
+                    "date": 1744444653259,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,17 @@\n \n+# See https://www.nushell.sh/book/configuration.html\n+#\n+# This file is loaded after env.nu and before login.nu\n+#\n+# You can open this file in your default editor using:\n+# config nu\n+#\n+# See `help config nu` for more options\n+#\n+# You can remove these comments if you want or leave\n+# them for future reference.\n+\n $env.config = {\n   show_banner: false\n \n   rm: {\n"
+                },
+                {
+                    "date": 1744444659227,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,16 +1,5 @@\n-\n # See https://www.nushell.sh/book/configuration.html\n-#\n-# This file is loaded after env.nu and before login.nu\n-#\n-# You can open this file in your default editor using:\n-# config nu\n-#\n-# See `help config nu` for more options\n-#\n-# You can remove these comments if you want or leave\n-# them for future reference.\n \n $env.config = {\n   show_banner: false\n \n"
+                },
+                {
+                    "date": 1744444670603,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,18 @@\n+# See https://www.nushell.sh/book/configuration.html\n+\n+$env.config = {\n+buffer\n+  show_banner: false\n+\n+  rm: {\n+    always_trash: true\n+  }\n+\n+  hooks: {\n+    env_change: {\n+      PWD: null\n+    }\n+  }\n+}\n+\n+use ($nu.default-config-dir | path join scripts/mise.nu)\n"
+                },
+                {
+                    "date": 1744444675878,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n # See https://www.nushell.sh/book/configuration.html\n \n $env.config = {\n-buffer\n+buffer_editor = \"code\"\n   show_banner: false\n \n   rm: {\n     always_trash: true\n@@ -15,21 +15,4 @@\n   }\n }\n \n use ($nu.default-config-dir | path join scripts/mise.nu)\n-# See https://www.nushell.sh/book/configuration.html\n-\n-$env.config = {\n-  show_banner: false\n-\n-  rm: {\n-    always_trash: true\n-  }\n-\n-  hooks: {\n-    env_change: {\n-      PWD: null\n-    }\n-  }\n-}\n-\n-use ($nu.default-config-dir | path join scripts/mise.nu)\n"
+                },
+                {
+                    "date": 1744444680904,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n # See https://www.nushell.sh/book/configuration.html\n \n $env.config = {\n-buffer_editor = \"code\"\n+  buffer_editor: \"code\"\n   show_banner: false\n \n   rm: {\n     always_trash: true\n"
+                },
+                {
+                    "date": 1744446649580,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,13 +6,7 @@\n \n   rm: {\n     always_trash: true\n   }\n-\n-  hooks: {\n-    env_change: {\n-      PWD: null\n-    }\n-  }\n }\n \n use ($nu.default-config-dir | path join scripts/mise.nu)\n"
+                },
+                {
+                    "date": 1744448531762,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,4 +9,5 @@\n   }\n }\n \n use ($nu.default-config-dir | path join scripts/mise.nu)\n+use ($nu.default-config-dir | path join scripts/mise.nu)\n"
+                },
+                {
+                    "date": 1744448538825,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,13 @@\n+# See https://www.nushell.sh/book/configuration.html\n+\n+$env.config = {\n+  buffer_editor: \"code\"\n+  show_banner: false\n+\n+  rm: {\n+    always_trash: true\n+  }\n+}\n+\n+use ($nu.default-config-dir | path join scripts/mise.nu)\n+use ($nu.default-config-dir | path join scripts/aws.nu)\n"
+                },
+                {
+                    "date": 1744448543844,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,19 +8,6 @@\n     always_trash: true\n   }\n }\n \n+use ($nu.default-config-dir | path join scripts/aws-completions.nu)\n use ($nu.default-config-dir | path join scripts/mise.nu)\n-use ($nu.default-config-dir | path join scripts/aws.nu)\n-# See https://www.nushell.sh/book/configuration.html\n-\n-$env.config = {\n-  buffer_editor: \"code\"\n-  show_banner: false\n-\n-  rm: {\n-    always_trash: true\n-  }\n-}\n-\n-use ($nu.default-config-dir | path join scripts/mise.nu)\n-use ($nu.default-config-dir | path join scripts/mise.nu)\n"
+                },
+                {
+                    "date": 1744448555111,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,6 +8,6 @@\n     always_trash: true\n   }\n }\n \n-use ($nu.default-config-dir | path join scripts/aws-completions.nu)\n+use ($nu.default-config-dir | path join completions/aws-completions.nu)\n use ($nu.default-config-dir | path join scripts/mise.nu)\n"
+                },
+                {
+                    "date": 1744448592660,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,6 +8,6 @@\n     always_trash: true\n   }\n }\n \n-use ($nu.default-config-dir | path join completions/aws-completions.nu)\n+use ($nu.default-config-dir | path join completions/aws.nu)\n use ($nu.default-config-dir | path join scripts/mise.nu)\n"
+                },
+                {
+                    "date": 1744448602240,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,5 +9,7 @@\n   }\n }\n \n use ($nu.default-config-dir | path join completions/aws.nu)\n+use ($nu.default-config-dir | path join completions/docker.nu)\n+use ($nu.default-config-dir | path join completions/aws.nu)\n use ($nu.default-config-dir | path join scripts/mise.nu)\n"
+                },
+                {
+                    "date": 1744448608914,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,9 @@\n     always_trash: true\n   }\n }\n \n+\n use ($nu.default-config-dir | path join completions/aws.nu)\n use ($nu.default-config-dir | path join completions/docker.nu)\n use ($nu.default-config-dir | path join completions/git.nu)\n use ($nu.default-config-dir | path join scripts/mise.nu)\n"
+                },
+                {
+                    "date": 1744448613984,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,18 @@\n+# See https://www.nushell.sh/book/configuration.html\n+\n+$env.config = {\n+  buffer_editor: \"code\"\n+  show_banner: false\n+\n+  rm: {\n+    always_trash: true\n+  }\n+}\n+\n+# Completions\n+use ($nu.default-config-dir | path join completions/aws.nu)\n+use ($nu.default-config-dir | path join completions/docker.nu)\n+use ($nu.default-config-dir | path join completions/git.nu)\n+\n+# Scripts\n+use ($nu.default-config-dir | path join scripts/mise.nu)\n"
+                }
+            ],
+            "date": 1744444356219,
+            "name": "Commit-0",
+            "content": "# config.nu\n#\n# Installed by:\n# version = \"0.101.0\"\n#\n# This file is used to override default Nushell settings, define\n# (or import) custom commands, or run any other startup tasks.\n# See https://www.nushell.sh/book/configuration.html\n#\n# This file is loaded after env.nu and before login.nu\n#\n# You can open this file in your default editor using:\n# config nu\n#\n# See `help config nu` for more options\n#\n# You can remove these comments if you want or leave\n# them for future reference.\n\n\nuse mise.gen.nu\n"
+        }
+    ]
+}

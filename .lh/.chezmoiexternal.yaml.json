@@ -1,0 +1,42 @@
+{
+    "sourceFile": ".chezmoiexternal.yaml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1746329073359,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746329081162,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,4 @@\n-'alias-finder':\n+'.local/share/nushell/vendor/autoload':\n   type: git-repo\n   url: https://github.com/KamilKleina/alias-finder.nu.git\n   refreshPeriod: 168h\n"
+                },
+                {
+                    "date": 1746329127378,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,10 @@\n '.local/share/nushell/vendor/autoload':\n   type: git-repo\n   url: https://github.com/KamilKleina/alias-finder.nu.git\n   refreshPeriod: 168h\n+\n+{{ $ageVersion := \"1.1.1\" -}}\n+[\".local/bin/age\"]\n+    type = \"archive-file\"\n+    url = \"https://github.com/FiloSottile/age/releases/download/v{{ $ageVersion }}/age-v{{ $ageVersion }}-{{ .chezmoi.os }}-{{ .chezmoi.arch }}.tar.gz\"\n+    path = \"age/age\"\n"
+                },
+                {
+                    "date": 1746329167311,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-'.local/share/nushell/vendor/autoload':\n+'.local/share/nushell/vendor/autoload/alias-finder.nu':\n   type: git-repo\n   url: https://github.com/KamilKleina/alias-finder.nu.git\n   refreshPeriod: 168h\n \n"
+                },
+                {
+                    "date": 1746329176616,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n '.local/share/nushell/vendor/autoload/alias-finder.nu':\n-  type: git-repo\n+  type: archive-file\n   url: https://github.com/KamilKleina/alias-finder.nu.git\n   refreshPeriod: 168h\n \n {{ $ageVersion := \"1.1.1\" -}}\n"
+                },
+                {
+                    "date": 1746329195056,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n '.local/share/nushell/vendor/autoload/alias-finder.nu':\n   type: archive-file\n   url: https://github.com/KamilKleina/alias-finder.nu.git\n-  \n+  p\n   refreshPeriod: 168h\n \n {{ $ageVersion := \"1.1.1\" -}}\n [\".local/bin/age\"]\n"
+                },
+                {
+                    "date": 1746329449406,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,5 @@\n+'.local/share/nushell/vendor/autoload/alias-finder.nu':\n+  type: file\n+  url: https://github.com/KamilKleina/alias-finder.nu.git\n+  path: alias-finder.nu\n+  refreshPeriod: 168h\n"
+                }
+            ],
+            "date": 1746329073359,
+            "name": "Commit-0",
+            "content": "'alias-finder':\n  type: git-repo\n  url: https://github.com/KamilKleina/alias-finder.nu.git\n  refreshPeriod: 168h\n"
+        }
+    ]
+}

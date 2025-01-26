@@ -1,0 +1,26 @@
+{
+    "sourceFile": ".chezmoiscripts/darwin/run_once_before_install-packages.nu..tmpl",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1746304151467,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746304159382,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,8 @@\n #!/opt/homebrew/bin/nu\n \n {{- if eq .chezmoi.os \"darwin\" }}\n-  use std/util \"path add\"\n-  use std/dirs\n-\n+  \n   print \"🍺  Installing packages with brew...\"\n   brew bundle install\n   brew bundle --force cleanup\n-}\n {{- end }}\n"
+                },
+                {
+                    "date": 1746304165265,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,7 @@\n #!/opt/homebrew/bin/nu\n \n {{- if eq .chezmoi.os \"darwin\" }}\n-  \n-  print \"🍺  Installing packages with brew...\"\n-  brew bundle install\n-  brew bundle --force cleanup\n+print \"🍺  Installing packages with brew...\"\n+brew bundle install\n+brew bundle --force cleanup\n {{- end }}\n"
+                }
+            ],
+            "date": 1746304151467,
+            "name": "Commit-0",
+            "content": "#!/opt/homebrew/bin/nu\n\n{{- if eq .chezmoi.os \"darwin\" }}\n  use std/util \"path add\"\n  use std/dirs\n\n  print \"🍺  Installing packages with brew...\"\n  brew bundle install\n  brew bundle --force cleanup\n}\n{{- end }}\n"
+        }
+    ]
+}

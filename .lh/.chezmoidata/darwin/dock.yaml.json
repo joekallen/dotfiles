@@ -1,0 +1,18 @@
+{
+    "sourceFile": ".chezmoidata/darwin/dock.yaml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1746294141968,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1746294141968,
+            "name": "Commit-0",
+            "content": "darwin:\n  \n"
+        }
+    ]
+}

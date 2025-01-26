@@ -1,0 +1,12 @@
+data:
+  name: Joe Allen
+  email: {{ promptStringOnce . "email" "Email address" | squote }}
+  isWorkMachine: {{ promptBoolOnce . "isWorkMachine" "Is this a work machine?" }}
+  shell: {{ promptChoiceOnce . "shell" "Which shell do you prefer" (list "bash" "fish" "nushell" "zsh") "zsh" | squote }}
+
+onepassword:
+  prompt: true
+
+scriptEnv:
+  XDG_CONFIG_HOME: {{ printf "%s/%s" .chezmoi.homeDir ".config" }}
+  XDG_DATA_HOME: {{ printf "%s/%s" .chezmoi.homeDir ".local/share" }}
