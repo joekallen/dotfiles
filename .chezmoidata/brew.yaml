@@ -1,0 +1,100 @@
+packages:
+  personal:
+    brews: []
+    casks:
+      - monarch
+      - visual-studio-code
+    taps: []
+    vscode:
+      # godot
+      - geequlim.godot-tools
+  work:
+    brews:
+      - argocd
+      - bitwarden
+      # this is here for aptakube
+      - kubelogin
+      - subsplash/tap/vault-helper
+      - terraform-docs
+      - vault
+    casks:
+      - cursor
+      - openvpn-connect
+    taps:
+      - hashicorp/tap
+      - 'subsplash/tap, https://subsplash.io/ops/homebrew-tap'
+    vscode:
+      # golang
+      - golang.go
+      # helm
+      - tim-koehler.helm-intellisense
+      # react
+      - dsznajder.es7-react-js-snippets
+      # terraform
+      - hashicorp.hcl
+      - hashicorp.terraform
+  common:
+    brews:
+      - carapace
+      - chezmoi
+      - direnv
+      - git
+      - mas
+      - mise
+      - mods
+      - nushell
+      - podman
+      - sevenzip
+      - starship
+      - watch
+      - wget
+    casks:
+      - 1password
+      - 1password-cli
+      - aptakube
+      - ghostty
+      - gimp
+      - google-chrome
+      - discord
+      - font-fira-code
+      - font-fira-code-nerd-font
+      - raycast
+      - slack
+      - visual-studio-code
+    taps: []
+    vscode:
+      # docker
+      - ms-azuretools.vscode-docker
+      - ms-vscode-remote.remote-containers
+      # git
+      - eamodio.gitlens
+      # gopilot
+      - github.copilot
+      - github.copilot-chat
+      # local file history
+      - xpo.local-history
+      # lua
+      - sumneko.lua
+      # markdown
+      - bierner.markdown-mermaid
+      - davidanson.vscode-markdownlint
+      - shd101wyy.markdown-preview-enhanced
+      - yzhang.markdown-all-in-one
+      # nushell
+      - thenuprojectcontributors.vscode-nushell-lang
+      # prettier
+      - esbenp.prettier-vscode
+      # python
+      - ms-python.python
+      - ms-python.vscode-pylance
+      # sql
+      - mtxr.sqltools
+      # toml
+      - tamasfe.even-better-toml
+      # yaml
+      - redhat.vscode-yaml
+      # vscode-intellicode
+      - visualstudioexptteam.vscodeintellicode
+      - visualstudioexptteam.intellicode-api-usage-examples
+      # vscode
+      - ms-vsliveshare.vsliveshare

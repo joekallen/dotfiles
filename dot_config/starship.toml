@@ -1,0 +1,468 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+continuation_prompt = "[▸▹ ](dimmed white)"
+
+format = """
+($nix_shell$container\n)\
+$username\
+$hostname\
+$localip\
+$shlvl\
+$shell\
+$env_var\
+$directory\
+$jobs\
+$sudo\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$cmd_duration\n\
+$character"""
+
+right_format = """
+$singularity\
+$kubernetes\
+$vcsh\
+$fossil_branch\
+$hg_branch\
+$pijul_channel\
+$docker_context\
+$package\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$fennel\
+$golang\
+$guix_shell\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$gradle\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$opa\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$solidity\
+$swift\
+$terraform\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$conda\
+$meson\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$crystal\
+$custom\
+$status\
+$os\
+$battery\
+$time"""
+
+[aws]
+disabled = true
+symbol = '  '
+
+[azure]
+disabled = true
+
+[battery]
+disabled = true
+
+[buf]
+disabled = true
+symbol = ' '
+
+[bun]
+disabled = true
+
+[c]
+disabled = true
+symbol = ' '
+
+[character]
+success_symbol = '[󱞪](bold green) '
+error_symbol = '[✘](bold red) '
+
+[cmake]
+disabled = true
+symbol = ' '
+
+[cmd_duration]
+min_time = 500
+format = 'took [$duration]($style) '
+min_time_to_notify = 120_000
+show_notifications = true
+
+[cobol]
+disabled = true
+
+[conda]
+disabled = true
+symbol = ' '
+
+[container]
+
+[crystal]
+disabled = true
+symbol = ' '
+
+[daml]
+disabled = true
+
+[dart]
+disabled = true
+symbol = ' '
+
+[directory]
+read_only = ' 󰌾'
+truncation_length = 4
+truncate_to_repo = false
+truncation_symbol = '…/'
+
+[deno]
+
+[direnv]
+disabled = true
+
+[docker_context]
+symbol = ' '
+
+[dotnet]
+disabled = true
+
+[elixir]
+disabled = true
+symbol = ' '
+
+[elm]
+disabled = true
+symbol = ' '
+
+[env_var]
+disabled = true
+
+[erlang]
+disabled = true
+
+[fennel]
+disabled = true
+symbol = ' '
+
+[fill]
+disabled = true
+
+[fossil_branch]
+disabled = true
+symbol = ' '
+
+[fossil_metrics]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[git_branch]
+style = 'bold fg:#769ff0 bg:#394260'
+format = '[](fg:#394260)[on $symbol$branch(:$remote_branch)]($style)'
+symbol = ' '
+
+[git_commit]
+format = '[\( | $hash$tag\ )]($style)'
+style = 'bold fg:#769ff0 bg:#394260'
+tag_symbol = '  '
+
+[git_metrics]
+disabled = false
+added_style = 'bold fg:green bg:#394260'
+deleted_style = 'bold fg:red bg:#394260'
+format = '[( | ([+$added]($added_style) )([-$deleted]($deleted_style) ))](bg:#394260)'
+
+
+[git_state]
+format = '\([$state( | $progress_current/$progress_total)]($style)\)'
+style = 'bold fg:#769ff0 bg:#394260'
+
+[git_status]
+format = '([ | \[$all_status$ahead_behind\]]($style))[](fg:#394260)'
+style = 'bold fg:#769ff0 bg:#394260'
+
+[gleam]
+disabled = true
+
+#[godot]
+#symbol = ' '
+
+[golang]
+symbol = ' '
+
+[guix_shell]
+disabled = true
+symbol = ' '
+
+[gradle]
+disabled = true
+symbol = ' '
+
+[haskell]
+symbol = ' '
+disabled = true
+
+[haxe]
+disabled = true
+symbol = ' '
+
+[helm]
+symbol = ' '
+
+[hg_branch]
+disabled = true
+symbol = ' '
+
+[hostname]
+ssh_symbol = ' '
+
+[java]
+disabled = true
+symbol = ' '
+
+[julia]
+disabled = true
+symbol = ' '
+
+[kotlin]
+disabled = true
+symbol = ' '
+
+[kubernetes]
+disabled = true
+symbol = ' '
+
+[line_break]
+disabled = true
+
+[localip]
+disabled = true
+
+[lua]
+disabled = true
+symbol = ' '
+
+[memory_usage]
+disabled = true
+symbol = '󰍛 '
+
+[meson]
+disabled = true
+symbol = '󰔷 '
+
+[mojo]
+disabled = true
+
+[nats]
+disabled = true
+
+[nim]
+disabled = true
+symbol = '󰆥 '
+
+[nix_shell]
+disabled = true
+symbol = ' '
+
+[nodejs]
+symbol = ' '
+
+[ocaml]
+disabled = true
+symbol = ' '
+
+[odin]
+disabled = true
+
+[opa]
+disabled = true
+
+[openstack]
+disabled = true
+
+[os]
+disabled = true
+
+[os.symbols]
+Alpaquita = ' '
+Alpine = ' '
+AlmaLinux = ' '
+Amazon = ' '
+Android = ' '
+Arch = ' '
+Artix = ' '
+CachyOS = ' '
+CentOS = ' '
+Debian = ' '
+DragonFly = ' '
+Emscripten = ' '
+EndeavourOS = ' '
+Fedora = ' '
+FreeBSD = ' '
+Garuda = '󰛓 '
+Gentoo = ' '
+HardenedBSD = '󰞌 '
+Illumos = '󰈸 '
+Kali = ' '
+Linux = ' '
+Mabox = ' '
+Macos = ' '
+Manjaro = ' '
+Mariner = ' '
+MidnightBSD = ' '
+Mint = ' '
+NetBSD = ' '
+NixOS = ' '
+Nobara = ' '
+OpenBSD = '󰈺 '
+openSUSE = ' '
+OracleLinux = '󰌷 '
+Pop = ' '
+Raspbian = ' '
+Redhat = ' '
+RedHatEnterprise = ' '
+RockyLinux = ' '
+Redox = '󰀘 '
+Solus = '󰠳 '
+SUSE = ' '
+Ubuntu = ' '
+Unknown = ' '
+Void = ' '
+Windows = '󰍲 '
+
+[package]
+display_private = true
+symbol = '󰏗 '
+
+[perl]
+disabled = true
+symbol = ' '
+
+[php]
+disabled = true
+symbol = ' '
+
+[pijul_channel]
+disabled = true
+symbol = ' '
+
+[pulumi]
+disabled = true
+
+[purescript]
+disabled = true
+
+[python]
+symbol = ' '
+
+[quarto]
+disabled = true
+
+[raku]
+disabled = true
+
+[red]
+disabled = true
+
+[rlang]
+disabled = true
+symbol = '󰟔 '
+
+[ruby]
+disabled = true
+symbol = ' '
+
+[rust]
+symbol = '󱘗 '
+
+[scala]
+disabled = true
+symbol = ' '
+
+[shell]
+disabled = true
+
+[singularity]
+disabled = true
+
+[solidity]
+disabled = true
+
+[spack]
+disabled = true
+
+[status]
+disabled = true
+
+[sudo]
+disabled = false
+
+[swift]
+disabled = true
+symbol = ' '
+
+[terraform]
+format = '([](fg:105)[via $symbol$workspace]($style)[](fg:105))'
+detect_extensions = ['tf', 'tfplan', 'tfstate', 'tfvars']
+style = 'bold bg:105'
+symbol = ' '
+
+[time]
+disabled = true
+
+[typst]
+disabled = true
+
+[username]
+
+[vagrant]
+disabled = true
+
+[vlang]
+disabled = true
+
+[vcsh]
+disabled = true
+
+[zig]
+disabled = true
+symbol = ' '

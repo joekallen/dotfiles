@@ -1,0 +1,25 @@
+{{- $tools := dig "mise" "tools" (dict) . }}
+{{- $extra := "personal" }}
+{{- if .chezmoi.config.data.isWorkMachine }}
+  {{- $extra = "work" }}
+{{- end -}}
+
+[hooks]
+enter = 'mise i -q'
+
+[settings]
+# configure `mise install` to always keep the downloaded archive
+always_keep_download = false
+
+# config files with these prefixes will be trusted by default
+trusted_config_paths = [
+  '~/work',
+]
+
+# configure messages displayed when entering directories with config files
+status = { missing_tools = "if_other_versions_installed", show_env = false, show_tools = false }
+
+[tools]
+{{- range $tool, $version := merge (dig $extra (dict) $tools) (dig "common" (dict) $tools) }}
+{{ $tool | squote}} = {{ $version | squote }}
+{{- end }}

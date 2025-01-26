@@ -1,0 +1,31 @@
+# See https://www.nushell.sh/book/configuration.html
+use std/util 'path add'
+
+# setup data-dir
+mkdir $nu.data-dir
+
+# setup vendor autoload directory
+mkdir ($nu.data-dir | path join 'vendor/autoload')
+
+# setup user autoload directory
+mkdir ...$nu.user-autoload-dirs
+
+$env.config = {
+  buffer_editor: 'code'
+  show_banner: false
+
+  rm: {
+    always_trash: true
+  }
+}
+
+# starship - terminal styling
+starship init nu | save -f ($nu.data-dir | path join 'vendor/autoload/starship.nu')
+
+# carapace - completion
+carapace _carapace nushell | save -f ($nu.data-dir | path join 'vendor/autoload/carapace.nu')
+
+# mise - tool for managing multiple versions of nushell
+mise activate nu | save -f ($nu.data-dir | path join 'vendor/autoload/mise.nu')
+
+null # empty for end of file
