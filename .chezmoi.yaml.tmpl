@@ -1,0 +1,7 @@
+{{- $email := promptStringOnce . "email" "Email address" -}}
+{{- $isWorkMachine := promptBoolOnce . "isWorkMachine" "Is this a work machine?" -}}
+
+data:
+  name: Joe Allen
+  email: {{ $email | squote }}
+  isWorkMachine: {{ $isWorkMachine }}
