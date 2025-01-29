@@ -9,4 +9,5 @@ part of the chezmoi configuration, but this executes part of itself as a bootstr
 
 ```sh
 echo '📦  Installing dotfiles' && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/joekallen/dotfiles/refs/heads/main/scripts/install.sh)"
+
 ```
