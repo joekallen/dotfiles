@@ -16,8 +16,8 @@ packages:
       - 1password
       - 1password-cli
       - google-chrome
-      - cask font-fira-code
       - discord
+      - font-fira-code
       - font-fira-code-nerd-font
       - raycast
       - slack
