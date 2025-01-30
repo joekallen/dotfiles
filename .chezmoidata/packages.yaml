@@ -8,7 +8,9 @@ packages:
       - jq
       - lazygit
       - mas
+      - mise
       - mods
+      - nushell
       - ripgrep
       - sevenzip
       - wget
@@ -28,15 +30,9 @@ packages:
       - jorcelinojunior.chezmoi-tools
       # git
       - eamodio.gitlens
-      # godot
-      - geequlim.godot-tools
-      # golang
-      - golang.go
       # gopilot
       - github.copilot
       - github.copilot-chat
-      # helm
-      - tim-koehler.helm-intellisense
       # local file history
       - xpo.local-history
       # lua
@@ -51,13 +47,31 @@ packages:
       # python
       - ms-python.vscode-pylance
       - ms-python.python
-      # react
-      - dsznajder.es7-react-js-snippets
-      # terraform
-      - hashicorp.hcl
-      - hashicorp.terraform
       # yaml
       - redhat.vscode-yaml
       # vscode-intellicode
       - visualstudioexptteam.vscodeintellicode
       - visualstudioexptteam.intellicode-api-usage-examples
+
+packages-peronsal:
+  darwin:
+    brews: []
+    casks: []
+    vscode:
+      # godot
+      - geequlim.godot-tools
+
+packages-work:
+  darwin:
+    brews: []
+    casks: []
+    vscode:
+      # golang
+      - golang.go
+      # helm
+      - tim-koehler.helm-intellisense
+      # react
+      - dsznajder.es7-react-js-snippets
+      # terraform
+      - hashicorp.hcl
+      - hashicorp.terraform
