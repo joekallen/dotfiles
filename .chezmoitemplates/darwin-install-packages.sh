@@ -5,7 +5,7 @@ set -eufo pipefail
 echo "🍺  Installing packages with brew..."
 
 {{- $extra := "packages-personal" }}
-{{- if .chesmoi.config.data.isWorkMachine }}
+{{- if .chezmoi.config.data.isWorkMachine }}
   {{- $extra = "packages-work" }}
 {{- end }}
 brew bundle --no-lock --file=/dev/stdin <<EOF
