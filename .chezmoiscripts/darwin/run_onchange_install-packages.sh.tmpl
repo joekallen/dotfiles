@@ -1,11 +1,23 @@
 #!/bin/bash
 
 set -eufo pipefail
-#!/bin/bash
-
-set -eufo pipefail
-{{- $data := .chezmoi.config.data }}
 
 {{- if eq .chezmoi.os "darwin" }}
-  {{- template "darwin-install-packages.sh" . }}
+echo "🍺  Installing packages with brew..."
+{{- $packages := dig "darwin" "packages" (dict) . }}
+{{- $extra := "personal" }}
+{{- if .chezmoi.config.data.isWorkMachine }}
+  {{- $extra = "work" }}
+{{- end }}
+brew bundle --no-lock --file=/dev/stdin <<EOF
+{{- range concat (dig "common" "brews" (list) $packages) (dig $extra "brews" (list) $packages) }}
+brew {{ . | squote }}
+{{- end }}
+{{- range concat (dig "common" "casks" (list) $packages) (dig $extra "casks" (list) $packages) }}
+cask {{ . | squote }}
+{{- end }}
+{{- range concat (dig "common" "vscode" (list) $packages) (dig $extra "vscode" (list) $packages) }}
+vscode {{ . | squote }}
+{{- end }}
+EOF
 {{- end }}

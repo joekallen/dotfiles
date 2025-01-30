@@ -1,0 +1,20 @@
+darwin:
+  dock:
+    remove:
+      - Launchpad
+      - Safari
+      - Mail
+      - Maps
+      - Photos
+      - FaceTime
+      - Contacts
+      - Reminders
+      - Notes
+      - Freeform
+      - TV
+      - Music
+      - Keynote
+      - Numbers
+      - Pages
+      - "App Store"
+    add: []

@@ -2,8 +2,9 @@
 
 set -eufo pipefail
 
+{{- if eq .chezmoi.os "darwin" }}
 trap 'killall Dock' EXIT
-
-{{- range (dig "dock" "remove" (list) .) }}
+{{- range (dig "darwin" "dock" "remove" (list) .) }}
 dockutil --no-restart --remove {{ . | squote }} || true
+{{- end }}
 {{- end }}
