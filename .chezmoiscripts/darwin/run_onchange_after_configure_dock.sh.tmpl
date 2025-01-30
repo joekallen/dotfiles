@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -eufo pipefail
+
+trap 'killall Dock' EXIT
+
+{{- range (dig "dock" "remove" (list) .) }}
+dockutil --no-restart --remove {{ . | squote }} || true
+{{- end }}

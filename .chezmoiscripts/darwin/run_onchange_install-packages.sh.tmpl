@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -eufo pipefail
+#!/bin/bash
+
+set -eufo pipefail
+{{- $data := .chezmoi.config.data }}
+
+{{- if eq .chezmoi.os "darwin" }}
+  {{- template "darwin-install-packages.sh" . }}
+{{- end }}

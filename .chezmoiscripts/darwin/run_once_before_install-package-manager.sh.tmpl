@@ -1,0 +1,3 @@
+{{- if eq .chezmoi.os "darwin" }}
+{{- include "scripts/darwin-pre-install.sh" }}
+{{- end }}

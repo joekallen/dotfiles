@@ -1,5 +1,6 @@
+{{- if eq .chezmoi.os "darwin" }}
 packages:
-  darwin:
+  common:
     brews:
       - chezmoi
       - eza
@@ -53,16 +54,13 @@ packages:
       - visualstudioexptteam.vscodeintellicode
       - visualstudioexptteam.intellicode-api-usage-examples
 
-packages-personal:
-  darwin:
+  personal:
     brews: []
     casks: []
     vscode:
       # godot
       - geequlim.godot-tools
-
-packages-work:
-  darwin:
+  work:
     brews: []
     casks: []
     vscode:
@@ -75,3 +73,4 @@ packages-work:
       # terraform
       - hashicorp.hcl
       - hashicorp.terraform
+{{- end }}

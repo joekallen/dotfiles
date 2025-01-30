@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -eufo pipefail
+
+{{- if eq .chezmoi.os "darwin" }}
+defaults write com.apple.dock autohide -int 1
+{{- end }}
