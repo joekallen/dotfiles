@@ -4,16 +4,18 @@ set -eufo pipefail
 
 echo "🍺  Installing packages with brew..."
 
+{{- $extra := "packages-personal" }}
+{{- if .chesmoi.config.data.isWorkMachine }}
+  {{- $extra = "packages-work" }}
+{{- end }}
 brew bundle --no-lock --file=/dev/stdin <<EOF
-{{- range .packages.darwin.brews }}
+{{- range concat (dig "packages" "darwin" "brews" (list) .) (dig $extra "darwin" "brews" (list) .) }}
 brew {{ . | squote }}
 {{- end }}
-{{- range .packages.darwin.casks }}
+{{- range concat (dig "packages" "darwin" "casks" (list) .) (dig $extra "darwin" "casks" (list) .) }}
 cask {{ . | squote }}
 {{- end }}
-{{- range .packages.darwin.vscode }}
+{{- range concat (dig "packages" "darwin" "vscode" (list) .) (dig $extra "darwin" "vscode" (list) .) }}
 vscode {{ . | squote }}
 {{- end }}
 EOF
-
-echo "Done!"

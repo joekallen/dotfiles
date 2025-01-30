@@ -53,7 +53,7 @@ packages:
       - visualstudioexptteam.vscodeintellicode
       - visualstudioexptteam.intellicode-api-usage-examples
 
-packages-peronsal:
+packages-personal:
   darwin:
     brews: []
     casks: []
