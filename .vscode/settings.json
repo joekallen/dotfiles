@@ -1,0 +1,11 @@
+{
+  "go.goroot": "/Users/joeallen/.local/share/mise/installs/go/1.21.13",
+  "debug.javascript.defaultRuntimeExecutable": {
+    "pwa-node": "/Users/joeallen/.local/share/mise/shims/node"
+  },
+  "python.defaultInterpreterPath": "/Users/joeallen/.local/share/mise/installs/python/3.12.8/bin/python",
+  "go.alternateTools": {
+    "go": "/Users/joeallen/.local/share/mise/shims/go",
+    "dlv": "/Users/joeallen/.local/share/mise/shims/dlv"
+  }
+}

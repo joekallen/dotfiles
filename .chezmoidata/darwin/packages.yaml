@@ -3,32 +3,34 @@ darwin:
     common:
       brews:
         - chezmoi
+        - direnv
+        - docutil
+        - exa
         - eza
         - git
         - fzf
-        - jq
         - lazygit
         - mas
         - mise
         - mods
         - nushell
+        - podman
         - ripgrep
+        - rust
         - sevenzip
         - wget
       casks:
         - 1password
         - 1password-cli
+        - ghostty
         - google-chrome
         - discord
         - font-fira-code
         - font-fira-code-nerd-font
         - raycast
         - slack
-        - warp
         - visual-studio-code
       vscode:
-        # chezmoi
-        - jorcelinojunior.chezmoi-tools
         # git
         - eamodio.gitlens
         # gopilot
@@ -72,3 +74,4 @@ darwin:
         # terraform
         - hashicorp.hcl
         - hashicorp.terraform
+        - mise-vscode

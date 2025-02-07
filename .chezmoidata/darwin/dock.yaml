@@ -18,3 +18,7 @@ darwin:
       - Pages
       - "App Store"
     add: []
+    # each index contains a dictionary with the following keys:
+    # - file: the path to the application (usually just name is fine)
+    # - position: the position in the dock (0 is the first position)
+    move: []
