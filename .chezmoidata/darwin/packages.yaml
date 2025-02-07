@@ -4,8 +4,7 @@ darwin:
       brews:
         - chezmoi
         - direnv
-        - docutil
-        - exa
+        - docutils
         - eza
         - git
         - fzf
@@ -16,7 +15,6 @@ darwin:
         - nushell
         - podman
         - ripgrep
-        - rust
         - sevenzip
         - wget
       casks:
@@ -45,6 +43,8 @@ darwin:
         - davidanson.vscode-markdownlint
         - shd101wyy.markdown-preview-enhanced
         - yzhang.markdown-all-in-one
+        # mise
+        - hverlin.mise-vscode
         # prettier
         - esbenp.prettier-vscode
         # python
@@ -74,4 +74,3 @@ darwin:
         # terraform
         - hashicorp.hcl
         - hashicorp.terraform
-        - mise-vscode
