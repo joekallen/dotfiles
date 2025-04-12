@@ -2,6 +2,7 @@ darwin:
   packages:
     common:
       brews:
+        - carapace
         - chezmoi
         - direnv
         - docutils
