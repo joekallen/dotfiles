@@ -1,0 +1,8 @@
+#!/opt/homebrew/bin/nu
+
+{{- if eq .chezmoi.os "darwin" }}
+with-env { HOMEBREW_NO_ENV_HINTS: 1 HOMEBREW_BUNDLE_INSTALL_CLEANUP: 1 } {
+echo "🍺  Installing packages with brew..."
+brew bundle --force cleanup
+}
+{{- end }}

@@ -11,3 +11,6 @@ part of the chezmoi configuration, but this executes part of itself as a bootstr
 echo '📦  Installing dotfiles' && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/joekallen/dotfiles/refs/heads/main/scripts/install.sh)"
 
 ```
+
+## Install
+All install scripts are done with Nushell, this makes data driven tasks like diffs for install/uninstall cleaner.

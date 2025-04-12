@@ -1,24 +1,14 @@
 darwin:
   dock:
-    remove:
-      - Launchpad
-      - Safari
-      - Mail
-      - Maps
-      - Photos
-      - FaceTime
-      - Contacts
-      - Reminders
-      - Notes
-      - Freeform
-      - TV
-      - Music
-      - Keynote
-      - Numbers
-      - Pages
-      - "App Store"
-    add: []
-    # each index contains a dictionary with the following keys:
-    # - file: the path to the application (usually just name is fine)
-    # - position: the position in the dock (0 is the first position)
-    move: []
+    personal:
+      - /Applications/Google Chrome.app
+      - /Applications/Ghostty.app
+      - /System/Applications/Messages.app
+    work:
+      - /Applications/Google Chrome.app
+      - /Applications/Spark.app
+      - /System/Applications/Calendar.app
+      - /Applications/Slack.app
+      - /Applications/Ghostty.app
+      - /System/Applications/Messages.app
+      - /Applications/OpenVPN Connect.app

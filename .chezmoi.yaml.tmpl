@@ -1,12 +1,8 @@
-{{- $email := promptStringOnce . "email" "Email address" -}}
-{{- $isWorkMachine := promptBoolOnce . "isWorkMachine" "Is this a work machine?" -}}
-{{- $shell := promptMenuOnce . "shell" "Preferred shell" (list "bash" "fish" "nushell" "zsh") -}}
-
 data:
   name: Joe Allen
-  email: {{ $email | squote }}
-  isWorkMachine: {{ $isWorkMachine }}
-  shell: {{ $shell | squote }}
+  email: {{ promptStringOnce . "email" "Email address" | squote }}
+  isWorkMachine: {{ promptBoolOnce . "isWorkMachine" "Is this a work machine?" }}
+  shell: {{ promptChoiceOnce . "shell" "Which shell do you prefer" (list "bash" "fish" "nushell" "zsh") "zsh" | squote }}
 
 onepassword:
   prompt: true

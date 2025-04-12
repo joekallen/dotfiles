@@ -16,11 +16,14 @@ darwin:
         - podman
         - ripgrep
         - sevenzip
+        - starship
         - wget
       casks:
         - 1password
         - 1password-cli
+        - aptakube
         - ghostty
+        - gimp
         - google-chrome
         - discord
         - font-fira-code
@@ -43,8 +46,6 @@ darwin:
         - davidanson.vscode-markdownlint
         - shd101wyy.markdown-preview-enhanced
         - yzhang.markdown-all-in-one
-        # mise
-        - hverlin.mise-vscode
         # prettier
         - esbenp.prettier-vscode
         # python
@@ -55,6 +56,7 @@ darwin:
         # vscode-intellicode
         - visualstudioexptteam.vscodeintellicode
         - visualstudioexptteam.intellicode-api-usage-examples
+        - thenuprojectcontributors.vscode-nushell-lang
     personal:
       brews: []
       casks: []
@@ -62,7 +64,10 @@ darwin:
         # godot
         - geequlim.godot-tools
     work:
-      brews: []
+      brews:
+        # this is here for aptakube
+        - kubelogin
+        - terraform-docs
       casks: []
       vscode:
         # golang
