@@ -7,12 +7,6 @@ $env.config = {
   rm: {
     always_trash: true
   }
-
-  hooks: {
-    env_change: {
-      PWD: null
-    }
-  }
 }
 
 use ($nu.default-config-dir | path join scripts/mise.nu)
