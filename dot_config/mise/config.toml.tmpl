@@ -1,0 +1,12 @@
+{{- $tools := dig "tools" (dict) . }}
+{{- $extra := "personal" }}
+{{- if .chezmoi.config.data.isWorkMachine }}
+  {{- $extra = "work" }}
+{{- end }}
+[hooks]
+enter = 'mise i -q'
+
+[tools]
+{{- range $tool, $version := merge (dig $extra (dict) $tools) (dig "common" (dict) $tools) }}
+{{ $tool }} = {{ $version | quote }}
+{{- end }}

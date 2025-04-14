@@ -80,3 +80,17 @@ darwin:
         # terraform
         - hashicorp.hcl
         - hashicorp.terraform
+# tools are installed via mise
+tools:
+  common:
+    node: "20"
+  personal: {}
+  work:
+    aws-cli: "2"
+    go: "1.21"
+    helm: "3"
+    kubectl: "1.30"
+    kubelogin: "1.30"
+    opentofu: "1.9"
+    python: "3.12"
+    terraform: "1.9"
