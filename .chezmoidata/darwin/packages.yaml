@@ -33,6 +33,8 @@ darwin:
         - slack
         - visual-studio-code
       vscode:
+        # docker
+        - ms-azuretools.vscode-docker
         # git
         - eamodio.gitlens
         # gopilot
@@ -60,7 +62,8 @@ darwin:
         - thenuprojectcontributors.vscode-nushell-lang
     personal:
       brews: []
-      casks: []
+      casks:
+        - visual-studio-code
       vscode:
         # godot
         - geequlim.godot-tools
@@ -69,7 +72,8 @@ darwin:
         # this is here for aptakube
         - kubelogin
         - terraform-docs
-      casks: []
+      casks:
+        - cursor
       vscode:
         # golang
         - golang.go
@@ -93,4 +97,4 @@ tools:
     kubelogin: "1.30"
     opentofu: "1.9"
     python: "3.12"
-    terraform: "1.9"
+    terraform: "1.11"
