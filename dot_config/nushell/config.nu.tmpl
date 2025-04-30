@@ -3,7 +3,11 @@ use std/util "path add"
 path add "/opt/homebrew/bin"
 
 # setup vendor autoload directory
-mkdir ($nu.data-dir | path join "vendor/autoload")
+# mkdir ($nu.data-dir | path join "vendor/autoload")
+mkdir ...$nu.vendor-autoload-dirs
+
+# setup user autoload directory
+mkdir ...$nu.user-autoload-dirs
 
 # starship - terminal styling
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
