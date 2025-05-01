@@ -35,6 +35,7 @@ darwin:
       vscode:
         # docker
         - ms-azuretools.vscode-docker
+        - ms-vscode-remote.remote-containers
         # git
         - eamodio.gitlens
         # gopilot
@@ -52,14 +53,16 @@ darwin:
         # prettier
         - esbenp.prettier-vscode
         # python
-        - ms-python.vscode-pylance
         - ms-python.python
+        - ms-python.vscode-pylance
         # yaml
         - redhat.vscode-yaml
         # vscode-intellicode
         - visualstudioexptteam.vscodeintellicode
         - visualstudioexptteam.intellicode-api-usage-examples
         - thenuprojectcontributors.vscode-nushell-lang
+        # vscode
+        - ms-vsliveshare.vsliveshare
     personal:
       brews: []
       casks:

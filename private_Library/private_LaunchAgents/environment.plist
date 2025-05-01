@@ -3,7 +3,7 @@
 <key>Label</key><string>my.startup.shell_agnostic.environment</string>
 <key>ProgramArguments</key><array><string>sh</string><string>-c</string><string>
   launchctl setenv XDG_CONFIG_HOME ~/.config
-  launchctl setenv XDG_DATA_DIR ~/.local/share/nushell
+  launchctl setenv XDG_DATA_HOME ~/.local/share
 </string></array>
 <key>RunAtLoad</key><true/>
 </dict>
