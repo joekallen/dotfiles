@@ -59,7 +59,7 @@ $env.HELM_EXPERIMENTAL_OCI = 1
 $env.HELM_S3_MODE = "3"
 $env.STARSHIP_CONFIG = $env.HOME | path join ".config/starship.toml"
 
-{{- if chezmoi.config.data.isWorkMachine }}
+{{- if .chezmoi.config.data.isWorkMachine }}
 # work environment variables
 $env.VAULT_ADDR = "https://vault.infra.subsplash.io"
 {{- end }}
