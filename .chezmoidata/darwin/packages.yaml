@@ -101,3 +101,6 @@ tools:
     opentofu: "1.9"
     python: "3.12"
     terraform: "1.11"
+# temporary
+nupm:
+  alias-finder.nu: https://github.com/KamilKleina/alias-finder.nu.git

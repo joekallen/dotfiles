@@ -1,22 +1,21 @@
 # See https://www.nushell.sh/book/configuration.html
-use std/util "path add"
-path add "/opt/homebrew/bin"
+use std/util 'path add'
 
 # setup data-dir
 mkdir $nu.data-dir
 
 # setup nupm Directories
-$env.NUPM_HOME = ($env.XDG_DATA_HOME | path join "nupm")
+$env.NUPM_HOME = ($env.XDG_DATA_HOME | path join 'nupm')
 mkdir ...(['scripts','modules'] | each {|folder| $env.NUPM_HOME | path join $folder })
 
 # setup vendor autoload directory
-mkdir ($nu.data-dir | path join "vendor/autoload")
+mkdir ($nu.data-dir | path join 'vendor/autoload')
 
 # setup user autoload directory
 mkdir ...$nu.user-autoload-dirs
 
 $env.config = {
-  buffer_editor: "code"
+  buffer_editor: 'code'
   show_banner: false
 
   rm: {
@@ -24,16 +23,24 @@ $env.config = {
   }
 }
 
+# initial path setup
+$env.PATH = ($env.PATH
+  | split row (char esep)
+  | prepend '/usr/local/bin'
+  | prepend '/opt/homebrew/bin'
+  | prepend ($env.NUPM_HOME | path join 'scripts')
+) | uniq
+
 # Specifies how environment variables are:
 # - converted from a string to a value on Nushell startup (from_string)
 # - converted from a value back to a string when running external commands (to_string)
 # Note: The conversions happen *after* config.nu is loaded
 $env.ENV_CONVERSIONS = {
-  "PATH": {
+  'PATH': {
     from_string: { |s| $s | split row (char esep) | path expand --no-symlink }
     to_string: { |v| $v | path expand --no-symlink | str join (char esep) }
   }
-  "Path": {
+  'Path': {
     from_string: { |s| $s | split row (char esep) | path expand --no-symlink }
     to_string: { |v| $v | path expand --no-symlink | str join (char esep) }
   }
@@ -56,24 +63,19 @@ $env.NU_PLUGIN_DIRS = [
 # Default env variables
 $env.DOCKER_BUILDKIT = 1
 $env.HELM_EXPERIMENTAL_OCI = 1
-$env.HELM_S3_MODE = "3"
-$env.STARSHIP_CONFIG = $env.HOME | path join ".config/starship.toml"
+$env.HELM_S3_MODE = '3'
+$env.STARSHIP_CONFIG = $env.HOME | path join '.config/starship.toml'
 
 {{- if .chezmoi.config.data.isWorkMachine }}
 # work environment variables
-$env.VAULT_ADDR = "https://vault.infra.subsplash.io"
+$env.VAULT_ADDR = 'https://vault.infra.subsplash.io'
 {{- end }}
 
-$env.PATH = ($env.PATH
-  | split row (char esep)
-  | prepend ($env.NUPM_HOME | path join 'scripts'
-) | uniq
-
 # starship - terminal styling
-starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
+starship init nu | save -f ($nu.data-dir | path join 'vendor/autoload/starship.nu')
 
 # carapace - completion
-carapace _carapace nushell | save -f ($nu.data-dir | path join "vendor/autoload/carapace.nu")
+carapace _carapace nushell | save -f ($nu.data-dir | path join 'vendor/autoload/carapace.nu')
 
 # mise - tool for managing multiple versions of nushell
-mise activate nu | save -f ($nu.data-dir | path join "vendor/autoload/mise.nu")
+mise activate nu | save -f ($nu.data-dir | path join 'vendor/autoload/mise.nu')

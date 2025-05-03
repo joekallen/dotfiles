@@ -18,5 +18,12 @@ with-env { HOMEBREW_NO_ENV_HINTS: 1 HOMEBREW_BUNDLE_INSTALL_CLEANUP: 1 } {
         rm -rf $in
         mv nupm-main/nupm $in
       }
+
+  {{- with .nupm }}
+  use $'($nu.default-config-dir)/scripts/nupm-install.nu'
+  {{- range $package, $repo := . }}
+  {{ printf "nupm-install %s %s" $package $repo }}
+  {{- end }}
+  {{- end }}
 }
 {{- end }}
