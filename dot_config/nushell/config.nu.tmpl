@@ -4,10 +4,6 @@ use std/util 'path add'
 # setup data-dir
 mkdir $nu.data-dir
 
-# setup nupm Directories
-$env.NUPM_HOME = ($env.XDG_DATA_HOME | path join 'nupm')
-mkdir ...(['scripts','modules'] | each {|folder| $env.NUPM_HOME | path join $folder })
-
 # setup vendor autoload directory
 mkdir ($nu.data-dir | path join 'vendor/autoload')
 
@@ -22,54 +18,6 @@ $env.config = {
     always_trash: true
   }
 }
-
-# initial path setup
-$env.PATH = ($env.PATH
-  | split row (char esep)
-  | prepend '/usr/local/bin'
-  | prepend '/opt/homebrew/bin'
-  | prepend ($env.NUPM_HOME | path join 'scripts')
-) | uniq
-
-# Specifies how environment variables are:
-# - converted from a string to a value on Nushell startup (from_string)
-# - converted from a value back to a string when running external commands (to_string)
-# Note: The conversions happen *after* config.nu is loaded
-$env.ENV_CONVERSIONS = {
-  'PATH': {
-    from_string: { |s| $s | split row (char esep) | path expand --no-symlink }
-    to_string: { |v| $v | path expand --no-symlink | str join (char esep) }
-  }
-  'Path': {
-    from_string: { |s| $s | split row (char esep) | path expand --no-symlink }
-    to_string: { |v| $v | path expand --no-symlink | str join (char esep) }
-  }
-}
-
-# Directories to search for scripts when calling source or use
-# The default for this is $nu.default-config-dir/scripts
-$env.NU_LIB_DIRS = [
-  ($nu.default-config-dir | path join 'scripts') # add <nushell-config-dir>/scripts
-  ($nu.data-dir | path join 'completions') # default home for nushell completions
-  ($env.NUPM_HOME | path join 'modules') # nupm modules
-]
-
-# Directories to search for plugin binaries when calling register
-# The default for this is $nu.default-config-dir/plugins
-$env.NU_PLUGIN_DIRS = [
-  ($nu.default-config-dir | path join 'plugins') # add <nushell-config-dir>/plugins
-]
-
-# Default env variables
-$env.DOCKER_BUILDKIT = 1
-$env.HELM_EXPERIMENTAL_OCI = 1
-$env.HELM_S3_MODE = '3'
-$env.STARSHIP_CONFIG = $env.HOME | path join '.config/starship.toml'
-
-{{- if .chezmoi.config.data.isWorkMachine }}
-# work environment variables
-$env.VAULT_ADDR = 'https://vault.infra.subsplash.io'
-{{- end }}
 
 # starship - terminal styling
 starship init nu | save -f ($nu.data-dir | path join 'vendor/autoload/starship.nu')

@@ -12,5 +12,21 @@ echo '📦  Installing dotfiles' && /bin/bash -c "$(curl -fsSL https://raw.githu
 
 ```
 
-## Install
-All install scripts are done with Nushell, this makes data driven tasks like diffs for install/uninstall cleaner.
+## Navigating
+
+All software to install is done through brew, mise and external packages. The structure is descibed [here](#format) and configuration locations are listed [here](#locations)
+
+below, but
+
+### Locations
+
+### Format
+
+Ideally work and personal packages contain only distinct differences. This is done to avoid having to remember to add/remove a package in multiple places.
+
+<!-- add a schema? -->
+```yaml
+# type will likely be (packages, mise, nupm). packages is used for brew
+type:
+
+```

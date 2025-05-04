@@ -1,0 +1,34 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/opt/homebrew/bin/nu
+
+{{- $extra := "personal" }}
+{{- if .chezmoi.config.data.isWorkMachine }}
+  {{- $extra = "work" }}
+{{- end }}
+
+{{- $packages := dig "packages" (dict) . }}
+
+{{- $brews := concat (dig "common" "brews" (list) $packages) (dig $extra "brews" (list) $packages) }}
+{{- $casks := concat (dig "common" "casks" (list) $packages) (dig $extra "casks" (list) $packages) }}
+{{- $taps := concat (dig "common" "taps" (list) $packages) (dig $extra "taps" (list) $packages) }}
+{{- $vscode := concat (dig "common" "vscode" (list) $packages) (dig $extra "vscode" (list) $packages) }}
+
+print "🍺  Installing packages with brew..."
+[
+{{- range $taps }}
+  {{- $parts := splitList "," . }}
+  {{- $wrapped_parts := (list) }}
+  {{- range $parts }}{{ $wrapped_parts = append $wrapped_parts (. | trim | squote ) }}{{- end }}
+  "tap {{ $wrapped_parts | join "," }}"
+{{- end }}
+{{- range $brews }}
+  "brew {{ . | squote }}"
+{{- end }}
+{{- range $casks }}
+  "cask {{ . | squote }}"
+{{- end }}
+{{- range $vscode }}
+  "vscode {{ . | squote }}"
+{{- end }}
+] | str join "\n" | brew bundle --cleanup --file=/dev/stdin
+{{- end }}
