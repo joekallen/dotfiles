@@ -13,6 +13,8 @@ mise:
       rust: '1.86'
     personal: {}
     work:
+      # python has to go before aws-cli or aws-cli/Python will be resolved in path first
+      python: '3.12'
       aws-cli: '2'
       aws-sso: '1.17'
       cilium-cli: '0.18'
@@ -21,6 +23,5 @@ mise:
       kubectl: '1.30'
       kubelogin: '1.30'
       opentofu: '1.9'
-      python: '3.12'
-      terraform: '1.11'
+      terraform: '1.12'
       tflint: '0.57'

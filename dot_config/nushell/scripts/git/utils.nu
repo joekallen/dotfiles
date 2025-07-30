@@ -16,8 +16,13 @@ export def --env --wrapped git-clone [
   remote: string
   ...rest
 ] {
-  git-repo-from-remote $remote
-    | get repo
+  let repo = git-repo-from-remote $remote | get repo
+  $repo
+    |
+      if ($repo | path exists) {
+        error make --unspanned { msg: $"Destination ($env.pwd | path join $repo) already exists" }
+      }
+      $repo
     | path join (git-remote-default-branch $remote).name
     | do -c --env {
       ^git clone $remote $in ...$rest

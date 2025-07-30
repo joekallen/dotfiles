@@ -1,7 +1,3 @@
-export def --wrapped git [...rest] {
-  ^git ...$rest
-}
-
 export def --env --wrapped "git clone" [
   repository: string
   ...rest
@@ -62,6 +58,41 @@ export def --env "git worktree use" [
       }
     |
       if $add_dir { enter $in } else { cd $in }
+}
+
+export def --env --wrapped "git worktree list" [] {
+  print "running git worktree list custom version"
+  git-error-is-not-repo
+
+  let current_branch = git-current-branch
+  let default_branch = git-default-branch
+
+  ^git worktree list --porcelain
+  | lines
+  | compact --empty
+  | chunks 3
+  | each {
+      $in
+      | split row ' '
+      |
+        {
+          name: ($in.1 | str replace -r r#'.*/(.*)'# '$1')
+          path: $in.1
+          sha: $in.3
+          ref: $in.5
+          is_current: false
+          is_default: false
+        }
+        | update is_current ($in.name == $current_branch)
+        | update is_default ($in.name == $default_branch)
+    }
+  | sort-by -c {|a,b|
+      if $b.is_current {
+        false
+      } else if $b.is_default and (not $a.is_current) {
+        false
+      } else {$a.is_current or $a.is_default or ($a.name < $b.name)}
+    }
 }
 
 def git-worktree-path [worktree: string] {

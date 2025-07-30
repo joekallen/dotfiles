@@ -11,13 +11,13 @@ packages:
   work:
     brews:
       - argocd
-      - bitwarden
       # this is here for aptakube
       - kubelogin
       - subsplash/tap/vault-helper
       - terraform-docs
       - vault
     casks:
+      - bitwarden
       - cursor
       - openvpn-connect
     taps:
@@ -98,3 +98,5 @@ packages:
       - visualstudioexptteam.intellicode-api-usage-examples
       # vscode
       - ms-vsliveshare.vsliveshare
+      # q developer
+      - AmazonWebServices.amazon-q-vscode
