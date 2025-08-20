@@ -1,0 +1,23 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+
+{{- $files := (list) }}
+{{- $targetPath := joinPath .chezmoi.homeDir "Library/LaunchAgents" }}
+{{- $path := joinPath .chezmoi.sourceDir "private_Library/private_LaunchAgents" }}
+# Files under {{ $path }}
+{{- range (joinPath $path "/**/*") | glob }}
+{{- $name := . | trimSuffix ".tmpl" | base }}
+{{- $targetFile := joinPath $targetPath $name }}
+{{- $files = append $files (list $name $targetFile) }}
+# {{ $name }}: sha256#{{ include . | sha256sum }}
+{{- end }}
+
+{{- range $files }}
+{{- $name := first . }}
+{{- $target := last . }}
+echo "Reloading LaunchAgent {{ $name }} to pick up changes"
+launchctl unload {{ $target | squote }}
+launchctl load {{ $target | squote }}
+{{- end }}
+echo "Done, LaunchAgent files have been updated and reloaded"
+{{- end }}

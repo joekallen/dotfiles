@@ -1,4 +1,4 @@
-export def --env --wrapped "git clone" [
+export def --env --wrapped "clone" [
   repository: string
   ...rest
 ] {
@@ -11,7 +11,7 @@ export def --env --wrapped "git clone" [
     }
 }
 
-export def --env --wrapped "git worktree add" [
+export def --env --wrapped "worktree add" [
   worktree: string,
   ...rest
 ] {
@@ -95,50 +95,50 @@ export def --env --wrapped "git worktree list" [] {
     }
 }
 
-def git-worktree-path [worktree: string] {
-  git-branch-root | path join $'../($worktree)' | path expand
-}
+# def git-worktree-path [worktree: string] {
+#   git-branch-root | path join $'../($worktree)' | path expand
+# }
 
-def git-remote-default-branch [repository: string] {
-  ^git ls-remote --symref $repository HEAD
-    | complete | get stdout
-    | lines | take 1 | $in.0
-    | str replace -r r#'^.*/(.+)\s*HEAD$'# '$1'
-    | str trim
-}
+# def git-remote-default-branch [repository: string] {
+#   ^git ls-remote --symref $repository HEAD
+#     | complete | get stdout
+#     | lines | take 1 | $in.0
+#     | str replace -r r#'^.*/(.+)\s*HEAD$'# '$1'
+#     | str trim
+# }
 
-def git-default-branch [] {
-  error-is-not-git-repo
-  ^git config --get init.defaultBranch
-    | complete | get stdout | str trim
-}
+# def git-default-branch [] {
+#   error-is-not-git-repo
+#   ^git config --get init.defaultBranch
+#     | complete | get stdout | str trim
+# }
 
-def is-git-repo [] {
-  ^git rev-parse --is-inside-work-tree
-    | complete
-    | get exit_code
-    | $in == 0
-}
+# def is-git-repo [] {
+#   ^git rev-parse --is-inside-work-tree
+#     | complete
+#     | get exit_code
+#     | $in == 0
+# }
 
-def is-not-git-repo [] {
-  not (is-git-repo)
-}
+# def is-not-git-repo [] {
+#   not (is-git-repo)
+# }
 
-def error-is-not-git-repo [] {
-  if (is-not-git-repo) {
-    error make {msg: "Not in a git repository"}
-  }
-}
+# def error-is-not-git-repo [] {
+#   if (is-not-git-repo) {
+#     error make {msg: "Not in a git repository"}
+#   }
+# }
 
-def git-current-branch [] {
-  error-is-not-git-repo
-  ^git rev-parse --abbrev-ref HEAD | complete | get stdout | str trim
-}
+# def git-current-branch [] {
+#   error-is-not-git-repo
+#   ^git rev-parse --abbrev-ref HEAD | complete | get stdout | str trim
+# }
 
-def git-branch-root [] {
-  error-is-not-git-repo
-  ^git rev-parse --show-toplevel | complete | get stdout | str trim
-}
+# def git-branch-root [] {
+#   error-is-not-git-repo
+#   ^git rev-parse --show-toplevel | complete | get stdout | str trim
+# }
 
 # def git_log_prettily [args: string = ""] {
 #   if (is-git-repo) == false {

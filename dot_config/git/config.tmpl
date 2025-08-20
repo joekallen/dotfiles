@@ -1,55 +1,111 @@
-[alias]
-        lg = log --color --graph --pretty=format{{ .chezmoi.pathListSeparator }}'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-        amend = commit --amend
-        dc = diff --cached
-        diff = diff --word-diff
-        fp = "!f() { {{ .chezmoi.config.git.command }} fetch --prune; }; f"
-        la = !{{ .chezmoi.config.git.command }} config -l | grep alias | cut -c 7-
-        lt = describe --tags --abbrev=0
-        undo = "!f() { {{ .chezmoi.config.git.command }} checkout HEAD -- $1; }; f"
-        save = "!f() { {{ .chezmoi.config.git.command }} commit -m \"$@\"; }; f"
-        st = status -s
-        unstage = reset --
-        unstage-all = reset HEAD
-        rb = rebase -i --root
 [user]
 	email = {{ .email }}
 	name = {{ .name }}
-[tag]
-	forceSignAnnotated = false
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
-[merge]
+[advice]
+	worktreeAddOrphan = false
+[alias]
+  lg = log --color --graph --pretty=format{{ .chezmoi.pathListSeparator }}'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  amend = commit --amend
+  dc = diff --cached
+  diff = diff --word-diff
+  fp = "!f() { {{ .chezmoi.config.git.command }} fetch --prune; }; f"
+  la = !{{ .chezmoi.config.git.command }} config -l | grep alias | cut -c 7-
+  lt = describe --tags --abbrev=0
+  undo = "!f() { {{ .chezmoi.config.git.command }} checkout HEAD -- $1; }; f"
+  save = "!f() { {{ .chezmoi.config.git.command }} commit -m \"$@\"; }; f"
+  st = status -s
+  unstage = reset --
+  unstage-all = reset HEAD
+  rb = rebase -i --root
+[apply]
+	whitespace = fix
+[branch]
+	autoSetupRebase = always
+	sort = -committerdate
+[checkout]
+	defaultRemote = origin
+	guess = true
+[column]
+	ui = always
+[commit]
+	cleanup = scissors
+	verbose = true
+[core]
+{{- if .chezmoi.config.data.isWorkMachine }}
+	editor = cursor --wait
+{{- else }}
+	editor = cursor --wait
+{{- end }}
+	excludesFile = {{ joinPath .chezmoi.configFile "ignore" }}
+	filemode = true
+	# this adds a socket to .git folder and breaks CoW for worktree flows
+	fsmonitor = false
+	logAllRefUpdates = always
+	# doesn't work with current worktree setup
+	sparseCheckout = false
+	quotePath = true
+[diff]
+	algorithm = histogram
+	colorMoved = zebra
+	context = 7
+	dstPrefix = remote
+	mnemonicPrefix = true
+	renames = copies
+	srcPrefix = local
 	tool = Kaleidoscope
-	ff = only
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --{{ .chezmoi.config.status.pathStyle }}-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool]
 	prompt = false
 	trustExitCode = true
-[mergetool]
-	prompt = false
-	keepBackup = false
-[diff]
-	tool = Kaleidoscope
-	colorMoved = zebra
-[core]
-{{- if .chezmoi.config.data.isWorkMachine }}
-	editor = code --wait
-{{- else }}
-	editor = code --wait
-{{- end }}
-	excludesFile = ~{{ .chezmoi.pathSeparator }}.gitignore
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --{{ .chezmoi.config.status.pathStyle }}-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[help]
+	autocorrect = prompt
 [init]
 	defaultBranch = main
-[url "git@subsplash.io:"]
-	insteadOf = https://subsplash.io/
+[fetch]
+	all = true
+	output = compact
+	prune = true
+	pruneTags = true
+[merge]
+	conflictStyle = zdiff3
+	ff = only
+	tool = Kaleidoscope
+[mergetool]
+	hideResolved = true
+	prompt = false
+	keepBackup = false
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
 [pull]
 	rebase = true
-[fetch]
-	prune = true
+# Add format for change log here
+#[pretty]
+
 [push]
 	autoSetupRemote = true
+	default = simple
+	followTags = true
+[rebase]
+  abbreviateCommands = true
+	autosquash = true
+	autostash = true
+	updateRefs = true
+[rerere]
+	autoupdate = true
+	enabled = true
+[stash]
+	showIncludeUntracked = true
+[status]
+	relativePaths = true
+	renames = copies
+	showUntrackedFiles = true
+[tag]
+	forceSignAnnotated = false
+	sort = version:refname
+[url "git@subsplash.io:"]
+	insteadOf = https://subsplash.io/
 [worktree]
 	guessRemote = true
+	useRelativePaths = true

@@ -15,6 +15,7 @@ packages:
       - kubelogin
       - subsplash/tap/vault-helper
       - terraform-docs
+      - tfmigrate
       - vault
     casks:
       - bitwarden
@@ -98,5 +99,3 @@ packages:
       - visualstudioexptteam.intellicode-api-usage-examples
       # vscode
       - ms-vsliveshare.vsliveshare
-      # q developer
-      - AmazonWebServices.amazon-q-vscode

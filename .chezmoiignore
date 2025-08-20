@@ -4,4 +4,5 @@ scripts
 {{- if ne .chezmoi.os "darwin" }}
 **/*.plist
 {{- end }}
+
 # how to pull in work vs personal, and architecture

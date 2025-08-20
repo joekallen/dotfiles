@@ -1,0 +1,40 @@
+{{- $searchPaths := list "/opt/homebrew/bin" "/usr/local/bin" "/usr/local/opt" -}}
+{{- $mise := findExecutable "mise" $searchPaths -}}
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"><plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>local.mise.update</string>
+    <key>ProgramArguments</key>
+    <array>
+      {{- if $mise }}
+      <string>{{ $mise }}</string>
+      <string>prune</string>
+      <string>-y</string>
+      {{- else }}
+      <string>osascript</string>
+      <string>-e</string>
+      {{- $displaySearchPaths := (list) }}
+      {{- range $searchPaths }}{{- $displaySearchPaths = append $displaySearchPaths (. | squote) }}{{- end }}
+      <string>display notification "Mise could not be found in any of the searched locations [{{ $displaySearchPaths | join ", " }}]" with title "Mise not found!"</string>
+      {{- end }}
+    </array>
+    {{- if $mise }}
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict>
+            <key>Weekday</key>
+            <integer>1</integer>
+            <key>Hour</key>
+            <integer>2</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+            <key>Second</key>
+            <integer>0</integer>
+        </dict>
+    </array>
+    {{- end }}
+    {{/** We let this still run on load if mise can't be found so we get the notification **/ -}}
+    <key>RunAtLoad</key>
+    <true/>
+  </dict>
+</plist>

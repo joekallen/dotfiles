@@ -22,6 +22,7 @@ mise:
       helm: '3'
       kubectl: '1.30'
       kubelogin: '1.30'
-      opentofu: '1.9'
+      opentofu: '1.10'
       terraform: '1.12'
+      terragrunt: 'latest'
       tflint: '0.57'

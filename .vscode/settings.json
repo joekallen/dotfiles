@@ -3,7 +3,7 @@
   "debug.javascript.defaultRuntimeExecutable": {
     "pwa-node": "/Users/joeallen/.local/share/mise/shims/node"
   },
-  "python.defaultInterpreterPath": "/Users/joeallen/.local/share/mise/installs/aws-cli/2.26.2/aws-cli.pkg/Payload/aws-cli/python",
+  "python.defaultInterpreterPath": "/Users/joeallen/.local/share/mise/installs/aws-cli/2.28.11/aws-cli.pkg/Payload/aws-cli/python",
   "go.alternateTools": {
     "go": "/Users/joeallen/.local/share/mise/shims/go",
     "gopls": "/Users/joeallen/.local/share/mise/shims/gopls"

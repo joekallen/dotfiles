@@ -1,0 +1,38 @@
+{{- $searchPaths := list "/opt/homebrew/bin" "/usr/local/bin" "/usr/local/opt" -}}
+{{- $brew := findExecutable "brew" $searchPaths -}}
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"><plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>local.brew.update</string>
+    <key>ProgramArguments</key>
+    <array>
+      {{- if $brew }}
+      <string>{{ $brew }}</string>
+      <string>upgrade</string>
+      <string>-q</string>
+      {{- else }}
+      <string>osascript</string>
+      <string>-e</string>
+      {{- $displaySearchPaths := (list) }}
+      {{- range $searchPaths }}{{- $displaySearchPaths = append $displaySearchPaths (. | squote) }}{{- end }}
+      <string>display notification "Brew could not be found in any of the searched locations [{{ $displaySearchPaths | join ", " }}]" with title "Homebrew not found!"</string>
+      {{- end }}
+    </array>
+    {{- if $brew }}
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict>
+            <key>Hour</key>
+            <integer>2</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+            <key>Second</key>
+            <integer>0</integer>
+        </dict>
+    </array>
+    {{- end }}
+    {{/** We let this still run on load if brew can't be found so we get the notification **/ -}}
+    <key>RunAtLoad</key>
+    <true/>
+  </dict>
+</plist>

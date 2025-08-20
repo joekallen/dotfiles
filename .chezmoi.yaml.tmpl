@@ -8,5 +8,6 @@ onepassword:
   prompt: true
 
 scriptEnv:
+  XDG_CACHE_HOME: {{ printf "%s/%s" .chezmoi.homeDir ".cache" }}
   XDG_CONFIG_HOME: {{ printf "%s/%s" .chezmoi.homeDir ".config" }}
   XDG_DATA_HOME: {{ printf "%s/%s" .chezmoi.homeDir ".local/share" }}
