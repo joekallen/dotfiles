@@ -63,7 +63,7 @@
 [init]
 	defaultBranch = main
 [fetch]
-	#all = true
+	all = true
 	output = compact
 	prune = true
 	pruneTags = true
@@ -79,7 +79,10 @@
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
 [pull]
+	all = true
 	rebase = true
+	prune = true
+	pruneTags = true
 # Add format for change log here
 #[pretty]
 
@@ -92,6 +95,9 @@
 	autosquash = true
 	autostash = true
 	updateRefs = true
+#[remote "origin"]
+#  fetch = ^refs/tags/*
+#  tagOpt = --no-tags
 [rerere]
 	autoupdate = true
 	enabled = true
