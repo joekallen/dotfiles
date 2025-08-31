@@ -1,16 +1,42 @@
+{{- define "profileFormats" -}}
+{{- $regex := "(?:subsplash[\\s|-])?(\\w+(?:[\\s|-]\\w+){0,})(?:(,.+)|(?:-\\d+)|(?:$))" }}
+{{- printf "{{ .AccountAlias | lower | regexReplaceAll \"%s\" \"{$1}\" | replace \" \" \"-\" | squote }}" $regex }}
+{{- end -}}
+
+{{- define "profileFormat" }}
+{{- `
+{{- $roles := dict "AdministratorAccess" "Admin" "ViewOnlyAccess" "Viewer" "BackendDeveloper" "Dev" }}
+{{- $regex := "(?:subsplash[\\s|-])?(\\w+(?:[\\s|-]\\w+){0,})(?:(,.+)|(?:-\\d+)|(?:$))" }}
+{{- $alias :=  regexReplaceAll $regex (.AccountAlias | lower) "${1}" | replace " " "-" }}
+{{- $role := dig .RoleName .RoleName $roles }}
+{{- /* make sap admin the default profile */ -}}
+{{- $isDefault := and (eq $alias "subsplash") (eq $role "Admin") }}
+{{- $alias = ternary "default" $alias $isDefault }}
+{{- $role = ternary "" $role $isDefault }}
+{{- list $alias $role | compact | join ":" }}
+` }}
+{{- end -}}
+
 {{- if .chezmoi.config.data.isWorkMachine }}
 SSOConfig:
   Default:
     SSORegion: us-west-2
     StartUrl: https://subsplash.awsapps.com/start
-ConsoleDuration: 480
-CacheRefresh: 168
+    DefaultRegion: us-west-2
 AutoConfigCheck: true
 AutoLogin: true
+ConsoleDuration: 480
+CacheRefresh: 168
 UrlAction: open
+ListFields:
+  - Expires
+  - AccountAlias
+  - Profile
+  - AccountIdPad
+  - RoleName
 LogLevel: error
 HistoryLimit: 10
 HistoryMinutes: 1440
-ProfileFormat: {{`"{{ .AccountIdPad }}:{{ .RoleName }}"`}}
+ProfileFormat: '{{ template "profileFormat" . }}'
 FullTextSearch: true
 {{- end }}

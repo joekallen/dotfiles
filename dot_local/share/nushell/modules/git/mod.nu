@@ -221,8 +221,7 @@ def --env "worktree-add" [
   }
 
   if ($worktrees | is-empty) {
-    $branches = git branch -l | split row ' ' | filter { $in == $worktree }
-
+    let $branches = git branch -l | split row ' ' | filter { $in == $worktree }
   }
   let worktree_path = worktree-path $worktree
   let relative_path = if $keep_path { $env.PWD | path relative-to (branch-root) }

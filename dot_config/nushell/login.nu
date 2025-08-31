@@ -16,14 +16,14 @@ if ($missing_tools | is-not-empty) {
       }
 }
 
-## make sure plugins are registered
-#mise bin-paths | lines
-#  | find nu-plugin
-#  | each {ls $in | get name}
-#  | flatten
-#  | each {plugin add $in}
-#
-## ^aws-sso | ignore
+# make sure plugins are registered
+mise bin-paths | lines
+  | find nu-plugin
+  | each {ls $in | get name}
+  | flatten
+  | each {plugin add $in}
+
+#^aws-sso | ignore
 
 # add overlays here
 use std/dirs shells-aliases *
