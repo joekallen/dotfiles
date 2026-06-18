@@ -1,9 +1,9 @@
-{{- $tools := dig "mise" "tools" (dict) . }}
-{{- $extra := "personal" }}
+{{- $config_key := "personal" }}
 {{- if .chezmoi.config.data.isWorkMachine }}
-  {{- $extra = "work" }}
+  {{- $config_key = "work" }}
 {{- end -}}
-
+{{- $config := dig "mise" $config_key (dict) . }}
+[env]
 [hooks]
 enter = 'mise i -q'
 
@@ -15,13 +15,18 @@ experimental = true
 
 # config files with these prefixes will be trusted by default
 trusted_config_paths = [
-  '~/work',
+  '~/workspace',
 ]
 
 # configure messages displayed when entering directories with config files
 status = { missing_tools = "if_other_versions_installed", show_env = false, show_tools = false }
 
+[tool_alias]
+{{- range $alias, $tool := dig "aliases" (dict) $config }}
+{{ $alias | squote }} = {{ $tool | squote }}
+{{- end }}
+
 [tools]
-{{- range $tool, $version := merge (dig $extra (dict) $tools) (dig "common" (dict) $tools) }}
+{{- range $tool, $version := dig "tools" (dict) $config }}
 {{ $tool | squote}} = {{ $version | squote }}
 {{- end }}

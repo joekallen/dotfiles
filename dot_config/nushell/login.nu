@@ -22,9 +22,3 @@ mise bin-paths | lines
   | each {ls $in | get name}
   | flatten
   | each {plugin add $in}
-
-#^aws-sso | ignore
-
-# add overlays here
-use std/dirs shells-aliases *
-use git

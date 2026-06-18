@@ -1,0 +1,45 @@
+brew:
+  work:
+    brews:
+      - anomalyco/tap/opencode
+      - argocd
+      - carapace
+      - chezmoi
+      - direnv
+      - docker-credential-helper-ecr
+      - kubelogin # this is here for aptakube
+      - git
+      - mas
+      - mise
+      - mods
+      - nushell
+      - pandoc
+      - podman
+      - sevenzip
+      - starship
+      - subsplash/tap/vault-helper
+      - terraform-docs
+      - tfmigrate
+      - watch
+      - wget
+      - vault
+    casks:
+      - 1password
+      - 1password-cli
+      - aerospace
+      - aptakube
+      - basictex
+      - bitwarden
+      - cursor
+      - ghostty
+      - google-chrome
+      - discord
+      - font-fira-code
+      - font-fira-code-nerd-font
+      - openvpn-connect
+      - raycast
+      - slack
+      - zed
+    taps:
+      - hashicorp/tap
+      - 'subsplash/tap, https://subsplash.io/ops/homebrew-tap'

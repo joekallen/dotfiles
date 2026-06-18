@@ -1,0 +1,20 @@
+export alias g = git
+export alias ga = git add
+export alias gcm = git commit -m
+export alias gd = git diff
+export alias gf = git fetch
+export alias gl = git log
+export alias gp = git push
+export alias gpf = git push --force
+export alias gr = git reset
+export alias gri = git rebase -i
+export alias gs = git status
+export alias gwt = git worktree
+export alias gwta = git worktree add
+export alias gwtl = git worktree list
+export alias gwtr = git worktree remove
+export alias gwtu = git worktree use
+
+{{- if .chezmoi.config.data.isWorkMachine }}
+export alias glab = op plugin run -- glab
+{{- end }}

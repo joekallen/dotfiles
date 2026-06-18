@@ -1,12 +1,11 @@
 {{- if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
 
-{{- $dockAppsSource := "personal" }}
+{{- $config_key := "personal" }}
 {{- if .chezmoi.config.data.isWorkMachine }}
-   {{- $dockAppsSource = "work" }}
-{{- end }}
-
-{{- $dockApps := (dig "dock" "darwin" $dockAppsSource (list) .) | uniq }}
+  {{- $config_key = "work" }}
+{{- end -}}
+{{- $dockApps := dig "dock" $config_key (list) . | uniq }}
 
 echo ' Configuring dock...'
 defaults write com.apple.dock autohide -int 1

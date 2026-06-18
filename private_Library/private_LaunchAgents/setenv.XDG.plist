@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"><plist version="1.0">
   <dict>
     <key>Label</key>
-    <string>my.startup.cache_home.environment</string>
+    <string>my.startup.setenv.XDG</string>
     <key>ProgramArguments</key>
     <array>
         <string>/bin/launchctl</string>
         <string>setenv</string>
         <string>XDG_CACHE_HOME</string>
-        <string>~/.cache</string>
+        <string>/Users/joeallen/.cache</string>
+        <string>XDG_CONFIG_HOME</string>
+        <string>/Users/joeallen/.config</string>
+        <string>XDG_DATA_HOME</string>
+        <string>/Users/joeallen/.local/share</string>
+        <string>AWS_CONTAINER_CREDENTIALS_FULL_URI</string>
+        <string>http://localhost:4144</string>
     </array>
     <key>RunAtLoad</key>
     <true/>

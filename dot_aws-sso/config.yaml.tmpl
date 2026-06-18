@@ -4,17 +4,14 @@
 {{- end -}}
 
 {{- define "profileFormat" }}
-{{- `
-{{- $roles := dict "AdministratorAccess" "Admin" "ViewOnlyAccess" "Viewer" "BackendDeveloper" "Dev" }}
+{{- `{{- $roles := dict "AdministratorAccess" "Admin" "ViewOnlyAccess" "Viewer" "BackendDeveloper" "Dev" }}
 {{- $regex := "(?:subsplash[\\s|-])?(\\w+(?:[\\s|-]\\w+){0,})(?:(,.+)|(?:-\\d+)|(?:$))" }}
 {{- $alias :=  regexReplaceAll $regex (.AccountAlias | lower) "${1}" | replace " " "-" }}
-{{- $role := dig .RoleName .RoleName $roles }}
+{{- $role := dig .RoleName "Viewer" $roles }}
 {{- /* make sap admin the default profile */ -}}
 {{- $isDefault := and (eq $alias "subsplash") (eq $role "Admin") }}
 {{- $alias = ternary "default" $alias $isDefault }}
-{{- $role = ternary "" $role $isDefault }}
-{{- list $alias $role | compact | join ":" }}
-` }}
+{{- ternary $alias (list $alias $role | compact | join ":") $isDefault }}` -}}
 {{- end -}}
 
 {{- if .chezmoi.config.data.isWorkMachine }}
@@ -25,8 +22,8 @@ SSOConfig:
     DefaultRegion: us-west-2
 AutoConfigCheck: true
 AutoLogin: true
-ConsoleDuration: 480
 CacheRefresh: 168
+ConsoleDuration: 720
 UrlAction: open
 ListFields:
   - Expires

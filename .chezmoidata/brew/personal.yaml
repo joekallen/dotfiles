@@ -1,0 +1,32 @@
+brew:
+  personal:
+    brews:
+      - anomalyco/tap/opencode
+      - carapace
+      - chezmoi
+      - direnv
+      - git
+      - mas
+      - mise
+      - mods
+      - nushell
+      - pandoc
+      - podman
+      - sevenzip
+      - starship
+      - watch
+      - wget
+    casks:
+      - 1password
+      - 1password-cli
+      - aerospace
+      - aptakube
+      - ghostty
+      - google-chrome
+      - discord
+      - font-fira-code
+      - font-fira-code-nerd-font
+      - monarch
+      - raycast
+      - slack
+      - zed

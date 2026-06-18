@@ -5,7 +5,7 @@ export-env {
 }
 
 export def test [to_check: list<string>, params: list]: nothing -> record<found: bool, flags: list> {
-  let flags_found = $to_check | filter {|flag| $flag in $params }
+  let flags_found = $to_check | where {|flag| $flag in $params }
   {
     found: ($flags_found | is-not-empty)
     flags: $flags_found

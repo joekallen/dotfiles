@@ -9,3 +9,7 @@ export def agree [
   }
   (if $default_not { [no yes] } else { [yes no] } | input list $prompt) == 'yes'
 }
+
+export def tips [msg] {
+    print -e $"(ansi light_gray)($msg)(ansi reset)"
+}

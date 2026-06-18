@@ -1,0 +1,30 @@
+{{- $config_key := "personal" }}
+{{- if .chezmoi.config.data.isWorkMachine }}
+  {{- $config_key = "work" }}
+{{- end -}}
+{{- $config := dig "opencode" $config_key (dict) . }}
+{{- $agent := dig "agent" "review" (dict) $config }}
+---
+description: Reviews code for quality and best practices
+mode: subagent
+model: {{ $agent.model | default $config.models.default | squote }}
+temperature: {{ $agent.temperature | default 0.1 }}
+permission:
+  skill:
+    '*-mr-review': allow
+    '*': ask
+  edit: deny
+  {{- $permission := merge (dig "permission" (dict) $agent) (dict "*" "ask") }}
+  {{- with $permission }}
+    {{- . | toYaml | nindent 2 }}
+  {{- end }}
+---
+
+You are in code review mode. Focus on:
+
+- Code quality and best practices
+- Potential bugs and edge cases
+- Performance implications
+- Security considerations
+
+Provide constructive feedback without making direct changes.

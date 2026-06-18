@@ -197,11 +197,11 @@ disabled = true
 
 [git_branch]
 style = 'bold fg:#769ff0 bg:#394260'
-format = '[](fg:#394260)[on $symbol$branch(:$remote_branch)]($style)'
-symbol = ' '
+format = '[](fg:#394260)[on $symbol $branch(:$remote_branch) ]($style)'
+symbol = ''
 
 [git_commit]
-format = '[\( | $hash$tag\ )]($style)'
+format = '[\[$hash$tag\] ]($style)'
 style = 'bold fg:#769ff0 bg:#394260'
 tag_symbol = '  '
 
@@ -210,7 +210,6 @@ disabled = false
 added_style = 'bold fg:green bg:#394260'
 deleted_style = 'bold fg:red bg:#394260'
 format = '[( | ([+$added]($added_style) )([-$deleted]($deleted_style) ))](bg:#394260)'
-
 
 [git_state]
 format = '\([$state( | $progress_current/$progress_total)]($style)\)'

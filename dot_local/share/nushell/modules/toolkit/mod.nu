@@ -1,5 +1,5 @@
-export module toolkit/check-flags
-export module toolkit/prompt
+export module ./check-flags
+export module ./prompt
 
 export-env {
   use std/log []

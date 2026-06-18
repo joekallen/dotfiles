@@ -2,6 +2,7 @@
 $env.PATH = $env.PATH | split row (char esep)
   | prepend '/usr/local/bin'
   | prepend '/opt/homebrew/bin'
+  | prepend '/Library/TeX/texbin'
   | uniq
 
 # Specifies how environment variables are:
@@ -26,11 +27,12 @@ $env.NU_LOG_LEVEL = 'INFO'
 # Directories to search for scripts such as aliases and completions
 # we probably don't need to add all of these, the data-dir folder and module is probably enough
 $env.NU_LIB_DIRS = [
-  # 'aliases',
-  'completions',
-  'modules',
-  'scripts'
-] | each {|folder| $nu.data-dir | path join $folder } | append $nu.data-dir
+  aliases
+  completions
+  modules
+  scripts
+] | each {|folder| $nu.data-dir | path join $folder }
+  | append $nu.data-dir
 
 # Directories to search for plugin binaries when calling register
 $env.NU_PLUGIN_DIRS = ['plugins'] | each {|folder|

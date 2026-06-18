@@ -1,9 +1,12 @@
+use std/log
+
 def delete-unused [
   type: string
   column: string
   names: list<string>
 ] {
-  kubectl config $'get-($type)s' | from ssv | get name
+  log debug $'Deleting unused ($type)s'
+  kubectl config $'get-($type)s' | from ssv | get NAME
   | where $it not-in $names
   | each { kubectl config $'delete-($type)' $in }
   | print
@@ -65,61 +68,3 @@ delete-unused user NAME $cluster_names
 $clusters | each { set-cluster $in.cluster_name $in.server $in.ca }
 $clusters | each { set-credentials $in.cluster_name $in.cluster_id $in.region_short $in.env }
 $clusters | each { set-context $in.cluster_name }
-
-# let clusters_config = $clusters | each {
-  # {
-    # name: $in.cluster_name
-    # cluster: {
-      # server: $in.server
-      # certificate-authority-data: $in.ca
-    # }
-  # }
-# }
-#
-# let contexts_config = $clusters | each {
-  # {
-    # name: $in.cluster_name
-    # cluster: {
-      # server: $in.server
-      # certificate-authority-data: $in.ca
-    # }
-  # }
-# }
-#
-# let users_config = $clusters | each {
-  # let domain: string = if $in.cluster_name == 'k8s-streamspot-prod-us-east-1' { 'streamspot.io' } else { 'subsplash.io' }
-  # let oidc_issuer_host: string = [dex $in.cluster_id, $in.region_short, $in.env, $domain] | str join '.'
-  # {
-    # name: $in.cluster_name
-    # user: {
-      # exec: {
-        # apiVersion: client.authentication.k8s.io/v1beta1
-        # args: [
-          # oidc-login
-          # get-token
-          # $'--oidc-issuer-url=https://($oidc_issuer_host)'
-          # --oidc-client-id=kubectl
-          # --oidc-extra-scope=groups
-          # --oidc-extra-scope=profile
-          # --oidc-extra-scope=audience:server:client_id:kubernetes
-        # ]
-        # command: kubectl
-        # env: null
-        # interactiveMode: IfAvailable
-        # provideClusterInfo: false
-      # }
-    # }
-  # }
-# }
-#
-# let kube_config = {
-  # apiVersion: v1
-  # kind: Config
-  # current-context: $current_cluster
-  # preferences: {}
-  # clusters: $clusters_config
-  # contexts: $contexts_config
-  # users: $users_config
-# }
-#
-# $kube_config | save -f $'~/.kube/config.nu'

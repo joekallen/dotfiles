@@ -1,0 +1,7 @@
+mise:
+  personal:
+    aliases: {}
+    tools:
+      cargo:https://github.com/nushell/nufmt: rev:24b0e39
+      node: '24'
+      rust: '1.94'

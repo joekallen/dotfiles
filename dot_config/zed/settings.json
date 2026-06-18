@@ -1,0 +1,72 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "agent_servers": {
+    "opencode": {
+      "type": "registry"
+    }
+  },
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000,
+    },
+  },
+  "base_keymap": "VSCode",
+  "buffer_font_family": "FiraCode Nerd Font Mono",
+  "buffer_font_size": 14.0,
+  "ensure_final_newline_on_save": true,
+  "git": {
+    "disable_git": true,
+  },
+  "icon_theme": "Zed (Default)",
+  "languages": {
+    "YAML": {
+      "tab_size": 2,
+    },
+  },
+  "minimap": {
+    "show": "never",
+  },
+  "prettier": {
+    "singleQuote": true,
+    "tabWidth": 2,
+  },
+  "preview_tabs": {
+    "enabled": false,
+  },
+  "project_panel": {
+    "dock": "left",
+  },
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "sticky_scroll": {
+    "enabled": false,
+  },
+  "tab_size": 2,
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "terminal": {
+    "shell": {
+      "program": "nu",
+    },
+    "font_family": "MesloLGS NF",
+    "copy_on_select": true,
+    "max_scroll_history_lines": 100000,
+  },
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark",
+  },
+  "use_on_type_format": true,
+  "ui_font_size": 16,
+}

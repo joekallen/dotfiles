@@ -1,0 +1,7 @@
+external:
+  ".local/share/nushell/vendor/autoload":
+    type: archive
+    url: https://github.com/KamilKleina/alias-finder.nu/archive/refs/heads/main.zip
+    include: ["*/*.nu"]
+    refreshPeriod: 168h
+    stripComponents: 1

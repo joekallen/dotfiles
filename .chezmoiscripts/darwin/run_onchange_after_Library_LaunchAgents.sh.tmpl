@@ -15,7 +15,8 @@
 {{- range $files }}
 {{- $name := first . }}
 {{- $target := last . }}
-echo "Reloading LaunchAgent {{ $name }} to pick up changes"
+echo "Reloading LaunchAgent {{ $target }} to pick up changes to my.startup.{{ $name | trimSuffix ".plist" }}"
+
 launchctl unload {{ $target | squote }}
 launchctl load {{ $target | squote }}
 {{- end }}

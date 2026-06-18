@@ -33,10 +33,20 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
-command = ~/.bin/nu -l
+command = /opt/homebrew/bin/nu -l
 font-family = "FiraCode Nerd Font Mono"
 scrollback-limit = 4294967296
+theme = TokyoNight
+
+# mouse clicking and selection
+# disable forwading mouse to app running in the terminal
+clipboard-read = allow
+clipboard-write = allow
+copy-on-select = clipboard
+focus-follows-mouse = true
+mouse-reporting = true
+right-click-action = copy-or-paste
 
 # keybindings
-keybind = page_up=scroll_page_up
-keybind = page_down=scroll_page_down
+# keybind = page_up=scroll_page_up
+# keybind = page_down=scroll_page_down

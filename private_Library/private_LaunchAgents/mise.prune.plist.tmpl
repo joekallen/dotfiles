@@ -3,12 +3,12 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"><plist version="1.0">
   <dict>
     <key>Label</key>
-    <string>local.mise.update</string>
+    <string>my.startup.mise.prune</string>
     <key>ProgramArguments</key>
     <array>
       {{- if $mise }}
       <string>{{ $mise }}</string>
-      <string>upgrade</string>
+      <string>prune</string>
       <string>-y</string>
       {{- else }}
       <string>osascript</string>

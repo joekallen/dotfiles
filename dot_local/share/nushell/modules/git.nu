@@ -6,7 +6,7 @@ export def --env --wrapped "clone" [
     | str replace -r r#'^.*\/(.*)\.git$'# './$1'
     | path join (git-remote-default-branch $repository)
     | do -c --env {
-      ^git clone $repository $in ...$rest
+      ^git clone --no-tags $repository $in ...$rest
       enter $in
     }
 }
@@ -28,7 +28,9 @@ export def --env --wrapped "worktree add" [
 
   print $'creating `($worktree)` worktree from: `(git-current-branch)`'
   git-worktree-path $worktree
-    | do -c { ^git worktree add $in ...$rest }
+    | do -c { 
+      ^git worktree add $in ...$rest
+    }
     | git worktree use $worktree $relative_path
 }
 

@@ -1,0 +1,15 @@
+{{- $config_key := "personal" }}
+{{- if .chezmoi.config.data.isWorkMachine }}
+  {{- $config_key = "work" }}
+{{- end -}}
+{{- $config := dig "opencode" $config_key (dict) . }}
+{
+  "$schema": "https://opencode.ai/config.json",
+  {{- $agents := pick (dig "agent" (dict) $config) "build" "plan" "general" "explore" "scout" "compaction" "title" "summary" }}
+  "agent": {{- $agents | toPrettyJson | nindent 4 }},
+  "default_agent": "plan",
+  "mcp": {{- dig "mcp" (dict) $config | toPrettyJson | nindent 4 }},
+  "model": {{- dig "models" "default" "" $config | quote }},
+  "small_model": {{- dig "models" "default-small" "" $config | quote }},
+  "provider": {{- dig "provider" (dict) $config | toPrettyJson | nindent 4 }}
+}

@@ -1,0 +1,94 @@
+opencode:
+  work:
+    agent:
+      build:
+        model: amazon-bedrock/us.anthropic.claude-opus-4-8
+        temperature: 0.1
+        permission:
+          bash: allow
+          edit: allow
+      review:
+        model: amazon-bedrock/us.anthropic.claude-sonnet-4-6
+        temperature: 0.1
+      plan:
+        model: amazon-bedrock/us.anthropic.claude-sonnet-4-6
+        temperature: 0.1
+        permission:
+          bash: deny
+          edit: deny
+    mcp:
+      atlassian:
+        enabled: true
+        type: remote
+        url: https://mcp.atlassian.com/v1/mcp
+      aws-api:
+        enabled: true
+        command: uvx
+        args: ['awslabs.aws-api-mcp-server>=1.3,<1.4']
+        environment:
+          AWS_PROFILE: infra
+          AWS_REGION: us-west-2
+          FASTMCP_LOG_LEVEL: ERROR
+        type: local
+      aws-cloudwatch:
+        enabled: true
+        command: uvx
+        args: ['awslabs.cloudwatch-mcp-server>=0.1,<0.2']
+        environment:
+          AWS_PROFILE: infra
+          AWS_REGION: us-west-2
+          FASTMCP_LOG_LEVEL: ERROR
+        type: local
+      aws-eks:
+        enabled: true
+        command: uvx
+        args: ['awslabs.eks-mcp-server>=0.1,<0.2']
+        environment:
+          AWS_PROFILE: infra
+          AWS_REGION: us-west-2
+          FASTMCP_LOG_LEVEL: ERROR
+        type: local
+      falcon:
+        enabled: false
+        command: uvx
+        args: [--env-file, ~/.config/falcon/mcp.env, falcon-mcp]
+        type: local
+      kubernetes:
+        enabled: true
+        command: npx
+        args: [-y, kubernetes-mcp-server@0.0.x]
+        timeout: 90000
+        type: local
+      glab:
+        enabled: true
+        command: [op, run, --, glab, mcp, serve]
+        env:
+          GITLAB_TOKEN: 'op://Subsplash/GitLab PAT/credential'
+        type: local
+      grafana:
+        enabled: true
+        url: https://grafana-mcp.infra.subsplash.io/mcp
+        type: remote
+      opentofu:
+        enabled: true
+        command: [npx, -y, '@opentofu/opentofu-mcp-server@latest']
+        type: local
+      terraform:
+        enabled: false
+        command: [podman, run, -i, --rm, hashicorp/terraform-mcp-server:0.5.2]
+        type: local
+      unblocked:
+        enabled: true
+        url: https://getunblocked.com/api/mcpsse
+        type: remote
+    models:
+      default: amazon-bedrock/us.anthropic.claude-sonnet-4-6
+      default-small: amazon-bedrock/us.anthropic.claude-haiku-4-5-20251001-v1:0
+    provider:
+      amazon-bedrock:
+        models:
+          amazon-bedrock/us.anthropic.claude-haiku-4-5-20251001-v1:0: {}
+          amazon-bedrock/us.anthropic.claude-sonnet-4-6: {}
+          amazon-bedrock/us.anthropic.claude-opus-4-8: {}
+          options:
+            region: us-west-2

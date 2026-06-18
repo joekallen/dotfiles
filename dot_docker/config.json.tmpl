@@ -1,0 +1,11 @@
+{{- $tab := "\t" }}
+{{- $doubleTab := repeat 2 $tab }}
+{
+  {{- $tab | nindent 0 }}"auths": {},
+  {{- $tab | nindent 0 }}"credHelpers": {
+  {{- $doubleTab | nindent 0 }}"576546042567.dkr.ecr.us-east-1.amazonaws.com": "ecr-login",
+  {{- $doubleTab | nindent 0 }}"576546042567.dkr.ecr.us-west-2.amazonaws.com": "ecr-login"
+  {{- $tab | nindent 0 }}},
+  {{- $tab | nindent 0 }}"currentContext": "desktop-linux",
+  {{- $tab | nindent 0 }}"experimental": "enabled"
+}
