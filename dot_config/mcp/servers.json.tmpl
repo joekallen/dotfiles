@@ -1,0 +1,4 @@
+{{- $config := dig .chezmoi.os "mcp" (dict) . }}
+{
+  "mcpServers": {{- $config | toPrettyJson | nindent 4 }}
+}

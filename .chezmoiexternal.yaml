@@ -1,7 +1,14 @@
-{{- if eq .chezmoi.os "darwin" -}}
-{{- $config_key := "personal" }}
-{{- if .chezmoi.config.data.isWorkMachine }}
-  {{- $config_key = "work" }}
-{{- end -}}
-{{- dig "external" $config_key (dict) . | toYaml }}
+".local/share/chezmoi/.chezmoidata":
+  type: git-repo
+  url: git@github.com:joekallen/chezmoi-data.git
+  refreshPeriod: 168h
+  clone:
+    args: [--single-branch, --branch, {{ ternary "work" "personal" .chezmoi.config.data.isWorkMachine }}]
+".local/share/chezmoi/dot_config/opencode":
+  type: git-repo
+  url: git@github.com:joekallen/opencode.git
+  refreshPeriod: 168h
+{{- $externalConfig := dig .chezmoi.os "external" (dict) . }}
+{{- if $externalConfig }}
+{{ $externalConfig | toYaml }}
 {{- end }}

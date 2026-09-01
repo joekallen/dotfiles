@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//A Public//DTD PLIST 1.0//EN" "http://apple.com">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>my.mcp.serve</string>
+    <key>ProgramArguments</key>
+    <array>
+        <!-- Absolute path to the brew-installed mcp binary -->
+        <string>/opt/homebrew/bin/mcp</string>
+        <string>serve</string>
+        <string>--http</string>
+        <string>127.0.0.1:3000</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/opt/homebrew/var/log/mcp.log</string>
+    <key>StandardErrorPath</key>
+    <string>/opt/homebrew/var/log/mcp.err.log</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>XDG_CACHE_HOME</key>
+        <string>/Users/joeallen/.cache</string>
+        <key>XDG_CONFIG_HOME</key>
+        <string>/Users/joeallen/.config</string>
+        <key>XDG_DATA_HOME</key>
+        <string>/Users/joeallen/.local/share</string>
+        <key>AWS_CONTAINER_CREDENTIALS_FULL_URI</key>
+        <string>http://localhost:4144</string>
+    </dict>
+</dict>
+</plist>

@@ -81,7 +81,7 @@ export def log [
     | lines
     | compact -e
     | each { |line|
-        if ($line =~ '^[0-9a-fA-F]{7,8}»¦«.*$') {
+        if ($line =~ '^[0-9a-fA-F]{7,40}»¦«.*$') {
           $line
             | split column "»¦«" commit subject name email date
             | upsert date {|d| $d.date | into datetime }
@@ -160,22 +160,25 @@ def --env "worktree-add" [
   let source_worktree = if $commitish == '' { $'origin/(git-default-branch)' } else { $commitish }
 
   # Getting a list of ignored files to sync - useful for directories like .terraform and node_modules
-  let sync_list = if (git-is-working-tree) {
-    ^git status --ignored --porcelain
-      | complete
-      | if $in.exit_code != 0 {
-          error make --unspanned {msg: r#'Couldn't sync untracked files between worktrees'# }
-        } else {
-          $in.stdout | lines
-        }
-      | str replace --regex '^!! ' ''
-      | each {|subpath|
-        {
-          source: ($env.PWD | path join $subpath | path parse)
-          target: ($worktree_path | path join $subpath | path parse)
-        }
-      }
-    } else { [] }
+  # TODO: replace with git-list-ignored
+  let sync_list = []
+  # let sync_list = if (git-is-working-tree) {
+  #   ^git status --ignored --porcelain
+  #     | complete
+  #     | if $in.exit_code != 0 {
+  #         error make --unspanned {msg: r#'Couldn't sync untracked files between worktrees'# }
+  #       } else { $in.stdout }
+  #     | lines
+  #     | parse '{code} {file}'
+  #     | where code == '!!'
+  #     | get file
+  #     | each {|file|
+  #       {
+  #         source: ($env.PWD | path join $file | path parse)
+  #         target: ($worktree_path | path $file | path parse)
+  #       }
+  #     }
+  #   } else { [] }
 
   if $branch and $branch_force {
     error make {
@@ -286,7 +289,7 @@ def cmpl-worktree-list []: nothing -> list<string> {
 # Switches to a worktree
 # If already on the worktree, will move to the root of it
 @category git
-def --env worktree-use [
+def --env worktree-switch [
   worktree: string@cmpl-worktree-list         # The name of the worktree
   --keep-path (-p) = false                   # Whether to keep the current relative path when entering the new worktree
   ]: nothing -> nothing {
@@ -340,6 +343,6 @@ def --env worktree-remove [
 export module worktree {
   export alias add = worktree-add
   export alias remove = worktree-remove
-  export alias use = worktree-use
+  export alias switch = worktree-switch
   export alias list = worktree-list
 }

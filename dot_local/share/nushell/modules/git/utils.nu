@@ -131,3 +131,18 @@ export def git-branches [
       }
     | uniq-by name
 }
+
+export def git-list-ignored []: nothing -> list<string> {
+  if (git-is-working-tree) {
+    ^git status --ignored --porcelain
+      | complete
+      | if $in.exit_code != 0 {
+          error make --unspanned {msg: r#'Couldn't sync untracked files between worktrees'# }
+        } else { $in.stdout }
+      | lines
+      | parse '{code} {file}'
+      | where code == '!!'
+      | get file
+      | each {|file| $env.PWD | path join $file | path parse }
+  } else { [] }
+}

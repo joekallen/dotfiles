@@ -1,8 +1,4 @@
-{{- $config_key := "personal" }}
-{{- if .chezmoi.config.data.isWorkMachine }}
-  {{- $config_key = "work" }}
-{{- end -}}
-{{- $config := dig "mise" $config_key (dict) . }}
+{{- $config := dig .chezmoi.os "mise" (dict) . }}
 [env]
 [hooks]
 enter = 'mise i -q'

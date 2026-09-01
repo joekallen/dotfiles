@@ -1,3 +1,4 @@
+{{- $config := dig "git" (dict) . }}
 [user]
   email = {{ .email }}
   name = {{ .name }}
@@ -32,11 +33,7 @@
   cleanup = scissors
   verbose = true
 [core]
-{{- if .chezmoi.config.data.isWorkMachine }}
   editor = zed --wait
-{{- else }}
-  editor = zed --wait
-{{- end }}
   excludesFile = {{ joinPath .chezmoi.targetFile "../ignore" }}
   filemode = true
   # this adds a socket to .git folder and breaks CoW for worktree flows
@@ -111,8 +108,10 @@
 [tag]
   forceSignAnnotated = false
   sort = version:refname
-[url "git@subsplash.io:"]
-  insteadOf = https://subsplash.io/
+{{- range ($config.hosts | default list) }}
+[url {{ printf "git@%s:" . | quote }}]
+  insteadOf = {{ printf "https://%s/" . }}
+{{- end }}
 [worktree]
   guessRemote = true
   useRelativePaths = true

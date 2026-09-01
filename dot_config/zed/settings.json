@@ -8,9 +8,6 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "agent_servers": {
-    "opencode": {
-      "type": "registry"
-    }
   },
   "autosave": {
     "after_delay": {
@@ -24,11 +21,35 @@
   "git": {
     "disable_git": true,
   },
+  "hard_tabs": false,
   "icon_theme": "Zed (Default)",
   "languages": {
-    "YAML": {
-      "tab_size": 2,
+    "Go": {
+      "hard_tabs": true
     },
+    "Markdown": {
+      "remove_trailing_whitespace_on_save": false
+    }
+  },
+  "lsp": {
+    "eslint": {
+      "settings": {
+        "experimental": {
+          "useFlatConfig": true
+        }
+      }
+    },
+    "yaml-language-server": {
+      "settings": {
+        "yaml": {
+          "schemas": {
+            "https://json.schemastore.org/pnpm-workspace.json": [
+              "pnpm-workspace.yaml"
+            ]
+          }
+        }
+      }
+    }
   },
   "minimap": {
     "show": "never",
@@ -43,9 +64,11 @@
   "project_panel": {
     "dock": "left",
   },
+  "remove_trailing_whitespace_on_save": true,
   "session": {
     "trust_all_worktrees": true,
   },
+  "show_whitespaces": "trailing",
   "sticky_scroll": {
     "enabled": false,
   },

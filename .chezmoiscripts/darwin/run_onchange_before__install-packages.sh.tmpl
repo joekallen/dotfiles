@@ -1,17 +1,20 @@
 {{- if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
-{{- $config_key := "personal" }}
-{{- if .chezmoi.config.data.isWorkMachine }}
-  {{- $config_key = "work" }}
-{{- end -}}
-{{- $config := dig "brew" $config_key (dict) . }}
 
-{{- $brews := dig "brews" (list) $config | uniq }}
-{{- $casks := dig "casks" (list) $config | uniq }}
-{{- $taps := dig "taps" (list) $config | uniq }}
+{{- $brewConfig := dig .chezmoi.os "brew" (dict) . }}
+{{- $nixConfig := dig .chezmoi.os "nix" (dict) . }}
 
-#brew bundle --cleanup --file=/dev/stdin <<EOF
+{{- $brews := dig "brews" (list) $brewConfig | uniq }}
+{{- $casks := dig "casks" (list) $brewConfig | uniq }}
+{{- $taps := dig "taps" (list) $brewConfig | uniq }}
+{{- $trust := dig "trust" (list) $brewConfig | uniq }}
+
 echo "🍺  Installing packages with brew..."
+{{- range $trust }}
+  {{- $parts := splitList " " . }}
+  echo "brew trusting {{ last $parts }}"
+  brew trust {{ . }}
+{{- end }}
 brew bundle --file=/dev/stdin <<EOF
 {{- range $taps }}
   {{- $parts := splitList "," . }}

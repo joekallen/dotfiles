@@ -1,8 +1,4 @@
-{{- $config_key := "personal" }}
-{{- if .chezmoi.config.data.isWorkMachine }}
-  {{- $config_key = "work" }}
-{{- end -}}
-{{- $config := dig "opencode" $config_key (dict) . }}
+{{- $config := dig .chezmoi.os "opencode" (dict) . }}
 {
   "$schema": "https://opencode.ai/config.json",
   {{- $agents := pick (dig "agent" (dict) $config) "build" "plan" "general" "explore" "scout" "compaction" "title" "summary" }}
