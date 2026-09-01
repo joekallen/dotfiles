@@ -108,7 +108,7 @@
 [tag]
   forceSignAnnotated = false
   sort = version:refname
-{{- range ($config.hosts | default list) }}
+{{- range (dig "hosts" (list) $config) }}
 [url {{ printf "git@%s:" . | quote }}]
   insteadOf = {{ printf "https://%s/" . }}
 {{- end }}

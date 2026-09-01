@@ -6,3 +6,5 @@ scripts
 {{- end }}
 
 # how to pull in work vs personal, and architecture
+dot_config/opencode/.gitignore
+dot_config/opencode/README.md

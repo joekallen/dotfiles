@@ -1,4 +1,5 @@
 .lh
 .history.*
 .chezmoidata
-dot_config/opencode
+dot_config/opencode/*
+!dot_config/opencode/opencode.json.tmpl
