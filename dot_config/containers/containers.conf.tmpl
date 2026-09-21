@@ -1,0 +1,6 @@
+[machine]
+{{- if eq .chezmoi.os "darwin" }}
+memory = 8192
+provider = "applehv"
+rosetta = true
+{{- end }}

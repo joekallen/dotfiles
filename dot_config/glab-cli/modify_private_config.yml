@@ -1,0 +1,9 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- if .chezmoi.config.data.isWorkMachine }}
+{{- $host := "subsplash.io" }}
+{{- $subsplashHost := dict "api_protocol" "https" "api_host" $host "token" (onepasswordRead "op://Subsplash/Gitlab PAT/credential") }}
+{{- $hostFields := dict "git_protocol" "ssh" "host" $host "hosts" (list (dict $host $subsplashHost)) }}
+{{- $baseFields := dict "glamour_style" "dark" "glamour_style" true "display_hyperlinks" false "check_update" true "no_prompt" false "telemetry" "true" }}
+{{- $existingConfig := .chezmoi.stdin | fromYaml }}
+{{ merge $baseFields $hostFields $existingConfig | toYaml }}
+{{- end }}
