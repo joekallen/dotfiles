@@ -1,9 +1,0 @@
-{{- /* chezmoi:modify-template */ -}}
-{{- $existingConfig := .chezmoi.stdin | fromJson }}
-{{- $config := merge (dict "device" "m3qjwfbztfz2exlo67s4nbe5da") $existingConfig }}
-{{- "{" }}
-{{ "\t" }}"latest_signin": {{ $config.latest_signin | quote }},
-{{ "\t" }}"device": {{ $config.device | quote }},
-{{ "\t" }}"accounts": {{ ternary (get $config "account" | quote) "null" (hasKey $config "account") }},
-{{ "\t" }}"system_auth_latest_signin": {{ $config.system_auth_latest_signin | quote }}
-{{ "}" -}}
