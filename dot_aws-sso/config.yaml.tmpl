@@ -10,7 +10,7 @@
 {{- $role := dig .RoleName "Viewer" $roles }}
 {{- /* make sap admin the default profile */ -}}
 {{- $isDefault := and (eq $alias "subsplash") (eq $role "Admin") }}
-{{- $alias = ternary "default" $alias $isDefault }}
+{{- $alias = ternary "default" $ $isDefault }}
 {{- ternary $alias (list $alias $role | compact | join ":") $isDefault }}` -}}
 {{- end -}}
 
