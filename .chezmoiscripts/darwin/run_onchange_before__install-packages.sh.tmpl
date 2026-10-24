@@ -2,7 +2,6 @@
 #!/bin/bash
 
 {{- $brewConfig := dig .chezmoi.os "brew" (dict) . }}
-{{- $nixConfig := dig .chezmoi.os "nix" (dict) . }}
 
 {{- $brews := dig "brews" (list) $brewConfig | uniq }}
 {{- $casks := dig "casks" (list) $brewConfig | uniq }}
